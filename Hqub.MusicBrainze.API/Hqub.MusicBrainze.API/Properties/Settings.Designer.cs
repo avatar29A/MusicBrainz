@@ -34,7 +34,7 @@ namespace Hqub.MusicBrainze.API.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("<ENTITY>/<MBID>?inc=<INC>")]
+        [global::System.Configuration.DefaultSettingValueAttribute("{0}/{1}/?inc={2}")]
         public string LookupTemplate {
             get {
                 return ((string)(this["LookupTemplate"]));
@@ -43,7 +43,7 @@ namespace Hqub.MusicBrainze.API.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("<ENTITY>?<ENTITY>=<MBID>&limit=<LIMIT>&offset=<OFFSET>&inc=<INC>")]
+        [global::System.Configuration.DefaultSettingValueAttribute("{0}?{0}={1}&limit={2}&offset={3}&inc={4}")]
         public string BrowseTemplate {
             get {
                 return ((string)(this["BrowseTemplate"]));
@@ -52,7 +52,7 @@ namespace Hqub.MusicBrainze.API.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("<ENTITY>?query=<QUERY>&limit=<LIMIT>&offset=<OFFSET>")]
+        [global::System.Configuration.DefaultSettingValueAttribute("{0}?query={1}&limit={2}&offset={3}&inc={4}")]
         public string SearchTemplate {
             get {
                 return ((string)(this["SearchTemplate"]));

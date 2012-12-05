@@ -55,8 +55,8 @@ namespace MusicBrainz
         public static T? StringToEnumOrNull<T>(string name) where T : struct
         {
             if (name != null)
-                foreach (T value in Enum.GetValues(typeof(T)))
-                    if (Enum.GetName(typeof(T), value) == name)
+                foreach (T value in Enum.GetValues(typeof (T)))
+                    if (Enum.GetName(typeof (T), value) == name)
                         return value;
             return null;
         }
@@ -70,10 +70,37 @@ namespace MusicBrainz
                     builder.Append(c);
                 else
                 {
-                    foreach (byte b in Encoding.UTF8.GetBytes(new char[] { c }))
+                    foreach (byte b in Encoding.UTF8.GetBytes(new char[] {c}))
                         builder.AppendFormat("%{0:X}", b);
                 }
             }
         }
     }
-}
+
+    public static class FlagsHelper
+    {
+        public static bool IsSet<T>(T flags, T flag) where T : struct
+        {
+            var flagsValue = (int) (object) flags;
+            var flagValue = (int) (object) flag;
+
+            return (flagsValue & flagValue) != 0;
+        }
+
+        public static void Set<T>(ref T flags, T flag) where T : struct
+        {
+            var flagsValue = (int) (object) flags;
+            var flagValue = (int) (object) flag;
+
+            flags = (T) (object) (flagsValue | flagValue);
+        }
+
+        public static void Unset<T>(ref T flags, T flag) where T : struct
+        {
+            var flagsValue = (int) (object) flags;
+            var flagValue = (int) (object) flag;
+
+            flags = (T) (object) (flagsValue & (~flagValue));
+        }
+    }
+}   

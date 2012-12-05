@@ -6,13 +6,13 @@
       <Value Profile="(Default)">http://musicbrainz.org/ws/2/</Value>
     </Setting>
     <Setting Name="LookupTemplate" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">&lt;ENTITY&gt;/&lt;MBID&gt;?inc=&lt;INC&gt;</Value>
+      <Value Profile="(Default)">{0}/{1}/?inc={2}</Value>
     </Setting>
     <Setting Name="BrowseTemplate" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">&lt;ENTITY&gt;?&lt;ENTITY&gt;=&lt;MBID&gt;&amp;limit=&lt;LIMIT&gt;&amp;offset=&lt;OFFSET&gt;&amp;inc=&lt;INC&gt;</Value>
+      <Value Profile="(Default)">{0}?{0}={1}&amp;limit={2}&amp;offset={3}&amp;inc={4}</Value>
     </Setting>
     <Setting Name="SearchTemplate" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">&lt;ENTITY&gt;?query=&lt;QUERY&gt;&amp;limit=&lt;LIMIT&gt;&amp;offset=&lt;OFFSET&gt;</Value>
+      <Value Profile="(Default)">{0}?query={1}&amp;limit={2}&gt;&amp;offset={3}</Value>
     </Setting>
   </Settings>
 </SettingsFile>
