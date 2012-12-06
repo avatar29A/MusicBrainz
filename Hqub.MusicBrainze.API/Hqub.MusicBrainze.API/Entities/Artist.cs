@@ -28,7 +28,7 @@ namespace Hqub.MusicBrainze.API.Entities
         [XmlElement("life-span")]
         public LifeSpanNode LifeSpan { get; set; }
 
-        [XmlElement("ext:score", Namespace = "xmlns:ext=\"http://musicbrainz.org/ns/ext#-2.0\"")]
+        [XmlElement("ext:score")]
         public int Score { get; set; }
 
         [XmlElement("disambiguation")]
@@ -80,10 +80,11 @@ namespace Hqub.MusicBrainze.API.Entities
                 throw new ArgumentNullException(string.Format(Localization.Messages.RequiredAttributeException, "query"));
 
             var result =
-                WebRequestHelper.Get<Metadata.MetadataWrapper>(WebRequestHelper.CreateSearchTemplate("artist", query, limit, offset,
-                                                                                       CreateIncludeQuery(inc)));
+                WebRequestHelper.Get<Metadata.MetadataWrapper>(
+                    WebRequestHelper.CreateSearchTemplate("artist", query, limit, offset,
+                                                          CreateIncludeQuery(inc)), withoutMetadata: false);
 
-            return new ArtistList();
+            return result.Collection;
         }
 
         #endregion

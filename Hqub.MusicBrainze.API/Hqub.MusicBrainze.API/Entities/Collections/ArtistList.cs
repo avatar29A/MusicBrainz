@@ -7,9 +7,7 @@ using System.Xml.Serialization;
 
 namespace Hqub.MusicBrainze.API.Entities.Collections
 {
-    [XmlType(Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
     [XmlRoot("artist-list", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
-    [Serializable]
     public class ArtistList : List<Artist>
     {
         [XmlAttribute("count")]

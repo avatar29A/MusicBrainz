@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using Hqub.MusicBrainze.API.Entities.Collections;
 
 namespace Hqub.MusicBrainze.API.Entities.Metadata
 {
@@ -11,6 +12,11 @@ namespace Hqub.MusicBrainze.API.Entities.Metadata
     [XmlRoot("metadata", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
     public class MetadataWrapper
     {
+        public MetadataWrapper()
+        {
+            Collection = new ArtistList();
+        }
+
         [XmlArray("artist-list")]
         [XmlArrayItem("artist")]
         public Collections.ArtistList Collection { get; set; } 
