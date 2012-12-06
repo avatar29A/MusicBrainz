@@ -28,7 +28,7 @@ namespace Hqub.MusicBrainze.API.Entities
         [XmlElement("life-span")]
         public LifeSpanNode LifeSpan { get; set; }
 
-        [XmlElement("ext:score")]
+        [XmlAttribute("score", Namespace = "http://musicbrainz.org/ns/ext#-2.0")]
         public int Score { get; set; }
 
         [XmlElement("disambiguation")]
