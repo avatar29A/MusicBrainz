@@ -121,17 +121,6 @@ namespace Hqub.MusicBrainze.API.Entities
         public bool Ended { get; set; }
     }
 
-    [XmlType(Namespace = "")]
-    [XmlRoot("rating")]
-    public class Rating
-    {
-        [XmlAttribute("votes-count")]
-        public int VotesCount { get; set; }
-
-        [XmlText]
-        public double Value { get; set; }
-    }
-
     #endregion
 
 }

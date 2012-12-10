@@ -60,7 +60,7 @@
     <Compile Include="Entities\Label.cs" />
     <Compile Include="Entities\Metadata\ArtistMetadataWrapper.cs" />
     <Compile Include="Entities\Metadata\RecordingMetadataWrapper.cs" />
-    <Compile Include="Entities\Raiting.cs" />
+    <Compile Include="Entities\Rating.cs" />
     <Compile Include="Entities\Recording.cs" />
     <Compile Include="Entities\Release.cs" />
     <Compile Include="Entities\ReleaseGroup.cs" />

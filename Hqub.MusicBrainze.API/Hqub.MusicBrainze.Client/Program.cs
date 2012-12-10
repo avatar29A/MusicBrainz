@@ -15,12 +15,9 @@ namespace Hqub.MusicBrainze.Client
         {
             var include = API.Entities.Include.ArtistIncludeEntityHelper.Releases;
             var a = Artist.Get("c3cceeed-3332-4cf0-8c4c-bbde425147b6",
-                               API.Entities.Include.ArtistIncludeEntityHelper.Releases,
-                               API.Entities.Include.ArtistIncludeEntityHelper.Raitings,
-                               API.Entities.Include.ArtistIncludeEntityHelper.Recordings,
-                               API.Entities.Include.ArtistIncludeEntityHelper.ReleaseGroups,
-                               API.Entities.Include.ArtistIncludeEntityHelper.Tags,
-                               API.Entities.Include.ArtistIncludeEntityHelper.Works);
+
+                               API.Entities.Include.ArtistIncludeEntityHelper.Ratings
+);
 //
             Console.WriteLine("{0} - {1}.", include, a.ReleaseLists.Count);
 

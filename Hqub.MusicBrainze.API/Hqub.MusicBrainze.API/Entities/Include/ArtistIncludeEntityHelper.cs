@@ -13,7 +13,7 @@ namespace Hqub.MusicBrainze.API.Entities.Include
         public const string ReleaseGroups = "release-groups";
         public const string Works = "works";
         public const string Tags = "tags";
-        public const string Raitings = "ratings";
+        public const string Ratings = "ratings";
 
         // Relations
 //        public const string ArtistRelation = "artist-rels";
@@ -34,7 +34,7 @@ namespace Hqub.MusicBrainze.API.Entities.Include
                 case ReleaseGroups:
                 case Works:
                 case Tags:
-                case Raitings:
+                case Ratings:
                     return true;
                 default:
                     return false;
