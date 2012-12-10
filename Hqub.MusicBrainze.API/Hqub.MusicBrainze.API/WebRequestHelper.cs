@@ -11,7 +11,7 @@ namespace Hqub.MusicBrainze.API
 {
     internal static class WebRequestHelper
     {
-        internal static T Get<T>(string url, bool withoutMetadata = true)
+        internal static T Get<T>(string url, bool withoutMetadata = true) where T : Entities.Entity
         {
             try
             {
@@ -27,15 +27,24 @@ namespace Hqub.MusicBrainze.API
                     var xml = XDocument.Load(stream);
                     var serialize = new XmlSerializer(typeof(T));
 
+                    //Add extension namespace:
                     var ns = new XmlSerializerNamespaces();
                     ns.Add("ext", "http://musicbrainz.org/ns/ext#-2.0");
 
+                    //check valid xml schema:
                     if(xml.Root == null || xml.Root.Name.LocalName != "metadata")
                         throw new NullReferenceException(Localization.Messages.WrongXmlFormat);
 
-                    var node = withoutMetadata ? xml.Root.FirstNode : xml.Root;
+                    var node = withoutMetadata ? xml.Root.Elements().FirstOrDefault() : xml.Root;
 
-                    return (T)serialize.Deserialize(node.CreateReader());
+                    if(node == null)
+                        return default(T);
+
+                    var obj = (T) serialize.Deserialize(node.CreateReader());
+
+                    obj.SetSchema(node);
+
+                    return obj;
                 }
             }
             catch (Exception ex)

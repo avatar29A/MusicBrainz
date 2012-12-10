@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
+using Hqub.MusicBrainze.API.Entities.Collections;
 
 namespace Hqub.MusicBrainze.API.Entities
 {
     [XmlType(Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
     [XmlRoot("recording", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
-    public class Recording
+    public class Recording : Entity
     {
+        #region Property
+
         [XmlAttribute("id")]
         public string Id { get; set; }
 
@@ -18,5 +21,18 @@ namespace Hqub.MusicBrainze.API.Entities
 
         [XmlElement("length")]
         public int Length { get; set; }
+
+        [XmlElement("disambiguation")]
+        public string Disambiguation { get; set; }
+
+        #endregion
+
+        #region Include
+
+        [XmlArray("tag-list")]
+        [XmlArrayItem("tag")]
+        public TagList Tags { get; set; }
+
+        #endregion
     }
 }

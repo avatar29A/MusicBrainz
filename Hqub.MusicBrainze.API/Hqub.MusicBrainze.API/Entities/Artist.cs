@@ -9,7 +9,7 @@ namespace Hqub.MusicBrainze.API.Entities
 {
     [XmlType(Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
     [XmlRoot("artist", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
-    public class Artist
+    public class Artist : Entity
     {
         #region Properties
 
@@ -28,11 +28,17 @@ namespace Hqub.MusicBrainze.API.Entities
         [XmlElement("life-span")]
         public LifeSpanNode LifeSpan { get; set; }
 
+        [XmlElement("country")]
+        public string Country { get; set; }
+
         [XmlAttribute("score", Namespace = "http://musicbrainz.org/ns/ext#-2.0")]
         public int Score { get; set; }
 
         [XmlElement("disambiguation")]
         public string Disambiguation { get; set; }
+
+        [XmlElement("rating")]
+        public Rating Rating { get; set; }
 
         #endregion
 
@@ -41,6 +47,18 @@ namespace Hqub.MusicBrainze.API.Entities
         [XmlArray("recording-list", ElementName = "recording-list")]
         [XmlArrayItem("recording")]
         public RecordingList Recordings { get; set; }
+
+        [XmlArray("release-group-list")]
+        [XmlArrayItem("release-group")]
+        public ReleaseGroupList ReleaseGroups { get; set; }
+
+        [XmlArray("release-list")]
+        [XmlArrayItem("release")]
+        public ReleaseList ReleaseLists { get; set; }
+
+        [XmlArray("work-list")]
+        [XmlArrayItem("work")]
+        public WorkList Works { get; set; }
 
         [XmlArray("tag-list")]
         [XmlArrayItem("tag")]
@@ -80,7 +98,7 @@ namespace Hqub.MusicBrainze.API.Entities
                 throw new ArgumentNullException(string.Format(Localization.Messages.RequiredAttributeException, "query"));
 
             var result =
-                WebRequestHelper.Get<Metadata.MetadataWrapper>(
+                WebRequestHelper.Get<Metadata.ArtistMetadataWrapper>(
                     WebRequestHelper.CreateSearchTemplate("artist", query, limit, offset,
                                                           CreateIncludeQuery(inc)), withoutMetadata: false);
 
@@ -101,6 +119,17 @@ namespace Hqub.MusicBrainze.API.Entities
 
         [XmlElement("ended")]
         public bool Ended { get; set; }
+    }
+
+    [XmlType(Namespace = "")]
+    [XmlRoot("rating")]
+    public class Rating
+    {
+        [XmlAttribute("votes-count")]
+        public int VotesCount { get; set; }
+
+        [XmlText]
+        public double Value { get; set; }
     }
 
     #endregion

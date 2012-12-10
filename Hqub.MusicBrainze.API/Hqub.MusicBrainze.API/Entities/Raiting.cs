@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Hqub.MusicBrainze.API.Entities
 {
-    public class Raiting
+    public class Raiting : Entity
     {
 
     }

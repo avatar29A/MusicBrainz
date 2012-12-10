@@ -16,13 +16,13 @@ namespace Hqub.MusicBrainze.API.Entities.Include
         public const string Raitings = "ratings";
 
         // Relations
-        public const string ArtistRelation = "artist-rels";
-        public const string LabelRelation = "label-rels";
-        public const string RecordingRelation = "recording-rels";
-        public const string ReleaseRelation = "release-rels";
-        public const string ReleaseGroupRelation = "release-group-rels";
-        public const string UrlRelation = "url-rels";
-        public const string WorkRelation = "work-rels";
+//        public const string ArtistRelation = "artist-rels";
+//        public const string LabelRelation = "label-rels";
+//        public const string RecordingRelation = "recording-rels";
+//        public const string ReleaseRelation = "release-rels";
+//        public const string ReleaseGroupRelation = "release-group-rels";
+//        public const string UrlRelation = "url-rels";
+//        public const string WorkRelation = "work-rels";
 
 
         public static bool Check(string incEntity)

@@ -8,7 +8,7 @@ namespace Hqub.MusicBrainze.API.Entities
 {
     [XmlType(Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
     [XmlRoot("tag", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
-    public class Tag
+    public class Tag : Entity
     {
         [XmlAttribute("count")]
         public int Count { get; set; }

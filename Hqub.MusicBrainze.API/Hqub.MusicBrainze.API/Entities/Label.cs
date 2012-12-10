@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Hqub.MusicBrainze.API.Entities
 {
-    public class Label
+    public class Label : Entity
     {
 
     }

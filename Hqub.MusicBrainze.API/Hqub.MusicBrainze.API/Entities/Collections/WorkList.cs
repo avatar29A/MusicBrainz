@@ -8,8 +8,8 @@ using System.Xml.Serialization;
 namespace Hqub.MusicBrainze.API.Entities.Collections
 {
     [XmlType(Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
-    [XmlRoot("recording-list", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
-    public class RecordingList : List<Recording>
+    [XmlRoot("work-list", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
+    public class WorkList : List<Work>
     {
         [XmlAttribute("count")]
         public int QueryCount { get; set; }
