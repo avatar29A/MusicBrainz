@@ -16,7 +16,7 @@ namespace Hqub.MusicBrainze.API.Entities
         [XmlElement("title")]
         public string Title { get; set; }
 
-        [XmlElement("Official")]
+        [XmlElement("status")]
         public string Status { get; set; }
 
         [XmlElement("quality")]
@@ -30,6 +30,9 @@ namespace Hqub.MusicBrainze.API.Entities
 
         [XmlElement("country")]
         public string Country { get; set; }
+
+        [XmlElement("barcode")]
+        public string Barcode { get; set; }
     }
 
     [XmlType(Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]

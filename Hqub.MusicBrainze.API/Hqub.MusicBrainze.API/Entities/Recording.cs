@@ -48,6 +48,28 @@ namespace Hqub.MusicBrainze.API.Entities
         [XmlArrayItem("tag")]
         public TagList Tags { get; set; }
 
+        [XmlArray("artist-credit")]
+        [XmlArrayItem("name-credit")]
+        public List<NameCredit> Credits { get; set; }
+
+        [XmlArray("release-list")]
+        [XmlArrayItem("release")]
+        public ReleaseList Releases { get; set; }
+
         #endregion
     }
+
+    #region Relation Entity
+
+    [XmlRoot("name-credit")]
+    public class NameCredit
+    {
+        [XmlAttribute("joinphrase")]
+        public string JoinPhrase { get; set; }
+
+        [XmlElement("artist")]
+        public Artist Artist { get; set; }
+    }
+
+    #endregion
 }
