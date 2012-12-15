@@ -18,7 +18,7 @@ namespace Hqub.MusicBrainze.API.Entities.Metadata
             Collection = new RecordingList();
         }
 
-        [XmlArray("recording-lis")]
+        [XmlArray("recording-list")]
         [XmlArrayItem("recording")]
         public RecordingList Collection { get; set; }
 
