@@ -13,13 +13,14 @@ namespace Hqub.MusicBrainze.Client
     {
         static void Main(string[] args)
         {
-            var include = API.Entities.Include.ArtistIncludeEntityHelper.Releases;
-            var a = Artist.Get("c3cceeed-3332-4cf0-8c4c-bbde425147b6",
+	        var track = Recording.Get("4a397477-4819-41c8-b6dd-cc7ee55a341f");
 
-                               API.Entities.Include.ArtistIncludeEntityHelper.Ratings
-);
+	        foreach (var s in Recording.Search("Колизей"))
+	        {
+		        Console.WriteLine(s.Title);
+	        }
+
 //
-            Console.WriteLine("{0} - {1}.", include, a.ReleaseLists.Count);
 
 //            var artists = Artist.Search("Scorpions");
 //
@@ -47,6 +48,7 @@ namespace Hqub.MusicBrainze.Client
 //
 //            Console.WriteLine(UTF8Encoding.UTF8.GetString(memory.ToArray()));
 
+			Console.WriteLine("OK");
             Console.ReadKey();
         }
     }

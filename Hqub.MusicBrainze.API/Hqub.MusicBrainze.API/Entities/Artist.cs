@@ -66,47 +66,20 @@ namespace Hqub.MusicBrainze.API.Entities
 
         #endregion
 
-        #region Static Methods
+		#region Static Methods
 
-        private static string CreateIncludeQuery(string[] inc)
-        {
-            //Build query for inc entiteis:
-            var incBuilder = new StringBuilder();
-            foreach (var entityName in inc.Where(Include.ArtistIncludeEntityHelper.Check))
-            {
-                incBuilder.AppendFormat("{0}+", entityName);
-            }
+		public static Artist Get(string id, params string[] inc)
+		{
+			return Get<Artist>(id, WebRequestHelper.CreatLookupUrl(Localization.Constants.Artist, id, CreateIncludeQuery(inc)));
+		}
 
-            return incBuilder.ToString();
-        }
+		public static ArtistList Search(string query, int limit = 25, int offset = 0, params string[] inc)
+		{
+			return Search<Metadata.ArtistMetadataWrapper>(Localization.Constants.Artist, query, limit, offset, inc).Collection;
+		}
 
-        public static Artist Get(string id, params string[] inc)
-        {
-            if (id == null)
-                throw new ArgumentNullException(string.Format(Localization.Messages.RequiredAttributeException, "id"));
-
-
-            var incQuery = CreateIncludeQuery(inc);
-
-            return
-                WebRequestHelper.Get<Artist>(WebRequestHelper.CreatLookupUrl(Localization.Constants.Artist, id, incQuery));
-        }
-
-        public static ArtistList Search(string query, int limit=25, int offset=0, params  string[] inc)
-        {
-            if (query == null)
-                throw new ArgumentNullException(string.Format(Localization.Messages.RequiredAttributeException, "query"));
-
-            var result =
-                WebRequestHelper.Get<Metadata.ArtistMetadataWrapper>(
-                    WebRequestHelper.CreateSearchTemplate("artist", query, limit, offset,
-                                                          CreateIncludeQuery(inc)), withoutMetadata: false);
-
-            return result.Collection;
-        }
-
-        #endregion
-    }
+		#endregion
+	}
 
     #region Include entities
 

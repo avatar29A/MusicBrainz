@@ -27,9 +27,24 @@ namespace Hqub.MusicBrainze.API.Entities
 
         #endregion
 
-        #region Include
+		#region Static methods
 
-        [XmlArray("tag-list")]
+		public static Recording Get(string id, params string[] inc)
+		{
+			return Get<Recording>(id, WebRequestHelper.CreatLookupUrl(Localization.Constants.Recording, id, CreateIncludeQuery(inc)));
+		}
+
+		public static RecordingList Search(string query, int limit = 25, int offset = 0, params string[] inc)
+		{
+			return
+				Search<Metadata.RecordingMetadataWrapper>(Localization.Constants.Recording, query, limit, offset, inc).Collection;
+		}
+
+		#endregion
+
+		#region Include
+
+		[XmlArray("tag-list")]
         [XmlArrayItem("tag")]
         public TagList Tags { get; set; }
 

@@ -11,7 +11,7 @@ namespace Hqub.MusicBrainze.API.Entities.Metadata
 {
     [XmlType(Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
     [XmlRoot("metadata", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
-    public class RecordingMetadataWrapper : Entity
+    public class RecordingMetadataWrapper : MetadataWrapper
     {
         public RecordingMetadataWrapper()
         {

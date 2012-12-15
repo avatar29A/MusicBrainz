@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using Hqub.MusicBrainze.API.Entities.Collections;
 
 namespace Hqub.MusicBrainze.API.Entities
 {
@@ -15,5 +16,37 @@ namespace Hqub.MusicBrainze.API.Entities
         {
             Raw = schema;
         }
+
+		public static string CreateIncludeQuery(string[] inc)
+		{
+			//Build query for inc entiteis:
+			var incBuilder = new StringBuilder();
+			foreach (var entityName in inc)
+			{
+				incBuilder.AppendFormat("{0}+", entityName);
+			}
+
+			return incBuilder.ToString();
+		}
+
+		protected static T Get<T>(string id, string url) where T : Entity
+		{
+			if (id == null)
+				throw new ArgumentNullException(string.Format(Localization.Messages.RequiredAttributeException, "id"));
+
+			return
+				WebRequestHelper.Get<T>(url);
+		}
+
+		protected static T Search<T>(string entity, string query, int limit = 25, int offset = 0, params  string[] inc) where T : MetadataWrapper
+		{
+			if (query == null)
+				throw new ArgumentNullException(string.Format(Localization.Messages.RequiredAttributeException, "query"));
+
+			return
+				WebRequestHelper.Get<T>(
+					WebRequestHelper.CreateSearchTemplate(entity, query, limit, offset,
+					                                      CreateIncludeQuery(inc)), withoutMetadata: false);
+		}
     }
 }

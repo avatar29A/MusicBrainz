@@ -58,6 +58,7 @@
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Include\ArtistIncludeEntityHelper.cs" />
     <Compile Include="Entities\Label.cs" />
+    <Compile Include="Entities\Metadata.cs" />
     <Compile Include="Entities\Metadata\ArtistMetadataWrapper.cs" />
     <Compile Include="Entities\Metadata\RecordingMetadataWrapper.cs" />
     <Compile Include="Entities\Rating.cs" />

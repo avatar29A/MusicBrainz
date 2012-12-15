@@ -123,6 +123,9 @@
   <data name="Label" xml:space="preserve">
     <value>label</value>
   </data>
+  <data name="Recording" xml:space="preserve">
+    <value>recording</value>
+  </data>
   <data name="Release" xml:space="preserve">
     <value>release</value>
   </data>
