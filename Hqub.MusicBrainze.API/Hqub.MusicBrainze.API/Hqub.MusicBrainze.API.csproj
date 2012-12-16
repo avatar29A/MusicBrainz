@@ -50,6 +50,7 @@
     <Compile Include="Entities\Artist.cs" />
     <Compile Include="Entities\Collection.cs" />
     <Compile Include="Entities\Collections\ArtistList.cs" />
+    <Compile Include="Entities\Collections\MediumList.cs" />
     <Compile Include="Entities\Collections\RecordingList.cs" />
     <Compile Include="Entities\Collections\ReleaseGroupList.cs" />
     <Compile Include="Entities\Collections\ReleaseList.cs" />
@@ -58,9 +59,13 @@
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Include\ArtistIncludeEntityHelper.cs" />
     <Compile Include="Entities\Label.cs" />
+    <Compile Include="Entities\LabelInfo.cs" />
+    <Compile Include="Entities\Medium.cs" />
     <Compile Include="Entities\Metadata.cs" />
     <Compile Include="Entities\Metadata\ArtistMetadataWrapper.cs" />
     <Compile Include="Entities\Metadata\RecordingMetadataWrapper.cs" />
+    <Compile Include="Entities\Metadata\ReleaseMetadataWrapper.cs" />
+    <Compile Include="Entities\NameCredit.cs" />
     <Compile Include="Entities\Rating.cs" />
     <Compile Include="Entities\Recording.cs" />
     <Compile Include="Entities\Release.cs" />

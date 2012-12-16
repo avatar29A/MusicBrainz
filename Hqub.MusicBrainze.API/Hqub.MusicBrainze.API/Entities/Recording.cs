@@ -58,18 +58,4 @@ namespace Hqub.MusicBrainze.API.Entities
 
         #endregion
     }
-
-    #region Relation Entity
-
-    [XmlRoot("name-credit")]
-    public class NameCredit
-    {
-        [XmlAttribute("joinphrase")]
-        public string JoinPhrase { get; set; }
-
-        [XmlElement("artist")]
-        public Artist Artist { get; set; }
-    }
-
-    #endregion
 }

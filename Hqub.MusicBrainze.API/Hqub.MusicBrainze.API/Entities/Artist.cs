@@ -42,7 +42,7 @@ namespace Hqub.MusicBrainze.API.Entities
 
         #endregion
 
-        #region Include
+        #region Subqueries
 
         [XmlArray("recording-list", ElementName = "recording-list")]
         [XmlArrayItem("recording")]

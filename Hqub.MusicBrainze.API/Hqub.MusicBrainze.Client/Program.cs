@@ -13,9 +13,9 @@ namespace Hqub.MusicBrainze.Client
     {
         static void Main(string[] args)
         {
-            var track = Recording.Get("4a397477-4819-41c8-b6dd-cc7ee55a341f", "releases");
+//            var track = Recording.Get("4a397477-4819-41c8-b6dd-cc7ee55a341f", "releases");
 
-	        foreach (var s in Recording.Search("Колизей"))
+	        foreach (var s in Release.Search("Генератор Зла"))
 	        {
 		        Console.WriteLine(s.Title);
 	        }

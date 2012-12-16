@@ -33,6 +33,39 @@ namespace Hqub.MusicBrainze.API.Entities
 
         [XmlElement("barcode")]
         public string Barcode { get; set; }
+
+        [XmlElement("release-group")]
+        public ReleaseGroup ReleaseGroup { get; set; }
+
+        #region Subqueries
+
+        [XmlArray("artist-credit")]
+        [XmlArrayItem("name-credit")]
+        public List<NameCredit> Credits { get; set; }
+
+        [XmlArray("label-info-list")]
+        [XmlArrayItem("label-info")]
+        public List<LabelInfo> Labels { get; set; }
+
+        [XmlArray("medium-list")]
+        [XmlArrayItem("medium")]
+        public Collections.MediumList MediumList { get; set; }
+
+        #endregion
+
+        #region Static Methods
+
+        public  static Release Get(string id, params string[] inc)
+        {
+            return Get<Release>(id, WebRequestHelper.CreatLookupUrl(Localization.Constants.Release, id, CreateIncludeQuery(inc)));
+        }
+
+        public static Collections.ReleaseList Search(string query, int limit = 25, int offset = 0, params string[] inc)
+        {
+            return Search<Metadata.ReleaseMetadataWrapper>(Localization.Constants.Release, query, limit, offset, inc).Collection;
+        }
+
+        #endregion
     }
 
     [XmlType(Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
