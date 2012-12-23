@@ -68,10 +68,10 @@ namespace Hqub.MusicBrainze.API
         /// <summary>
         /// Browse url query
         /// </summary>
-        internal static string CreateBrowseTemplate(string entity, string mbid, int limit, int offset, string inc)
+        internal static string CreateBrowseTemplate(string entity, string relatedEntity, string mbid, int limit, int offset, string inc)
         {
             return string.Format("{0}{1}", Properties.Settings.Default.WebServiceUrl,
-                                 string.Format(Properties.Settings.Default.BrowseTemplate, entity, mbid, limit, offset,
+                                 string.Format(Properties.Settings.Default.BrowseTemplate, entity, relatedEntity, mbid, limit, offset,
                                                inc));
         }
 

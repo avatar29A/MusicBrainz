@@ -48,5 +48,16 @@ namespace Hqub.MusicBrainze.API.Entities
 					WebRequestHelper.CreateSearchTemplate(entity, query, limit, offset,
 					                                      CreateIncludeQuery(inc)), withoutMetadata: false);
 		}
+
+        protected static T Browse<T>(string entity, string relatedEntity, string relatedEntityId, int limit, int offset, params  string[] inc) where T : Entity
+        {
+            if (entity == null)
+                throw new ArgumentNullException(string.Format(Localization.Messages.RequiredAttributeException, "entity"));
+
+            return
+                WebRequestHelper.Get<T>(
+                    WebRequestHelper.CreateBrowseTemplate(entity, relatedEntity, relatedEntityId, limit, offset,
+                                                          CreateIncludeQuery(inc)), withoutMetadata: false);
+        }
     }
 }

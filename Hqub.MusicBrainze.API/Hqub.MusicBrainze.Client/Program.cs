@@ -13,12 +13,13 @@ namespace Hqub.MusicBrainze.Client
     {
         static void Main(string[] args)
         {
-//            var track = Recording.Get("4a397477-4819-41c8-b6dd-cc7ee55a341f", "releases");
+//            var track = Recording.Get("4a397477-4819-41c8-b6dd-cc7ee55a341f", "artists");
 
-	        foreach (var s in Release.Search("Генератор Зла"))
+            foreach (var s in Recording.Browse(API.Localization.Constants.Release, "0af70df8-92f3-358f-8a9f-07c0ae1d8f73", 50))
 	        {
 		        Console.WriteLine(s.Title);
 	        }
+
 
 //
 

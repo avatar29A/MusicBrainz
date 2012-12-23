@@ -40,6 +40,14 @@ namespace Hqub.MusicBrainze.API.Entities
 				Search<Metadata.RecordingMetadataWrapper>(Localization.Constants.Recording, query, limit, offset, inc).Collection;
 		}
 
+        public static RecordingList Browse(string relatedEntity, string value, int limit=25, int offset=0, params  string[] inc)
+        {
+            return
+                Browse<Metadata.RecordingMetadataWrapper>(Localization.Constants.Recording, relatedEntity, value, limit,
+                                                          offset, inc
+                    ).Collection;
+        }
+
 		#endregion
 
 		#region Include
