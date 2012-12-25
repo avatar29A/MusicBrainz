@@ -12,7 +12,7 @@
       <Value Profile="(Default)">{0}?{1}={2}&amp;limit={3}&amp;offset={4}&amp;inc={5}</Value>
     </Setting>
     <Setting Name="SearchTemplate" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">{0}?query={1}&amp;limit={2}&gt;&amp;offset={3}</Value>
+      <Value Profile="(Default)">{0}?query={1}&amp;limit={2}&amp;offset={3}</Value>
     </Setting>
   </Settings>
 </SettingsFile>

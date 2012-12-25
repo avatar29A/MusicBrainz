@@ -52,7 +52,7 @@ namespace Hqub.MusicBrainze.API.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("{0}?query={1}&limit={2}>&offset={3}")]
+        [global::System.Configuration.DefaultSettingValueAttribute("{0}?query={1}&limit={2}&offset={3}")]
         public string SearchTemplate {
             get {
                 return ((string)(this["SearchTemplate"]));
