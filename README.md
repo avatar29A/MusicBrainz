@@ -1,7 +1,7 @@
 MuzicBrainz
 ============
 
-Impelmentation MuzicBrainze API 2.0 (C#)
+Implementation MuzicBrainze API 2.0 (C#)
 
 ##Examples:
 
