@@ -16,19 +16,13 @@ namespace Hqub.MusicBrainze.API.Entities
         [XmlElement("disc-list")]
         public DiskList Disks { get; set; }
 
-        [XmlElement("track-list")]
-        public TrackList Tracks { get; set; }
+        [XmlArray("track-list")]
+        [XmlArrayItem("track")]
+        public Collections.TrackList Tracks { get; set; }
     }
 
     [XmlRoot("disk-list")]
     public class DiskList 
-    {
-        [XmlAttribute("count")]
-        public int Count { get; set; }
-    }
-
-    [XmlRoot("track-list")]
-    public class TrackList
     {
         [XmlAttribute("count")]
         public int Count { get; set; }

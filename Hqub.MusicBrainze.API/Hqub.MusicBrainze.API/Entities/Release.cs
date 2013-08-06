@@ -37,6 +37,9 @@ namespace Hqub.MusicBrainze.API.Entities
         [XmlElement("release-group")]
         public ReleaseGroup ReleaseGroup { get; set; }
 
+        [XmlElement("cover-art-archive")]
+        public CoverArtArchive CoverArtArchive { get; set; }
+
         #region Subqueries
 
         [XmlArray("artist-credit")]
