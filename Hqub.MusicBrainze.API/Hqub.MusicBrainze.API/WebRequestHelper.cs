@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
@@ -15,7 +16,12 @@ namespace Hqub.MusicBrainze.API
         {
             try
             {
-                var request = System.Net.WebRequest.Create(url);
+                var request = WebRequest.Create(url) as HttpWebRequest;
+                if (request == null)
+                    return default(T);
+
+                request.UserAgent = "Hqub.MusicBrainze.API/2.0";
+                request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
 
                 var response = request.GetResponse();
 

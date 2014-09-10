@@ -15,25 +15,23 @@ namespace Hqub.MusicBrainze.Client
         {
 //            var track = Recording.Get("4a397477-4819-41c8-b6dd-cc7ee55a341f", "artists");
 
-            foreach (var s in Recording.Browse(API.Localization.Constants.Release, "0af70df8-92f3-358f-8a9f-07c0ae1d8f73", 50))
-	        {
-		        Console.WriteLine(s.Title);
-	        }
-
-
+//            foreach (var s in Recording.Browse(API.Localization.Constants.Release, "0af70df8-92f3-358f-8a9f-07c0ae1d8f73", 50))
+//	        {
+//		        Console.WriteLine(s.Title);
+//	        }
 //
 
-//            var artists = Artist.Search("Scorpions");
-//
-//            foreach (var artist in artists)
-//            {
-//                Console.WriteLine(artist.Name);
-//
-//                foreach (var tag in artist.Tags)
-//                {
-//                    Console.WriteLine("\t{0}", tag.Name);
-//                }
-//            }
+            var artists = Artist.Search("Scorpions");
+
+            foreach (var artist in artists)
+            {
+                Console.WriteLine(artist.Name);
+
+                foreach (var tag in artist.Tags)
+                {
+                    Console.WriteLine("\t{0}", tag.Name);
+                }
+            }
 //
 //            var serilize = new XmlSerializer(typeof (API.Entities.Metadata.MetadataWrapper));
 //
