@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 using Hqub.MusicBrainze.API.Entities.Collections;
+using System.Threading.Tasks;
 
 namespace Hqub.MusicBrainze.API.Entities
 {
@@ -68,14 +69,30 @@ namespace Hqub.MusicBrainze.API.Entities
 
 		#region Static Methods
 
+        [Obsolete("Use GetAsync() method.")]
 		public static Artist Get(string id, params string[] inc)
 		{
-			return Get<Artist>(id, WebRequestHelper.CreatLookupUrl(Localization.Constants.Artist, id, CreateIncludeQuery(inc)));
+			return GetAsync<Artist>(id, WebRequestHelper.CreateLookupUrl(Localization.Constants.Artist,
+                id, CreateIncludeQuery(inc))).Result;
 		}
 
+        [Obsolete("Use SearchAsync() method.")]
 		public static ArtistList Search(string query, int limit = 25, int offset = 0, params string[] inc)
 		{
-			return Search<Metadata.ArtistMetadataWrapper>(Localization.Constants.Artist, query, limit, offset, inc).Collection;
+			return SearchAsync<Metadata.ArtistMetadataWrapper>(Localization.Constants.Artist,
+                query, limit, offset, inc).Result.Collection;
+		}
+
+		public async static Task<Artist> GetAsync(string id, params string[] inc)
+		{
+			return await GetAsync<Artist>(id, WebRequestHelper.CreateLookupUrl(Localization.Constants.Artist,
+                id, CreateIncludeQuery(inc)));
+		}
+
+		public async static Task<ArtistList> SearchAsync(string query, int limit = 25, int offset = 0, params string[] inc)
+		{
+            return (await SearchAsync<Metadata.ArtistMetadataWrapper>(Localization.Constants.Artist,
+                query, limit, offset, inc)).Collection;
 		}
 
 		#endregion

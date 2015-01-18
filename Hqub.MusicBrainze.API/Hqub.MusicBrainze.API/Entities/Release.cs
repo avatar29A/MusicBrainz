@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace Hqub.MusicBrainze.API.Entities
@@ -58,14 +59,30 @@ namespace Hqub.MusicBrainze.API.Entities
 
         #region Static Methods
 
-        public  static Release Get(string id, params string[] inc)
+        [Obsolete("Use GetAsync() method.")]
+        public static Release Get(string id, params string[] inc)
         {
-            return Get<Release>(id, WebRequestHelper.CreatLookupUrl(Localization.Constants.Release, id, CreateIncludeQuery(inc)));
+            return GetAsync<Release>(id, WebRequestHelper.CreateLookupUrl(Localization.Constants.Release,
+                id, CreateIncludeQuery(inc))).Result;
         }
 
+        [Obsolete("Use SearchAsync() method.")]
         public static Collections.ReleaseList Search(string query, int limit = 25, int offset = 0, params string[] inc)
         {
-            return Search<Metadata.ReleaseMetadataWrapper>(Localization.Constants.Release, query, limit, offset, inc).Collection;
+            return SearchAsync<Metadata.ReleaseMetadataWrapper>(Localization.Constants.Release,
+                query, limit, offset, inc).Result.Collection;
+        }
+
+        public async static Task<Release> GetAsync(string id, params string[] inc)
+        {
+            return await GetAsync<Release>(id, WebRequestHelper.CreateLookupUrl(Localization.Constants.Release,
+                id, CreateIncludeQuery(inc)));
+        }
+
+        public async static Task<Collections.ReleaseList> SearchAsync(string query, int limit = 25, int offset = 0, params string[] inc)
+        {
+            return (await SearchAsync<Metadata.ReleaseMetadataWrapper>(Localization.Constants.Release,
+                query, limit, offset, inc)).Collection;
         }
 
         #endregion
