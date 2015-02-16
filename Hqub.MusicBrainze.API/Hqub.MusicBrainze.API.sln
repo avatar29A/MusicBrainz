@@ -5,13 +5,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hqub.MusicBrainze.API", "Hq
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hqub.MusicBrainze.API.Test", "Hqub.MusicBrainze.API.Test\Hqub.MusicBrainze.API.Test.csproj", "{1E8BEEE2-DF91-4D0B-902E-E661D03E70C3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{BF0B37A7-255F-42EB-B4EB-F619B20B5C8D}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hqub.MusicBrainze.Client", "Hqub.MusicBrainze.Client\Hqub.MusicBrainze.Client.csproj", "{A30BD5FD-E8DF-454F-8280-9B1B7093785A}"
 EndProject
 Global
