@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Threading.Tasks;
 
 namespace Hqub.MusicBrainz.API.Test
 {
@@ -8,12 +9,7 @@ namespace Hqub.MusicBrainz.API.Test
     public class ApiTest
     {
         [TestMethod]
-        public void CheckArtistGet()
-        {
-           CheckArtistGetAsync();
-        }
-
-        private async void CheckArtistGetAsync()
+        public async Task CheckArtistGetAsync()
         {
             var artist = await Entities.Artist.GetAsync("c3cceeed-3332-4cf0-8c4c-bbde425147b6");
 
@@ -24,12 +20,7 @@ namespace Hqub.MusicBrainz.API.Test
         }
 
         [TestMethod]
-        public void CheckArtistSearch()
-        {
-            CheckArtistSearchAsync();
-        }
-
-        private async void CheckArtistSearchAsync()
+        public async Task CheckArtistSearchAsync()
         {
             var artists = await Entities.Artist.SearchAsync("scorpions");
 
@@ -37,12 +28,7 @@ namespace Hqub.MusicBrainz.API.Test
         }
 
         [TestMethod]
-        public void CheckReleaseGet()
-        {
-            CheckReleaseGetAsync();
-        }
-
-        private async void CheckReleaseGetAsync()
+        public async Task CheckReleaseGetAsync()
         {
             var release = await Entities.Release.GetAsync("ffad013a-4f64-44dd-bfb3-c6360fbd042d");
 
@@ -53,12 +39,7 @@ namespace Hqub.MusicBrainz.API.Test
         }
 
         [TestMethod]
-        public void CheckReleaseSearch()
-        {
-            CheckReleaseSearchAsync();
-        }
-
-        private async void CheckReleaseSearchAsync()
+        public async Task CheckReleaseSearchAsync()
         {
             var releases = await Entities.Release.SearchAsync("Comeblack");
 
@@ -66,12 +47,7 @@ namespace Hqub.MusicBrainz.API.Test
         }
 
         [TestMethod]
-        public void CheckReleaseBrowse()
-        {
-            CheckReleaseBrowseAsync();
-        }
-
-        private async void CheckReleaseBrowseAsync()
+        public async Task CheckReleaseBrowseAsync()
         {
             var artists = await Entities.Artist.SearchAsync("The Scorpions"); 
 
@@ -84,12 +60,7 @@ namespace Hqub.MusicBrainz.API.Test
         }
 
         [TestMethod]
-        public void CheckRecordingGet()
-        {
-            CheckRecordingGetAsync();
-        }
-
-        private async void CheckRecordingGetAsync()
+        public async Task CheckRecordingGetAsync()
         {
             var recording = await Entities.Recording.GetAsync("fc4d4d9c-58b7-4dba-a608-753ea752ccce");
 
@@ -100,12 +71,7 @@ namespace Hqub.MusicBrainz.API.Test
         }
 
         [TestMethod]
-        public void CheckRecordingSearch()
-        {
-            CheckRecordingSearchAsync();
-        }
-
-        private async void CheckRecordingSearchAsync()
+        public async Task CheckRecordingSearchAsync()
         {
             var recordings = await Entities.Recording.SearchAsync("The Wind of Change");
 
@@ -113,12 +79,7 @@ namespace Hqub.MusicBrainz.API.Test
         }
 
         [TestMethod]
-        public void CheckRecordingBrose()
-        {
-            CheckRecordingBroseAsync();
-        }
-
-        private async void CheckRecordingBroseAsync()
+        public async Task CheckRecordingBrowseAsync()
         {
             var artists = await Entities.Artist.SearchAsync("The Scorpions");
 
