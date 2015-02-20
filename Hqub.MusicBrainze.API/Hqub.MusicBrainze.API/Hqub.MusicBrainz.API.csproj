@@ -45,7 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="APIGlobalSettings.cs" />
+    <Compile Include="Configuration.cs" />
     <Compile Include="Entities\Artist.cs" />
     <Compile Include="Entities\Collection.cs" />
     <Compile Include="Entities\Collections\ArtistList.cs" />
