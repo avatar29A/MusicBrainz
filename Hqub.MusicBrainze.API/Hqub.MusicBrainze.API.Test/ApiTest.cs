@@ -9,7 +9,12 @@ namespace Hqub.MusicBrainze.API.Test
         [TestMethod]
         public void CheckArtistGet()
         {
-            var artist = Entities.Artist.Get("c3cceeed-3332-4cf0-8c4c-bbde425147b6");
+           CheckArtistGetAsync();
+        }
+
+        private async void CheckArtistGetAsync()
+        {
+            var artist = await Entities.Artist.GetAsync("c3cceeed-3332-4cf0-8c4c-bbde425147b6");
 
             Assert.IsNotNull(artist, "Artist not found.");
 
@@ -20,7 +25,12 @@ namespace Hqub.MusicBrainze.API.Test
         [TestMethod]
         public void CheckArtistSearch()
         {
-            var artists = Entities.Artist.Search("scorpions");
+            CheckArtistSearchAsync();
+        }
+
+        private async void CheckArtistSearchAsync()
+        {
+            var artists = await Entities.Artist.SearchAsync("scorpions");
 
             Assert.AreNotEqual(0, artists.Count, "Results is Empty.");
         }
@@ -28,7 +38,12 @@ namespace Hqub.MusicBrainze.API.Test
         [TestMethod]
         public void CheckReleaseGet()
         {
-            var release = Entities.Release.Get("ffad013a-4f64-44dd-bfb3-c6360fbd042d");
+            CheckReleaseGetAsync();
+        }
+
+        private async void CheckReleaseGetAsync()
+        {
+            var release = await Entities.Release.GetAsync("ffad013a-4f64-44dd-bfb3-c6360fbd042d");
 
             Assert.IsNotNull(release, "Release not found.");
 
@@ -39,7 +54,12 @@ namespace Hqub.MusicBrainze.API.Test
         [TestMethod]
         public void CheckReleaseSearch()
         {
-            var releases = Entities.Release.Search("Comeblack");
+            CheckReleaseSearchAsync();
+        }
+
+        private async void CheckReleaseSearchAsync()
+        {
+            var releases = await Entities.Release.SearchAsync("Comeblack");
 
             Assert.AreNotEqual(0, releases.Count, "Result is empty");
         }
@@ -47,7 +67,12 @@ namespace Hqub.MusicBrainze.API.Test
         [TestMethod]
         public void CheckRecordingGet()
         {
-            var recording = Entities.Recording.Get("fc4d4d9c-58b7-4dba-a608-753ea752ccce");
+            CheckRecordingGetAsync();
+        }
+
+        private async void CheckRecordingGetAsync()
+        {
+            var recording = await Entities.Recording.GetAsync("fc4d4d9c-58b7-4dba-a608-753ea752ccce");
 
             Assert.IsNotNull(recording, "Record not found");
 
@@ -58,7 +83,12 @@ namespace Hqub.MusicBrainze.API.Test
         [TestMethod]
         public void CheckRecordingSearch()
         {
-            var recordings = Entities.Recording.Search("The Wind of Change");
+            CheckRecordingSearchAsync();
+        }
+
+        private async void CheckRecordingSearchAsync()
+        {
+            var recordings = await Entities.Recording.SearchAsync("The Wind of Change");
 
             Assert.AreNotEqual(0, recordings.Count, "Result is empty");
         }
