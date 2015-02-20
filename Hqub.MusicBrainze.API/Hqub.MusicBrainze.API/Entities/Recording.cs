@@ -12,6 +12,8 @@ namespace Hqub.MusicBrainze.API.Entities
     [XmlRoot("recording", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
     public class Recording : Entity
     {
+        public const string EntityName = "recording";
+
         #region Property
 
         [XmlAttribute("id")]
@@ -33,39 +35,39 @@ namespace Hqub.MusicBrainze.API.Entities
         [Obsolete("Use GetAsync() method.")]
 		public static Recording Get(string id, params string[] inc)
 		{
-			return GetAsync<Recording>(id, WebRequestHelper.CreateLookupUrl(Localization.Constants.Recording,
+			return GetAsync<Recording>(id, WebRequestHelper.CreateLookupUrl(EntityName,
                 id, CreateIncludeQuery(inc))).Result;
 		}
 
         [Obsolete("Use SearchAsync() method.")]
-		public static RecordingList Search(string query, int limit = 25, int offset = 0, params string[] inc)
+		public static RecordingList Search(string query, int limit = 25, int offset = 0)
 		{
-            return SearchAsync<Metadata.RecordingMetadataWrapper>(Localization.Constants.Recording,
-                query, limit, offset, inc).Result.Collection;
+            return SearchAsync<Metadata.RecordingMetadataWrapper>(EntityName,
+                query, limit, offset).Result.Collection;
 		}
 
         [Obsolete("Use BrowseAsync() method.")]
         public static RecordingList Browse(string relatedEntity, string value, int limit=25, int offset=0, params  string[] inc)
         {
-            return BrowseAsync<Metadata.RecordingMetadataWrapper>(Localization.Constants.Recording,
+            return BrowseAsync<Metadata.RecordingMetadataWrapper>(EntityName,
                 relatedEntity, value, limit, offset, inc).Result.Collection;
         }
 
         public async static Task<Recording> GetAsync(string id, params string[] inc)
         {
-            return await GetAsync<Recording>(id, WebRequestHelper.CreateLookupUrl(Localization.Constants.Recording,
+            return await GetAsync<Recording>(id, WebRequestHelper.CreateLookupUrl(EntityName,
                 id, CreateIncludeQuery(inc)));
         }
 
-        public async static Task<RecordingList> SearchAsync(string query, int limit = 25, int offset = 0, params string[] inc)
+        public async static Task<RecordingList> SearchAsync(string query, int limit = 25, int offset = 0)
         {
-            return (await SearchAsync<Metadata.RecordingMetadataWrapper>(Localization.Constants.Recording,
-                query, limit, offset, inc)).Collection;
+            return (await SearchAsync<Metadata.RecordingMetadataWrapper>(EntityName,
+                query, limit, offset)).Collection;
         }
 
         public async static Task<RecordingList> BrowseAsync(string relatedEntity, string value, int limit = 25, int offset = 0, params  string[] inc)
         {
-            return (await BrowseAsync<Metadata.RecordingMetadataWrapper>(Localization.Constants.Recording,
+            return (await BrowseAsync<Metadata.RecordingMetadataWrapper>(EntityName,
                 relatedEntity, value, limit, offset, inc)).Collection;
         }
 

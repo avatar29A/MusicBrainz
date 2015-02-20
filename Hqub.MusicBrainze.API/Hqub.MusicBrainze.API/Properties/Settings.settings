@@ -1,18 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Hqub.MusicBrainze.API.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
   <Profiles />
-  <Settings>
-    <Setting Name="WebServiceUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">http://musicbrainz.org/ws/2/</Value>
-    </Setting>
-    <Setting Name="LookupTemplate" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">{0}/{1}/?inc={2}</Value>
-    </Setting>
-    <Setting Name="BrowseTemplate" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">{0}?{1}={2}&amp;limit={3}&amp;offset={4}&amp;inc={5}</Value>
-    </Setting>
-    <Setting Name="SearchTemplate" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">{0}?query={1}&amp;limit={2}&amp;offset={3}</Value>
-    </Setting>
-  </Settings>
+  <Settings />
 </SettingsFile>

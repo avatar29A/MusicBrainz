@@ -35,10 +35,8 @@ namespace Hqub.MusicBrainze.API
         /// </summary>
         internal static string CreateLookupUrl(string entity, string mbid, string inc)
         {
-            var settings = Properties.Settings.Default;
-
-            return string.Format("{0}{1}", settings.WebServiceUrl,
-                string.Format(settings.LookupTemplate, entity, mbid, inc));
+            return string.Format("{0}{1}", APIGlobalSettings.WebServiceUrl,
+                string.Format(APIGlobalSettings.LookupTemplate, entity, mbid, inc));
         }
 
         /// <summary>
@@ -46,22 +44,17 @@ namespace Hqub.MusicBrainze.API
         /// </summary>
         internal static string CreateBrowseTemplate(string entity, string relatedEntity, string mbid, int limit, int offset, string inc)
         {
-            var settings = Properties.Settings.Default;
-
-            return string.Format("{0}{1}", settings.WebServiceUrl,
-                string.Format(settings.BrowseTemplate, entity, relatedEntity, mbid, limit, offset, inc));
+            return string.Format("{0}{1}", APIGlobalSettings.WebServiceUrl,
+                string.Format(APIGlobalSettings.BrowseTemplate, entity, relatedEntity, mbid, limit, offset, inc));
         }
 
         /// <summary>
         /// SearchTemplate
         /// </summary>
-        internal static string CreateSearchTemplate(string entity, string query, int limit, int offset, string inc)
+        internal static string CreateSearchTemplate(string entity, string query, int limit, int offset)
         {
-            // TODO: inc parameter not used - remove!
-            var settings = Properties.Settings.Default;
-
-            return string.Format("{0}{1}", settings.WebServiceUrl,
-                string.Format(settings.SearchTemplate, entity, query, limit, offset, inc));
+            return string.Format("{0}{1}", APIGlobalSettings.WebServiceUrl,
+                string.Format(APIGlobalSettings.SearchTemplate, entity, query, limit, offset));
         }
 
         private static HttpClient CreateHttpClient(bool automaticDecompression = true, IWebProxy proxy = null)
@@ -90,7 +83,7 @@ namespace Hqub.MusicBrainze.API
         {
             if (stream == null)
             {
-                throw new NullReferenceException(Localization.Messages.StreamIsEmpty);
+                throw new NullReferenceException(ErrorMessages.StreamIsEmpty);
             }
 
             var xml = XDocument.Load(stream);
@@ -103,7 +96,7 @@ namespace Hqub.MusicBrainze.API
             //check valid xml schema:
             if (xml.Root == null || xml.Root.Name.LocalName != "metadata")
             {
-                throw new NullReferenceException(Localization.Messages.WrongXmlFormat);
+                throw new NullReferenceException(ErrorMessages.WrongXmlFormat);
             }
 
             var node = withoutMetadata ? xml.Root.Elements().FirstOrDefault() : xml.Root;

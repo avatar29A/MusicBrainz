@@ -12,6 +12,8 @@ namespace Hqub.MusicBrainze.API.Entities
     [XmlRoot("release", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
     public class Release : Entity
     {
+        public const string EntityName = "release";
+
         [XmlAttribute("id")]
         public string Id { get; set; }
 
@@ -63,33 +65,33 @@ namespace Hqub.MusicBrainze.API.Entities
         [Obsolete("Use GetAsync() method.")]
         public static Release Get(string id, params string[] inc)
         {
-            return GetAsync<Release>(id, WebRequestHelper.CreateLookupUrl(Localization.Constants.Release,
+            return GetAsync<Release>(id, WebRequestHelper.CreateLookupUrl(EntityName,
                 id, CreateIncludeQuery(inc))).Result;
         }
 
         [Obsolete("Use SearchAsync() method.")]
-        public static Collections.ReleaseList Search(string query, int limit = 25, int offset = 0, params string[] inc)
+        public static Collections.ReleaseList Search(string query, int limit = 25, int offset = 0)
         {
-            return SearchAsync<Metadata.ReleaseMetadataWrapper>(Localization.Constants.Release,
-                query, limit, offset, inc).Result.Collection;
+            return SearchAsync<Metadata.ReleaseMetadataWrapper>(EntityName,
+                query, limit, offset).Result.Collection;
         }
 
         public async static Task<Release> GetAsync(string id, params string[] inc)
         {
-            return await GetAsync<Release>(id, WebRequestHelper.CreateLookupUrl(Localization.Constants.Release,
+            return await GetAsync<Release>(id, WebRequestHelper.CreateLookupUrl(EntityName,
                 id, CreateIncludeQuery(inc)));
         }
 
-        public async static Task<Collections.ReleaseList> SearchAsync(string query, int limit = 25, int offset = 0, params string[] inc)
+        public async static Task<Collections.ReleaseList> SearchAsync(string query, int limit = 25, int offset = 0)
         {
-            return (await SearchAsync<Metadata.ReleaseMetadataWrapper>(Localization.Constants.Release,
-                query, limit, offset, inc)).Collection;
+            return (await SearchAsync<Metadata.ReleaseMetadataWrapper>(EntityName,
+                query, limit, offset)).Collection;
         }
 
         public static async Task<ReleaseList> BrowseAsync(string relatedEntity, string value, int limit = 25,
             int offset = 0, params string[] inc)
         {
-            return (await BrowseAsync<Metadata.ReleaseMetadataWrapper>(Localization.Constants.Release,
+            return (await BrowseAsync<Metadata.ReleaseMetadataWrapper>(EntityName,
                 relatedEntity, value, limit, offset, inc)).Collection;
         }
 
