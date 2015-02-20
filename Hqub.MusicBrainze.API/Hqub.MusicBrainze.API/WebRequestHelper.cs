@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
-namespace Hqub.MusicBrainze.API
+namespace Hqub.MusicBrainz.API
 {
     internal static class WebRequestHelper
     {
