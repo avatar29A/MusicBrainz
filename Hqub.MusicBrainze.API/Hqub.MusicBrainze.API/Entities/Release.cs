@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using Hqub.MusicBrainze.API.Entities.Collections;
 
 namespace Hqub.MusicBrainze.API.Entities
 {
@@ -83,6 +84,13 @@ namespace Hqub.MusicBrainze.API.Entities
         {
             return (await SearchAsync<Metadata.ReleaseMetadataWrapper>(Localization.Constants.Release,
                 query, limit, offset, inc)).Collection;
+        }
+
+        public static async Task<ReleaseList> BrowseAsync(string relatedEntity, string value, int limit = 25,
+            int offset = 0, params string[] inc)
+        {
+            return (await BrowseAsync<Metadata.ReleaseMetadataWrapper>(Localization.Constants.Release,
+                relatedEntity, value, limit, offset, inc)).Collection;
         }
 
         #endregion

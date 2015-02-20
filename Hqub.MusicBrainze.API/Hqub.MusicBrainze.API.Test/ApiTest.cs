@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hqub.MusicBrainze.API.Test
@@ -65,6 +66,24 @@ namespace Hqub.MusicBrainze.API.Test
         }
 
         [TestMethod]
+        public void CheckReleaseBrowse()
+        {
+            CheckReleaseBrowseAsync();
+        }
+
+        private async void CheckReleaseBrowseAsync()
+        {
+            var artists = await Entities.Artist.SearchAsync("The Scorpions"); 
+
+            Assert.AreNotEqual(artists.Count, 0);
+
+            var artist = artists.First();
+
+            var releases = await Entities.Release.BrowseAsync("artist", artist.Id, 40);
+            Assert.AreEqual(releases.Count, 40);
+        }
+
+        [TestMethod]
         public void CheckRecordingGet()
         {
             CheckRecordingGetAsync();
@@ -91,6 +110,24 @@ namespace Hqub.MusicBrainze.API.Test
             var recordings = await Entities.Recording.SearchAsync("The Wind of Change");
 
             Assert.AreNotEqual(0, recordings.Count, "Result is empty");
+        }
+
+        [TestMethod]
+        public void CheckRecordingBrose()
+        {
+            CheckRecordingBroseAsync();
+        }
+
+        private async void CheckRecordingBroseAsync()
+        {
+            var artists = await Entities.Artist.SearchAsync("The Scorpions");
+
+            Assert.AreNotEqual(artists.Count, 0);
+
+            var artist = artists.First();
+
+            var releases = await Entities.Recording.BrowseAsync("artist", artist.Id, 40);
+            Assert.AreEqual(releases.Count, 40);
         }
     }
 }

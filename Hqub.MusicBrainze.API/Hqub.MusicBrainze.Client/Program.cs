@@ -9,46 +9,32 @@ using Hqub.MusicBrainze.API.Entities;
 
 namespace Hqub.MusicBrainze.Client
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-//            var track = Recording.Get("4a397477-4819-41c8-b6dd-cc7ee55a341f", "artists");
+            Test();
 
-//            foreach (var s in Recording.Browse(API.Localization.Constants.Release, "0af70df8-92f3-358f-8a9f-07c0ae1d8f73", 50))
-//	        {
-//		        Console.WriteLine(s.Title);
-//	        }
-//
+            Console.WriteLine("OK");
+            Console.ReadKey();
+        }
 
-            var artists = Artist.Search("Scorpions");
+        private static async void Test()
+        {
+            var artists = Artist.Search("The Scorpions");
 
-            foreach (var artist in artists)
+            var artist = artists.First();
+
+            Console.WriteLine(artist.Name);
+
+            var releases = await Recording.BrowseAsync("artist", artist.Id, 40);
+            
+
+            foreach (var release in releases)
             {
-                Console.WriteLine(artist.Name);
-
-                foreach (var tag in artist.Tags)
-                {
-                    Console.WriteLine("\t{0}", tag.Name);
-                }
+                Console.WriteLine("{0}", release.Title);
             }
 //
-//            var serilize = new XmlSerializer(typeof (API.Entities.Metadata.MetadataWrapper));
-//
-//            var entity = new API.Entities.Metadata.MetadataWrapper();
-//            entity.Collection.Add(new Artist
-//            {
-//                Id = "123-234-234-234",
-//                Name = "Lyapis"
-//            });
-//
-//            var memory = new MemoryStream();
-//            serilize.Serialize(memory, entity);
-//
-//            Console.WriteLine(UTF8Encoding.UTF8.GetString(memory.ToArray()));
-
-			Console.WriteLine("OK");
-            Console.ReadKey();
         }
     }
 }

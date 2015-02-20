@@ -95,6 +95,14 @@ namespace Hqub.MusicBrainze.API.Entities
                 query, limit, offset, inc)).Collection;
 		}
 
+        public async static Task<ArtistList> BrowserAsync(string relatedEntity, string value, int limit=25, int offset=0, params  string[] inc)
+        {
+            return
+                (await
+                    BrowseAsync<Metadata.ArtistMetadataWrapper>(API.Localization.Constants.Artist, relatedEntity, value,
+                        limit, offset, inc)).Collection;
+        }
+
 		#endregion
 	}
 
