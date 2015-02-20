@@ -55,6 +55,34 @@ static void Main(string[] args)
   Console.ReadKey();
 }
 ```
+
+###### Show Artist -> Album -> Tracks.
+
+```c#
+private static void Main(string[] args)
+{
+    ShowAlbumsTracksByArtist("The Scorpions");
+
+    Console.ReadKey();
+}
+
+private static async void ShowAlbumsTracksByArtist(string name)
+{
+    var artist = Artist.Search(name).First();
+    
+    Console.WriteLine(artist.Name);
+
+    var releases = await Release.BrowseAsync("artist", artist.Id, 100, 0, "media");
+    foreach (var release in releases)
+    {
+        Console.WriteLine("\t{0}", release.Title);
+        
+        var tracks = await Recording.BrowseAsync("release", release.Id, 100);
+        foreach (var track in tracks)
+            Console.WriteLine("\t\t{0}", track.Title);
+    }
+}
+```
  
 Also support next entities:
 
