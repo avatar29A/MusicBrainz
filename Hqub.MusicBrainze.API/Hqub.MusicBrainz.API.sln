@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hqub.MusicBrainze.API.Test"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hqub.MusicBrainze.Client", "Hqub.MusicBrainze.Client\Hqub.MusicBrainze.Client.csproj", "{A30BD5FD-E8DF-454F-8280-9B1B7093785A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hqub.MusicBrainze.API.Portable", "Hqub.MusicBrainze.API.Portable\Hqub.MusicBrainze.API.Portable.csproj", "{B6B71607-6A07-45F4-A93F-D6341D87B6C3}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{A30BD5FD-E8DF-454F-8280-9B1B7093785A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A30BD5FD-E8DF-454F-8280-9B1B7093785A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A30BD5FD-E8DF-454F-8280-9B1B7093785A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B6B71607-6A07-45F4-A93F-D6341D87B6C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B6B71607-6A07-45F4-A93F-D6341D87B6C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B6B71607-6A07-45F4-A93F-D6341D87B6C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B6B71607-6A07-45F4-A93F-D6341D87B6C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

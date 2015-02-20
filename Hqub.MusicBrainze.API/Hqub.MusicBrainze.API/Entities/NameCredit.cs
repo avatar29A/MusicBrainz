@@ -1,6 +1,6 @@
 using System.Xml.Serialization;
 
-namespace Hqub.MusicBrainze.API.Entities
+namespace Hqub.MusicBrainz.API.Entities
 {
     [XmlRoot("name-credit")]
     public class NameCredit

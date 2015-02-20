@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace Hqub.MusicBrainze.API.Entities
+namespace Hqub.MusicBrainz.API.Entities
 {
     [XmlRoot("medium")]
     public class Medium

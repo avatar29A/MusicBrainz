@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace Hqub.MusicBrainze.API.Entities.Metadata
+namespace Hqub.MusicBrainz.API.Entities.Metadata
 {
     [XmlType(Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
     [XmlRoot("metadata", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]

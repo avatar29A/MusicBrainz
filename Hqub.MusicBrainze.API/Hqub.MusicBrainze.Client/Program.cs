@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
-using Hqub.MusicBrainze.API.Entities;
+using Hqub.MusicBrainz.API.Entities;
 
-namespace Hqub.MusicBrainze.Client
+namespace Hqub.MusicBrainz.Client
 {
     internal class Program
     {

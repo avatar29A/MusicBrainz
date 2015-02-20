@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Hqub.MusicBrainze.API.Properties {
+namespace Hqub.MusicBrainz.API.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

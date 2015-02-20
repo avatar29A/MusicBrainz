@@ -2,7 +2,7 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Hqub.MusicBrainze.API.Test
+namespace Hqub.MusicBrainz.API.Test
 {
     [TestClass]
     public class ApiTest

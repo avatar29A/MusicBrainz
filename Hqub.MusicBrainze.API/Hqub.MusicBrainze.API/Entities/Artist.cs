@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
-using Hqub.MusicBrainze.API.Entities.Collections;
+using Hqub.MusicBrainz.API.Entities.Collections;
 using System.Threading.Tasks;
 
 
-namespace Hqub.MusicBrainze.API.Entities
+namespace Hqub.MusicBrainz.API.Entities
 {
     [XmlType(Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
     [XmlRoot("artist", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace Hqub.MusicBrainze.API.Entities
+namespace Hqub.MusicBrainz.API.Entities
 {
     [XmlRoot("label")]
     public class Label : Entity

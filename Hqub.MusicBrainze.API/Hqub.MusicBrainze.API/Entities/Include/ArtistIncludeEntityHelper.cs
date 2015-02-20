@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hqub.MusicBrainze.API.Entities.Include
+namespace Hqub.MusicBrainz.API.Entities.Include
 {
     public static class ArtistIncludeEntityHelper
     {

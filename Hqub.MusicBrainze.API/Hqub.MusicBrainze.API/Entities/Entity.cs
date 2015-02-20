@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using Hqub.MusicBrainze.API.Entities.Collections;
+using Hqub.MusicBrainz.API.Entities.Collections;
 
-namespace Hqub.MusicBrainze.API.Entities
+namespace Hqub.MusicBrainz.API.Entities
 {
     public abstract class Entity
     {
