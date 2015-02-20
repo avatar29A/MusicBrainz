@@ -3,6 +3,8 @@ MuzicBrainz
 
 Implementation MuzicBrainze API 2.0 (C#)
 
+NuGet Package: https://www.nuget.org/packages/MusicBrainzAPI/0.9.0
+
 ##Examples:
 
 ######Get Artist by Id.
