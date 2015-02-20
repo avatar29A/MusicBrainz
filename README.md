@@ -61,26 +61,47 @@ static void Main(string[] args)
 ```c#
 private static void Main(string[] args)
 {
-    ShowAlbumsTracksByArtist("The Scorpions");
+	try
+	{
+		var task = ShowAlbumTracks("The Rolling Stones", "Beggars Banquet");
 
-    Console.ReadKey();
+		// The synchronous Wait() will wrap any exception in an AggregateException,
+		// so be sure to catch it properly.
+		task.Wait();
+	}
+	catch (AggregateException e)
+	{
+		Console.WriteLine(e.InnerException.Message);
+	}
+
+	Console.ReadKey();
 }
 
-private static async void ShowAlbumsTracksByArtist(string name)
+private static async Task ShowAlbumTracks(string artistName, string albumName)
 {
-    var artist = Artist.Search(name).First();
-    
-    Console.WriteLine(artist.Name);
+	var artist = (await Artist.SearchAsync(artistName)).First();
 
-    var releases = await Release.BrowseAsync("artist", artist.Id, 100, 0, "media");
-    foreach (var release in releases)
-    {
-        Console.WriteLine("\t{0}", release.Title);
-        
-        var tracks = await Recording.BrowseAsync("release", release.Id, 100);
-        foreach (var track in tracks)
-            Console.WriteLine("\t\t{0}", track.Title);
-    }
+	Console.WriteLine(artist.Name);
+
+	var query = string.Format("aid=({0}) release=({1})", artist.Id, albumName);
+	var album = (await Release.SearchAsync(Uri.EscapeUriString(query), 10)).First();
+
+	Console.WriteLine("\t{0}", album.Title);
+
+	var release = await Release.GetAsync(album.Id, "recordings");
+
+	int i = 1;
+
+	foreach (var medium in release.MediumList)
+	{
+		foreach (var track in medium.Tracks)
+		{
+			var recording = track.Recordring;
+			var length = TimeSpan.FromMilliseconds(recording.Length).ToString("m\\:ss");
+
+			Console.WriteLine("\t\t{0,3:##} {1,6}  {2}", i++, length, recording.Title);
+		}
+	}
 }
 ```
  
