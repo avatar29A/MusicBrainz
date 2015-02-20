@@ -30,24 +30,23 @@ namespace Hqub.MusicBrainz.API.Entities
 
         #endregion
 
-		#region Static methods
+        #region Static methods
 
         [Obsolete("Use GetAsync() method.")]
-		public static Recording Get(string id, params string[] inc)
-		{
-			return GetAsync<Recording>(id, WebRequestHelper.CreateLookupUrl(EntityName,
-                id, CreateIncludeQuery(inc))).Result;
-		}
+        public static Recording Get(string id, params string[] inc)
+        {
+            return GetAsync<Recording>(EntityName, id, inc).Result;
+        }
 
         [Obsolete("Use SearchAsync() method.")]
-		public static RecordingList Search(string query, int limit = 25, int offset = 0)
-		{
+        public static RecordingList Search(string query, int limit = 25, int offset = 0)
+        {
             return SearchAsync<Metadata.RecordingMetadataWrapper>(EntityName,
                 query, limit, offset).Result.Collection;
-		}
+        }
 
         [Obsolete("Use BrowseAsync() method.")]
-        public static RecordingList Browse(string relatedEntity, string value, int limit=25, int offset=0, params  string[] inc)
+        public static RecordingList Browse(string relatedEntity, string value, int limit = 25, int offset = 0, params  string[] inc)
         {
             return BrowseAsync<Metadata.RecordingMetadataWrapper>(EntityName,
                 relatedEntity, value, limit, offset, inc).Result.Collection;
@@ -55,8 +54,7 @@ namespace Hqub.MusicBrainz.API.Entities
 
         public async static Task<Recording> GetAsync(string id, params string[] inc)
         {
-            return await GetAsync<Recording>(id, WebRequestHelper.CreateLookupUrl(EntityName,
-                id, CreateIncludeQuery(inc)));
+            return await GetAsync<Recording>(EntityName, id, inc);
         }
 
         public async static Task<RecordingList> SearchAsync(string query, int limit = 25, int offset = 0)
@@ -71,11 +69,11 @@ namespace Hqub.MusicBrainz.API.Entities
                 relatedEntity, value, limit, offset, inc)).Collection;
         }
 
-		#endregion
+        #endregion
 
-		#region Include
+        #region Include
 
-		[XmlArray("tag-list")]
+        [XmlArray("tag-list")]
         [XmlArrayItem("tag")]
         public TagList Tags { get; set; }
 

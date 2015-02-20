@@ -20,7 +20,7 @@ namespace Hqub.MusicBrainz.API
         {
             try
             {
-                var client = CreateHttpClient(true, null);
+                var client = CreateHttpClient(true, Configuration.Proxy);
 
                 return DeserializeStream<T>(await client.GetStreamAsync(url), withoutMetadata);
             }

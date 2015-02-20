@@ -65,8 +65,7 @@ namespace Hqub.MusicBrainz.API.Entities
         [Obsolete("Use GetAsync() method.")]
         public static Release Get(string id, params string[] inc)
         {
-            return GetAsync<Release>(id, WebRequestHelper.CreateLookupUrl(EntityName,
-                id, CreateIncludeQuery(inc))).Result;
+            return GetAsync<Release>(EntityName, id, inc).Result;
         }
 
         [Obsolete("Use SearchAsync() method.")]
@@ -78,8 +77,7 @@ namespace Hqub.MusicBrainz.API.Entities
 
         public async static Task<Release> GetAsync(string id, params string[] inc)
         {
-            return await GetAsync<Release>(id, WebRequestHelper.CreateLookupUrl(EntityName,
-                id, CreateIncludeQuery(inc)));
+            return await GetAsync<Release>(EntityName, id, inc);
         }
 
         public async static Task<Collections.ReleaseList> SearchAsync(string query, int limit = 25, int offset = 0)
