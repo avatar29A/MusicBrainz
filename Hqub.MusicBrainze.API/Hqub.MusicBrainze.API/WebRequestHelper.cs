@@ -11,17 +11,22 @@ namespace Hqub.MusicBrainz.API
 {
     internal static class WebRequestHelper
     {
+        private const string WebServiceUrl = "http://musicbrainz.org/ws/2/";
+        private const string LookupTemplate = "{0}/{1}/?inc={2}";
+        private const string BrowseTemplate = "{0}?{1}={2}&limit={3}&offset={4}&inc={5}";
+        private const string SearchTemplate = "{0}?query={1}&limit={2}&offset={3}";
+
         internal async static Task<T> GetAsync<T>(string url, bool withoutMetadata = true) where T : Entities.Entity
         {
             try
             {
-                var client = CreateHttpClient();
+                var client = CreateHttpClient(true, Configuration.Proxy);
 
                 return DeserializeStream<T>(await client.GetStreamAsync(url), withoutMetadata);
             }
             catch (Exception e)
             {
-                if (APIGlobalSettings.GenerateCommunicationThrow)
+                if (Configuration.GenerateCommunicationThrow)
                 {
                     throw e;
                 }
@@ -31,55 +36,30 @@ namespace Hqub.MusicBrainz.API
         }
 
         /// <summary>
-        /// Lookup url query
+        /// Creates a webservice lookup template.
         /// </summary>
         internal static string CreateLookupUrl(string entity, string mbid, string inc)
         {
-            return string.Format("{0}{1}", APIGlobalSettings.WebServiceUrl,
-                string.Format(APIGlobalSettings.LookupTemplate, entity, mbid, inc));
+            return string.Format("{0}{1}", WebServiceUrl, string.Format(LookupTemplate, entity, mbid, inc));
         }
 
         /// <summary>
-        /// Browse url query
+        /// Creates a webservice browse template.
         /// </summary>
         internal static string CreateBrowseTemplate(string entity, string relatedEntity, string mbid, int limit, int offset, string inc)
         {
-            return string.Format("{0}{1}", APIGlobalSettings.WebServiceUrl,
-                string.Format(APIGlobalSettings.BrowseTemplate, entity, relatedEntity, mbid, limit, offset, inc));
+            return string.Format("{0}{1}", WebServiceUrl, string.Format(BrowseTemplate, entity, relatedEntity, mbid, limit, offset, inc));
         }
 
         /// <summary>
-        /// SearchTemplate
+        /// Creates a webservice search template.
         /// </summary>
         internal static string CreateSearchTemplate(string entity, string query, int limit, int offset)
         {
-            return string.Format("{0}{1}", APIGlobalSettings.WebServiceUrl,
-                string.Format(APIGlobalSettings.SearchTemplate, entity, query, limit, offset));
+            return string.Format("{0}{1}", WebServiceUrl, string.Format(SearchTemplate, entity, query, limit, offset));
         }
 
-        private static HttpClient CreateHttpClient(bool automaticDecompression = true, IWebProxy proxy = null)
-        {
-            var handler = new HttpClientHandler();
-
-            if (proxy != null)
-            {
-                handler.Proxy = proxy;
-                handler.UseProxy = true;
-            }
-
-            if (automaticDecompression)
-            {
-                handler.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
-            }
-
-            var client = new HttpClient(handler);
-
-            client.DefaultRequestHeaders.Add("User-Agent", "Hqub.MusicBrainze.API/2.0");
-
-            return client;
-        }
-
-        private static T DeserializeStream<T>(Stream stream, bool withoutMetadata) where T : Entities.Entity
+        internal static T DeserializeStream<T>(Stream stream, bool withoutMetadata) where T : Entities.Entity
         {
             if (stream == null)
             {
@@ -111,6 +91,28 @@ namespace Hqub.MusicBrainz.API
             obj.SetSchema(node);
 
             return obj;
+        }
+
+        private static HttpClient CreateHttpClient(bool automaticDecompression = true, IWebProxy proxy = null)
+        {
+            var handler = new HttpClientHandler();
+
+            if (proxy != null)
+            {
+                handler.Proxy = proxy;
+                handler.UseProxy = true;
+            }
+
+            if (automaticDecompression)
+            {
+                handler.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+            }
+
+            var client = new HttpClient(handler);
+
+            client.DefaultRequestHeaders.Add("User-Agent", "Hqub.MusicBrainz/2.0");
+
+            return client;
         }
     }
 }
