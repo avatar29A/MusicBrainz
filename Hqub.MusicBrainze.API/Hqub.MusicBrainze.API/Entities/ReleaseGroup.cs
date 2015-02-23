@@ -77,6 +77,12 @@ namespace Hqub.MusicBrainz.API.Entities
                 query, limit, offset)).Collection;
         }
 
+        public async static Task<ReleaseGroupList> SearchAsync(QueryParameters<ReleaseGroup> query, int limit = 25, int offset = 0)
+        {
+            return (await SearchAsync<ReleaseGroupMetadataWrapper>(EntityName,
+                query.ToString(), limit, offset)).Collection;
+        }
+
         #endregion
     }
 }

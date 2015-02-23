@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Hqub.MusicBrainz.API.Entities.Collections;
+using Hqub.MusicBrainz.API.Entities.Metadata;
 
 namespace Hqub.MusicBrainz.API.Entities
 {
@@ -13,6 +12,8 @@ namespace Hqub.MusicBrainz.API.Entities
     public class Release : Entity
     {
         public const string EntityName = "release";
+
+        #region Properties
 
         [XmlAttribute("id")]
         public string Id { get; set; }
@@ -44,6 +45,8 @@ namespace Hqub.MusicBrainz.API.Entities
         [XmlElement("cover-art-archive")]
         public CoverArtArchive CoverArtArchive { get; set; }
 
+        #endregion
+
         #region Subqueries
 
         [XmlArray("artist-credit")]
@@ -69,9 +72,9 @@ namespace Hqub.MusicBrainz.API.Entities
         }
 
         [Obsolete("Use SearchAsync() method.")]
-        public static Collections.ReleaseList Search(string query, int limit = 25, int offset = 0)
+        public static ReleaseList Search(string query, int limit = 25, int offset = 0)
         {
-            return SearchAsync<Metadata.ReleaseMetadataWrapper>(EntityName,
+            return SearchAsync<ReleaseMetadataWrapper>(EntityName,
                 query, limit, offset).Result.Collection;
         }
 
@@ -80,16 +83,22 @@ namespace Hqub.MusicBrainz.API.Entities
             return await GetAsync<Release>(EntityName, id, inc);
         }
 
-        public async static Task<Collections.ReleaseList> SearchAsync(string query, int limit = 25, int offset = 0)
+        public async static Task<ReleaseList> SearchAsync(string query, int limit = 25, int offset = 0)
         {
-            return (await SearchAsync<Metadata.ReleaseMetadataWrapper>(EntityName,
+            return (await SearchAsync<ReleaseMetadataWrapper>(EntityName,
                 query, limit, offset)).Collection;
+        }
+
+        public async static Task<ReleaseList> SearchAsync(QueryParameters<Release> query, int limit = 25, int offset = 0)
+        {
+            return (await SearchAsync<ReleaseMetadataWrapper>(EntityName,
+                query.ToString(), limit, offset)).Collection;
         }
 
         public static async Task<ReleaseList> BrowseAsync(string relatedEntity, string value, int limit = 25,
             int offset = 0, params string[] inc)
         {
-            return (await BrowseAsync<Metadata.ReleaseMetadataWrapper>(EntityName,
+            return (await BrowseAsync<ReleaseMetadataWrapper>(EntityName,
                 relatedEntity, value, limit, offset, inc)).Collection;
         }
 

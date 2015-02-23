@@ -76,6 +76,7 @@
     <Compile Include="Entities\Track.cs" />
     <Compile Include="Entities\Work.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryParameters.cs" />
     <Compile Include="Resources\Constants.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
