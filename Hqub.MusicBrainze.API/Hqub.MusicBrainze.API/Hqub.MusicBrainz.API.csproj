@@ -65,6 +65,7 @@
     <Compile Include="Entities\Metadata.cs" />
     <Compile Include="Entities\Metadata\ArtistMetadataWrapper.cs" />
     <Compile Include="Entities\Metadata\RecordingMetadataWrapper.cs" />
+    <Compile Include="Entities\Metadata\ReleaseGroupMetadataWrapper.cs" />
     <Compile Include="Entities\Metadata\ReleaseMetadataWrapper.cs" />
     <Compile Include="Entities\NameCredit.cs" />
     <Compile Include="Entities\Rating.cs" />
