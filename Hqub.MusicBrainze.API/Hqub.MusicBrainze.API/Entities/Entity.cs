@@ -18,7 +18,7 @@ namespace Hqub.MusicBrainz.API.Entities
             //Raw = schema;
         }
 
-        public static string CreateIncludeQuery(string[] inc)
+        private static string CreateIncludeQuery(string[] inc)
         {
             return string.Join("+", inc);
         }
@@ -27,12 +27,12 @@ namespace Hqub.MusicBrainz.API.Entities
         {
             if (string.IsNullOrEmpty(entity))
             {
-                throw new ArgumentException(string.Format(ErrorMessages.RequiredAttributeException, "entity"));
+                throw new ArgumentException(string.Format(Resources.Messages.MissingParameter, "entity"));
             }
 
             if (string.IsNullOrEmpty(id))
             {
-                throw new ArgumentException(string.Format(ErrorMessages.RequiredAttributeException, "id"));
+                throw new ArgumentException(string.Format(Resources.Messages.MissingParameter, "id"));
             }
 
             return await WebRequestHelper.GetAsync<T>(WebRequestHelper.CreateLookupUrl(entity, id, CreateIncludeQuery(inc)));
@@ -42,12 +42,12 @@ namespace Hqub.MusicBrainz.API.Entities
         {
             if (string.IsNullOrEmpty(entity))
             {
-                throw new ArgumentException(string.Format(ErrorMessages.RequiredAttributeException, "entity"));
+                throw new ArgumentException(string.Format(Resources.Messages.MissingParameter, "entity"));
             }
 
             if (string.IsNullOrEmpty(query))
             {
-                throw new ArgumentException(string.Format(ErrorMessages.RequiredAttributeException, "query"));
+                throw new ArgumentException(string.Format(Resources.Messages.MissingParameter, "query"));
             }
 
             return await WebRequestHelper.GetAsync<T>(WebRequestHelper.CreateSearchTemplate(entity,
@@ -58,7 +58,7 @@ namespace Hqub.MusicBrainz.API.Entities
         {
             if (string.IsNullOrEmpty(entity))
             {
-                throw new ArgumentException(string.Format(ErrorMessages.RequiredAttributeException, "entity"));
+                throw new ArgumentException(string.Format(Resources.Messages.MissingParameter, "entity"));
             }
 
             return await WebRequestHelper.GetAsync<T>(WebRequestHelper.CreateBrowseTemplate(entity,
