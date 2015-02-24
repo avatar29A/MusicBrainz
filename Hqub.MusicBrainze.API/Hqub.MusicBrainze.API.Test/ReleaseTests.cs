@@ -2,7 +2,7 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hqub.MusicBrainz.API.Entities.Metadata;
+using Hqub.MusicBrainz.API.Entities;
 
 namespace Hqub.MusicBrainz.API.Test
 {
@@ -14,34 +14,23 @@ namespace Hqub.MusicBrainz.API.Test
     [TestClass]
     public class ReleaseTests
     {
-        ReleaseMetadataWrapper data;
+        Release release;
 
         public ReleaseTests()
         {
-            this.data = TestHelper.Get<ReleaseMetadataWrapper>("release-search.xml", false);
+            this.release = TestHelper.Get<Release>("release-get.xml");
         }
 
         [TestMethod]
         public void TestReleaseAttributes()
         {
-            var releases = data.Collection;
-
-            Assert.IsNotNull(releases);
-
-            var release = releases[0];
-
+            Assert.IsNotNull(release);
             Assert.AreEqual(release.Id, "12195c41-6136-4dfd-acf1-9923dadc73e2");
         }
 
         [TestMethod]
         public void TestReleaseElements()
         {
-            var releases = data.Collection;
-
-            Assert.IsNotNull(releases);
-
-            var release = releases[0];
-
             Assert.AreEqual("Tucson: A Country Rock Opera", release.Title);
             Assert.AreEqual("Official", release.Status);
             Assert.AreEqual("normal", release.Quality);
@@ -53,11 +42,7 @@ namespace Hqub.MusicBrainz.API.Test
         [TestMethod]
         public void TestReleaseTextRepresentation()
         {
-            var releases = data.Collection;
-
-            Assert.IsNotNull(releases);
-
-            var text = releases[0].TextRepresentation;
+            var text = release.TextRepresentation;
 
             Assert.IsNotNull(text);
             Assert.AreEqual("eng", text.Language);
@@ -67,11 +52,7 @@ namespace Hqub.MusicBrainz.API.Test
         [TestMethod]
         public void TestReleaseArtistCredit()
         {
-            var releases = data.Collection;
-
-            Assert.IsNotNull(releases);
-
-            var credits = releases[0].Credits;
+            var credits = release.Credits;
 
             Assert.IsNotNull(credits);
             Assert.AreEqual(1, credits.Count);
@@ -83,11 +64,7 @@ namespace Hqub.MusicBrainz.API.Test
         [TestMethod]
         public void TestReleaseGroup()
         {
-            var releases = data.Collection;
-
-            Assert.IsNotNull(releases);
-
-            var group = releases[0].ReleaseGroup;
+            var group = release.ReleaseGroup;
 
             Assert.IsNotNull(group);
 
@@ -102,11 +79,7 @@ namespace Hqub.MusicBrainz.API.Test
         [TestMethod]
         public void TestReleaseCoverArtArchive()
         {
-            var releases = data.Collection;
-
-            Assert.IsNotNull(releases);
-
-            var coverart = releases[0].CoverArtArchive;
+            var coverart = release.CoverArtArchive;
 
             Assert.IsNotNull(coverart);
 
@@ -119,11 +92,7 @@ namespace Hqub.MusicBrainz.API.Test
         [TestMethod]
         public void TestReleaseLabels()
         {
-            var releases = data.Collection;
-
-            Assert.IsNotNull(releases);
-
-            var labels = releases[0].Labels;
+            var labels = release.Labels;
 
             Assert.IsNotNull(labels);
             Assert.AreEqual(1, labels.Count);
@@ -138,11 +107,7 @@ namespace Hqub.MusicBrainz.API.Test
         [TestMethod]
         public void TestReleaseMediumList()
         {
-            var releases = data.Collection;
-
-            Assert.IsNotNull(releases);
-
-            var mediums = releases[0].MediumList;
+            var mediums = release.MediumList;
 
             Assert.IsNotNull(mediums);
             Assert.AreEqual(1, mediums.Count);
@@ -151,11 +116,7 @@ namespace Hqub.MusicBrainz.API.Test
         [TestMethod]
         public void TestReleaseMediumListTracks()
         {
-            var releases = data.Collection;
-
-            Assert.IsNotNull(releases);
-
-            var tracks = releases[0].MediumList[0].Tracks;
+            var tracks = release.MediumList[0].Tracks;
 
             Assert.IsNotNull(tracks);
             Assert.AreEqual(19, tracks.Count);
