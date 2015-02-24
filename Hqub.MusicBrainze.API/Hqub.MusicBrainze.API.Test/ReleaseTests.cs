@@ -25,7 +25,7 @@ namespace Hqub.MusicBrainz.API.Test
         public void TestReleaseAttributes()
         {
             Assert.IsNotNull(release);
-            Assert.AreEqual(release.Id, "12195c41-6136-4dfd-acf1-9923dadc73e2");
+            Assert.AreEqual("12195c41-6136-4dfd-acf1-9923dadc73e2", release.Id);
         }
 
         [TestMethod]

@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Hqub.MusicBrainz.API.Entities.Metadata;
-using Hqub.MusicBrainz.API.Entities.Collections;
 
 namespace Hqub.MusicBrainz.API.Test
 {
@@ -25,7 +24,6 @@ namespace Hqub.MusicBrainz.API.Test
         {
             var releases = data.Collection;
 
-            Assert.IsNotNull(releases);
             Assert.AreEqual(692, releases.QueryCount);
         }
 
@@ -34,18 +32,13 @@ namespace Hqub.MusicBrainz.API.Test
         {
             var releases = data.Collection;
 
-            Assert.IsNotNull(releases);
             Assert.AreEqual(10, releases.Count);
         }
 
         [TestMethod]
         public void TestReleaseListElement()
         {
-            var releases = data.Collection;
-
-            Assert.IsNotNull(releases);
-
-            var release = releases[0];
+            var release = data.Collection[0];
 
             Assert.AreEqual("12195c41-6136-4dfd-acf1-9923dadc73e2", release.Id);
             //Assert.AreEqual(100, release.Score);

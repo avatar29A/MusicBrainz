@@ -53,6 +53,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ArtistListTests.cs" />
+    <Compile Include="ArtistTests.cs" />
     <Compile Include="WebserviceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReleaseTests.cs" />
@@ -66,9 +68,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Data\artist-get.xml" />
+    <EmbeddedResource Include="Data\artist-search.xml" />
     <EmbeddedResource Include="Data\release-get.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Data\release-search.xml" />
   </ItemGroup>
   <Choose>
