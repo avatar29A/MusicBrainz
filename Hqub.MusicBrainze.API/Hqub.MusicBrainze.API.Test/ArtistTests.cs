@@ -22,7 +22,7 @@ namespace Hqub.MusicBrainz.API.Test
         }
 
         [TestMethod]
-        public void TestReleaseAttributes()
+        public void TestArtistAttributes()
         {
             Assert.IsNotNull(artist);
             Assert.AreEqual("72c536dc-7137-4477-a521-567eeb840fa8", artist.Id);

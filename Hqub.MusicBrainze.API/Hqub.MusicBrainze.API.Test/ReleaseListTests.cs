@@ -36,7 +36,7 @@ namespace Hqub.MusicBrainz.API.Test
         }
 
         [TestMethod]
-        public void TestReleaseListElement()
+        public void TestReleaseListElements()
         {
             var release = data.Collection[0];
 

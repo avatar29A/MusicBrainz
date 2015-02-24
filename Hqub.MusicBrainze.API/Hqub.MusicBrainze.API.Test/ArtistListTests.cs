@@ -36,7 +36,7 @@ namespace Hqub.MusicBrainz.API.Test
         }
 
         [TestMethod]
-        public void TestArtistListElement()
+        public void TestArtistListElements()
         {
             var artist = data.Collection[0];
 
