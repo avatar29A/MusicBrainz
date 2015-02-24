@@ -53,9 +53,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="ApiTest.cs" />
+    <Compile Include="WebserviceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReleaseTest.cs" />
+    <Compile Include="ReleaseTests.cs" />
+    <Compile Include="ReleaseListTests.cs" />
     <Compile Include="TestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -64,7 +65,9 @@
       <Name>Hqub.MusicBrainz.API</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Data\release-get.xml" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Data\release-search.xml" />
   </ItemGroup>

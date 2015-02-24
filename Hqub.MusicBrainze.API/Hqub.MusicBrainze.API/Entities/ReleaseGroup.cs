@@ -16,7 +16,7 @@ namespace Hqub.MusicBrainz.API.Entities
         #region Properties
 
         [XmlAttribute("type")]
-        public string ReleaseGroupType { get; set; }
+        public string Type { get; set; }
 
         [XmlAttribute("id")]
         public string Id { get; set; }

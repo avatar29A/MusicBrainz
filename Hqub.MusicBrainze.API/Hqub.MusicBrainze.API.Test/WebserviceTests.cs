@@ -1,26 +1,26 @@
 ﻿using System;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hqub.MusicBrainz.API.Test
 {
-    [TestClass]
-    public class ApiTest
+    [TestClass, Ignore]
+    public class WebserviceTests
     {
         [TestMethod]
-        public async Task CheckArtistGetAsync()
+        public async Task TestArtistGetAsync()
         {
             var artist = await Entities.Artist.GetAsync("c3cceeed-3332-4cf0-8c4c-bbde425147b6");
 
             Assert.IsNotNull(artist, "Artist not found.");
 
             Assert.AreEqual("scorpions", artist.Name.ToLower(),
-                            string.Format("Expected 'Scorpions' instead '{0}'.", artist.Name));
+                string.Format("Expected 'Scorpions' instead '{0}'.", artist.Name));
         }
 
         [TestMethod]
-        public async Task CheckArtistSearchAsync()
+        public async Task TestArtistSearchAsync()
         {
             var artists = await Entities.Artist.SearchAsync("scorpions");
 
@@ -28,18 +28,18 @@ namespace Hqub.MusicBrainz.API.Test
         }
 
         [TestMethod]
-        public async Task CheckReleaseGetAsync()
+        public async Task TestReleaseGetAsync()
         {
             var release = await Entities.Release.GetAsync("ffad013a-4f64-44dd-bfb3-c6360fbd042d");
 
             Assert.IsNotNull(release, "Release not found.");
 
             Assert.AreEqual("comeblack", release.Title.ToLower(),
-                               string.Format("Album title = {0}, expect Comeblack", release.Title));
+                string.Format("Album title = {0}, expect Comeblack", release.Title));
         }
 
         [TestMethod]
-        public async Task CheckReleaseSearchAsync()
+        public async Task TestReleaseSearchAsync()
         {
             var releases = await Entities.Release.SearchAsync("Comeblack");
 
@@ -47,9 +47,9 @@ namespace Hqub.MusicBrainz.API.Test
         }
 
         [TestMethod]
-        public async Task CheckReleaseBrowseAsync()
+        public async Task TestReleaseBrowseAsync()
         {
-            var artists = await Entities.Artist.SearchAsync("The Scorpions"); 
+            var artists = await Entities.Artist.SearchAsync("The Scorpions");
 
             Assert.AreNotEqual(artists.Count, 0);
 
@@ -60,18 +60,18 @@ namespace Hqub.MusicBrainz.API.Test
         }
 
         [TestMethod]
-        public async Task CheckRecordingGetAsync()
+        public async Task TestRecordingGetAsync()
         {
             var recording = await Entities.Recording.GetAsync("fc4d4d9c-58b7-4dba-a608-753ea752ccce");
 
             Assert.IsNotNull(recording, "Record not found");
 
             Assert.AreEqual("the wind of change", recording.Title.ToLower(),
-                            string.Format("Expect 'The Wind Of Change' instead {0}", recording.Title));
+                string.Format("Expect 'The Wind Of Change' instead {0}", recording.Title));
         }
 
         [TestMethod]
-        public async Task CheckRecordingSearchAsync()
+        public async Task TestRecordingSearchAsync()
         {
             var recordings = await Entities.Recording.SearchAsync("The Wind of Change");
 
@@ -79,7 +79,7 @@ namespace Hqub.MusicBrainz.API.Test
         }
 
         [TestMethod]
-        public async Task CheckRecordingBrowseAsync()
+        public async Task TestRecordingBrowseAsync()
         {
             var artists = await Entities.Artist.SearchAsync("The Scorpions");
 
