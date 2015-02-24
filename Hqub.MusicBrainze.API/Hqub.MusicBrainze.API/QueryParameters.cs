@@ -14,14 +14,14 @@ namespace Hqub.MusicBrainz.API
     /// <remarks>
     /// See https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2/Search
     /// </remarks>
-    public class QueryParameters<T> : IEnumerable<KeyValuePair<string, string>>
+    public class QueryParameters<T>
         where T : Entity
     {
-        Dictionary<string, string> values;
+        List<QueryNode> values;
 
         public QueryParameters()
         {
-            values = new Dictionary<string, string>();
+            values = new List<QueryNode>();
         }
 
         /// <summary>
@@ -29,7 +29,8 @@ namespace Hqub.MusicBrainz.API
         /// </summary>
         /// <param name="key">The field key.</param>
         /// <param name="value">The field value.</param>
-        public void Add(string key, string value)
+        /// <param name="negate">Negate the field (will result in 'AND NOT key:value')</param>
+        public void Add(string key, string value, bool negate = false)
         {
             if (string.IsNullOrEmpty(key))
             {
@@ -41,41 +42,66 @@ namespace Hqub.MusicBrainz.API
                 throw new Exception(string.Format(Resources.Messages.InvalidQueryParameter, key));
             }
 
-            values.Add(key, value);
-        }
-
-        public IEnumerator<KeyValuePair<string, string>> GetEnumerator()
-        {
-            return values.GetEnumerator();
-        }
-
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return values.GetEnumerator();
-        }
-
-        public string ToString(bool urlEncode)
-        {
-            var sb = new StringBuilder();
-
-            foreach (var item in values)
-            {
-                if (sb.Length > 0)
-                {
-                    sb.Append(" ");
-                }
-
-                sb.AppendFormat("{0}:({1})", item.Key, item.Value);
-            }
-
-            var query = sb.ToString();
-
-            return urlEncode ? Uri.EscapeUriString(query) : query;
+            values.Add(new QueryNode(key, value, negate));
         }
 
         public override string ToString()
         {
-            return this.ToString(true);
+            return BuildQueryString();
+        }
+
+        private string BuildQueryString()
+        {
+            var sb = new StringBuilder();
+
+            string value;
+
+            foreach (var item in values)
+            {
+                // Append operator.
+                if (sb.Length > 0)
+                {
+                    sb.Append(" AND ");
+                }
+
+                // Negate operator.
+                if (item.Negate)
+                {
+                    sb.Append("NOT ");
+                }
+
+                // Append key.
+                sb.Append(item.Key);
+                sb.Append(':');
+
+                // Append value.
+                value = item.Value;
+
+                if (value.Contains("AND") || value.Contains("OR"))
+                {
+                    if (!value.StartsWith("("))
+                    {
+                        // The search value appears to be an expression, so enclose it in brackets.
+                        sb.Append("(" + value + ")");
+                    }
+                    else
+                    {
+                        sb.Append(value);
+                    }
+                }
+                else if (value.Contains(" ") && !value.StartsWith("\""))
+                {
+                    // The search value contains whitespace but isn't quoted.
+                    sb.Append("\"" + value + "\"");
+                }
+                else
+                {
+                    // The search value is already quoted or doesn't need quoting, so just append it.
+                    sb.AppendFormat(value);
+                }
+            }
+
+            return sb.ToString();
         }
 
         private bool Validate(string key)
@@ -103,6 +129,20 @@ namespace Hqub.MusicBrainz.API
             }
 
             return false;
+        }
+
+        class QueryNode
+        {
+            public string Key { get; private set; }
+            public string Value { get; private set; }
+            public bool Negate { get; private set; }
+
+            public QueryNode(string key, string value, bool negate)
+            {
+                this.Key = key;
+                this.Value = value;
+                this.Negate = negate;
+            }
         }
     }
 }
