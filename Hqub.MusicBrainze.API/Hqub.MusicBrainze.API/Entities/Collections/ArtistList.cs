@@ -15,6 +15,5 @@ namespace Hqub.MusicBrainz.API.Entities.Collections
 
         [XmlAttribute("offset")]
         public int QueryOffset { get; set; }
-
     }
 }

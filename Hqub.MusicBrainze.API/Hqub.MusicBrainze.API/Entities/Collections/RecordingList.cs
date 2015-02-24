@@ -7,11 +7,13 @@ using System.Xml.Serialization;
 
 namespace Hqub.MusicBrainz.API.Entities.Collections
 {
-    [XmlType(Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
     [XmlRoot("recording-list", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
     public class RecordingList : List<Recording>
     {
         [XmlAttribute("count")]
         public int QueryCount { get; set; }
+
+        [XmlAttribute("offset")]
+        public int QueryOffset { get; set; }
     }
 }
