@@ -63,7 +63,7 @@ namespace Hqub.MusicBrainz.API
         {
             if (stream == null)
             {
-                throw new NullReferenceException(ErrorMessages.StreamIsEmpty);
+                throw new NullReferenceException(Resources.Messages.EmptyStream);
             }
 
             var xml = XDocument.Load(stream);
@@ -76,7 +76,7 @@ namespace Hqub.MusicBrainz.API
             //check valid xml schema:
             if (xml.Root == null || xml.Root.Name.LocalName != "metadata")
             {
-                throw new NullReferenceException(ErrorMessages.WrongXmlFormat);
+                throw new NullReferenceException(Resources.Messages.WrongResponseFormat);
             }
 
             var node = withoutMetadata ? xml.Root.Elements().FirstOrDefault() : xml.Root;

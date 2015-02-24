@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Hqub.MusicBrainz.API.Entities.Collections;
-using System.Threading.Tasks;
-
+using Hqub.MusicBrainz.API.Entities.Metadata;
 
 namespace Hqub.MusicBrainz.API.Entities
 {
@@ -81,8 +78,15 @@ namespace Hqub.MusicBrainz.API.Entities
         [Obsolete("Use SearchAsync() method.")]
         public static ArtistList Search(string query, int limit = 25, int offset = 0)
         {
-            return SearchAsync<Metadata.ArtistMetadataWrapper>(EntityName, 
+            return SearchAsync<ArtistMetadataWrapper>(EntityName,
                 query, limit, offset).Result.Collection;
+        }
+
+        [Obsolete("Use BrowseAsync() method.")]
+        public static ArtistList Browse(string relatedEntity, string value, int limit = 25, int offset = 0, params  string[] inc)
+        {
+            return BrowseAsync<ArtistMetadataWrapper>(EntityName,
+                relatedEntity, value, limit, offset, inc).Result.Collection;
         }
 
         public async static Task<Artist> GetAsync(string id, params string[] inc)
@@ -92,13 +96,19 @@ namespace Hqub.MusicBrainz.API.Entities
 
         public async static Task<ArtistList> SearchAsync(string query, int limit = 25, int offset = 0)
         {
-            return (await SearchAsync<Metadata.ArtistMetadataWrapper>(EntityName,
+            return (await SearchAsync<ArtistMetadataWrapper>(EntityName,
                 query, limit, offset)).Collection;
         }
 
-        public async static Task<ArtistList> BrowserAsync(string relatedEntity, string value, int limit = 25, int offset = 0, params  string[] inc)
+        public async static Task<ArtistList> SearchAsync(QueryParameters<Artist> query, int limit = 25, int offset = 0)
         {
-            return (await BrowseAsync<Metadata.ArtistMetadataWrapper>(EntityName, relatedEntity, value,
+            return (await SearchAsync<ArtistMetadataWrapper>(EntityName,
+                query.ToString(), limit, offset)).Collection;
+        }
+
+        public async static Task<ArtistList> BrowseAsync(string relatedEntity, string value, int limit = 25, int offset = 0, params  string[] inc)
+        {
+            return (await BrowseAsync<ArtistMetadataWrapper>(EntityName, relatedEntity, value,
                 limit, offset, inc)).Collection;
         }
 
