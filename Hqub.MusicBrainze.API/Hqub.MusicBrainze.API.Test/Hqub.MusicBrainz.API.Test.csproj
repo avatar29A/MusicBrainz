@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="ArtistListTests.cs" />
     <Compile Include="ArtistTests.cs" />
+    <Compile Include="QueryParametersTests.cs" />
     <Compile Include="RecordingListTests.cs" />
     <Compile Include="RecordingTests.cs" />
     <Compile Include="WebserviceTests.cs" />
