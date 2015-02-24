@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
-using MusicBrainzWebService.Entities.Collections;
+using Hqub.MusicBrainz.API.Entities.Collections;
 using System.Threading.Tasks;
+using Hqub.MusicBrainz.API.Entities.Metadata;
 
-namespace MusicBrainzWebService.Entities
+namespace Hqub.MusicBrainz.API.Entities
 {
     [XmlType(Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
     [XmlRoot("artist", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
     public class Artist : Entity
     {
+        public const string EntityName = "artist";
+
         #region Properties
 
         // One of these:  person, group, character or other
@@ -71,15 +74,22 @@ namespace MusicBrainzWebService.Entities
 
         public const string ArtistConst = "artist";
 
-		public static async Task<Artist> Get(string id, params string[] inc)
-		{
-			return await Get<Artist>(id, WebRequestHelper.CreateLookupUrl(ArtistConst, id, CreateIncludeQuery(inc)));
-		}
+        public async static Task<Artist> GetAsync(string id, params string[] inc)
+        {
+            return await GetAsync<Artist>(EntityName, id, inc);
+        }
 
-		public static async Task<ArtistList> Search(string query, int limit = 25, int offset = 0, params string[] inc)
-		{
-			return (await Search<Metadata.ArtistMetadataWrapper>(ArtistConst, query, limit, offset, inc)).Collection;
-		}
+        public async static Task<ArtistList> SearchAsync(string query, int limit = 25, int offset = 0)
+        {
+            return (await SearchAsync<ArtistMetadataWrapper>(EntityName,
+                query, limit, offset)).Collection;
+        }
+
+        public async static Task<ArtistList> BrowseAsync(string relatedEntity, string value, int limit = 25, int offset = 0, params  string[] inc)
+        {
+            return (await BrowseAsync<ArtistMetadataWrapper>(EntityName, relatedEntity, value,
+                limit, offset, inc)).Collection;
+        }
 
 		#endregion
 	}

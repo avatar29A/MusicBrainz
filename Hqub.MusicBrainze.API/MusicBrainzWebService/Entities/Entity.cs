@@ -4,61 +4,67 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using MusicBrainzWebService.Entities.Collections;
+using Hqub.MusicBrainz.API.Entities.Collections;
 
-namespace MusicBrainzWebService.Entities
+namespace Hqub.MusicBrainz.API.Entities
 {
     public abstract class Entity
     {
+        private const string MissingParameter = "Missing Parameter";
+
+        // TODO: remove "Raw" property (no need to waste memory)
         public XElement Raw { get; set; }
 
         public virtual void SetSchema(XElement schema)
         {
-            Raw = schema;
+            //Raw = schema;
         }
 
-		public static string CreateIncludeQuery(string[] inc)
-		{
-			//Build query for inc entiteis:
-			var incBuilder = new StringBuilder();
-			foreach (var entityName in inc)
-			{
-				incBuilder.AppendFormat("{0}+", entityName);
-			}
-
-			return incBuilder.ToString();
-		}
-
-		protected static async Task<T> Get<T>(string id, string url) where T : Entity
-		{
-			if (id == null)
-				throw new ArgumentNullException("id");
-
-			return await WebRequestHelper.Get<T>(url);
-		}
-
-		protected static async Task<T> Search<T>(string entity, string query, int limit = 25, int offset = 0, params  string[] inc) where T : MetadataWrapper
-		{
-			if (query == null)
-				throw new ArgumentNullException("query");
-
-            query = Uri.EscapeDataString(query);
-
-			return await
-				WebRequestHelper.Get<T>(
-					WebRequestHelper.CreateSearchTemplate(entity, query, limit, offset,
-					                                      CreateIncludeQuery(inc)), withoutMetadata: false);
-		}
-
-        protected static async Task<T> Browse<T>(string entity, string relatedEntity, string relatedEntityId, int limit, int offset, params  string[] inc) where T : Entity
+        private static string CreateIncludeQuery(string[] inc)
         {
-            if (entity == null)
-                throw new ArgumentNullException("entity");
+            return string.Join("+", inc);
+        }
 
-            return await
-                WebRequestHelper.Get<T>(
-                    WebRequestHelper.CreateBrowseTemplate(entity, relatedEntity, relatedEntityId, limit, offset,
-                                                          CreateIncludeQuery(inc)), withoutMetadata: false);
+        protected async static Task<T> GetAsync<T>(string entity, string id, params string[] inc) where T : Entity
+        {
+            if (string.IsNullOrEmpty(entity))
+            {
+                throw new ArgumentException(string.Format(MissingParameter, "entity"));
+            }
+
+            if (string.IsNullOrEmpty(id))
+            {
+                throw new ArgumentException(string.Format(MissingParameter, "id"));
+            }
+
+            return await WebRequestHelper.GetAsync<T>(WebRequestHelper.CreateLookupUrl(entity, id, CreateIncludeQuery(inc)));
+        }
+
+        protected async static Task<T> SearchAsync<T>(string entity, string query, int limit = 25, int offset = 0) where T : MetadataWrapper
+        {
+            if (string.IsNullOrEmpty(entity))
+            {
+                throw new ArgumentException(string.Format(MissingParameter, "entity"));
+            }
+
+            if (string.IsNullOrEmpty(query))
+            {
+                throw new ArgumentException(string.Format(MissingParameter, "query"));
+            }
+
+            return await WebRequestHelper.GetAsync<T>(WebRequestHelper.CreateSearchTemplate(entity,
+                query, limit, offset), withoutMetadata: false);
+        }
+
+        protected async static Task<T> BrowseAsync<T>(string entity, string relatedEntity, string relatedEntityId, int limit, int offset, params  string[] inc) where T : Entity
+        {
+            if (string.IsNullOrEmpty(entity))
+            {
+                throw new ArgumentException(string.Format(MissingParameter, "entity"));
+            }
+
+            return await WebRequestHelper.GetAsync<T>(WebRequestHelper.CreateBrowseTemplate(entity,
+                relatedEntity, relatedEntityId, limit, offset, CreateIncludeQuery(inc)), withoutMetadata: false);
         }
     }
 }

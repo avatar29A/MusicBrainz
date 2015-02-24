@@ -41,6 +41,21 @@
     <TargetPlatform Include="Windows, Version=8.1" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Label.cs">
+      <Link>Entities\Label.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\NameCredit.cs">
+      <Link>Entities\NameCredit.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Rating.cs">
+      <Link>Entities\Rating.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Tag.cs">
+      <Link>Entities\Tag.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Work.cs">
+      <Link>Entities\Work.cs</Link>
+    </Compile>
     <Compile Include="Entities\Artist.cs" />
     <Compile Include="Entities\Collection.cs" />
     <Compile Include="Entities\Collections\ArtistList.cs" />
@@ -53,22 +68,17 @@
     <Compile Include="Entities\Collections\TrackList.cs" />
     <Compile Include="Entities\Collections\WorkList.cs" />
     <Compile Include="Entities\CoverArtArchive.cs" />
-    <Compile Include="Entities\Entity.cs" />
-    <Compile Include="Entities\Label.cs" />
     <Compile Include="Entities\LabelInfo.cs" />
     <Compile Include="Entities\Medium.cs" />
     <Compile Include="Entities\Metadata.cs" />
     <Compile Include="Entities\Metadata\ArtistMetadataWrapper.cs" />
     <Compile Include="Entities\Metadata\RecordingMetadataWrapper.cs" />
     <Compile Include="Entities\Metadata\ReleaseMetadataWrapper.cs" />
-    <Compile Include="Entities\NameCredit.cs" />
-    <Compile Include="Entities\Rating.cs" />
     <Compile Include="Entities\Recording.cs" />
     <Compile Include="Entities\Release.cs" />
     <Compile Include="Entities\ReleaseGroup.cs" />
-    <Compile Include="Entities\Tag.cs" />
     <Compile Include="Entities\Track.cs" />
-    <Compile Include="Entities\Work.cs" />
+    <Compile Include="Entities\Entity.cs" />
     <Compile Include="HttpClientException.cs" />
     <Compile Include="ImageLoader.cs" />
     <Compile Include="MyHttpClient.cs" />

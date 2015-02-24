@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Web.Http;
 
-namespace MusicBrainzWebService
+namespace Hqub.MusicBrainz.API
 {
     public class MyHttpClient
     {

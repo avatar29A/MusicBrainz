@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace MusicBrainzWebService.Entities
+namespace Hqub.MusicBrainz.API.Entities
 {
     [XmlType(Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
     [XmlRoot("release", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]

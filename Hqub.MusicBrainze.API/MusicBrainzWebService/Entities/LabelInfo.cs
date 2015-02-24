@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace MusicBrainzWebService.Entities
+namespace Hqub.MusicBrainz.API.Entities
 {
     [XmlRoot("label-info")]
     public class LabelInfo

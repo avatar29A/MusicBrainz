@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MusicBrainzWebService.Entities
+namespace Hqub.MusicBrainz.API.Entities
 {
 	public abstract class MetadataWrapper : Entity
 	{

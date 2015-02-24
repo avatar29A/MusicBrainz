@@ -10,7 +10,7 @@ using Windows.Storage.Streams;
 using System.Diagnostics;
 using System.IO; // recommended. (don't use System.Net.Http)
 
-namespace MusicBrainzWebService
+namespace Hqub.MusicBrainz.API
 {
     public class ImageLoader
     {

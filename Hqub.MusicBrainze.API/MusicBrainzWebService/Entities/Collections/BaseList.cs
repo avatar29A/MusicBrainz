@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace MusicBrainzWebService.Entities.Collections
+namespace Hqub.MusicBrainz.API.Entities.Collections
 {
     public class BaseList
     {

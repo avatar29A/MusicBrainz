@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MusicBrainzWebService
+namespace Hqub.MusicBrainz.API
 {
     /// <summary>
     /// This exception class can be used to display message in Windows Service Apps

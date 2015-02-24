@@ -9,8 +9,9 @@ using System.Xml.Serialization;
 using Windows.Web.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Storage.Streams;
+using Hqub.MusicBrainz.API;
 
-namespace MusicBrainzWebService
+namespace Hqub.MusicBrainz.API
 {
     internal static class WebRequestHelper
     {
@@ -19,7 +20,7 @@ namespace MusicBrainzWebService
         public const string BrowseTemplate = "{0}?{1}={2}&limit={3}&offset={4}&inc={5}";
         public const string SearchTemplate = "{0}?query={1}&limit={2}&offset={3}";
 
-        internal static async Task<T> Get<T>(string url, bool withoutMetadata = true) where T : Entities.Entity
+        internal static async Task<T> GetAsync<T>(string url, bool withoutMetadata = true) where T : Entities.Entity
         {
             MyHttpClient httpClient = new MyHttpClient(url);
             HttpResponseMessage response = await httpClient.SendRequestAsync();
@@ -70,9 +71,9 @@ namespace MusicBrainzWebService
         /// <summary>
         /// SearchTemplate
         /// </summary>
-        internal static string CreateSearchTemplate(string entity, string query, int limit, int offset, string inc)
+        internal static string CreateSearchTemplate(string entity, string query, int limit, int offset)
         {
-            return string.Format("{0}{1}", WebServiceUrl, String.Format(SearchTemplate, entity, query, limit, offset, inc));
+            return string.Format("{0}{1}", WebServiceUrl, string.Format(SearchTemplate, entity, query, limit, offset));
         }
     }
 }
