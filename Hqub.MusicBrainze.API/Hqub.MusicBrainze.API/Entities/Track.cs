@@ -14,7 +14,7 @@ namespace Hqub.MusicBrainz.API.Entities
         [XmlAttribute("id")]
         public string Id { get; set; }
 
-        [XmlAttribute("position")]
+        [XmlElement("position")]
         public int Position { get; set; }
 
         // number

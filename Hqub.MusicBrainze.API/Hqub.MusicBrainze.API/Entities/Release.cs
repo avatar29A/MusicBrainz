@@ -112,7 +112,7 @@ namespace Hqub.MusicBrainz.API.Entities
         [XmlElement("language")]
         public string Language { get; set; }
 
-        [XmlElement("Latn")]
+        [XmlElement("script")]
         public string Script { get; set; }
     }
 }
