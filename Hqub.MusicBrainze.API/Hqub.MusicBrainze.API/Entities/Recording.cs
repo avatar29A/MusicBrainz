@@ -31,16 +31,14 @@ namespace Hqub.MusicBrainz.API.Entities
 
         #region Include
 
-        [XmlArray("tag-list")]
-        [XmlArrayItem("tag")]
+        [XmlElement("tag-list")]
         public TagList Tags { get; set; }
 
         [XmlArray("artist-credit")]
         [XmlArrayItem("name-credit")]
         public List<NameCredit> Credits { get; set; }
 
-        [XmlArray("release-list")]
-        [XmlArrayItem("release")]
+        [XmlElement("release-list")]
         public ReleaseList Releases { get; set; }
 
         #endregion
