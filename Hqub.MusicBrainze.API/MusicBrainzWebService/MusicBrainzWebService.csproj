@@ -44,6 +44,9 @@
     <Compile Include="..\Hqub.MusicBrainze.API\Entities\Label.cs">
       <Link>Entities\Label.cs</Link>
     </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\LabelInfo.cs">
+      <Link>Entities\LabelInfo.cs</Link>
+    </Compile>
     <Compile Include="..\Hqub.MusicBrainze.API\Entities\NameCredit.cs">
       <Link>Entities\NameCredit.cs</Link>
     </Compile>
@@ -68,7 +71,6 @@
     <Compile Include="Entities\Collections\TrackList.cs" />
     <Compile Include="Entities\Collections\WorkList.cs" />
     <Compile Include="Entities\CoverArtArchive.cs" />
-    <Compile Include="Entities\LabelInfo.cs" />
     <Compile Include="Entities\Medium.cs" />
     <Compile Include="Entities\Metadata.cs" />
     <Compile Include="Entities\Metadata\ArtistMetadataWrapper.cs" />
