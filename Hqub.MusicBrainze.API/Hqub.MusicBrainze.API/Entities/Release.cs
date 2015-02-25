@@ -57,8 +57,7 @@ namespace Hqub.MusicBrainz.API.Entities
         [XmlArrayItem("label-info")]
         public List<LabelInfo> Labels { get; set; }
 
-        [XmlArray("medium-list")]
-        [XmlArrayItem("medium")]
+        [XmlElement("medium-list")]
         public Collections.MediumList MediumList { get; set; }
 
         #endregion

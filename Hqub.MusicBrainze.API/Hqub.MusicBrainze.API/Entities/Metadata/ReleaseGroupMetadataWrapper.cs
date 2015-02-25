@@ -11,8 +11,7 @@ namespace Hqub.MusicBrainz.API.Entities.Metadata
     [XmlRoot("metadata", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
     public class ReleaseGroupMetadataWrapper : MetadataWrapper
     {
-        [XmlArray("release-group-list")]
-        [XmlArrayItem("release-group")]
+        [XmlElement("release-group")]
         public Collections.ReleaseGroupList Collection { get; set; }
     }
 }

@@ -33,8 +33,7 @@ namespace Hqub.MusicBrainz.API.Entities
         [XmlElement("rating")]
         public Rating Rating { get; set; }
 
-        [XmlArray("tag-list")]
-        [XmlArrayItem("tag")]
+        [XmlElement("tag-list")]
         public TagList Tags { get; set; }
 
         #endregion

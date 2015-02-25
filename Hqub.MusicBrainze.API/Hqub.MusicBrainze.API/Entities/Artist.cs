@@ -26,6 +26,9 @@ namespace Hqub.MusicBrainz.API.Entities
         [XmlElement("sort-name")]
         public string SortName { get; set; }
 
+        [XmlAttribute("gender")]
+        public string Gender { get; set; }
+
         [XmlElement("life-span")]
         public LifeSpanNode LifeSpan { get; set; }
 
@@ -45,24 +48,19 @@ namespace Hqub.MusicBrainz.API.Entities
 
         #region Subqueries
 
-        [XmlArray("recording-list", ElementName = "recording-list")]
-        [XmlArrayItem("recording")]
+        [XmlElement("recording-list")]
         public RecordingList Recordings { get; set; }
 
-        [XmlArray("release-group-list")]
-        [XmlArrayItem("release-group")]
+        [XmlElement("release-group-list")]
         public ReleaseGroupList ReleaseGroups { get; set; }
 
-        [XmlArray("release-list")]
-        [XmlArrayItem("release")]
+        [XmlElement("release-list")]
         public ReleaseList ReleaseLists { get; set; }
 
-        [XmlArray("work-list")]
-        [XmlArrayItem("work")]
+        [XmlElement("work-list")]
         public WorkList Works { get; set; }
 
-        [XmlArray("tag-list")]
-        [XmlArrayItem("tag")]
+        [XmlElement("tag-list")]
         public TagList Tags { get; set; }
 
         #endregion

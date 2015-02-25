@@ -9,9 +9,9 @@ namespace Hqub.MusicBrainz.API.Entities.Collections
 {
     [XmlType(Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
     [XmlRoot("recording-list", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
-    public class ReleaseGroupList : List<ReleaseGroup>
+    public class ReleaseGroupList : BaseList
     {
-        [XmlAttribute("count")]
-        public int QueryCount { get; set; }
+        [XmlElement("release-group")]
+        public List<ReleaseGroup> Items { get; set; }
     }
 }

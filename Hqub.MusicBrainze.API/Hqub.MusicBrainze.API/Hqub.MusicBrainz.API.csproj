@@ -49,6 +49,7 @@
     <Compile Include="Entities\Artist.cs" />
     <Compile Include="Entities\Collection.cs" />
     <Compile Include="Entities\Collections\ArtistList.cs" />
+    <Compile Include="Entities\Collections\BaseList.cs" />
     <Compile Include="Entities\Collections\MediumList.cs" />
     <Compile Include="Entities\Collections\RecordingList.cs" />
     <Compile Include="Entities\Collections\ReleaseGroupList.cs" />

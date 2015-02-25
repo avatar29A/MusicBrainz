@@ -9,16 +9,12 @@ namespace Hqub.MusicBrainz.API.Entities.Collections
 {
     [XmlType(Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
     [XmlRoot("medium-list", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
-    public class MediumList : List<Medium>
+    public class MediumList : BaseList
     {
-        [XmlAttribute("count")]
-        public int QueryCount { get; set; }
-
-        [XmlElement("track-count")]
+        [XmlElement(ElementName = "track-count")]
         public int TrackCount { get; set; }
 
-        [XmlArray("track-list")]
-        [XmlArrayItem("track")]
-        public TrackList TrackList { get; set; }
+        [XmlElement("medium")]
+        public List<Medium> Items { get; set; }
     }
 }
