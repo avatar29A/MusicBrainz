@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hqub.MusicBrainz.API.Test",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hqub.MusicBrainz.Client", "Hqub.MusicBrainze.Client\Hqub.MusicBrainz.Client.csproj", "{A30BD5FD-E8DF-454F-8280-9B1B7093785A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicBrainzWebService", "MusicBrainzWebService\MusicBrainzWebService.csproj", "{08D4701E-168C-43D1-9C6E-34B079CFD934}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hqub.MusicBrainz.API.Portable", "MusicBrainzWebService\Hqub.MusicBrainz.API.Portable.csproj", "{08D4701E-168C-43D1-9C6E-34B079CFD934}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
