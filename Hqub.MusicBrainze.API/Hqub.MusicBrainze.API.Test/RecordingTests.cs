@@ -54,7 +54,7 @@ namespace Hqub.MusicBrainz.API.Test
         [TestMethod]
         public void TestRecordingReleases()
         {
-            var releases = recording.Releases;
+            var releases = recording.Releases.Items;
 
             Assert.AreEqual(4, releases.Count);
             //Assert.AreEqual(4, releases.QueryCount);
@@ -69,7 +69,7 @@ namespace Hqub.MusicBrainz.API.Test
         [TestMethod]
         public void TestRecordingTags()
         {
-            var tags = recording.Tags;
+            var tags = recording.Tags.Items;
 
             Assert.AreEqual(3, tags.Count);
 

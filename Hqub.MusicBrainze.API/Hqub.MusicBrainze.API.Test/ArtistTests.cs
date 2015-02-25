@@ -49,7 +49,7 @@ namespace Hqub.MusicBrainz.API.Test
         [TestMethod]
         public void TestArtistReleaseGroups()
         {
-            var list = artist.ReleaseGroups;
+            var list = artist.ReleaseGroups.Items;
 
             Assert.IsNotNull(list);
             Assert.AreEqual(25, list.Count);
@@ -70,7 +70,7 @@ namespace Hqub.MusicBrainz.API.Test
         [TestMethod]
         public void TestArtistTags()
         {
-            var list = artist.Tags;
+            var list = artist.Tags.Items;
 
             Assert.IsNotNull(list);
             Assert.AreEqual(24, list.Count);
@@ -86,7 +86,7 @@ namespace Hqub.MusicBrainz.API.Test
         [TestMethod]
         public void TestArtistWorks()
         {
-            var list = artist.Works;
+            var list = artist.Works.Items;
 
             Assert.IsNotNull(list);
             Assert.AreEqual(25, list.Count);

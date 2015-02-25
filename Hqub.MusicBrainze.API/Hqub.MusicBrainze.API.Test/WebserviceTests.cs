@@ -22,7 +22,7 @@ namespace Hqub.MusicBrainz.API.Test
         [TestMethod]
         public async Task TestArtistSearchAsync()
         {
-            var artists = await Entities.Artist.SearchAsync("scorpions");
+            var artists = (await Entities.Artist.SearchAsync("scorpions")).Items;
 
             Assert.AreNotEqual(0, artists.Count, "Results is Empty.");
         }
@@ -41,7 +41,7 @@ namespace Hqub.MusicBrainz.API.Test
         [TestMethod]
         public async Task TestReleaseSearchAsync()
         {
-            var releases = await Entities.Release.SearchAsync("Comeblack");
+            var releases = (await Entities.Release.SearchAsync("Comeblack")).Items;
 
             Assert.AreNotEqual(0, releases.Count, "Result is empty");
         }
@@ -49,13 +49,13 @@ namespace Hqub.MusicBrainz.API.Test
         [TestMethod]
         public async Task TestReleaseBrowseAsync()
         {
-            var artists = await Entities.Artist.SearchAsync("The Scorpions");
+            var artists = (await Entities.Artist.SearchAsync("The Scorpions")).Items;
 
             Assert.AreNotEqual(artists.Count, 0);
 
             var artist = artists.First();
 
-            var releases = await Entities.Release.BrowseAsync("artist", artist.Id, 40);
+            var releases = (await Entities.Release.BrowseAsync("artist", artist.Id, 40)).Items;
             Assert.AreEqual(releases.Count, 40);
         }
 
@@ -73,7 +73,7 @@ namespace Hqub.MusicBrainz.API.Test
         [TestMethod]
         public async Task TestRecordingSearchAsync()
         {
-            var recordings = await Entities.Recording.SearchAsync("The Wind of Change");
+            var recordings = (await Entities.Recording.SearchAsync("The Wind of Change")).Items;
 
             Assert.AreNotEqual(0, recordings.Count, "Result is empty");
         }
@@ -81,13 +81,13 @@ namespace Hqub.MusicBrainz.API.Test
         [TestMethod]
         public async Task TestRecordingBrowseAsync()
         {
-            var artists = await Entities.Artist.SearchAsync("The Scorpions");
+            var artists = (await Entities.Artist.SearchAsync("The Scorpions")).Items;
 
             Assert.AreNotEqual(artists.Count, 0);
 
             var artist = artists.First();
 
-            var releases = await Entities.Recording.BrowseAsync("artist", artist.Id, 40);
+            var releases = (await Entities.Recording.BrowseAsync("artist", artist.Id, 40)).Items;
             Assert.AreEqual(releases.Count, 40);
         }
     }
