@@ -19,11 +19,11 @@ namespace Hqub.MusicBrainz.Client
             Console.ReadKey();
         }
 
-        private static Artist GetArtist(string name)
+        private static async Task<Artist> GetArtist(string name)
         {
-            var artists = Artist.Search(name);
+            var artists = await Artist.SearchAsync(name);
 
-            var artist = artists.First();
+            var artist = artists.Items.First();
             Console.WriteLine(artist.Name);
 
             return artist;
@@ -31,12 +31,12 @@ namespace Hqub.MusicBrainz.Client
 
         private static async void ShowTracksByAlbum(string artistName, string albumName)
         {
-            var artist = GetArtist(artistName);
+            var artist = await GetArtist(artistName);
 
             var albums = await Release.BrowseAsync("artist", artist.Id);
 
 
-            var album = albums.FirstOrDefault(r => r.Title.ToLower() == albumName.ToLower());
+            var album = albums.Items.FirstOrDefault(r => r.Title.ToLower() == albumName.ToLower());
 
             if (album == null)
             {
@@ -45,7 +45,7 @@ namespace Hqub.MusicBrainz.Client
                 Console.ResetColor();
 
                 Console.WriteLine("Results:\n");
-                foreach (var al in albums)
+                foreach (var al in albums.Items)
                 {
                     Console.WriteLine("\t{0}", al.Title);
                 }
@@ -56,7 +56,7 @@ namespace Hqub.MusicBrainz.Client
             Console.WriteLine("\t{0}", albumName);
 
             var tracks = await Recording.BrowseAsync("release", album.Id, 100);
-            foreach (var track in tracks)
+            foreach (var track in tracks.Items)
             {
                 Console.WriteLine("\t\t{0}", track.Title);
             }
@@ -64,16 +64,16 @@ namespace Hqub.MusicBrainz.Client
 
         private static async void ShowAlbumsTracksByArtist(string name)
         {
-            var artist = GetArtist(name);
+            var artist = await GetArtist(name);
 
             var releases = await Release.BrowseAsync("artist", artist.Id, 100, 0, "media");
 
-            foreach (var release in releases)
+            foreach (var release in releases.Items)
             {
                 Console.WriteLine("\t{0}", release.Title);
                 var tracks = await Recording.BrowseAsync("release", release.Id, 100);
 
-                foreach (var track in tracks)
+                foreach (var track in tracks.Items)
                 {
                     Console.WriteLine("\t\t{0}", track.Title);
                 }
@@ -83,20 +83,18 @@ namespace Hqub.MusicBrainz.Client
 
         private static async void Test()
         {
-            var artists = Artist.Search("The Scorpions");
+            var artists = await Artist.SearchAsync("The Scorpions");
 
-            var artist = artists.First();
+            var artist = artists.Items.First();
 
             Console.WriteLine(artist.Name);
 
-            var releases = await Recording.BrowseAsync("artist", artist.Id, 40);
-            
+            var recordings = await Recording.BrowseAsync("artist", artist.Id, 40);
 
-            foreach (var release in releases)
+            foreach (var recording in recordings.Items)
             {
-                Console.WriteLine("{0}", release.Title);
+                Console.WriteLine("{0}", recording.Title);
             }
-//
         }
     }
 }

@@ -18,8 +18,7 @@ namespace Hqub.MusicBrainz.API.Entities.Metadata
             Collection = new RecordingList();
         }
 
-        [XmlArray("recording-list")]
-        [XmlArrayItem("recording")]
+        [XmlElement("recording-list")]
         public RecordingList Collection { get; set; }
 
         public override void SetSchema(XElement schema)

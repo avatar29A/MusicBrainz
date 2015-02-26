@@ -30,7 +30,7 @@ namespace Hqub.MusicBrainz.API.Test
         [TestMethod]
         public void TestReleaseListCount()
         {
-            var releases = data.Collection;
+            var releases = data.Collection.Items;
 
             Assert.AreEqual(10, releases.Count);
         }
@@ -38,7 +38,7 @@ namespace Hqub.MusicBrainz.API.Test
         [TestMethod]
         public void TestReleaseListElements()
         {
-            var release = data.Collection[0];
+            var release = data.Collection.Items[0];
 
             Assert.AreEqual("12195c41-6136-4dfd-acf1-9923dadc73e2", release.Id);
             //Assert.AreEqual(100, release.Score);

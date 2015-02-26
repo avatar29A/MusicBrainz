@@ -30,7 +30,7 @@ namespace Hqub.MusicBrainz.API.Test
         [TestMethod]
         public void TestRecordingListCount()
         {
-            var recordings = data.Collection;
+            var recordings = data.Collection.Items;
 
             Assert.AreEqual(8, recordings.Count);
         }
@@ -38,7 +38,7 @@ namespace Hqub.MusicBrainz.API.Test
         [TestMethod]
         public void TestRecordingListElements()
         {
-            var recording = data.Collection[0];
+            var recording = data.Collection.Items[0];
 
             Assert.AreEqual("89d8f933-7c31-47c6-8f80-4927e93e7896", recording.Id);
             //Assert.AreEqual(100, release.Score);

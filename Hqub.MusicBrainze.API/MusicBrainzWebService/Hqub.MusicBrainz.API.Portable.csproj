@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{08D4701E-168C-43D1-9C6E-34B079CFD934}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MusicBrainzWebService</RootNamespace>
+    <AssemblyName>MusicBrainzWebService</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile32</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <TargetPlatform Include="WindowsPhoneApp, Version=8.1" />
+    <TargetPlatform Include="Windows, Version=8.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Artist.cs">
+      <Link>Entities\Artist.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Collections\ArtistList.cs">
+      <Link>Entities\Collections\ArtistList.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Collections\BaseList.cs">
+      <Link>Entities\Collections\BaseList.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Collections\MediumList.cs">
+      <Link>Entities\Collections\MediumList.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Collections\RecordingList.cs">
+      <Link>Entities\Collections\RecordingList.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Collections\ReleaseGroupList.cs">
+      <Link>Entities\Collections\ReleaseGroupList.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Collections\ReleaseList.cs">
+      <Link>Entities\Collections\ReleaseList.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Collections\TagList.cs">
+      <Link>Entities\Collections\TagList.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Collections\TrackList.cs">
+      <Link>Entities\Collections\TrackList.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Collections\WorkList.cs">
+      <Link>Entities\Collections\WorkList.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\CoverArtArchive.cs">
+      <Link>Entities\CoverArtArchive.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Entity.cs">
+      <Link>Entities\Entity.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Label.cs">
+      <Link>Entities\Label.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\LabelInfo.cs">
+      <Link>Entities\LabelInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Medium.cs">
+      <Link>Entities\Medium.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Metadata.cs">
+      <Link>Entities\Metadata.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Metadata\ArtistMetadataWrapper.cs">
+      <Link>Entities\Metadata\ArtistMetadataWrapper.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Metadata\RecordingMetadataWrapper.cs">
+      <Link>Entities\Metadata\RecordingMetadataWrapper.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Metadata\ReleaseGroupMetadataWrapper.cs">
+      <Link>Entities\Metadata\ReleaseGroupMetadataWrapper.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Metadata\ReleaseMetadataWrapper.cs">
+      <Link>Entities\Metadata\ReleaseMetadataWrapper.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\NameCredit.cs">
+      <Link>Entities\NameCredit.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Rating.cs">
+      <Link>Entities\Rating.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Recording.cs">
+      <Link>Entities\Recording.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Release.cs">
+      <Link>Entities\Release.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\ReleaseGroup.cs">
+      <Link>Entities\ReleaseGroup.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Tag.cs">
+      <Link>Entities\Tag.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Track.cs">
+      <Link>Entities\Track.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Work.cs">
+      <Link>Entities\Work.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainze.API\QueryParameters.cs">
+      <Link>QueryParameters.cs</Link>
+    </Compile>
+    <Compile Include="Resources\Constants.cs" />
+    <Compile Include="Resources\Messages.cs" />
+    <Compile Include="HttpClientException.cs" />
+    <Compile Include="ImageLoader.cs" />
+    <Compile Include="MyHttpClient.cs" />
+    <Compile Include="ReadableException.cs" />
+    <Compile Include="WebRequestHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -16,8 +16,7 @@ namespace Hqub.MusicBrainz.API.Entities
         [XmlElement("disc-list")]
         public DiskList Disks { get; set; }
 
-        [XmlArray("track-list")]
-        [XmlArrayItem("track")]
+        [XmlElement("track-list")]
         public Collections.TrackList Tracks { get; set; }
     }
 

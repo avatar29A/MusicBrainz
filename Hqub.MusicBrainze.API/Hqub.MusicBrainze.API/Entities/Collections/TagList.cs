@@ -9,8 +9,9 @@ namespace Hqub.MusicBrainz.API.Entities.Collections
 {
     [XmlType(Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
     [XmlRoot("tag-list", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
-    public class TagList : List<Tag>
+    public class TagList : BaseList
     {
-
+        [XmlElement("tag")]
+        public List<Tag> Items { get; set; }
     }
 }

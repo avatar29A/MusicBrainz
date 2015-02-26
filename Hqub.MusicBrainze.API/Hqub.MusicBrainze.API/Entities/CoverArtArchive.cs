@@ -21,5 +21,11 @@ namespace Hqub.MusicBrainz.API.Entities
 
         [XmlElement("back")]
         public bool Back { get; set; }
+
+        public static Uri GetCoverArtUri(string releaseId)
+        {
+            string url = "http://coverartarchive.org/release/" + releaseId + "/front-250.jpg";
+            return new Uri(url, UriKind.RelativeOrAbsolute);
+        }
     }
 }

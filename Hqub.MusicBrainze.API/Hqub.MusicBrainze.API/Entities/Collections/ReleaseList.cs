@@ -8,12 +8,9 @@ using System.Xml.Serialization;
 namespace Hqub.MusicBrainz.API.Entities.Collections
 {
     [XmlRoot("release-list", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
-    public class ReleaseList : List<Release>
+    public class ReleaseList : BaseList
     {
-        [XmlAttribute("count")]
-        public int QueryCount { get; set; }
-
-        [XmlAttribute("offset")]
-        public int QueryOffset { get; set; }
+        [XmlElement("release")]
+        public List<Release> Items { get; set; }
     }
 }

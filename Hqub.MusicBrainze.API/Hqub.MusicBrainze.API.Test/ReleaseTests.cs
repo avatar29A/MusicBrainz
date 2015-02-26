@@ -107,7 +107,7 @@ namespace Hqub.MusicBrainz.API.Test
         [TestMethod]
         public void TestReleaseMediumList()
         {
-            var mediums = release.MediumList;
+            var mediums = release.MediumList.Items;
 
             Assert.IsNotNull(mediums);
             Assert.AreEqual(1, mediums.Count);
@@ -116,7 +116,7 @@ namespace Hqub.MusicBrainz.API.Test
         [TestMethod]
         public void TestReleaseMediumListTracks()
         {
-            var tracks = release.MediumList[0].Tracks;
+            var tracks = release.MediumList.Items[0].Tracks.Items;
 
             Assert.IsNotNull(tracks);
             Assert.AreEqual(19, tracks.Count);

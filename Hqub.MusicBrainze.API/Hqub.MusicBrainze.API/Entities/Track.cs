@@ -17,8 +17,10 @@ namespace Hqub.MusicBrainz.API.Entities
         [XmlElement("position")]
         public int Position { get; set; }
 
-        // number
-        // length
+        // <number> is almost always same as <position>, so leaving it
+
+        [XmlElement("length")]
+        public int Length { get; set; }
 
         [XmlElement("recording")]
         public Recording Recordring { get; set; }

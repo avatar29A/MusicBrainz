@@ -9,13 +9,9 @@ namespace Hqub.MusicBrainz.API.Entities.Collections
 {
     [XmlType(Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
     [XmlRoot("track-list", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
-    public class TrackList :  List<Track>
+    public class TrackList : BaseList
     {
-
-        [XmlAttribute("count")]
-        public int QueryCount { get; set; }
-
-        [XmlAttribute("offset")]
-        public int Offset { get; set; }
+        [XmlElement("track")]
+        public List<Track> Items { get; set; }
     }
 }
