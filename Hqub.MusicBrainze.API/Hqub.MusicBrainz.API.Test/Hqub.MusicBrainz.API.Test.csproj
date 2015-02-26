@@ -65,7 +65,7 @@
     <Compile Include="TestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Hqub.MusicBrainze.API\Hqub.MusicBrainz.API.csproj">
+    <ProjectReference Include="..\Hqub.MusicBrainz.API\Hqub.MusicBrainz.API.csproj">
       <Project>{77832ded-eefe-4db9-94af-b0be02cec356}</Project>
       <Name>Hqub.MusicBrainz.API</Name>
     </ProjectReference>

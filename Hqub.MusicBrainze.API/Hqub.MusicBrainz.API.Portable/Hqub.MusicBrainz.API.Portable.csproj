@@ -38,91 +38,91 @@
     <TargetPlatform Include="Windows, Version=8.1" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Artist.cs">
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Artist.cs">
       <Link>Entities\Artist.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Collections\ArtistList.cs">
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Collections\ArtistList.cs">
       <Link>Entities\Collections\ArtistList.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Collections\BaseList.cs">
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Collections\BaseList.cs">
       <Link>Entities\Collections\BaseList.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Collections\MediumList.cs">
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Collections\MediumList.cs">
       <Link>Entities\Collections\MediumList.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Collections\RecordingList.cs">
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Collections\RecordingList.cs">
       <Link>Entities\Collections\RecordingList.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Collections\ReleaseGroupList.cs">
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Collections\ReleaseGroupList.cs">
       <Link>Entities\Collections\ReleaseGroupList.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Collections\ReleaseList.cs">
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Collections\ReleaseList.cs">
       <Link>Entities\Collections\ReleaseList.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Collections\TagList.cs">
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Collections\TagList.cs">
       <Link>Entities\Collections\TagList.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Collections\TrackList.cs">
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Collections\TrackList.cs">
       <Link>Entities\Collections\TrackList.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Collections\WorkList.cs">
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Collections\WorkList.cs">
       <Link>Entities\Collections\WorkList.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainze.API\Entities\CoverArtArchive.cs">
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\CoverArtArchive.cs">
       <Link>Entities\CoverArtArchive.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Entity.cs">
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Entity.cs">
       <Link>Entities\Entity.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Label.cs">
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Label.cs">
       <Link>Entities\Label.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainze.API\Entities\LabelInfo.cs">
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\LabelInfo.cs">
       <Link>Entities\LabelInfo.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Medium.cs">
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Medium.cs">
       <Link>Entities\Medium.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Metadata.cs">
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Metadata.cs">
       <Link>Entities\Metadata.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Metadata\ArtistMetadataWrapper.cs">
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Metadata\ArtistMetadataWrapper.cs">
       <Link>Entities\Metadata\ArtistMetadataWrapper.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Metadata\RecordingMetadataWrapper.cs">
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Metadata\RecordingMetadataWrapper.cs">
       <Link>Entities\Metadata\RecordingMetadataWrapper.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Metadata\ReleaseGroupMetadataWrapper.cs">
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Metadata\ReleaseGroupMetadataWrapper.cs">
       <Link>Entities\Metadata\ReleaseGroupMetadataWrapper.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Metadata\ReleaseMetadataWrapper.cs">
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Metadata\ReleaseMetadataWrapper.cs">
       <Link>Entities\Metadata\ReleaseMetadataWrapper.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainze.API\Entities\NameCredit.cs">
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\NameCredit.cs">
       <Link>Entities\NameCredit.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Rating.cs">
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Rating.cs">
       <Link>Entities\Rating.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Recording.cs">
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Recording.cs">
       <Link>Entities\Recording.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Release.cs">
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Release.cs">
       <Link>Entities\Release.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainze.API\Entities\ReleaseGroup.cs">
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\ReleaseGroup.cs">
       <Link>Entities\ReleaseGroup.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Tag.cs">
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Tag.cs">
       <Link>Entities\Tag.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Track.cs">
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Track.cs">
       <Link>Entities\Track.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainze.API\Entities\Work.cs">
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Work.cs">
       <Link>Entities\Work.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainze.API\QueryParameters.cs">
+    <Compile Include="..\Hqub.MusicBrainz.API\QueryParameters.cs">
       <Link>QueryParameters.cs</Link>
     </Compile>
     <Compile Include="Resources\Constants.cs" />

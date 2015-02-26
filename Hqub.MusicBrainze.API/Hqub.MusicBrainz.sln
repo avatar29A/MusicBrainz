@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hqub.MusicBrainz.API", "Hqub.MusicBrainze.API\Hqub.MusicBrainz.API.csproj", "{77832DED-EEFE-4DB9-94AF-B0BE02CEC356}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hqub.MusicBrainz.API", "Hqub.MusicBrainz.API\Hqub.MusicBrainz.API.csproj", "{77832DED-EEFE-4DB9-94AF-B0BE02CEC356}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hqub.MusicBrainz.API.Test", "Hqub.MusicBrainze.API.Test\Hqub.MusicBrainz.API.Test.csproj", "{1E8BEEE2-DF91-4D0B-902E-E661D03E70C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hqub.MusicBrainz.API.Test", "Hqub.MusicBrainz.API.Test\Hqub.MusicBrainz.API.Test.csproj", "{1E8BEEE2-DF91-4D0B-902E-E661D03E70C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hqub.MusicBrainz.Client", "Hqub.MusicBrainze.Client\Hqub.MusicBrainz.Client.csproj", "{A30BD5FD-E8DF-454F-8280-9B1B7093785A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hqub.MusicBrainz.Client", "Hqub.MusicBrainz.Client\Hqub.MusicBrainz.Client.csproj", "{A30BD5FD-E8DF-454F-8280-9B1B7093785A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hqub.MusicBrainz.API.Portable", "MusicBrainzWebService\Hqub.MusicBrainz.API.Portable.csproj", "{08D4701E-168C-43D1-9C6E-34B079CFD934}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hqub.MusicBrainz.API.Portable", "Hqub.MusicBrainz.API.Portable\Hqub.MusicBrainz.API.Portable.csproj", "{08D4701E-168C-43D1-9C6E-34B079CFD934}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
