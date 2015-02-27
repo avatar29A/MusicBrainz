@@ -42,11 +42,11 @@ namespace Hqub.MusicBrainz.API.Test
 
             Assert.AreEqual("72c536dc-7137-4477-a521-567eeb840fa8", artist.Id);
             Assert.AreEqual("Person", artist.Type);
-            //Assert.AreEqual(artist, artist.Score);
+            Assert.AreEqual(100, artist.Score);
 
             Assert.AreEqual("Bob Dylan", artist.Name);
             Assert.AreEqual("Dylan, Bob", artist.SortName);
-            //Assert.AreEqual("male", artist.Gender);
+            Assert.AreEqual("male", artist.Gender);
             Assert.AreEqual("US", artist.Country);
 
             //Assert.IsNotNull(artist.Area);

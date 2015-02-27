@@ -9,7 +9,7 @@ namespace Hqub.MusicBrainz.API.Entities.Metadata
         /// <summary>
         /// Gets or sets the release-group collection.
         /// </summary>
-        [XmlElement("release-group")]
+        [XmlElement("release-group-list")]
         public ReleaseGroupList Collection { get; set; }
     }
 }

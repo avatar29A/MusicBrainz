@@ -55,9 +55,11 @@
   <ItemGroup>
     <Compile Include="ArtistListTests.cs" />
     <Compile Include="ArtistTests.cs" />
+    <Compile Include="ReleaseGroupTests.cs" />
     <Compile Include="QueryParametersTests.cs" />
     <Compile Include="RecordingListTests.cs" />
     <Compile Include="RecordingTests.cs" />
+    <Compile Include="ReleaseGroupListTests.cs" />
     <Compile Include="WebserviceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReleaseTests.cs" />
@@ -77,6 +79,8 @@
     <EmbeddedResource Include="Data\recording-search.xml" />
     <EmbeddedResource Include="Data\release-get.xml" />
     <EmbeddedResource Include="Data\release-search.xml" />
+    <EmbeddedResource Include="Data\releasegroup-get.xml" />
+    <EmbeddedResource Include="Data\releasegroup-search.xml" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
