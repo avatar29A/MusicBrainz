@@ -29,7 +29,7 @@ namespace Hqub.MusicBrainz.API.Entities
         public string Gender { get; set; }
 
         [XmlElement("life-span")]
-        public LifeSpanNode LifeSpan { get; set; }
+        public LifeSpan LifeSpan { get; set; }
 
         [XmlElement("country")]
         public string Country { get; set; }
@@ -114,17 +114,18 @@ namespace Hqub.MusicBrainz.API.Entities
 
     #region Include entities
 
-    [XmlType(Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
     [XmlRoot("life-span", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
-    public class LifeSpanNode
+    public class LifeSpan
     {
         [XmlElement("begin")]
         public string Begin { get; set; }
+
+        [XmlElement("end")]
+        public string End { get; set; }
 
         [XmlElement("ended")]
         public bool Ended { get; set; }
     }
 
     #endregion
-
 }
