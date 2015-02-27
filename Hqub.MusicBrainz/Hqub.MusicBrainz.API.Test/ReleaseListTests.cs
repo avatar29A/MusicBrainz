@@ -41,7 +41,7 @@ namespace Hqub.MusicBrainz.API.Test
             var release = data.Collection.Items[0];
 
             Assert.AreEqual("12195c41-6136-4dfd-acf1-9923dadc73e2", release.Id);
-            //Assert.AreEqual(100, release.Score);
+            Assert.AreEqual(100, release.Score);
 
             Assert.AreEqual("Tucson: A Country Rock Opera", release.Title);
             Assert.AreEqual("Official", release.Status);
