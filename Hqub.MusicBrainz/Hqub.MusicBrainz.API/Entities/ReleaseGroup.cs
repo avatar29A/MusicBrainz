@@ -81,6 +81,15 @@ namespace Hqub.MusicBrainz.API.Entities
                 query.ToString(), limit, offset)).Collection;
         }
 
+        public async static Task<ReleaseGroupList> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params  string[] inc)
+        {
+            return (await BrowseAsync<ReleaseGroupMetadata>(EntityName, entity, id,
+                limit, offset, inc)).Collection;
+        }
+
+        // TODO: add string parameter 'type' and 'status' to browse methods
+        // see http://musicbrainz.org/doc/Development/XML_Web_Service/Version_2#Release_Type_and_Status
+
         #endregion
     }
 }
