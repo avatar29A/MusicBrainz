@@ -6,7 +6,6 @@ using Hqub.MusicBrainz.API.Entities.Metadata;
 
 namespace Hqub.MusicBrainz.API.Entities
 {
-    [XmlType(Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
     [XmlRoot("artist", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
     public class Artist : Entity
     {

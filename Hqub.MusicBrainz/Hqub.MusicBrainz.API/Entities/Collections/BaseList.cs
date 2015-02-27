@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 
 namespace Hqub.MusicBrainz.API.Entities.Collections
 {
@@ -16,19 +11,3 @@ namespace Hqub.MusicBrainz.API.Entities.Collections
         public int QueryOffset { get; set; }
     }
 }
-
-/*
- * <!-- the attributes which can be used on a -list element. -->
-    <define name="def_list-attributes">
-        <optional>
-            <attribute name="count">
-                <data type="nonNegativeInteger"/>
-            </attribute>
-        </optional>
-        <optional>
-            <attribute name="offset">
-                <data type="nonNegativeInteger"/>
-            </attribute>
-        </optional>
-    </define>
-*/

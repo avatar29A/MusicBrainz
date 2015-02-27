@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 
 namespace Hqub.MusicBrainz.API.Entities
 {
-    [XmlType(Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
     [XmlRoot("work", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
     public class Work : Entity
     {
