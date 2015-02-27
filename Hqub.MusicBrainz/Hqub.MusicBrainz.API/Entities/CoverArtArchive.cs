@@ -6,15 +6,27 @@ namespace Hqub.MusicBrainz.API.Entities
     [XmlRoot("cover-art-archive", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
     public class CoverArtArchive : Entity
     {
+        /// <summary>
+        /// Gets or sets a value indicating whether artwork is available or not.
+        /// </summary>
         [XmlElement("artwork")]
         public bool Artwork { get; set; }
 
+        /// <summary>
+        /// Gets or sets the count.
+        /// </summary>
         [XmlElement("count")]
         public int Count { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether a front crover is available or not.
+        /// </summary>
         [XmlElement("front")]
         public bool Front { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether a back crover is available or not.
+        /// </summary>
         [XmlElement("back")]
         public bool Back { get; set; }
 
