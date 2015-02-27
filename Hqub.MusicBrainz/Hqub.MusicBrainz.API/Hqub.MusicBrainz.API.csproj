@@ -47,7 +47,6 @@
   <ItemGroup>
     <Compile Include="Configuration.cs" />
     <Compile Include="Entities\Artist.cs" />
-    <Compile Include="Entities\Collection.cs" />
     <Compile Include="Entities\Collections\ArtistList.cs" />
     <Compile Include="Entities\Collections\BaseList.cs" />
     <Compile Include="Entities\Collections\MediumList.cs" />
@@ -64,10 +63,10 @@
     <Compile Include="Entities\LabelInfo.cs" />
     <Compile Include="Entities\Medium.cs" />
     <Compile Include="Entities\Metadata.cs" />
-    <Compile Include="Entities\Metadata\ArtistMetadataWrapper.cs" />
-    <Compile Include="Entities\Metadata\RecordingMetadataWrapper.cs" />
-    <Compile Include="Entities\Metadata\ReleaseGroupMetadataWrapper.cs" />
-    <Compile Include="Entities\Metadata\ReleaseMetadataWrapper.cs" />
+    <Compile Include="Entities\Metadata\ArtistMetadata.cs" />
+    <Compile Include="Entities\Metadata\RecordingMetadata.cs" />
+    <Compile Include="Entities\Metadata\ReleaseGroupMetadata.cs" />
+    <Compile Include="Entities\Metadata\ReleaseMetadata.cs" />
     <Compile Include="Entities\NameCredit.cs" />
     <Compile Include="Entities\Rating.cs" />
     <Compile Include="Entities\Recording.cs" />

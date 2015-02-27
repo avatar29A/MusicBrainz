@@ -54,14 +54,14 @@ namespace Hqub.MusicBrainz.API.Entities
         [Obsolete("Use SearchAsync() method.")]
         public static RecordingList Search(string query, int limit = 25, int offset = 0)
         {
-            return SearchAsync<RecordingMetadataWrapper>(EntityName,
+            return SearchAsync<RecordingMetadata>(EntityName,
                 query, limit, offset).Result.Collection;
         }
 
         [Obsolete("Use BrowseAsync() method.")]
         public static RecordingList Browse(string relatedEntity, string value, int limit = 25, int offset = 0, params  string[] inc)
         {
-            return BrowseAsync<RecordingMetadataWrapper>(EntityName,
+            return BrowseAsync<RecordingMetadata>(EntityName,
                 relatedEntity, value, limit, offset, inc).Result.Collection;
         }
 
@@ -72,19 +72,19 @@ namespace Hqub.MusicBrainz.API.Entities
 
         public async static Task<RecordingList> SearchAsync(string query, int limit = 25, int offset = 0)
         {
-            return (await SearchAsync<RecordingMetadataWrapper>(EntityName,
+            return (await SearchAsync<RecordingMetadata>(EntityName,
                 query, limit, offset)).Collection;
         }
 
         public async static Task<RecordingList> SearchAsync(QueryParameters<Recording> query, int limit = 25, int offset = 0)
         {
-            return (await SearchAsync<RecordingMetadataWrapper>(EntityName,
+            return (await SearchAsync<RecordingMetadata>(EntityName,
                 query.ToString(), limit, offset)).Collection;
         }
 
         public async static Task<RecordingList> BrowseAsync(string relatedEntity, string value, int limit = 25, int offset = 0, params  string[] inc)
         {
-            return (await BrowseAsync<RecordingMetadataWrapper>(EntityName,
+            return (await BrowseAsync<RecordingMetadata>(EntityName,
                 relatedEntity, value, limit, offset, inc)).Collection;
         }
 

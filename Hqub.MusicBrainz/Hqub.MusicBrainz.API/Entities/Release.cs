@@ -73,7 +73,7 @@ namespace Hqub.MusicBrainz.API.Entities
         [Obsolete("Use SearchAsync() method.")]
         public static ReleaseList Search(string query, int limit = 25, int offset = 0)
         {
-            return SearchAsync<ReleaseMetadataWrapper>(EntityName,
+            return SearchAsync<ReleaseMetadata>(EntityName,
                 query, limit, offset).Result.Collection;
         }
 
@@ -84,20 +84,20 @@ namespace Hqub.MusicBrainz.API.Entities
 
         public async static Task<ReleaseList> SearchAsync(string query, int limit = 25, int offset = 0)
         {
-            return (await SearchAsync<ReleaseMetadataWrapper>(EntityName,
+            return (await SearchAsync<ReleaseMetadata>(EntityName,
                 query, limit, offset)).Collection;
         }
 
         public async static Task<ReleaseList> SearchAsync(QueryParameters<Release> query, int limit = 25, int offset = 0)
         {
-            return (await SearchAsync<ReleaseMetadataWrapper>(EntityName,
+            return (await SearchAsync<ReleaseMetadata>(EntityName,
                 query.ToString(), limit, offset)).Collection;
         }
 
         public static async Task<ReleaseList> BrowseAsync(string relatedEntity, string value, int limit = 25,
             int offset = 0, params string[] inc)
         {
-            return (await BrowseAsync<ReleaseMetadataWrapper>(EntityName,
+            return (await BrowseAsync<ReleaseMetadata>(EntityName,
                 relatedEntity, value, limit, offset, inc)).Collection;
         }
 

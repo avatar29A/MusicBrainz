@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hqub.MusicBrainz.API.Entities
 {
-	public abstract class MetadataWrapper : Entity
+    public abstract class MetadataWrapper : Entity
 	{
 
 	}
