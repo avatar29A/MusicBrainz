@@ -88,11 +88,7 @@ namespace Hqub.MusicBrainz.API
                 return default(T);
             }
 
-            var obj = (T)serialize.Deserialize(node.CreateReader());
-
-            obj.SetSchema(node);
-
-            return obj;
+            return (T)serialize.Deserialize(node.CreateReader());
         }
 
         private static HttpClient CreateHttpClient(bool automaticDecompression = true, IWebProxy proxy = null)

@@ -12,11 +12,11 @@ namespace Hqub.MusicBrainz.API.Test
     [TestClass]
     public class ReleaseListTests
     {
-        ReleaseMetadataWrapper data;
+        ReleaseMetadata data;
 
         public ReleaseListTests()
         {
-            this.data = TestHelper.Get<ReleaseMetadataWrapper>("release-search.xml", false);
+            this.data = TestHelper.Get<ReleaseMetadata>("release-search.xml", false);
         }
 
         [TestMethod]

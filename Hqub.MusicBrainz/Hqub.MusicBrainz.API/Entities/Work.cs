@@ -1,21 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 
 namespace Hqub.MusicBrainz.API.Entities
 {
-    [XmlType(Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
     [XmlRoot("work", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
-    public class Work : Entity
+    public class Work
     {
+        /// <summary>
+        /// Gets or sets the MusicBrainz id.
+        /// </summary>
         [XmlAttribute("id")]
         public string Id { get; set; }
 
+        /// <summary>
+        /// Gets or sets the title.
+        /// </summary>
         [XmlElement("title")]
         public string Title { get; set; }
 
+        /// <summary>
+        /// Gets or sets the ISW code.
+        /// </summary>
         [XmlElement("iswc")]
         public string ISWC { get; set; }
     }

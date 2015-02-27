@@ -12,11 +12,11 @@ namespace Hqub.MusicBrainz.API.Test
     [TestClass]
     public class ArtistListTests
     {
-        ArtistMetadataWrapper data;
+        ArtistMetadata data;
 
         public ArtistListTests()
         {
-            this.data = TestHelper.Get<ArtistMetadataWrapper>("artist-search.xml", false);
+            this.data = TestHelper.Get<ArtistMetadata>("artist-search.xml", false);
         }
 
         [TestMethod]
