@@ -46,7 +46,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <param name="limit">The number of items to return (default = 25).</param>
         /// <param name="offset">The offset to the items list (enables paging, default = 0).</param>
         /// <returns></returns>
-        protected async static Task<T> SearchAsync<T>(string entity, string query, int limit = 25, int offset = 0) where T : MetadataEntity
+        protected async static Task<T> SearchAsync<T>(string entity, string query, int limit = 25, int offset = 0) where T : MetadataWrapper
         {
             if (string.IsNullOrEmpty(entity))
             {

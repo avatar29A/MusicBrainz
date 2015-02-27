@@ -3,7 +3,7 @@
 namespace Hqub.MusicBrainz.API.Entities
 {
     [XmlRoot("label")]
-    public class Label : Entity
+    public class Label
     {
         /// <summary>
         /// Gets or sets the MusicBrainz id.

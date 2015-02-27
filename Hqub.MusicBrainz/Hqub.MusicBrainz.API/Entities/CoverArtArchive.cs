@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 namespace Hqub.MusicBrainz.API.Entities
 {
     [XmlRoot("cover-art-archive", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
-    public class CoverArtArchive : Entity
+    public class CoverArtArchive
     {
         /// <summary>
         /// Gets or sets a value indicating whether artwork is available or not.

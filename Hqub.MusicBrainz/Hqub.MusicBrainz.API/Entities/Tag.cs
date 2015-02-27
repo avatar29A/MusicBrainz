@@ -3,7 +3,7 @@
 namespace Hqub.MusicBrainz.API.Entities
 {
     [XmlRoot("tag", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
-    public class Tag : Entity
+    public class Tag
     {
         /// <summary>
         /// Gets or sets the count.

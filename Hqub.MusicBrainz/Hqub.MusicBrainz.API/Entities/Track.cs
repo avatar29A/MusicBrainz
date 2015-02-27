@@ -3,7 +3,7 @@
 namespace Hqub.MusicBrainz.API.Entities
 {
     [XmlRoot("track", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
-    public class Track : Entity
+    public class Track
     {
         /// <summary>
         /// Gets or sets the MusicBrainz id.
