@@ -23,7 +23,7 @@ namespace Hqub.MusicBrainz.API.Entities
         public int Length { get; set; }
 
         [XmlElement("recording")]
-        public Recording Recordring { get; set; }
+        public Recording Recording { get; set; }
 
     }
 }

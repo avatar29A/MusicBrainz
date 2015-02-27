@@ -128,7 +128,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual("7791b499-b680-3653-94df-60f76174137c", track.Id);
             Assert.AreEqual(1, track.Position);
 
-            var recording = track.Recordring;
+            var recording = track.Recording;
 
             Assert.IsNotNull(recording);
             Assert.AreEqual("848f9f37-1a47-446b-b7f0-e09547738446", recording.Id);
