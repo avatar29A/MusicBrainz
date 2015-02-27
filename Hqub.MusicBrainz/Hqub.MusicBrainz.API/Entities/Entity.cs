@@ -10,14 +10,6 @@ namespace Hqub.MusicBrainz.API.Entities
 {
     public abstract class Entity
     {
-        // TODO: remove "Raw" property (no need to waste memory)
-        public XElement Raw { get; set; }
-
-        public virtual void SetSchema(XElement schema)
-        {
-            //Raw = schema;
-        }
-
         private static string CreateIncludeQuery(string[] inc)
         {
             return string.Join("+", inc);
