@@ -1,6 +1,8 @@
 MuzicBrainz
 ============
 
+![Alt text](https://travis-ci.org/avatar29A/MusicBrainz.svg "Optional title")
+
 Implementation MuzicBrainze API 2.0 (C#)
 
 NuGet Package: https://www.nuget.org/packages/MusicBrainzAPI/1.0.0
