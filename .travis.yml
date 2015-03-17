@@ -1,4 +1,4 @@
 language: csharp
 solution: Hqub.MusicBrainz/Hqub.MusicBrainz.sln
 script:
-  - xbuild /p:Configuration=Travis qub.MusicBrainz/Hqub.MusicBrainz.sln
+  - xbuild /p:Configuration=Travis Hqub.MusicBrainz/Hqub.MusicBrainz.sln
