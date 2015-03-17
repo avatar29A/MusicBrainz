@@ -1,7 +1,7 @@
 MuzicBrainz
 ============
 
-![Alt text](https://travis-ci.org/avatar29A/MusicBrainz.svg "Optional title")
+[![Build Status](https://travis-ci.org/avatar29A/MusicBrainz.svg)](https://travis-ci.org/avatar29A/MTGO-Free)
 
 Implementation MuzicBrainze API 2.0 (C#)
 
