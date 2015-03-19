@@ -1,11 +1,10 @@
 MuzicBrainz
 ============
 
-[![Build Status](https://travis-ci.org/avatar29A/MusicBrainz.svg)](https://travis-ci.org/avatar29A/MTGO-Free)
-
 Implementation MuzicBrainze API 2.0 (C#)
 
-NuGet Package: https://www.nuget.org/packages/MusicBrainzAPI/1.0.0
+[![Build Status](https://travis-ci.org/avatar29A/MusicBrainz.svg)](https://travis-ci.org/avatar29A/MTGO-Free)
+[![NuGet](https://img.shields.io/nuget/dt/MusicBrainzAPI.svg)](https://www.nuget.org/packages/MusicBrainzAPI/1.0.0)
 
 ##Examples:
 
