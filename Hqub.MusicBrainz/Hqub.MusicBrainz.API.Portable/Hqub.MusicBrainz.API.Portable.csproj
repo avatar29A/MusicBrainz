@@ -95,17 +95,17 @@
     <Compile Include="..\Hqub.MusicBrainz.API\Entities\Metadata.cs">
       <Link>Entities\Metadata.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Metadata\ArtistMetadataWrapper.cs">
-      <Link>Entities\Metadata\ArtistMetadataWrapper.cs</Link>
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Metadata\ArtistMetadata.cs">
+      <Link>Entities\Metadata\ArtistMetadata.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Metadata\RecordingMetadataWrapper.cs">
-      <Link>Entities\Metadata\RecordingMetadataWrapper.cs</Link>
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Metadata\RecordingMetadata.cs">
+      <Link>Entities\Metadata\RecordingMetadata.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Metadata\ReleaseGroupMetadataWrapper.cs">
-      <Link>Entities\Metadata\ReleaseGroupMetadataWrapper.cs</Link>
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Metadata\ReleaseGroupMetadata.cs">
+      <Link>Entities\Metadata\ReleaseGroupMetadata.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Metadata\ReleaseMetadataWrapper.cs">
-      <Link>Entities\Metadata\ReleaseMetadataWrapper.cs</Link>
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Metadata\ReleaseMetadata.cs">
+      <Link>Entities\Metadata\ReleaseMetadata.cs</Link>
     </Compile>
     <Compile Include="..\Hqub.MusicBrainz.API\Entities\NameCredit.cs">
       <Link>Entities\NameCredit.cs</Link>

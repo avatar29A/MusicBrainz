@@ -44,11 +44,7 @@ namespace Hqub.MusicBrainz.API
                 if (node == null)
                     return default(T);
 
-                var obj = (T)serializer.Deserialize(node.CreateReader());
-
-                obj.SetSchema(node);
-
-                return obj;
+                return (T) serializer.Deserialize(node.CreateReader());
             }
         }
 
