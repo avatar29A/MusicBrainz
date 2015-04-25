@@ -1,7 +1,7 @@
 MuzicBrainz
 ============
 
-Implementation MuzicBrainze API 2.0 (C#)
+Implementation MuzicBrainze API 2.0 (C#). Current version: 1.0.1
 
 [![Build Status](https://travis-ci.org/avatar29A/MusicBrainz.svg)](https://travis-ci.org/avatar29A/MusicBrainz)
 [![NuGet](https://img.shields.io/nuget/dt/MusicBrainzAPI.svg)](https://www.nuget.org/packages/MusicBrainzAPI/1.0.0)
