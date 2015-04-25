@@ -108,7 +108,7 @@ namespace Hqub.MusicBrainz.API
 
             var client = new HttpClient(handler);
 
-            client.DefaultRequestHeaders.Add("User-Agent", "Hqub.MusicBrainz/2.0");
+            client.DefaultRequestHeaders.Add("User-Agent", Configuration.UserAgent);
 
             return client;
         }

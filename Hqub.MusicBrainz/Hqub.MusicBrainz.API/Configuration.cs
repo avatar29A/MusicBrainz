@@ -13,6 +13,7 @@ namespace Hqub.MusicBrainz.API
         {
             GenerateCommunicationThrow = true;
             Proxy = null;
+            UserAgent = "Hqub.MusicBrainz/2.0";
         }
 
         /// <summary>
@@ -26,5 +27,10 @@ namespace Hqub.MusicBrainz.API
         /// Gets or sets a <see cref="System.Net.IWebProxy"/> used to query the webservice.
         /// </summary>
         public static IWebProxy Proxy { get; set; }
+
+        /// <summary>
+        /// Allow set cutstom user agent string.
+        /// </summary>
+        public static string UserAgent { get; set; }
     }
 }

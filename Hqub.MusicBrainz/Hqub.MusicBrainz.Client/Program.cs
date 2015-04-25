@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using Hqub.MusicBrainz.API;
 using Hqub.MusicBrainz.API.Entities;
 
 namespace Hqub.MusicBrainz.Client
@@ -31,6 +32,8 @@ namespace Hqub.MusicBrainz.Client
 
         private static async void ShowTracksByAlbum(string artistName, string albumName)
         {
+            Configuration.UserAgent = "Chrome/41.0.2228.0";
+
             var artist = await GetArtist(artistName);
 
             var albums = await Release.BrowseAsync("artist", artist.Id);
