@@ -1,6 +1,8 @@
 MuzicBrainz
 ============
 
+[![Join the chat at https://gitter.im/avatar29A/MusicBrainz](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/avatar29A/MusicBrainz?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Implementation MuzicBrainze API 2.0 (C#). Current version: 1.0.1
 
 [![Build Status](https://travis-ci.org/avatar29A/MusicBrainz.svg)](https://travis-ci.org/avatar29A/MusicBrainz)
