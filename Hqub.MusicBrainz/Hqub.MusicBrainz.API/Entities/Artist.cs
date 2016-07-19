@@ -86,6 +86,9 @@ namespace Hqub.MusicBrainz.API.Entities
         [XmlElement("release-list")]
         public ReleaseList ReleaseLists { get; set; }
 
+        [XmlElement("relation-list")]
+        public RelationList RelationLists { get; set; }
+
         [XmlElement("work-list")]
         public WorkList Works { get; set; }
 
