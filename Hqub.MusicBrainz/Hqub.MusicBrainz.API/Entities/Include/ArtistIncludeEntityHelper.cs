@@ -21,7 +21,7 @@ namespace Hqub.MusicBrainz.API.Entities.Include
 //        public const string RecordingRelation = "recording-rels";
 //        public const string ReleaseRelation = "release-rels";
 //        public const string ReleaseGroupRelation = "release-group-rels";
-//        public const string UrlRelation = "url-rels";
+        public const string UrlRelation = "url-rels";
 //        public const string WorkRelation = "work-rels";
 
 

@@ -60,6 +60,7 @@
     <Compile Include="Entities\Collections\MediumList.cs" />
     <Compile Include="Entities\Collections\RecordingList.cs" />
     <Compile Include="Entities\Collections\ReleaseGroupList.cs" />
+    <Compile Include="Entities\Collections\RelationList.cs" />
     <Compile Include="Entities\Collections\ReleaseList.cs" />
     <Compile Include="Entities\Collections\TagList.cs" />
     <Compile Include="Entities\Collections\TrackList.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Entities\NameCredit.cs" />
     <Compile Include="Entities\Rating.cs" />
     <Compile Include="Entities\Recording.cs" />
+    <Compile Include="Entities\Relation.cs" />
     <Compile Include="Entities\Release.cs" />
     <Compile Include="Entities\ReleaseGroup.cs" />
     <Compile Include="Entities\Tag.cs" />
