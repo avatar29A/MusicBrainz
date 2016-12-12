@@ -62,6 +62,9 @@
     <Compile Include="..\Hqub.MusicBrainz.API\Entities\Collections\RecordingList.cs">
       <Link>Entities\Collections\RecordingList.cs</Link>
     </Compile>
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Collections\RelationList.cs">
+      <Link>Entities\Collections\RelationList.cs</Link>
+    </Compile>
     <Compile Include="..\Hqub.MusicBrainz.API\Entities\Collections\ReleaseGroupList.cs">
       <Link>Entities\Collections\ReleaseGroupList.cs</Link>
     </Compile>
@@ -115,6 +118,9 @@
     </Compile>
     <Compile Include="..\Hqub.MusicBrainz.API\Entities\Recording.cs">
       <Link>Entities\Recording.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Relation.cs">
+      <Link>Entities\Relation.cs</Link>
     </Compile>
     <Compile Include="..\Hqub.MusicBrainz.API\Entities\Release.cs">
       <Link>Entities\Release.cs</Link>
