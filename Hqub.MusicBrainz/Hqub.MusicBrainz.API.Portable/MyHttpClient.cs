@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.Web.Http;
 
 namespace Hqub.MusicBrainz.API
 {
@@ -31,7 +31,7 @@ namespace Hqub.MusicBrainz.API
 
             try
             {
-                response = await _httpClient.SendRequestAsync(_requestMessage);
+                response = await _httpClient.SendAsync(_requestMessage);
             }
             catch (Exception ex)
             {

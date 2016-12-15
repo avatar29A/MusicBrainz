@@ -6,10 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Xml.Serialization;
-using Windows.Web.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Storage.Streams;
 using Hqub.MusicBrainz.API;
+using System.Net.Http;
 
 namespace Hqub.MusicBrainz.API
 {
@@ -25,8 +24,8 @@ namespace Hqub.MusicBrainz.API
             MyHttpClient httpClient = new MyHttpClient(url);
             HttpResponseMessage response = await httpClient.SendRequestAsync();
 
-            IBuffer responseBuffer = await response.Content.ReadAsBufferAsync();
-            using (var stream = responseBuffer.AsStream())
+            var responseBuffer = await response.Content.ReadAsStreamAsync();
+            using (var stream = responseBuffer)
             {
                 var xml = XDocument.Load(stream);
                 var serializer = new XmlSerializer(typeof(T));
