@@ -1,6 +1,5 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hqub.MusicBrainz.API.Entities.Metadata;
+﻿using Hqub.MusicBrainz.API.Entities.Metadata;
+using NUnit.Framework;
 
 namespace Hqub.MusicBrainz.API.Test
 {
@@ -8,8 +7,7 @@ namespace Hqub.MusicBrainz.API.Test
     // Recording.Search("artist:(calexico) AND recording:(alone again or) AND NOT secondarytype:(live)", 10);
     //
     // http://musicbrainz.org/ws/2/recording?query=artist:(calexico)%20AND%20recording:(alone%20again%20or)%20AND%20NOT%20secondarytype:(live)&limit=10
-
-    [TestClass]
+    
     public class RecordingListTests
     {
         RecordingMetadata data;
@@ -19,7 +17,7 @@ namespace Hqub.MusicBrainz.API.Test
             this.data = TestHelper.Get<RecordingMetadata>("recording-search.xml", false);
         }
 
-        [TestMethod]
+        [Test]
         public void TestRecordingListQueryCount()
         {
             var recordings = data.Collection;
@@ -27,7 +25,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual(8, recordings.QueryCount);
         }
 
-        [TestMethod]
+        [Test]
         public void TestRecordingListCount()
         {
             var recordings = data.Collection.Items;
@@ -35,7 +33,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual(8, recordings.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void TestRecordingListElements()
         {
             var recording = data.Collection.Items[0];

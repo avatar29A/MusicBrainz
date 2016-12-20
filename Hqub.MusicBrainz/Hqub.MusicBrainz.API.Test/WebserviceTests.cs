@@ -1,14 +1,13 @@
-﻿using System;
+﻿using NUnit.Framework;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hqub.MusicBrainz.API.Test
 {
-    [TestClass, Ignore]
+    [Ignore("Ignore for offline testing.")]
     public class WebserviceTests
     {
-        [TestMethod]
+        [Test]
         public async Task TestArtistGetAsync()
         {
             var artist = await Entities.Artist.GetAsync("c3cceeed-3332-4cf0-8c4c-bbde425147b6");
@@ -19,7 +18,7 @@ namespace Hqub.MusicBrainz.API.Test
                 string.Format("Expected 'Scorpions' instead '{0}'.", artist.Name));
         }
 
-        [TestMethod]
+        [Test]
         public async Task TestArtistSearchAsync()
         {
             var artists = (await Entities.Artist.SearchAsync("scorpions")).Items;
@@ -27,7 +26,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreNotEqual(0, artists.Count, "Results is Empty.");
         }
 
-        [TestMethod]
+        [Test]
         public async Task TestReleaseGetAsync()
         {
             var release = await Entities.Release.GetAsync("ffad013a-4f64-44dd-bfb3-c6360fbd042d");
@@ -38,7 +37,7 @@ namespace Hqub.MusicBrainz.API.Test
                 string.Format("Album title = {0}, expect Comeblack", release.Title));
         }
 
-        [TestMethod]
+        [Test]
         public async Task TestReleaseSearchAsync()
         {
             var releases = (await Entities.Release.SearchAsync("Comeblack")).Items;
@@ -46,7 +45,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreNotEqual(0, releases.Count, "Result is empty");
         }
 
-        [TestMethod]
+        [Test]
         public async Task TestReleaseBrowseAsync()
         {
             var artists = (await Entities.Artist.SearchAsync("The Scorpions")).Items;
@@ -59,7 +58,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual(releases.Count, 40);
         }
 
-        [TestMethod]
+        [Test]
         public async Task TestRecordingGetAsync()
         {
             var recording = await Entities.Recording.GetAsync("fc4d4d9c-58b7-4dba-a608-753ea752ccce");
@@ -70,7 +69,7 @@ namespace Hqub.MusicBrainz.API.Test
                 string.Format("Expect 'The Wind Of Change' instead {0}", recording.Title));
         }
 
-        [TestMethod]
+        [Test]
         public async Task TestRecordingSearchAsync()
         {
             var recordings = (await Entities.Recording.SearchAsync("The Wind of Change")).Items;
@@ -78,7 +77,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreNotEqual(0, recordings.Count, "Result is empty");
         }
 
-        [TestMethod]
+        [Test]
         public async Task TestRecordingBrowseAsync()
         {
             var artists = (await Entities.Artist.SearchAsync("The Scorpions")).Items;

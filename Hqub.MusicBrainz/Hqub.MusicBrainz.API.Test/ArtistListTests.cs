@@ -1,6 +1,5 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hqub.MusicBrainz.API.Entities.Metadata;
+﻿using Hqub.MusicBrainz.API.Entities.Metadata;
+using NUnit.Framework;
 
 namespace Hqub.MusicBrainz.API.Test
 {
@@ -9,7 +8,6 @@ namespace Hqub.MusicBrainz.API.Test
     //
     // http://musicbrainz.org/ws/2/artist?query=artist:(bob%20dylan)&limit=10
 
-    [TestClass]
     public class ArtistListTests
     {
         ArtistMetadata data;
@@ -19,7 +17,7 @@ namespace Hqub.MusicBrainz.API.Test
             this.data = TestHelper.Get<ArtistMetadata>("artist-search.xml", false);
         }
 
-        [TestMethod]
+        [Test]
         public void TestArtistListQueryCount()
         {
             var artists = data.Collection;
@@ -27,7 +25,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual(1899, artists.QueryCount);
         }
 
-        [TestMethod]
+        [Test]
         public void TestArtistListCount()
         {
             var artists = data.Collection.Items;
@@ -35,7 +33,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual(10, artists.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void TestArtistListElements()
         {
             var artist = data.Collection.Items[0];

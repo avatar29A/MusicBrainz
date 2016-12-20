@@ -1,6 +1,5 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hqub.MusicBrainz.API.Entities.Metadata;
+﻿using Hqub.MusicBrainz.API.Entities.Metadata;
+using NUnit.Framework;
 
 namespace Hqub.MusicBrainz.API.Test
 {
@@ -9,7 +8,6 @@ namespace Hqub.MusicBrainz.API.Test
     //
     // http://musicbrainz.org/ws/2/release?query=artist:(giant%20sand)%20release:(tucson)&limit=10
 
-    [TestClass]
     public class ReleaseListTests
     {
         ReleaseMetadata data;
@@ -19,7 +17,7 @@ namespace Hqub.MusicBrainz.API.Test
             this.data = TestHelper.Get<ReleaseMetadata>("release-search.xml", false);
         }
 
-        [TestMethod]
+        [Test]
         public void TestReleaseListQueryCount()
         {
             var releases = data.Collection;
@@ -27,7 +25,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual(692, releases.QueryCount);
         }
 
-        [TestMethod]
+        [Test]
         public void TestReleaseListCount()
         {
             var releases = data.Collection.Items;
@@ -35,7 +33,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual(10, releases.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void TestReleaseListElements()
         {
             var release = data.Collection.Items[0];
