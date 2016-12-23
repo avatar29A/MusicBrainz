@@ -1,8 +1,5 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hqub.MusicBrainz.API.Entities;
+﻿using Hqub.MusicBrainz.API.Entities;
+using NUnit.Framework;
 
 namespace Hqub.MusicBrainz.API.Test
 {
@@ -10,8 +7,7 @@ namespace Hqub.MusicBrainz.API.Test
     // Release.Get("12195c41-6136-4dfd-acf1-9923dadc73e2", "artists", "labels", "recordings", "release-groups");
     //
     // http://musicbrainz.org/ws/2/release/12195c41-6136-4dfd-acf1-9923dadc73e2/?inc=artists+labels+recordings+release-groups
-    
-    [TestClass]
+
     public class ReleaseTests
     {
         Release release;
@@ -21,14 +17,14 @@ namespace Hqub.MusicBrainz.API.Test
             this.release = TestHelper.Get<Release>("release-get.xml");
         }
 
-        [TestMethod]
+        [Test]
         public void TestReleaseAttributes()
         {
             Assert.IsNotNull(release);
             Assert.AreEqual("12195c41-6136-4dfd-acf1-9923dadc73e2", release.Id);
         }
 
-        [TestMethod]
+        [Test]
         public void TestReleaseElements()
         {
             Assert.AreEqual("Tucson: A Country Rock Opera", release.Title);
@@ -39,7 +35,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual("809236126221", release.Barcode);
         }
 
-        [TestMethod]
+        [Test]
         public void TestReleaseTextRepresentation()
         {
             var text = release.TextRepresentation;
@@ -49,7 +45,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual("Latn", text.Script);
         }
 
-        [TestMethod]
+        [Test]
         public void TestReleaseArtistCredit()
         {
             var credits = release.Credits;
@@ -61,7 +57,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual("249eb550-505e-43ef-ac50-e8c605706ff1", credits[0].Artist.Id);
         }
 
-        [TestMethod]
+        [Test]
         public void TestReleaseGroup()
         {
             var group = release.ReleaseGroup;
@@ -76,7 +72,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual("Album", group.PrimaryType);
         }
 
-        [TestMethod]
+        [Test]
         public void TestReleaseCoverArtArchive()
         {
             var coverart = release.CoverArtArchive;
@@ -89,7 +85,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual(1, coverart.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void TestReleaseLabels()
         {
             var labels = release.Labels;
@@ -104,7 +100,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual("Fire Records", label.Name);
         }
 
-        [TestMethod]
+        [Test]
         public void TestReleaseMediumList()
         {
             var mediums = release.MediumList.Items;
@@ -113,7 +109,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual(1, mediums.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void TestReleaseMediumListTracks()
         {
             var tracks = release.MediumList.Items[0].Tracks.Items;

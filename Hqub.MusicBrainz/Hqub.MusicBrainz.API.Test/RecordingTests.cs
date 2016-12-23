@@ -1,6 +1,5 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hqub.MusicBrainz.API.Entities;
+﻿using Hqub.MusicBrainz.API.Entities;
+using NUnit.Framework;
 
 namespace Hqub.MusicBrainz.API.Test
 {
@@ -8,8 +7,7 @@ namespace Hqub.MusicBrainz.API.Test
     // Recording.Get("12195c41-6136-4dfd-acf1-9923dadc73e2", "release-groups", "tags", "works");
     //
     // http://musicbrainz.org/ws/2/recording/9408b8ce-9b95-4fb0-ac70-595d054a15c6/?inc=artists+releases+tags
-
-    [TestClass]
+    
     public class RecordingTests
     {
         Recording recording;
@@ -19,14 +17,14 @@ namespace Hqub.MusicBrainz.API.Test
             this.recording = TestHelper.Get<Recording>("recording-get.xml");
         }
 
-        [TestMethod]
+        [Test]
         public void TestRecordingAttributes()
         {
             Assert.IsNotNull(recording);
             Assert.AreEqual("9408b8ce-9b95-4fb0-ac70-595d054a15c6", recording.Id);
         }
 
-        [TestMethod]
+        [Test]
         public void TestRecordingElements()
         {
             Assert.AreEqual("Alone Again Or", recording.Title);
@@ -37,7 +35,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.IsNotNull(recording.Tags);
         }
 
-        [TestMethod]
+        [Test]
         public void TestRecordingArtistCredits()
         {
             var credits = recording.Credits;
@@ -51,7 +49,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual("Calexico", artist.Name);
         }
 
-        [TestMethod]
+        [Test]
         public void TestRecordingReleases()
         {
             var releases = recording.Releases.Items;
@@ -66,7 +64,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual("Convict Pool", release.Title);
         }
 
-        [TestMethod]
+        [Test]
         public void TestRecordingTags()
         {
             var tags = recording.Tags.Items;

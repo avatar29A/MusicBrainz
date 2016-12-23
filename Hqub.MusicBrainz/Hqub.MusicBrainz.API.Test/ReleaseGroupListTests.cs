@@ -1,6 +1,5 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hqub.MusicBrainz.API.Entities.Metadata;
+﻿using Hqub.MusicBrainz.API.Entities.Metadata;
+using NUnit.Framework;
 
 namespace Hqub.MusicBrainz.API.Test
 {
@@ -8,8 +7,7 @@ namespace Hqub.MusicBrainz.API.Test
     // ReleaseGroup.Search("artist:(bob dylan)", 10);
     //
     // http://musicbrainz.org/ws/2/release-group?query=artist:%28bob%20dylan%29&limit=10
-
-    [TestClass]
+    
     public class ReleaseGroupListTests
     {
         ReleaseGroupMetadata data;
@@ -19,7 +17,7 @@ namespace Hqub.MusicBrainz.API.Test
             this.data = TestHelper.Get<ReleaseGroupMetadata>("releasegroup-search.xml", false);
         }
 
-        [TestMethod]
+        [Test]
         public void TestReleaseGroupListQueryCount()
         {
             var group = data.Collection;
@@ -27,7 +25,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual(2787, group.QueryCount);
         }
 
-        [TestMethod]
+        [Test]
         public void TestReleaseGroupListCount()
         {
             var group = data.Collection.Items;
@@ -35,7 +33,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual(10, group.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void TestReleaseGroupListElements()
         {
             var group = data.Collection.Items[0];

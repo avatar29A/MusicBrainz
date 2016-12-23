@@ -1,7 +1,5 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hqub.MusicBrainz.API.Entities.Metadata;
-using Hqub.MusicBrainz.API.Entities;
+﻿using Hqub.MusicBrainz.API.Entities;
+using NUnit.Framework;
 
 namespace Hqub.MusicBrainz.API.Test
 {
@@ -10,7 +8,6 @@ namespace Hqub.MusicBrainz.API.Test
     //
     // http://musicbrainz.org/ws/2/release-group/fc325dd3-73ed-36aa-9c77-6b65a958e3cf?inc=artists+releases
     
-    [TestClass]
     public class ReleaseGroupTests
     {
         ReleaseGroup group;
@@ -20,7 +17,7 @@ namespace Hqub.MusicBrainz.API.Test
             this.group = TestHelper.Get<ReleaseGroup>("releasegroup-get.xml");
         }
 
-        [TestMethod]
+        [Test]
         public void TestReleaseGroupAttributes()
         {
             Assert.IsNotNull(group);
@@ -28,7 +25,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual("Album", group.Type);
         }
 
-        [TestMethod]
+        [Test]
         public void TestReleaseGroupElements()
         {
             Assert.AreEqual("Desire", group.Title);
@@ -36,7 +33,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual("1976-01-05", group.FirstReleaseDate);
         }
 
-        [TestMethod]
+        [Test]
         public void TestReleaseGroupCredits()
         {
             var credits = group.Credits;
@@ -50,7 +47,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual("Bob Dylan", artist.Name);
         }
 
-        [TestMethod]
+        [Test]
         public void TestReleaseGroupReleases()
         {
             var releases = group.Releases;

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hqub.MusicBrainz.API.Entities;
+﻿using Hqub.MusicBrainz.API.Entities;
+using NUnit.Framework;
 
 namespace Hqub.MusicBrainz.API.Test
 {
@@ -11,7 +8,6 @@ namespace Hqub.MusicBrainz.API.Test
     //
     // http://musicbrainz.org/ws/2/artist/72c536dc-7137-4477-a521-567eeb840fa8/?inc=release-groups+tags+works
 
-    [TestClass]
     public class ArtistTests
     {
         Artist artist;
@@ -21,7 +17,7 @@ namespace Hqub.MusicBrainz.API.Test
             this.artist = TestHelper.Get<Artist>("artist-get.xml");
         }
 
-        [TestMethod]
+        [Test]
         public void TestArtistAttributes()
         {
             Assert.IsNotNull(artist);
@@ -29,7 +25,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual("Person", artist.Type);
         }
 
-        [TestMethod]
+        [Test]
         public void TestArtistElements()
         {
             Assert.AreEqual("72c536dc-7137-4477-a521-567eeb840fa8", artist.Id);
@@ -46,7 +42,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.IsNotNull(artist.Tags);
         }
 
-        [TestMethod]
+        [Test]
         public void TestArtistReleaseGroups()
         {
             var list = artist.ReleaseGroups.Items;
@@ -67,7 +63,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual("Album", group.PrimaryType);
         }
 
-        [TestMethod]
+        [Test]
         public void TestArtistTags()
         {
             var list = artist.Tags.Items;
@@ -83,7 +79,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual("1960s", tag.Name);
         }
 
-        [TestMethod]
+        [Test]
         public void TestArtistWorks()
         {
             var list = artist.Works.Items;

@@ -1,13 +1,11 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hqub.MusicBrainz.API.Entities;
+﻿using Hqub.MusicBrainz.API.Entities;
+using NUnit.Framework;
 
 namespace Hqub.MusicBrainz.API.Test
 {
-    [TestClass]
     public class QueryParametersTests
     {
-        [TestMethod]
+        [Test]
         public void TestSimpleQuery()
         {
             var query = new QueryParameters<Artist>();
@@ -17,7 +15,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual("arid:1", query.ToString());
         }
 
-        [TestMethod]
+        [Test]
         public void TestNegateSimpleQuery()
         {
             var query = new QueryParameters<Artist>();
@@ -27,7 +25,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual("NOT arid:1", query.ToString());
         }
 
-        [TestMethod]
+        [Test]
         public void TestQuoteSimpleQuery()
         {
             var query = new QueryParameters<Artist>();
@@ -37,7 +35,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual("artist:\"bob dylan\"", query.ToString());
         }
 
-        [TestMethod]
+        [Test]
         public void TestAlreadyQuotedSimpleQuery()
         {
             var query = new QueryParameters<Artist>();
@@ -47,7 +45,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual("artist:\"rolling stones\"", query.ToString());
         }
 
-        [TestMethod]
+        [Test]
         public void TestInlineSimpleQuery()
         {
             var query = new QueryParameters<Artist>();
@@ -57,7 +55,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual("artist:(\"rolling stones\" OR jagger)", query.ToString());
         }
 
-        [TestMethod]
+        [Test]
         public void TestInlineBracketsSimpleQuery()
         {
             var query = new QueryParameters<Artist>();
@@ -67,7 +65,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual("artist:(\"rolling stones\" OR jagger)", query.ToString());
         }
 
-        [TestMethod]
+        [Test]
         public void TestMultiQuery()
         {
             var query = new QueryParameters<Artist>();
@@ -78,7 +76,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual("artist:stones AND tag:rock", query.ToString());
         }
 
-        [TestMethod]
+        [Test]
         public void TestNegateMultiQuery()
         {
             var query = new QueryParameters<Artist>();
@@ -89,7 +87,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual("artist:stones AND NOT tag:rock", query.ToString());
         }
 
-        [TestMethod]
+        [Test]
         public void TestQuoteMultiQuery()
         {
             var query = new QueryParameters<Artist>();
@@ -100,7 +98,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual("artist:\"rolling stones\" AND tag:rock", query.ToString());
         }
 
-        [TestMethod]
+        [Test]
         public void TestInlineMultiQuery()
         {
             var query = new QueryParameters<Artist>();
