@@ -84,6 +84,9 @@
     <Compile Include="..\Hqub.MusicBrainz.API\Entities\Entity.cs">
       <Link>Entities\Entity.cs</Link>
     </Compile>
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Include\ArtistIncludeEntityHelper.cs">
+      <Link>Entities\Include\ArtistIncludeEntityHelper.cs</Link>
+    </Compile>
     <Compile Include="..\Hqub.MusicBrainz.API\Entities\Label.cs">
       <Link>Entities\Label.cs</Link>
     </Compile>
