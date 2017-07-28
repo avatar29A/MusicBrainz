@@ -1,12 +1,13 @@
-﻿using Hqub.MusicBrainz.API.Entities;
-using NUnit.Framework;
-
+﻿
 namespace Hqub.MusicBrainz.API.Test
 {
-    // Resource: release-group-get.xml
+    using Hqub.MusicBrainz.API.Entities;
+    using NUnit.Framework;
+
+    // Resource: release-group-get.json
     // ReleaseGroup.Get("fc325dd3-73ed-36aa-9c77-6b65a958e3cf", "artists", "releases");
     //
-    // http://musicbrainz.org/ws/2/release-group/fc325dd3-73ed-36aa-9c77-6b65a958e3cf?inc=artists+releases
+    // http://musicbrainz.org/ws/2/release-group/fc325dd3-73ed-36aa-9c77-6b65a958e3cf?inc=artists+releases&fmt=json
     
     public class ReleaseGroupTests
     {
@@ -14,20 +15,15 @@ namespace Hqub.MusicBrainz.API.Test
 
         public ReleaseGroupTests()
         {
-            this.group = TestHelper.Get<ReleaseGroup>("releasegroup-get.xml");
-        }
-
-        [Test]
-        public void TestReleaseGroupAttributes()
-        {
-            Assert.IsNotNull(group);
-            Assert.AreEqual("fc325dd3-73ed-36aa-9c77-6b65a958e3cf", group.Id);
-            Assert.AreEqual("Album", group.Type);
+            this.group = TestHelper.GetJson<ReleaseGroup>("releasegroup-get.json");
         }
 
         [Test]
         public void TestReleaseGroupElements()
         {
+            Assert.IsNotNull(group);
+            Assert.AreEqual("fc325dd3-73ed-36aa-9c77-6b65a958e3cf", group.Id);
+            
             Assert.AreEqual("Desire", group.Title);
             Assert.AreEqual("Album", group.PrimaryType);
             Assert.AreEqual("1976-01-05", group.FirstReleaseDate);

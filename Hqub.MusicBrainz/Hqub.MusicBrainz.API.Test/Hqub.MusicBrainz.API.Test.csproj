@@ -44,6 +44,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArtistListTests.cs" />
@@ -60,16 +62,14 @@
     <Compile Include="WebserviceTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Data\artist-get.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Data\artist-search.xml" />
-    <EmbeddedResource Include="Data\recording-get.xml" />
-    <EmbeddedResource Include="Data\recording-search.xml" />
-    <EmbeddedResource Include="Data\release-get.xml" />
-    <EmbeddedResource Include="Data\release-search.xml" />
-    <EmbeddedResource Include="Data\releasegroup-get.xml" />
-    <EmbeddedResource Include="Data\releasegroup-search.xml" />
+    <EmbeddedResource Include="Data\artist-get.json" />
+    <EmbeddedResource Include="Data\artist-search.json" />
+    <EmbeddedResource Include="Data\recording-get.json" />
+    <EmbeddedResource Include="Data\recording-search.json" />
+    <EmbeddedResource Include="Data\release-get.json" />
+    <EmbeddedResource Include="Data\release-search.json" />
+    <EmbeddedResource Include="Data\releasegroup-get.json" />
+    <EmbeddedResource Include="Data\releasegroup-search.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hqub.MusicBrainz.API\Hqub.MusicBrainz.API.csproj">

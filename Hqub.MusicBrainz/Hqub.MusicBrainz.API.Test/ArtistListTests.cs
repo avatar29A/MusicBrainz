@@ -1,34 +1,35 @@
-﻿using Hqub.MusicBrainz.API.Entities.Metadata;
-using NUnit.Framework;
-
+﻿
 namespace Hqub.MusicBrainz.API.Test
 {
-    // Resource: artist-search.xml
+    using NUnit.Framework;
+    using Hqub.MusicBrainz.API.Entities.Collections;
+
+    // Resource: artist-search.json
     // Artist.Search("artist:(bob dylan)", 10);
     //
-    // http://musicbrainz.org/ws/2/artist?query=artist:(bob%20dylan)&limit=10
+    // http://musicbrainz.org/ws/2/artist?query=artist:(bob%20dylan)&limit=10&fmt=json
 
     public class ArtistListTests
     {
-        ArtistMetadata data;
+        ArtistList data;
 
         public ArtistListTests()
         {
-            this.data = TestHelper.Get<ArtistMetadata>("artist-search.xml", false);
+            this.data = TestHelper.GetJson<ArtistList>("artist-search.json");
         }
 
         [Test]
         public void TestArtistListQueryCount()
         {
-            var artists = data.Collection;
+            var artists = data;
 
-            Assert.AreEqual(1899, artists.QueryCount);
+            Assert.AreEqual(1899, artists.Count);
         }
 
         [Test]
         public void TestArtistListCount()
         {
-            var artists = data.Collection.Items;
+            var artists = data.Items;
 
             Assert.AreEqual(10, artists.Count);
         }
@@ -36,7 +37,7 @@ namespace Hqub.MusicBrainz.API.Test
         [Test]
         public void TestArtistListElements()
         {
-            var artist = data.Collection.Items[0];
+            var artist = data.Items[0];
 
             Assert.AreEqual("72c536dc-7137-4477-a521-567eeb840fa8", artist.Id);
             Assert.AreEqual("Person", artist.Type);

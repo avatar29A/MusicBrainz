@@ -1,12 +1,13 @@
-﻿using Hqub.MusicBrainz.API.Entities;
-using NUnit.Framework;
-
+﻿
 namespace Hqub.MusicBrainz.API.Test
 {
-    // Resource: artist-get.xml
+    using Hqub.MusicBrainz.API.Entities;
+    using NUnit.Framework;
+
+    // Resource: artist-get.json
     // Artist.Get("12195c41-6136-4dfd-acf1-9923dadc73e2", "release-groups", "tags", "works");
     //
-    // http://musicbrainz.org/ws/2/artist/72c536dc-7137-4477-a521-567eeb840fa8/?inc=release-groups+tags+works
+    // http://musicbrainz.org/ws/2/artist/72c536dc-7137-4477-a521-567eeb840fa8/?inc=release-groups+tags+works&fmt=json
 
     public class ArtistTests
     {
@@ -14,7 +15,7 @@ namespace Hqub.MusicBrainz.API.Test
 
         public ArtistTests()
         {
-            this.artist = TestHelper.Get<Artist>("artist-get.xml");
+            this.artist = TestHelper.GetJson<Artist>("artist-get.json");
         }
 
         [Test]
@@ -45,7 +46,7 @@ namespace Hqub.MusicBrainz.API.Test
         [Test]
         public void TestArtistReleaseGroups()
         {
-            var list = artist.ReleaseGroups.Items;
+            var list = artist.ReleaseGroups;
 
             Assert.IsNotNull(list);
             Assert.AreEqual(25, list.Count);
@@ -56,7 +57,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.IsNotNull(group);
 
             Assert.AreEqual("329fb554-2a81-3d8a-8e22-ec2c66810019", group.Id);
-            Assert.AreEqual("Album", group.Type);
+            //Assert.AreEqual("Album", group.Type);
 
             Assert.AreEqual("Blonde on Blonde", group.Title);
             Assert.AreEqual("1966-05-16", group.FirstReleaseDate);
@@ -66,7 +67,7 @@ namespace Hqub.MusicBrainz.API.Test
         [Test]
         public void TestArtistTags()
         {
-            var list = artist.Tags.Items;
+            var list = artist.Tags;
 
             Assert.IsNotNull(list);
             Assert.AreEqual(24, list.Count);
@@ -82,7 +83,7 @@ namespace Hqub.MusicBrainz.API.Test
         [Test]
         public void TestArtistWorks()
         {
-            var list = artist.Works.Items;
+            var list = artist.Works;
 
             Assert.IsNotNull(list);
             Assert.AreEqual(25, list.Count);

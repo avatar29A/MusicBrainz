@@ -1,20 +1,21 @@
-﻿using Hqub.MusicBrainz.API.Entities;
-using NUnit.Framework;
-
+﻿
 namespace Hqub.MusicBrainz.API.Test
 {
-    // Resource: recording-get.xml
+    using Hqub.MusicBrainz.API.Entities;
+    using NUnit.Framework;
+
+    // Resource: recording-get.json
     // Recording.Get("12195c41-6136-4dfd-acf1-9923dadc73e2", "release-groups", "tags", "works");
     //
-    // http://musicbrainz.org/ws/2/recording/9408b8ce-9b95-4fb0-ac70-595d054a15c6/?inc=artists+releases+tags
-    
+    // http://musicbrainz.org/ws/2/recording/9408b8ce-9b95-4fb0-ac70-595d054a15c6/?inc=artists+releases+tags&fmt=json
+
     public class RecordingTests
     {
         Recording recording;
 
         public RecordingTests()
         {
-            this.recording = TestHelper.Get<Recording>("recording-get.xml");
+            this.recording = TestHelper.GetJson<Recording>("recording-get.json");
         }
 
         [Test]
@@ -52,7 +53,7 @@ namespace Hqub.MusicBrainz.API.Test
         [Test]
         public void TestRecordingReleases()
         {
-            var releases = recording.Releases.Items;
+            var releases = recording.Releases;
 
             Assert.AreEqual(4, releases.Count);
             //Assert.AreEqual(4, releases.QueryCount);
@@ -67,7 +68,7 @@ namespace Hqub.MusicBrainz.API.Test
         [Test]
         public void TestRecordingTags()
         {
-            var tags = recording.Tags.Items;
+            var tags = recording.Tags;
 
             Assert.AreEqual(3, tags.Count);
 

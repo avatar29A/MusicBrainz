@@ -1,34 +1,35 @@
-﻿using Hqub.MusicBrainz.API.Entities.Metadata;
-using NUnit.Framework;
-
+﻿
 namespace Hqub.MusicBrainz.API.Test
 {
-    // Resource: recording-search.xml
+    using Hqub.MusicBrainz.API.Entities.Collections;
+    using NUnit.Framework;
+
+    // Resource: recording-search.json
     // Recording.Search("artist:(calexico) AND recording:(alone again or) AND NOT secondarytype:(live)", 10);
     //
-    // http://musicbrainz.org/ws/2/recording?query=artist:(calexico)%20AND%20recording:(alone%20again%20or)%20AND%20NOT%20secondarytype:(live)&limit=10
-    
+    // http://musicbrainz.org/ws/2/recording?query=artist:(calexico)%20AND%20recording:(alone%20again%20or)%20AND%20NOT%20secondarytype:(live)&limit=10&fmt=json
+
     public class RecordingListTests
     {
-        RecordingMetadata data;
+        RecordingList data;
 
         public RecordingListTests()
         {
-            this.data = TestHelper.Get<RecordingMetadata>("recording-search.xml", false);
+            this.data = TestHelper.GetJson<RecordingList>("recording-search.json");
         }
 
         [Test]
         public void TestRecordingListQueryCount()
         {
-            var recordings = data.Collection;
+            var recordings = data;
 
-            Assert.AreEqual(8, recordings.QueryCount);
+            Assert.AreEqual(8, recordings.Count);
         }
 
         [Test]
         public void TestRecordingListCount()
         {
-            var recordings = data.Collection.Items;
+            var recordings = data.Items;
 
             Assert.AreEqual(8, recordings.Count);
         }
@@ -36,7 +37,7 @@ namespace Hqub.MusicBrainz.API.Test
         [Test]
         public void TestRecordingListElements()
         {
-            var recording = data.Collection.Items[0];
+            var recording = data.Items[0];
 
             Assert.AreEqual("89d8f933-7c31-47c6-8f80-4927e93e7896", recording.Id);
             Assert.AreEqual(100, recording.Score);
