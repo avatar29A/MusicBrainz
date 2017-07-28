@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
-using Hqub.MusicBrainz.API.Entities.Collections;
-using Hqub.MusicBrainz.API.Entities.Metadata;
-
+﻿
 namespace Hqub.MusicBrainz.API.Entities
 {
-    [XmlRoot("recording", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
-    public class Recording : Entity
+    using Hqub.MusicBrainz.API.Entities.Collections;
+    using System;
+    using System.Collections.Generic;
+    using System.Runtime.Serialization;
+    using System.Threading.Tasks;
+
+    [DataContract(Name = "recording")]
+    public class Recording
     {
         public const string EntityName = "recording";
 
@@ -17,46 +17,45 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <summary>
         /// Gets or sets the score (only available in search results).
         /// </summary>
-        [XmlAttribute("score", Namespace = "http://musicbrainz.org/ns/ext#-2.0")]
+        [DataMember(Name = "score")]
         public int Score { get; set; }
 
         /// <summary>
         /// Gets or sets the MusicBrainz id.
         /// </summary>
-        [XmlAttribute("id")]
+        [DataMember(Name = "id")]
         public string Id { get; set; }
 
         /// <summary>
         /// Gets or sets the title.
         /// </summary>
-        [XmlElement("title")]
+        [DataMember(Name = "title")]
         public string Title { get; set; }
 
         /// <summary>
         /// Gets or sets the length.
         /// </summary>
-        [XmlElement("length")]
+        [DataMember(Name = "length")]
         public int Length { get; set; }
 
         /// <summary>
         /// Gets or sets the disambiguation.
         /// </summary>
-        [XmlElement("disambiguation")]
+        [DataMember(Name = "disambiguation")]
         public string Disambiguation { get; set; }
 
         #endregion
 
         #region Include
 
-        [XmlElement("tag-list")]
-        public TagList Tags { get; set; }
+        [DataMember(Name = "tags")]
+        public List<Tag> Tags { get; set; }
 
-        [XmlArray("artist-credit")]
-        [XmlArrayItem("name-credit")]
+        [DataMember(Name = "artist-credit")]
         public List<NameCredit> Credits { get; set; }
 
-        [XmlElement("release-list")]
-        public ReleaseList Releases { get; set; }
+        [DataMember(Name = "releases")]
+        public List<Release> Releases { get; set; }
 
         #endregion
 

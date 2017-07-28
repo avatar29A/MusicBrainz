@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
-using Hqub.MusicBrainz.API.Entities.Collections;
-using Hqub.MusicBrainz.API.Entities.Metadata;
-
+﻿
 namespace Hqub.MusicBrainz.API.Entities
 {
-    [XmlRoot("release-group", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
-    public class ReleaseGroup : Entity
+    using Hqub.MusicBrainz.API.Entities.Collections;
+    using System;
+    using System.Collections.Generic;
+    using System.Runtime.Serialization;
+    using System.Threading.Tasks;
+
+    [DataContract(Name = "release-group")]
+    public class ReleaseGroup
     {
         public const string EntityName = "release-group";
 
@@ -17,61 +17,59 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <summary>
         /// Gets or sets the score (only available in search results).
         /// </summary>
-        [XmlAttribute("score", Namespace = "http://musicbrainz.org/ns/ext#-2.0")]
+        [DataMember(Name = "score")]
         public int Score { get; set; }
 
         /// <summary>
         /// Gets or sets the MusicBrainz id.
         /// </summary>
-        [XmlAttribute("id")]
+        [DataMember(Name = "id")]
         public string Id { get; set; }
 
         /// <summary>
         /// Gets or sets the type (like album, single or ep).
         /// </summary>
-        [XmlAttribute("type")]
+        [DataMember(Name = "type")]
         public string Type { get; set; }
 
         /// <summary>
         /// Gets or sets the title.
         /// </summary>
-        [XmlElement("title")]
+        [DataMember(Name = "title")]
         public string Title { get; set; }
 
         /// <summary>
         /// Gets or sets the first release date.
         /// </summary>
-        [XmlElement("first-release-date")]
+        [DataMember(Name = "first-release-date")]
         public string FirstReleaseDate { get; set; }
 
         /// <summary>
         /// Gets or sets the primary type.
         /// </summary>
-        [XmlElement("primary-type")]
+        [DataMember(Name = "primary-type")]
         public string PrimaryType { get; set; }
 
         /// <summary>
         /// Gets or sets the rating".
         /// </summary>
-        [XmlElement("rating")]
+        [DataMember(Name = "rating")]
         public Rating Rating { get; set; }
 
         /// <summary>
         /// Gets or sets the tag-list.
         /// </summary>
-        [XmlElement("tag-list")]
-        public TagList Tags { get; set; }
+        [DataMember(Name = "tags")]
+        public List<Tag> Tags { get; set; }
 
         #endregion
 
         #region Subqueries
 
-        [XmlArray("artist-credit")]
-        [XmlArrayItem("name-credit")]
+        [DataMember(Name = "artist-credit")]
         public List<NameCredit> Credits { get; set; }
 
-        [XmlArray("release-list")]
-        [XmlArrayItem("release")]
+        [DataMember(Name = "releases")]
         public List<Release> Releases { get; set; }
 
         #endregion

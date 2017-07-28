@@ -1,33 +1,34 @@
-﻿using System;
-using System.Xml.Serialization;
-
+﻿
 namespace Hqub.MusicBrainz.API.Entities
 {
-    [XmlRoot("cover-art-archive", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
+    using System;
+    using System.Runtime.Serialization;
+
+    [DataContract(Name = "cover-art-archive")]
     public class CoverArtArchive
     {
         /// <summary>
         /// Gets or sets a value indicating whether artwork is available or not.
         /// </summary>
-        [XmlElement("artwork")]
+        [DataMember(Name = "artwork")]
         public bool Artwork { get; set; }
 
         /// <summary>
         /// Gets or sets the count.
         /// </summary>
-        [XmlElement("count")]
+        [DataMember(Name = "count")]
         public int Count { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether a front crover is available or not.
         /// </summary>
-        [XmlElement("front")]
+        [DataMember(Name = "front")]
         public bool Front { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether a back crover is available or not.
         /// </summary>
-        [XmlElement("back")]
+        [DataMember(Name = "back")]
         public bool Back { get; set; }
 
         public static Uri GetCoverArtUri(string releaseId)

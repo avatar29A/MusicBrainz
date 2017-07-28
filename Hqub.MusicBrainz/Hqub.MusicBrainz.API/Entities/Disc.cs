@@ -1,10 +1,11 @@
 ﻿
 namespace Hqub.MusicBrainz.API.Entities
 {
+    using System.Collections.Generic;
     using System.Runtime.Serialization;
 
-    [DataContract(Name = "work")]
-    public class Work
+    [DataContract(Name = "disc")]
+    public class Disc
     {
         /// <summary>
         /// Gets or sets the MusicBrainz id.
@@ -13,15 +14,15 @@ namespace Hqub.MusicBrainz.API.Entities
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or sets the title.
+        /// Gets or sets the number of sectors.
         /// </summary>
-        [DataMember(Name = "title")]
-        public string Title { get; set; }
+        [DataMember(Name = "sectors")]
+        public int Sectors { get; set; }
 
         /// <summary>
-        /// Gets or sets the ISW code.
+        /// Gets or sets the track offsets.
         /// </summary>
-        [DataMember(Name = "iswc")]
-        public string ISWC { get; set; }
+        [DataMember(Name = "offsets")]
+        public List<int> Offsets { get; set; }
     }
 }

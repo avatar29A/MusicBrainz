@@ -1,20 +1,21 @@
-﻿using System.Xml.Serialization;
-
+﻿
 namespace Hqub.MusicBrainz.API.Entities
 {
-    [XmlRoot("label-info")]
+    using System.Runtime.Serialization;
+
+    [DataContract(Name = "label-info")]
     public class LabelInfo
     {
         /// <summary>
         /// Gets or sets the catalog-number.
         /// </summary>
-        [XmlElement("catalog-number")]
+        [DataMember(Name = "catalog-number")]
         public string CatalogNumber { get; set; }
 
         /// <summary>
         /// Gets or sets the label.
         /// </summary>
-        [XmlElement("label")]
+        [DataMember(Name = "label")]
         public Label Label { get; set; }
     }
 }

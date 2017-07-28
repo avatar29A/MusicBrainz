@@ -1,13 +1,14 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
-using Hqub.MusicBrainz.API.Entities.Collections;
-using Hqub.MusicBrainz.API.Entities.Metadata;
-
+﻿
 namespace Hqub.MusicBrainz.API.Entities
 {
-    [XmlRoot("artist", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
-    public class Artist : Entity
+    using Hqub.MusicBrainz.API.Entities.Collections;
+    using System;
+    using System.Collections.Generic;
+    using System.Runtime.Serialization;
+    using System.Threading.Tasks;
+
+    [DataContract(Name = "artist")]
+    public class Artist
     {
         public const string EntityName = "artist";
 
@@ -16,84 +17,84 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <summary>
         /// Gets or sets the score (only available in search results).
         /// </summary>
-        [XmlAttribute("score", Namespace = "http://musicbrainz.org/ns/ext#-2.0")]
+        [DataMember(Name = "score")]
         public int Score { get; set; }
 
         /// <summary>
         /// Gets or sets the MusicBrainz id.
         /// </summary>
-        [XmlAttribute("id")]
+        [DataMember(Name = "id")]
         public string Id { get; set; }
 
         /// <summary>
         /// Gets or sets the type.
         /// </summary>
-        [XmlAttribute("type")]
+        [DataMember(Name = "type")]
         public string Type { get; set; }
 
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
-        [XmlElement("name")]
+        [DataMember(Name = "name")]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the sort name.
         /// </summary>
-        [XmlElement("sort-name")]
+        [DataMember(Name = "sort-name")]
         public string SortName { get; set; }
 
         /// <summary>
         /// Gets or sets the gender.
         /// </summary>
-        [XmlElement("gender")]
+        [DataMember(Name = "gender")]
         public string Gender { get; set; }
 
         /// <summary>
         /// Gets or sets the life-span.
         /// </summary>
-        [XmlElement("life-span")]
-        public LifeSpanNode LifeSpan { get; set; }
+        [DataMember(Name = "life-span")]
+        public LifeSpan LifeSpan { get; set; }
 
         /// <summary>
         /// Gets or sets the country.
         /// </summary>
-        [XmlElement("country")]
+        [DataMember(Name = "country")]
         public string Country { get; set; }
 
         /// <summary>
         /// Gets or sets the disambiguation.
         /// </summary>
-        [XmlElement("disambiguation")]
+        [DataMember(Name = "disambiguation")]
         public string Disambiguation { get; set; }
 
         /// <summary>
         /// Gets or sets the rating.
         /// </summary>
-        [XmlElement("rating")]
+        [DataMember(Name = "rating")]
         public Rating Rating { get; set; }
 
         #endregion
 
         #region Subqueries
 
-        [XmlElement("recording-list")]
-        public RecordingList Recordings { get; set; }
+        [DataMember(Name = "recordings")]
+        public List<Recording> Recordings { get; set; }
 
-        [XmlElement("release-group-list")]
-        public ReleaseGroupList ReleaseGroups { get; set; }
+        [DataMember(Name = "release-groups")]
+        public List<ReleaseGroup> ReleaseGroups { get; set; }
 
-        [XmlElement("release-list")]
-        public ReleaseList ReleaseLists { get; set; }
+        [DataMember(Name = "releases")]
+        public List<Release> Releases { get; set; }
 
-        [XmlElement("relation-list")]
-        public RelationList RelationLists { get; set; }
+        [DataMember(Name = "relations")]
+        public List<Relation> Relations { get; set; }
 
-        [XmlElement("work-list")]
-        public WorkList Works { get; set; }
+        [DataMember(Name = "works")]
+        public List<Work> Works { get; set; }
 
-        [XmlElement("tag-list")]
-        public TagList Tags { get; set; }
+        [DataMember(Name = "tags")]
+        public List<Tag> Tags { get; set; }
 
         #endregion
 
@@ -174,31 +175,4 @@ namespace Hqub.MusicBrainz.API.Entities
 
         #endregion
     }
-
-    #region Include entities
-
-    [XmlRoot("life-span", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
-    public class LifeSpanNode
-    {
-        /// <summary>
-        /// Gets or sets the begin date.
-        /// </summary>
-        [XmlElement("begin")]
-        public string Begin { get; set; }
-
-        /// <summary>
-        /// Gets or sets the end date.
-        /// </summary>
-        [XmlElement("end")]
-        public string End { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the life-span ended or not.
-        /// </summary>
-        [XmlElement("ended")]
-        public bool Ended { get; set; }
-    }
-
-    #endregion
-
 }

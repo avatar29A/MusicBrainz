@@ -1,20 +1,21 @@
-﻿using System.Xml.Serialization;
-
+﻿
 namespace Hqub.MusicBrainz.API.Entities
 {
-    [XmlRoot("label")]
+    using System.Runtime.Serialization;
+
+    [DataContract(Name = "label")]
     public class Label
     {
         /// <summary>
         /// Gets or sets the MusicBrainz id.
         /// </summary>
-        [XmlAttribute("id")]
+        [DataMember(Name = "id")]
         public string Id { get; set; }
 
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
-        [XmlElement("name")]
+        [DataMember(Name = "name")]
         public string Name { get; set; }
     }
 }

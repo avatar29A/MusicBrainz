@@ -47,9 +47,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -66,10 +64,12 @@
     <Compile Include="Entities\Collections\TrackList.cs" />
     <Compile Include="Entities\Collections\WorkList.cs" />
     <Compile Include="Entities\CoverArtArchive.cs" />
+    <Compile Include="Entities\Disc.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Include\ArtistIncludeEntityHelper.cs" />
     <Compile Include="Entities\Label.cs" />
     <Compile Include="Entities\LabelInfo.cs" />
+    <Compile Include="Entities\LifeSpan.cs" />
     <Compile Include="Entities\Medium.cs" />
     <Compile Include="Entities\Metadata.cs" />
     <Compile Include="Entities\Metadata\ArtistMetadata.cs" />
@@ -83,6 +83,7 @@
     <Compile Include="Entities\Release.cs" />
     <Compile Include="Entities\ReleaseGroup.cs" />
     <Compile Include="Entities\Tag.cs" />
+    <Compile Include="Entities\TextRepresentation.cs" />
     <Compile Include="Entities\Track.cs" />
     <Compile Include="Entities\Work.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

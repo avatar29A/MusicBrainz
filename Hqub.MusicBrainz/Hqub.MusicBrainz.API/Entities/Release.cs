@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
-using Hqub.MusicBrainz.API.Entities.Collections;
-using Hqub.MusicBrainz.API.Entities.Metadata;
-
+﻿
 namespace Hqub.MusicBrainz.API.Entities
 {
-    [XmlRoot("release", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
-    public class Release : Entity
+    using Hqub.MusicBrainz.API.Entities.Collections;
+    using System;
+    using System.Collections.Generic;
+    using System.Runtime.Serialization;
+    using System.Threading.Tasks;
+
+    [DataContract(Name = "release")]
+    public class Release
     {
         public const string EntityName = "release";
 
@@ -17,83 +17,81 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <summary>
         /// Gets or sets the score (only available in search results).
         /// </summary>
-        [XmlAttribute("score", Namespace = "http://musicbrainz.org/ns/ext#-2.0")]
+        [DataMember(Name = "score")]
         public int Score { get; set; }
 
         /// <summary>
         /// Gets or sets the MusicBrainz id.
         /// </summary>
-        [XmlAttribute("id")]
+        [DataMember(Name = "id")]
         public string Id { get; set; }
 
         /// <summary>
         /// Gets or sets the title.
         /// </summary>
-        [XmlElement("title")]
+        [DataMember(Name = "title")]
         public string Title { get; set; }
 
         /// <summary>
         /// Gets or sets the status.
         /// </summary>
-        [XmlElement("status")]
+        [DataMember(Name = "status")]
         public string Status { get; set; }
 
         /// <summary>
         /// Gets or sets the quality.
         /// </summary>
-        [XmlElement("quality")]
+        [DataMember(Name = "quality")]
         public string Quality { get; set; }
 
         /// <summary>
         /// Gets or sets the text-representation.
         /// </summary>
-        [XmlElement("text-representation")]
+        [DataMember(Name = "text-representation")]
         public TextRepresentation TextRepresentation { get; set; }
 
         /// <summary>
         /// Gets or sets the date.
         /// </summary>
-        [XmlElement("date")]
+        [DataMember(Name = "date")]
         public string Date { get; set; }
 
         /// <summary>
         /// Gets or sets the country.
         /// </summary>
-        [XmlElement("country")]
+        [DataMember(Name = "country")]
         public string Country { get; set; }
 
         /// <summary>
         /// Gets or sets the barcode.
         /// </summary>
-        [XmlElement("barcode")]
+        [DataMember(Name = "barcode")]
         public string Barcode { get; set; }
 
         /// <summary>
         /// Gets or sets the release-group.
         /// </summary>
-        [XmlElement("release-group")]
+        [DataMember(Name = "release-group")]
         public ReleaseGroup ReleaseGroup { get; set; }
 
         /// <summary>
         /// Gets or sets the cover-art-archive.
         /// </summary>
-        [XmlElement("cover-art-archive")]
+        [DataMember(Name = "cover-art-archive")]
         public CoverArtArchive CoverArtArchive { get; set; }
 
         #endregion
 
         #region Subqueries
 
-        [XmlArray("artist-credit")]
-        [XmlArrayItem("name-credit")]
+        [DataMember(Name = "artist-credit")]
         public List<NameCredit> Credits { get; set; }
 
-        [XmlArray("label-info-list")]
-        [XmlArrayItem("label-info")]
+        [DataMember(Name = "label-info")]
         public List<LabelInfo> Labels { get; set; }
 
-        [XmlElement("medium-list")]
-        public Collections.MediumList MediumList { get; set; }
+        [DataMember(Name = "media")]
+        public List<Medium> Media { get; set; }
 
         #endregion
 
@@ -167,22 +165,5 @@ namespace Hqub.MusicBrainz.API.Entities
         }
 
         #endregion
-    }
-
-    [XmlType(Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
-    [XmlRoot("text-representation", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
-    public class TextRepresentation
-    {
-        /// <summary>
-        /// Gets or sets the language.
-        /// </summary>
-        [XmlElement("language")]
-        public string Language { get; set; }
-
-        /// <summary>
-        /// Gets or sets the script.
-        /// </summary>
-        [XmlElement("script")]
-        public string Script { get; set; }
     }
 }
