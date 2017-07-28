@@ -1,9 +1,8 @@
-﻿
+﻿using System;
+using System.Runtime.Serialization;
+
 namespace Hqub.MusicBrainz.API.Entities
 {
-    using System;
-    using System.Runtime.Serialization;
-
     [DataContract(Name = "cover-art-archive")]
     public class CoverArtArchive
     {

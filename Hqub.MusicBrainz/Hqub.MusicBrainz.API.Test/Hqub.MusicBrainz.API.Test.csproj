@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9EEBBF6D-80A1-4445-8D32-BA85EE2E13F2}</ProjectGuid>
+    <ProjectGuid>{1E8BEEE2-DF91-4D0B-902E-E661D03E70C3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Hqub.MusicBrainz.API.Test</RootNamespace>
