@@ -100,14 +100,13 @@ namespace Hqub.MusicBrainz.API.Entities
         [Obsolete("Use GetAsync() method.")]
         public static Release Get(string id, params string[] inc)
         {
-            return GetAsync<Release>(EntityName, id, inc).Result;
+            return GetAsync(id, inc).Result;
         }
 
         [Obsolete("Use SearchAsync() method.")]
         public static ReleaseList Search(string query, int limit = 25, int offset = 0)
         {
-            return SearchAsync<ReleaseMetadata>(EntityName,
-                query, limit, offset).Result.Collection;
+            return SearchAsync(query, limit, offset).Result;
         }
 
         /// <summary>
@@ -118,7 +117,14 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <returns></returns>
         public async static Task<Release> GetAsync(string id, params string[] inc)
         {
-            return await GetAsync<Release>(EntityName, id, inc);
+            if (string.IsNullOrEmpty(id))
+            {
+                throw new ArgumentException(string.Format(Resources.Messages.MissingParameter, "id"));
+            }
+
+            string url = WebRequestHelper.CreateLookupUrl(EntityName, id, inc);
+
+            return await WebRequestHelper.GetAsync<Release>(url);
         }
 
         /// <summary>
@@ -130,8 +136,14 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <returns></returns>
         public async static Task<ReleaseList> SearchAsync(string query, int limit = 25, int offset = 0)
         {
-            return (await SearchAsync<ReleaseMetadata>(EntityName,
-                query, limit, offset)).Collection;
+            if (string.IsNullOrEmpty(query))
+            {
+                throw new ArgumentException(string.Format(Resources.Messages.MissingParameter, "query"));
+            }
+
+            string url = WebRequestHelper.CreateSearchTemplate(EntityName, query, limit, offset);
+
+            return await WebRequestHelper.GetAsync<ReleaseList>(url);
         }
 
         /// <summary>
@@ -143,8 +155,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <returns></returns>
         public async static Task<ReleaseList> SearchAsync(QueryParameters<Release> query, int limit = 25, int offset = 0)
         {
-            return (await SearchAsync<ReleaseMetadata>(EntityName,
-                query.ToString(), limit, offset)).Collection;
+            return await SearchAsync(query.ToString(), limit, offset);
         }
 
         /// <summary>
@@ -160,8 +171,9 @@ namespace Hqub.MusicBrainz.API.Entities
         public static async Task<ReleaseList> BrowseAsync(string entity, string id, int limit = 25,
             int offset = 0, params string[] inc)
         {
-            return (await BrowseAsync<ReleaseMetadata>(EntityName,
-                entity, id, limit, offset, inc)).Collection;
+            string url = WebRequestHelper.CreateBrowseTemplate(EntityName, entity, id, limit, offset, inc);
+
+            return await WebRequestHelper.GetAsync<ReleaseList>(url);
         }
 
         #endregion

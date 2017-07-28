@@ -54,7 +54,6 @@
     <Compile Include="Configuration.cs" />
     <Compile Include="Entities\Artist.cs" />
     <Compile Include="Entities\Collections\ArtistList.cs" />
-    <Compile Include="QueryResult.cs" />
     <Compile Include="Entities\Collections\RecordingList.cs" />
     <Compile Include="Entities\Collections\ReleaseGroupList.cs" />
     <Compile Include="Entities\Collections\ReleaseList.cs" />
@@ -76,6 +75,7 @@
     <Compile Include="Entities\Work.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryParameters.cs" />
+    <Compile Include="QueryResult.cs" />
     <Compile Include="Resources\Constants.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
