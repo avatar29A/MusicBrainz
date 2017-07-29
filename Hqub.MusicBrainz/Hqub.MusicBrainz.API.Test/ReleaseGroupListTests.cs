@@ -21,9 +21,8 @@ namespace Hqub.MusicBrainz.API.Test
         [Test]
         public void TestReleaseGroupListQueryCount()
         {
-            var group = data;
-
-            Assert.AreEqual(2787, group.Count);
+            Assert.AreEqual(0, data.Offset);
+            Assert.AreEqual(3283, data.Count);
         }
 
         [Test]
@@ -39,16 +38,15 @@ namespace Hqub.MusicBrainz.API.Test
         {
             var group = data.Items[0];
 
-            Assert.AreEqual("fc325dd3-73ed-36aa-9c77-6b65a958e3cf", group.Id);
+            Assert.AreEqual("dae0c107-7db4-3fac-a027-5e47b6bf2e70", group.Id);
             //Assert.AreEqual("Album", group.Type);
             Assert.AreEqual(100, group.Score);
 
-            Assert.AreEqual("Desire", group.Title);
+            Assert.AreEqual("Jokerman", group.Title);
             Assert.AreEqual("Album", group.PrimaryType);
 
             Assert.IsNotNull(group.Releases);
             Assert.IsNotNull(group.Credits);
-            Assert.IsNotNull(group.Tags);
         }
     }
 }

@@ -49,7 +49,7 @@ namespace Hqub.MusicBrainz.API.Test
             var releases = group.Releases;
 
             Assert.IsNotNull(releases);
-            Assert.AreEqual(10, releases.Count);
+            Assert.AreEqual(13, releases.Count);
         }
     }
 }

@@ -1,8 +1,8 @@
 ﻿
 namespace Hqub.MusicBrainz.API.Test
 {
-    using NUnit.Framework;
     using Hqub.MusicBrainz.API.Entities.Collections;
+    using NUnit.Framework;
 
     // Resource: artist-search.json
     // Artist.Search("artist:(bob dylan)", 10);
@@ -21,9 +21,8 @@ namespace Hqub.MusicBrainz.API.Test
         [Test]
         public void TestArtistListQueryCount()
         {
-            var artists = data;
-
-            Assert.AreEqual(1899, artists.Count);
+            Assert.AreEqual(0, data.Offset);
+            Assert.AreEqual(2481, data.Count);
         }
 
         [Test]

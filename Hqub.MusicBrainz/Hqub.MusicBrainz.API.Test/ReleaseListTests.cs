@@ -21,9 +21,8 @@ namespace Hqub.MusicBrainz.API.Test
         [Test]
         public void TestReleaseListQueryCount()
         {
-            var releases = data;
-
-            Assert.AreEqual(692, releases.Count);
+            Assert.AreEqual(0, data.Offset);
+            Assert.AreEqual(839, data.Count);
         }
 
         [Test]
@@ -37,10 +36,10 @@ namespace Hqub.MusicBrainz.API.Test
         [Test]
         public void TestReleaseListElements()
         {
-            var release = data.Items[0];
+            var release = data.Items[1];
 
             Assert.AreEqual("12195c41-6136-4dfd-acf1-9923dadc73e2", release.Id);
-            Assert.AreEqual(100, release.Score);
+            Assert.AreEqual(68, release.Score);
 
             Assert.AreEqual("Tucson: A Country Rock Opera", release.Title);
             Assert.AreEqual("Official", release.Status);

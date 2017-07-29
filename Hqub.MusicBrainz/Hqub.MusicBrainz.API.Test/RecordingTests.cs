@@ -29,7 +29,7 @@ namespace Hqub.MusicBrainz.API.Test
         public void TestRecordingElements()
         {
             Assert.AreEqual("Alone Again Or", recording.Title);
-            Assert.AreEqual(203293, recording.Length);
+            Assert.AreEqual(204333, recording.Length);
 
             Assert.IsNotNull(recording.Credits);
             Assert.IsNotNull(recording.Releases);
@@ -55,10 +55,9 @@ namespace Hqub.MusicBrainz.API.Test
         {
             var releases = recording.Releases;
 
-            Assert.AreEqual(4, releases.Count);
-            //Assert.AreEqual(4, releases.QueryCount);
+            Assert.AreEqual(7, releases.Count);
 
-            var release = releases[3];
+            var release = releases[6];
 
             Assert.IsNotNull(release);
             Assert.AreEqual("8edf887c-f8ee-4663-af02-0a5117acc808", release.Id);

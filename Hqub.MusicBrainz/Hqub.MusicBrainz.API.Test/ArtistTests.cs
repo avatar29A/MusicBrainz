@@ -70,14 +70,14 @@ namespace Hqub.MusicBrainz.API.Test
             var list = artist.Tags;
 
             Assert.IsNotNull(list);
-            Assert.AreEqual(24, list.Count);
+            Assert.AreEqual(26, list.Count);
 
-            var tag = list[1];
+            var tag = list[7];
 
             Assert.IsNotNull(tag);
 
             Assert.AreEqual(1, tag.Count);
-            Assert.AreEqual("1960s", tag.Name);
+            Assert.AreEqual("blues", tag.Name);
         }
 
         [Test]

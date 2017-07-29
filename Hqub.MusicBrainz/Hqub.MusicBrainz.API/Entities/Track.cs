@@ -13,10 +13,16 @@ namespace Hqub.MusicBrainz.API.Entities
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or sets the position.
+        /// Gets or sets the number.
         /// </summary>
         [DataMember(Name = "number")]
-        public int Number { get; set; }
+        public string Number { get; set; }
+
+        /// <summary>
+        /// Gets or sets the position.
+        /// </summary>
+        [DataMember(Name = "position")]
+        public int Position { get; set; }
 
         /// <summary>
         /// Gets or sets the length.

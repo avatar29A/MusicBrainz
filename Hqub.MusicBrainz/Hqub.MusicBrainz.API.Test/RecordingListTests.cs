@@ -21,9 +21,8 @@ namespace Hqub.MusicBrainz.API.Test
         [Test]
         public void TestRecordingListQueryCount()
         {
-            var recordings = data;
-
-            Assert.AreEqual(8, recordings.Count);
+            Assert.AreEqual(0, data.Offset);
+            Assert.AreEqual(5, data.Count);
         }
 
         [Test]
@@ -31,7 +30,7 @@ namespace Hqub.MusicBrainz.API.Test
         {
             var recordings = data.Items;
 
-            Assert.AreEqual(8, recordings.Count);
+            Assert.AreEqual(5, recordings.Count);
         }
 
         [Test]
