@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration.cs" />
+    <Compile Include="Entities\Area.cs" />
     <Compile Include="Entities\Artist.cs" />
     <Compile Include="Entities\Collections\ArtistList.cs" />
     <Compile Include="Entities\Collections\RecordingList.cs" />

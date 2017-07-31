@@ -31,14 +31,13 @@ namespace Hqub.MusicBrainz.API.Test
         {
             Assert.AreEqual("72c536dc-7137-4477-a521-567eeb840fa8", artist.Id);
             Assert.AreEqual("Person", artist.Type);
-            //Assert.AreEqual(artist, artist.Score);
 
             Assert.AreEqual("Bob Dylan", artist.Name);
             Assert.AreEqual("Dylan, Bob", artist.SortName);
-            //Assert.AreEqual("male", artist.Gender);
+            Assert.AreEqual("Male", artist.Gender);
             Assert.AreEqual("US", artist.Country);
 
-            //Assert.IsNotNull(artist.Area);
+            Assert.IsNotNull(artist.Area);
             Assert.IsNotNull(artist.LifeSpan);
             Assert.IsNotNull(artist.Tags);
         }
@@ -50,18 +49,30 @@ namespace Hqub.MusicBrainz.API.Test
 
             Assert.IsNotNull(list);
             Assert.AreEqual(25, list.Count);
-            //Assert.AreEqual(642, list.QueryCount);
 
             var group = list[3];
 
             Assert.IsNotNull(group);
 
             Assert.AreEqual("329fb554-2a81-3d8a-8e22-ec2c66810019", group.Id);
-            //Assert.AreEqual("Album", group.Type);
+            Assert.AreEqual("Album", group.PrimaryType);
 
             Assert.AreEqual("Blonde on Blonde", group.Title);
             Assert.AreEqual("1966-05-16", group.FirstReleaseDate);
             Assert.AreEqual("Album", group.PrimaryType);
+        }
+
+        [Test]
+        public void TestArtistArea()
+        {
+            var area = artist.Area;
+
+            Assert.IsNotNull(area);
+            Assert.AreEqual("489ce91b-6658-3307-9877-795b68554c98", area.Id);
+            Assert.AreEqual("United States", area.Name);
+
+            Assert.IsNotNull(area.IsoCodes);
+            Assert.AreEqual(1, area.IsoCodes.Count);
         }
 
         [Test]

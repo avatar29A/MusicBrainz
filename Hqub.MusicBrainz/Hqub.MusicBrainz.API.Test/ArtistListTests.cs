@@ -47,7 +47,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual("male", artist.Gender);
             Assert.AreEqual("US", artist.Country);
 
-            //Assert.IsNotNull(artist.Area);
+            Assert.IsNotNull(artist.Area);
             Assert.IsNotNull(artist.LifeSpan);
             Assert.IsNotNull(artist.Tags);
         }

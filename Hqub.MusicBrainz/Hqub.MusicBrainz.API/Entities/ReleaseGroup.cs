@@ -27,12 +27,6 @@ namespace Hqub.MusicBrainz.API.Entities
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or sets the type (like album, single or ep).
-        /// </summary>
-        [DataMember(Name = "type")]
-        public string Type { get; set; }
-
-        /// <summary>
         /// Gets or sets the title.
         /// </summary>
         [DataMember(Name = "title")]
@@ -49,6 +43,12 @@ namespace Hqub.MusicBrainz.API.Entities
         /// </summary>
         [DataMember(Name = "primary-type")]
         public string PrimaryType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the secondary types.
+        /// </summary>
+        [DataMember(Name = "secondary-types")]
+        public List<string> SecondaryTypes { get; set; }
 
         /// <summary>
         /// Gets or sets the rating".

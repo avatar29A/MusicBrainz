@@ -57,6 +57,12 @@ namespace Hqub.MusicBrainz.API.Entities
         public LifeSpan LifeSpan { get; set; }
 
         /// <summary>
+        /// Gets or sets the area.
+        /// </summary>
+        [DataMember(Name = "area")]
+        public Area Area { get; set; }
+
+        /// <summary>
         /// Gets or sets the country.
         /// </summary>
         [DataMember(Name = "country")]

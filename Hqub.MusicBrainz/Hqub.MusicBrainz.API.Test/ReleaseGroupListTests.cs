@@ -45,6 +45,10 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual("Jokerman", group.Title);
             Assert.AreEqual("Album", group.PrimaryType);
 
+            Assert.IsNotNull(group.SecondaryTypes);
+            Assert.AreEqual(1, group.SecondaryTypes.Count);
+            Assert.AreEqual("Live", group.SecondaryTypes[0]);
+
             Assert.IsNotNull(group.Releases);
             Assert.IsNotNull(group.Credits);
         }
