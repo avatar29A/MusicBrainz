@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
-using Hqub.MusicBrainz.API.Entities.Collections;
-using Hqub.MusicBrainz.API.Entities.Metadata;
-
+﻿
 namespace Hqub.MusicBrainz.API.Entities
 {
-    [XmlRoot("release-group", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
-    public class ReleaseGroup : Entity
+    using Hqub.MusicBrainz.API.Entities.Collections;
+    using System;
+    using System.Collections.Generic;
+    using System.Runtime.Serialization;
+    using System.Threading.Tasks;
+
+    [DataContract(Name = "release-group")]
+    public class ReleaseGroup
     {
         public const string EntityName = "release-group";
 
@@ -17,61 +17,59 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <summary>
         /// Gets or sets the score (only available in search results).
         /// </summary>
-        [XmlAttribute("score", Namespace = "http://musicbrainz.org/ns/ext#-2.0")]
+        [DataMember(Name = "score")]
         public int Score { get; set; }
 
         /// <summary>
         /// Gets or sets the MusicBrainz id.
         /// </summary>
-        [XmlAttribute("id")]
+        [DataMember(Name = "id")]
         public string Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the type (like album, single or ep).
-        /// </summary>
-        [XmlAttribute("type")]
-        public string Type { get; set; }
 
         /// <summary>
         /// Gets or sets the title.
         /// </summary>
-        [XmlElement("title")]
+        [DataMember(Name = "title")]
         public string Title { get; set; }
 
         /// <summary>
         /// Gets or sets the first release date.
         /// </summary>
-        [XmlElement("first-release-date")]
+        [DataMember(Name = "first-release-date")]
         public string FirstReleaseDate { get; set; }
 
         /// <summary>
         /// Gets or sets the primary type.
         /// </summary>
-        [XmlElement("primary-type")]
+        [DataMember(Name = "primary-type")]
         public string PrimaryType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the secondary types.
+        /// </summary>
+        [DataMember(Name = "secondary-types")]
+        public List<string> SecondaryTypes { get; set; }
 
         /// <summary>
         /// Gets or sets the rating".
         /// </summary>
-        [XmlElement("rating")]
+        [DataMember(Name = "rating")]
         public Rating Rating { get; set; }
 
         /// <summary>
         /// Gets or sets the tag-list.
         /// </summary>
-        [XmlElement("tag-list")]
-        public TagList Tags { get; set; }
+        [DataMember(Name = "tags")]
+        public List<Tag> Tags { get; set; }
 
         #endregion
 
         #region Subqueries
 
-        [XmlArray("artist-credit")]
-        [XmlArrayItem("name-credit")]
+        [DataMember(Name = "artist-credit")]
         public List<NameCredit> Credits { get; set; }
 
-        [XmlArray("release-list")]
-        [XmlArrayItem("release")]
+        [DataMember(Name = "releases")]
         public List<Release> Releases { get; set; }
 
         #endregion
@@ -81,21 +79,19 @@ namespace Hqub.MusicBrainz.API.Entities
         [Obsolete("Use GetAsync() method.")]
         public static ReleaseGroup Get(string id, params string[] inc)
         {
-            return GetAsync<ReleaseGroup>(EntityName, id, inc).Result;
+            return GetAsync(id, inc).Result;
         }
 
         [Obsolete("Use SearchAsync() method.")]
         public static ReleaseGroupList Search(string query, int limit = 25, int offset = 0)
         {
-            return SearchAsync<ReleaseGroupMetadata>(EntityName,
-                query, limit, offset).Result.Collection;
+            return SearchAsync(query, limit, offset).Result;
         }
 
         [Obsolete("Use BrowseAsync() method.")]
         public static ReleaseGroupList Browse(string relatedEntity, string value, int limit = 25, int offset = 0, params  string[] inc)
         {
-            return BrowseAsync<ReleaseGroupMetadata>(EntityName,
-                relatedEntity, value, limit, offset, inc).Result.Collection;
+            return BrowseAsync(relatedEntity, value, limit, offset, inc).Result;
         }
 
         /// <summary>
@@ -106,7 +102,14 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <returns></returns>
         public async static Task<ReleaseGroup> GetAsync(string id, params string[] inc)
         {
-            return await GetAsync<ReleaseGroup>(EntityName, id, inc);
+            if (string.IsNullOrEmpty(id))
+            {
+                throw new ArgumentException(string.Format(Resources.Messages.MissingParameter, "id"));
+            }
+
+            string url = WebRequestHelper.CreateLookupUrl(EntityName, id, inc);
+
+            return await WebRequestHelper.GetAsync<ReleaseGroup>(url);
         }
 
         /// <summary>
@@ -118,8 +121,14 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <returns></returns>
         public async static Task<ReleaseGroupList> SearchAsync(string query, int limit = 25, int offset = 0)
         {
-            return (await SearchAsync<ReleaseGroupMetadata>(EntityName,
-                query, limit, offset)).Collection;
+            if (string.IsNullOrEmpty(query))
+            {
+                throw new ArgumentException(string.Format(Resources.Messages.MissingParameter, "query"));
+            }
+
+            string url = WebRequestHelper.CreateSearchTemplate(EntityName, query, limit, offset);
+
+            return await WebRequestHelper.GetAsync<ReleaseGroupList>(url);
         }
 
         /// <summary>
@@ -131,8 +140,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <returns></returns>
         public async static Task<ReleaseGroupList> SearchAsync(QueryParameters<ReleaseGroup> query, int limit = 25, int offset = 0)
         {
-            return (await SearchAsync<ReleaseGroupMetadata>(EntityName,
-                query.ToString(), limit, offset)).Collection;
+            return await SearchAsync(query.ToString(), limit, offset);
         }
 
         /// <summary>
@@ -147,8 +155,9 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <returns></returns>
         public async static Task<ReleaseGroupList> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params  string[] inc)
         {
-            return (await BrowseAsync<ReleaseGroupMetadata>(EntityName, entity, id,
-                limit, offset, inc)).Collection;
+            string url = WebRequestHelper.CreateBrowseTemplate(EntityName, entity, id, limit, offset, inc);
+
+            return await WebRequestHelper.GetAsync<ReleaseGroupList>(url);
         }
 
         // TODO: add string parameter 'type' and 'status' to browse methods

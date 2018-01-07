@@ -1,15 +1,16 @@
-﻿using System.Collections.Generic;
-using System.Xml.Serialization;
-
+﻿
 namespace Hqub.MusicBrainz.API.Entities.Collections
 {
-    [XmlRoot("recording-list", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
-    public class ReleaseGroupList : BaseList
+    using System.Collections.Generic;
+    using System.Runtime.Serialization;
+
+    [DataContract]
+    public class ReleaseGroupList : QueryResult
     {
         /// <summary>
-        /// Gets or sets the list of release-groups.
+        /// Gets or sets the list of artists.
         /// </summary>
-        [XmlElement("release-group")]
+        [DataMember(Name = "release-groups")]
         public List<ReleaseGroup> Items { get; set; }
     }
 }

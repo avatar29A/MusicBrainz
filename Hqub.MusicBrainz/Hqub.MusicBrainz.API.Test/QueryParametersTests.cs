@@ -1,8 +1,9 @@
-﻿using Hqub.MusicBrainz.API.Entities;
-using NUnit.Framework;
-
+﻿
 namespace Hqub.MusicBrainz.API.Test
 {
+    using Hqub.MusicBrainz.API.Entities;
+    using NUnit.Framework;
+
     public class QueryParametersTests
     {
         [Test]

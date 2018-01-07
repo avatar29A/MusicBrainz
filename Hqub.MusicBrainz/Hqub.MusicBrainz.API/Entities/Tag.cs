@@ -1,20 +1,21 @@
-﻿using System.Xml.Serialization;
-
+﻿
 namespace Hqub.MusicBrainz.API.Entities
 {
-    [XmlRoot("tag", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
+    using System.Runtime.Serialization;
+
+    [DataContract(Name = "tag")]
     public class Tag
     {
         /// <summary>
         /// Gets or sets the count.
         /// </summary>
-        [XmlAttribute("count")]
+        [DataMember(Name = "count")]
         public int Count { get; set; }
 
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
-        [XmlElement("name")]
+        [DataMember(Name = "name")]
         public string Name { get; set; }
     }
 }

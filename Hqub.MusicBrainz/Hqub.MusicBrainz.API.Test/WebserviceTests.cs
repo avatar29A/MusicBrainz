@@ -1,9 +1,10 @@
-﻿using NUnit.Framework;
-using System.Linq;
-using System.Threading.Tasks;
-
+﻿
 namespace Hqub.MusicBrainz.API.Test
 {
+    using NUnit.Framework;
+    using System.Linq;
+    using System.Threading.Tasks;
+
     [Ignore("Ignore for offline testing.")]
     public class WebserviceTests
     {

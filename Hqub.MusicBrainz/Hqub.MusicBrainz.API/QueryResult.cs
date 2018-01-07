@@ -1,8 +1,9 @@
-﻿using System.Xml.Serialization;
+﻿using System.Runtime.Serialization;
 
-namespace Hqub.MusicBrainz.API.Entities.Collections
+namespace Hqub.MusicBrainz.API
 {
-    public class BaseList
+    [DataContract]
+    public abstract class QueryResult
     {
         /// <summary>
         /// Gets or sets the total list items count.
@@ -13,13 +14,13 @@ namespace Hqub.MusicBrainz.API.Entities.Collections
         /// of available items (on the server), while the number of returned items is
         /// limited by the requests 'limit' parameter (default = 25).
         /// </remarks>
-        [XmlAttribute("count")]
-        public int QueryCount { get; set; }
+        [DataMember(Name = "count")]
+        public int Count { get; set; }
 
         /// <summary>
         /// Gets or sets the list offset (only available in search requests).
         /// </summary>
-        [XmlAttribute("offset")]
-        public int QueryOffset { get; set; }
+        [DataMember(Name = "offset")]
+        public int Offset { get; set; }
     }
 }

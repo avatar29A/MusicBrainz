@@ -1,15 +1,16 @@
-﻿using System.Collections.Generic;
-using System.Xml.Serialization;
-
+﻿
 namespace Hqub.MusicBrainz.API.Entities.Collections
 {
-    [XmlRoot("release-list", Namespace = "http://musicbrainz.org/ns/mmd-2.0#")]
-    public class ReleaseList : BaseList
+    using System.Collections.Generic;
+    using System.Runtime.Serialization;
+
+    [DataContract]
+    public class ReleaseList : QueryResult
     {
         /// <summary>
-        /// Gets or sets the list of releases.
+        /// Gets or sets the list of artists.
         /// </summary>
-        [XmlElement("release")]
+        [DataMember(Name = "releases")]
         public List<Release> Items { get; set; }
     }
 }

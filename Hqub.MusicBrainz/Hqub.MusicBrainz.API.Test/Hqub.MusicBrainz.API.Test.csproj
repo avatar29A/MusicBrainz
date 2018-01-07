@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9EEBBF6D-80A1-4445-8D32-BA85EE2E13F2}</ProjectGuid>
+    <ProjectGuid>{1E8BEEE2-DF91-4D0B-902E-E661D03E70C3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Hqub.MusicBrainz.API.Test</RootNamespace>
@@ -39,11 +39,13 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.5.0\lib\net45\nunit.framework.dll</HintPath>
+    <Reference Include="nunit.framework, Version=3.6.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArtistListTests.cs" />
@@ -60,16 +62,14 @@
     <Compile Include="WebserviceTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Data\artist-get.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Data\artist-search.xml" />
-    <EmbeddedResource Include="Data\recording-get.xml" />
-    <EmbeddedResource Include="Data\recording-search.xml" />
-    <EmbeddedResource Include="Data\release-get.xml" />
-    <EmbeddedResource Include="Data\release-search.xml" />
-    <EmbeddedResource Include="Data\releasegroup-get.xml" />
-    <EmbeddedResource Include="Data\releasegroup-search.xml" />
+    <EmbeddedResource Include="Data\artist-get.json" />
+    <EmbeddedResource Include="Data\artist-search.json" />
+    <EmbeddedResource Include="Data\recording-get.json" />
+    <EmbeddedResource Include="Data\recording-search.json" />
+    <EmbeddedResource Include="Data\release-get.json" />
+    <EmbeddedResource Include="Data\release-search.json" />
+    <EmbeddedResource Include="Data\releasegroup-get.json" />
+    <EmbeddedResource Include="Data\releasegroup-search.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hqub.MusicBrainz.API\Hqub.MusicBrainz.API.csproj">

@@ -15,7 +15,6 @@ namespace Hqub.MusicBrainz.API
     /// See https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2/Search
     /// </remarks>
     public class QueryParameters<T>
-        where T : Entity
     {
         List<QueryNode> values;
 

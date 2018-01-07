@@ -1,34 +1,34 @@
-﻿using Hqub.MusicBrainz.API.Entities.Metadata;
-using NUnit.Framework;
-
+﻿
 namespace Hqub.MusicBrainz.API.Test
 {
-    // Resource: release-search.xml
+    using Hqub.MusicBrainz.API.Entities.Collections;
+    using NUnit.Framework;
+
+    // Resource: release-search.json
     // Release.Search("artist:(giant sand) release:(tucson)", 10);
     //
-    // http://musicbrainz.org/ws/2/release?query=artist:(giant%20sand)%20release:(tucson)&limit=10
+    // http://musicbrainz.org/ws/2/release?query=artist:(giant%20sand)%20release:(tucson)&limit=10&fmt=json
 
     public class ReleaseListTests
     {
-        ReleaseMetadata data;
+        ReleaseList data;
 
         public ReleaseListTests()
         {
-            this.data = TestHelper.Get<ReleaseMetadata>("release-search.xml", false);
+            this.data = TestHelper.GetJson<ReleaseList>("release-search.json");
         }
 
         [Test]
         public void TestReleaseListQueryCount()
         {
-            var releases = data.Collection;
-
-            Assert.AreEqual(692, releases.QueryCount);
+            Assert.AreEqual(0, data.Offset);
+            Assert.AreEqual(839, data.Count);
         }
 
         [Test]
         public void TestReleaseListCount()
         {
-            var releases = data.Collection.Items;
+            var releases = data.Items;
 
             Assert.AreEqual(10, releases.Count);
         }
@@ -36,10 +36,10 @@ namespace Hqub.MusicBrainz.API.Test
         [Test]
         public void TestReleaseListElements()
         {
-            var release = data.Collection.Items[0];
+            var release = data.Items[1];
 
             Assert.AreEqual("12195c41-6136-4dfd-acf1-9923dadc73e2", release.Id);
-            Assert.AreEqual(100, release.Score);
+            Assert.AreEqual(68, release.Score);
 
             Assert.AreEqual("Tucson: A Country Rock Opera", release.Title);
             Assert.AreEqual("Official", release.Status);
@@ -50,7 +50,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.IsNotNull(release.Credits);
             Assert.IsNotNull(release.ReleaseGroup);
             Assert.IsNotNull(release.Labels);
-            Assert.IsNotNull(release.MediumList);
+            Assert.IsNotNull(release.Media);
         }
     }
 }

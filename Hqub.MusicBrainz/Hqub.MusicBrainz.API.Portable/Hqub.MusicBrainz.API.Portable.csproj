@@ -51,17 +51,8 @@
     <Compile Include="..\Hqub.MusicBrainz.API\Entities\Collections\ArtistList.cs">
       <Link>Entities\Collections\ArtistList.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Collections\BaseList.cs">
-      <Link>Entities\Collections\BaseList.cs</Link>
-    </Compile>
-    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Collections\MediumList.cs">
-      <Link>Entities\Collections\MediumList.cs</Link>
-    </Compile>
     <Compile Include="..\Hqub.MusicBrainz.API\Entities\Collections\RecordingList.cs">
       <Link>Entities\Collections\RecordingList.cs</Link>
-    </Compile>
-    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Collections\RelationList.cs">
-      <Link>Entities\Collections\RelationList.cs</Link>
     </Compile>
     <Compile Include="..\Hqub.MusicBrainz.API\Entities\Collections\ReleaseGroupList.cs">
       <Link>Entities\Collections\ReleaseGroupList.cs</Link>
@@ -69,20 +60,11 @@
     <Compile Include="..\Hqub.MusicBrainz.API\Entities\Collections\ReleaseList.cs">
       <Link>Entities\Collections\ReleaseList.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Collections\TagList.cs">
-      <Link>Entities\Collections\TagList.cs</Link>
-    </Compile>
-    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Collections\TrackList.cs">
-      <Link>Entities\Collections\TrackList.cs</Link>
-    </Compile>
-    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Collections\WorkList.cs">
-      <Link>Entities\Collections\WorkList.cs</Link>
-    </Compile>
     <Compile Include="..\Hqub.MusicBrainz.API\Entities\CoverArtArchive.cs">
       <Link>Entities\CoverArtArchive.cs</Link>
     </Compile>
-    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Entity.cs">
-      <Link>Entities\Entity.cs</Link>
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Disc.cs">
+      <Link>Entities\Disc.cs</Link>
     </Compile>
     <Compile Include="..\Hqub.MusicBrainz.API\Entities\Label.cs">
       <Link>Entities\Label.cs</Link>
@@ -90,23 +72,11 @@
     <Compile Include="..\Hqub.MusicBrainz.API\Entities\LabelInfo.cs">
       <Link>Entities\LabelInfo.cs</Link>
     </Compile>
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\LifeSpan.cs">
+      <Link>Entities\LifeSpan.cs</Link>
+    </Compile>
     <Compile Include="..\Hqub.MusicBrainz.API\Entities\Medium.cs">
       <Link>Entities\Medium.cs</Link>
-    </Compile>
-    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Metadata.cs">
-      <Link>Entities\Metadata.cs</Link>
-    </Compile>
-    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Metadata\ArtistMetadata.cs">
-      <Link>Entities\Metadata\ArtistMetadata.cs</Link>
-    </Compile>
-    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Metadata\RecordingMetadata.cs">
-      <Link>Entities\Metadata\RecordingMetadata.cs</Link>
-    </Compile>
-    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Metadata\ReleaseGroupMetadata.cs">
-      <Link>Entities\Metadata\ReleaseGroupMetadata.cs</Link>
-    </Compile>
-    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Metadata\ReleaseMetadata.cs">
-      <Link>Entities\Metadata\ReleaseMetadata.cs</Link>
     </Compile>
     <Compile Include="..\Hqub.MusicBrainz.API\Entities\NameCredit.cs">
       <Link>Entities\NameCredit.cs</Link>
@@ -129,6 +99,9 @@
     <Compile Include="..\Hqub.MusicBrainz.API\Entities\Tag.cs">
       <Link>Entities\Tag.cs</Link>
     </Compile>
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\TextRepresentation.cs">
+      <Link>Entities\TextRepresentation.cs</Link>
+    </Compile>
     <Compile Include="..\Hqub.MusicBrainz.API\Entities\Track.cs">
       <Link>Entities\Track.cs</Link>
     </Compile>
@@ -137,6 +110,9 @@
     </Compile>
     <Compile Include="..\Hqub.MusicBrainz.API\QueryParameters.cs">
       <Link>QueryParameters.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainz.API\QueryResult.cs">
+      <Link>QueryResult.cs</Link>
     </Compile>
     <Compile Include="Resources\Constants.cs" />
     <Compile Include="Resources\Messages.cs" />

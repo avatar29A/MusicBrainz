@@ -1,12 +1,13 @@
-﻿using Hqub.MusicBrainz.API.Entities;
-using NUnit.Framework;
-
+﻿
 namespace Hqub.MusicBrainz.API.Test
 {
-    // Resource: artist-get.xml
+    using Hqub.MusicBrainz.API.Entities;
+    using NUnit.Framework;
+
+    // Resource: artist-get.json
     // Artist.Get("12195c41-6136-4dfd-acf1-9923dadc73e2", "release-groups", "tags", "works");
     //
-    // http://musicbrainz.org/ws/2/artist/72c536dc-7137-4477-a521-567eeb840fa8/?inc=release-groups+tags+works
+    // http://musicbrainz.org/ws/2/artist/72c536dc-7137-4477-a521-567eeb840fa8/?inc=release-groups+tags+works&fmt=json
 
     public class ArtistTests
     {
@@ -14,7 +15,7 @@ namespace Hqub.MusicBrainz.API.Test
 
         public ArtistTests()
         {
-            this.artist = TestHelper.Get<Artist>("artist-get.xml");
+            this.artist = TestHelper.GetJson<Artist>("artist-get.json");
         }
 
         [Test]
@@ -30,14 +31,13 @@ namespace Hqub.MusicBrainz.API.Test
         {
             Assert.AreEqual("72c536dc-7137-4477-a521-567eeb840fa8", artist.Id);
             Assert.AreEqual("Person", artist.Type);
-            //Assert.AreEqual(artist, artist.Score);
 
             Assert.AreEqual("Bob Dylan", artist.Name);
             Assert.AreEqual("Dylan, Bob", artist.SortName);
-            //Assert.AreEqual("male", artist.Gender);
+            Assert.AreEqual("Male", artist.Gender);
             Assert.AreEqual("US", artist.Country);
 
-            //Assert.IsNotNull(artist.Area);
+            Assert.IsNotNull(artist.Area);
             Assert.IsNotNull(artist.LifeSpan);
             Assert.IsNotNull(artist.Tags);
         }
@@ -45,18 +45,17 @@ namespace Hqub.MusicBrainz.API.Test
         [Test]
         public void TestArtistReleaseGroups()
         {
-            var list = artist.ReleaseGroups.Items;
+            var list = artist.ReleaseGroups;
 
             Assert.IsNotNull(list);
             Assert.AreEqual(25, list.Count);
-            //Assert.AreEqual(642, list.QueryCount);
 
             var group = list[3];
 
             Assert.IsNotNull(group);
 
             Assert.AreEqual("329fb554-2a81-3d8a-8e22-ec2c66810019", group.Id);
-            Assert.AreEqual("Album", group.Type);
+            Assert.AreEqual("Album", group.PrimaryType);
 
             Assert.AreEqual("Blonde on Blonde", group.Title);
             Assert.AreEqual("1966-05-16", group.FirstReleaseDate);
@@ -64,25 +63,38 @@ namespace Hqub.MusicBrainz.API.Test
         }
 
         [Test]
+        public void TestArtistArea()
+        {
+            var area = artist.Area;
+
+            Assert.IsNotNull(area);
+            Assert.AreEqual("489ce91b-6658-3307-9877-795b68554c98", area.Id);
+            Assert.AreEqual("United States", area.Name);
+
+            Assert.IsNotNull(area.IsoCodes);
+            Assert.AreEqual(1, area.IsoCodes.Count);
+        }
+
+        [Test]
         public void TestArtistTags()
         {
-            var list = artist.Tags.Items;
+            var list = artist.Tags;
 
             Assert.IsNotNull(list);
-            Assert.AreEqual(24, list.Count);
+            Assert.AreEqual(26, list.Count);
 
-            var tag = list[1];
+            var tag = list[7];
 
             Assert.IsNotNull(tag);
 
             Assert.AreEqual(1, tag.Count);
-            Assert.AreEqual("1960s", tag.Name);
+            Assert.AreEqual("blues", tag.Name);
         }
 
         [Test]
         public void TestArtistWorks()
         {
-            var list = artist.Works.Items;
+            var list = artist.Works;
 
             Assert.IsNotNull(list);
             Assert.AreEqual(25, list.Count);

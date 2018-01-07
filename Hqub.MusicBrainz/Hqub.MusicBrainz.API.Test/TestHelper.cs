@@ -1,18 +1,39 @@
-﻿using System;
-using System.IO;
-using System.Reflection;
-
+﻿
 namespace Hqub.MusicBrainz.API.Test
 {
+    using System;
+    using System.IO;
+    using System.Reflection;
+    using System.Runtime.Serialization.Json;
+
     static class TestHelper
     {
         private const string prefix = "Hqub.MusicBrainz.API.Test.Data.";
 
-        public static T Get<T>(string resource, bool withoutMetadata = true) where T : Entities.Entity
+        private static Stream LoadResource(string name)
+        {
+            if (!name.StartsWith(prefix))
+            {
+                name = prefix + name;
+            }
+
+            return Assembly.GetExecutingAssembly().GetManifestResourceStream(name);
+        }
+
+        public static T GetJson<T>(string resource)
         {
             try
             {
-                return WebRequestHelper.DeserializeStream<T>(LoadResource(resource), withoutMetadata);
+                var stream = LoadResource(resource);
+
+                if (stream == null)
+                {
+                    throw new NullReferenceException(Resources.Messages.EmptyStream);
+                }
+
+                var serializer = new DataContractJsonSerializer(typeof(T));
+
+                return (T)serializer.ReadObject(stream);
             }
             catch (Exception e)
             {
@@ -23,16 +44,6 @@ namespace Hqub.MusicBrainz.API.Test
             }
 
             return default(T);
-        }
-
-        private static Stream LoadResource(string name)
-        {
-            if (!name.StartsWith(prefix))
-            {
-                name = prefix + name;
-            }
-
-            return Assembly.GetExecutingAssembly().GetManifestResourceStream(name);
         }
     }
 }

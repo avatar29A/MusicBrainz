@@ -1,20 +1,21 @@
-﻿using Hqub.MusicBrainz.API.Entities;
-using NUnit.Framework;
-
+﻿
 namespace Hqub.MusicBrainz.API.Test
 {
-    // Resource: release-get.xml
+    using Hqub.MusicBrainz.API.Entities;
+    using NUnit.Framework;
+
+    // Resource: release-get.json
     // Release.Get("12195c41-6136-4dfd-acf1-9923dadc73e2", "artists", "labels", "recordings", "release-groups");
     //
-    // http://musicbrainz.org/ws/2/release/12195c41-6136-4dfd-acf1-9923dadc73e2/?inc=artists+labels+recordings+release-groups
-
+    // http://musicbrainz.org/ws/2/release/12195c41-6136-4dfd-acf1-9923dadc73e2/?inc=artists+labels+recordings+release-groups&fmt=json
+    
     public class ReleaseTests
     {
         Release release;
 
         public ReleaseTests()
         {
-            this.release = TestHelper.Get<Release>("release-get.xml");
+            this.release = TestHelper.GetJson<Release>("release-get.json");
         }
 
         [Test]
@@ -64,10 +65,10 @@ namespace Hqub.MusicBrainz.API.Test
 
             Assert.IsNotNull(group);
 
-            Assert.AreEqual("c0fa897e-17ea-42c9-9f42-04057c07d96b", group.Id);
-            Assert.AreEqual("Album", group.Type);
+            Assert.AreEqual("96daddd3-165b-4fdd-a422-e930ee6b3bc8", group.Id);
+            //Assert.AreEqual("Album", group.Type);
 
-            Assert.AreEqual("Tucson: A Country Rock Opera", group.Title);
+            Assert.AreEqual("Tucson", group.Title);
             Assert.AreEqual("2012-06-11", group.FirstReleaseDate);
             Assert.AreEqual("Album", group.PrimaryType);
         }
@@ -103,16 +104,16 @@ namespace Hqub.MusicBrainz.API.Test
         [Test]
         public void TestReleaseMediumList()
         {
-            var mediums = release.MediumList.Items;
+            var mediums = release.Media;
 
             Assert.IsNotNull(mediums);
             Assert.AreEqual(1, mediums.Count);
         }
 
         [Test]
-        public void TestReleaseMediumListTracks()
+        public void TestReleaseMediaTracks()
         {
-            var tracks = release.MediumList.Items[0].Tracks.Items;
+            var tracks = release.Media[0].Tracks;
 
             Assert.IsNotNull(tracks);
             Assert.AreEqual(19, tracks.Count);
@@ -122,13 +123,13 @@ namespace Hqub.MusicBrainz.API.Test
 
             Assert.IsNotNull(track);
             Assert.AreEqual("7791b499-b680-3653-94df-60f76174137c", track.Id);
-            Assert.AreEqual(1, track.Position);
+            Assert.AreEqual("1", track.Number);
 
             var recording = track.Recording;
 
             Assert.IsNotNull(recording);
             Assert.AreEqual("848f9f37-1a47-446b-b7f0-e09547738446", recording.Id);
-            Assert.AreEqual(201066, recording.Length);
+            Assert.AreEqual(201000, recording.Length);
         }
     }
 }
