@@ -93,14 +93,14 @@ namespace Hqub.MusicBrainz.API.Entities
         [DataMember(Name = "releases")]
         public List<Release> Releases { get; set; }
 
-        [DataMember(Name = "relations")]
-        public List<Relation> Relations { get; set; }
-
         [DataMember(Name = "works")]
         public List<Work> Works { get; set; }
 
         [DataMember(Name = "tags")]
         public List<Tag> Tags { get; set; }
+
+        [DataMember(Name = "relations")]
+        public List<Relation> Relations { get; set; }
 
         #endregion
 

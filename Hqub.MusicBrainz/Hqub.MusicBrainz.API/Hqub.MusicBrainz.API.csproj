@@ -73,6 +73,7 @@
     <Compile Include="Entities\Tag.cs" />
     <Compile Include="Entities\TextRepresentation.cs" />
     <Compile Include="Entities\Track.cs" />
+    <Compile Include="Entities\Url.cs" />
     <Compile Include="Entities\Work.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryParameters.cs" />

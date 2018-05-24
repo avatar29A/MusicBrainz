@@ -44,6 +44,12 @@ namespace Hqub.MusicBrainz.API.Entities
         [DataMember(Name = "disambiguation")]
         public string Disambiguation { get; set; }
 
+        /// <summary>
+        /// Gets or sets the rating.
+        /// </summary>
+        [DataMember(Name = "rating")]
+        public Rating Rating { get; set; }
+
         #endregion
 
         #region Include
@@ -56,6 +62,9 @@ namespace Hqub.MusicBrainz.API.Entities
 
         [DataMember(Name = "releases")]
         public List<Release> Releases { get; set; }
+
+        [DataMember(Name = "relations")]
+        public List<Relation> Relations { get; set; }
 
         #endregion
 

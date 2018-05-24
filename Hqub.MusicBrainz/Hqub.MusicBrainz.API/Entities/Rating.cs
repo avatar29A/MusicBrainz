@@ -15,6 +15,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <summary>
         /// Gets or sets the rating value.
         /// </summary>
+        [DataMember(Name = "value")]
         public double Value { get; set; }
     }
 }
