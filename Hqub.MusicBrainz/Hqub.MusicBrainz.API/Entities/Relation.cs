@@ -8,6 +8,8 @@ namespace Hqub.MusicBrainz.API.Entities
     {
         public const string EntityName = "relation";
 
+        #region Properties
+
         /// <summary>
         /// Gets or sets the relation type.
         /// </summary>
@@ -32,23 +34,51 @@ namespace Hqub.MusicBrainz.API.Entities
         [DataMember(Name = "direction")]
         public string Direction { get; set; }
 
-        // NOTE: using derived classes and the KnownTypes arttibute does not work,
+        /// <summary>
+        /// Gets or sets the begin date.
+        /// </summary>
+        [DataMember(Name = "begin")]
+        public string Begin { get; set; }
+
+        /// <summary>
+        /// Gets or sets the end date.
+        /// </summary>
+        [DataMember(Name = "end")]
+        public string End { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the relation ended or not.
+        /// </summary>
+        [DataMember(Name = "ended")]
+        public bool? Ended { get; set; }
+
+        /// <summary>
+        /// Gets or sets a list of attributes.
+        /// </summary>
+        [DataMember(Name = "attributes")]
+        public string[] Attributes { get; set; }
+
+        #endregion
+
+        #region Relations
+
+        // NOTE: using derived classes and the KnownTypes attribute does not work,
         //       so we add the relations explicitly (at the moment, only url-rels
         //       are included).
-        
+
         /// <summary>
         /// Gets or sets the url relationship (include url-rels).
         /// </summary>
         [DataMember(Name = "url")]
         public Url Url { get; set; }
 
+        /// <summary>
+        /// Gets or sets the artist relationship (include artist-rels).
+        /// </summary>
+        [DataMember(Name = "artist")]
+        public Artist Artist { get; set; }
+
         // Other relationships:
-        //
-        //   /// <summary>
-        //   /// Gets or sets the artist relationship (include artist-rels).
-        //   /// </summary>
-        //   [DataMember(Name = "artist")]
-        //   public Artist Artist { get; set; }
         //
         //   /// <summary>
         //   /// Gets or sets the work relationship (include work-rels).
@@ -62,11 +92,7 @@ namespace Hqub.MusicBrainz.API.Entities
         //   [DataMember(Name = "release")]
         //   public Release Release { get; set; }
         //
-        //   /// <summary>
-        //   /// Gets or sets the release relationship (include release-rels).
-        //   /// </summary>
-        //   [DataMember(Name = "release")]
-        //   public Release Release { get; set; }
-        //
+
+        #endregion
     }
 }

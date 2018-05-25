@@ -29,7 +29,7 @@ namespace Hqub.MusicBrainz.API
                 {
                     throw new NullReferenceException(Resources.Messages.EmptyStream);
                 }
-                
+
                 var serializer = new DataContractJsonSerializer(typeof(T));
 
                 return (T)serializer.ReadObject(stream);
