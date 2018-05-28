@@ -63,8 +63,7 @@ namespace Hqub.MusicBrainz.API.Entities
         #region Relations
 
         // NOTE: using derived classes and the KnownTypes attribute does not work,
-        //       so we add the relations explicitly (at the moment, only url-rels
-        //       are included).
+        //       so we add the relations explicitly.
 
         /// <summary>
         /// Gets or sets the url relationship (include url-rels).

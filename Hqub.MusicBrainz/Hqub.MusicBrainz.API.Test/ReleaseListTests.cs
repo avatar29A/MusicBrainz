@@ -7,7 +7,7 @@ namespace Hqub.MusicBrainz.API.Test
     // Resource: release-search.json
     // Release.Search("artist:(giant sand) release:(tucson)", 10);
     //
-    // http://musicbrainz.org/ws/2/release?query=artist:(giant%20sand)%20release:(tucson)&limit=10&fmt=json
+    // https://musicbrainz.org/ws/2/release?query=artist:(giant%20sand)%20release:(tucson)&limit=10&fmt=json
 
     public class ReleaseListTests
     {
@@ -22,7 +22,7 @@ namespace Hqub.MusicBrainz.API.Test
         public void TestReleaseListQueryCount()
         {
             Assert.AreEqual(0, data.Offset);
-            Assert.AreEqual(839, data.Count);
+            Assert.AreEqual(881, data.Count);
         }
 
         [Test]

@@ -29,7 +29,7 @@ namespace Hqub.MusicBrainz.API
         public static IWebProxy Proxy { get; set; }
 
         /// <summary>
-        /// Allow set cutstom user agent string.
+        /// Allow set custom user agent string.
         /// </summary>
         public static string UserAgent { get; set; }
     }

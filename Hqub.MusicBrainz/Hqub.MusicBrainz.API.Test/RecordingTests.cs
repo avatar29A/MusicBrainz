@@ -5,9 +5,9 @@ namespace Hqub.MusicBrainz.API.Test
     using NUnit.Framework;
 
     // Resource: recording-get.json
-    // Recording.Get("12195c41-6136-4dfd-acf1-9923dadc73e2", "release-groups", "tags", "works");
+    // Recording.Get("12195c41-6136-4dfd-acf1-9923dadc73e2"", "artists", "releases", "tags", "ratings", "url-rels");
     //
-    // http://musicbrainz.org/ws/2/recording/9408b8ce-9b95-4fb0-ac70-595d054a15c6/?inc=artists+releases+tags&fmt=json
+    // https://musicbrainz.org/ws/2/recording/9408b8ce-9b95-4fb0-ac70-595d054a15c6/?inc=artists+releases+tags+ratings+url-rels&fmt=json
 
     public class RecordingTests
     {
@@ -19,15 +19,11 @@ namespace Hqub.MusicBrainz.API.Test
         }
 
         [Test]
-        public void TestRecordingAttributes()
-        {
-            Assert.IsNotNull(recording);
-            Assert.AreEqual("9408b8ce-9b95-4fb0-ac70-595d054a15c6", recording.Id);
-        }
-
-        [Test]
         public void TestRecordingElements()
         {
+            Assert.IsNotNull(recording);
+
+            Assert.AreEqual("9408b8ce-9b95-4fb0-ac70-595d054a15c6", recording.Id);
             Assert.AreEqual("Alone Again Or", recording.Title);
             Assert.AreEqual(204333, recording.Length);
 
@@ -76,6 +72,25 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.IsNotNull(tag);
             Assert.AreEqual(1, tag.Count);
             Assert.AreEqual("alternative", tag.Name);
+        }
+
+        [Test]
+        public void TestRecordingRating()
+        {
+            var rating = recording.Rating;
+
+            Assert.IsNotNull(rating);
+
+            Assert.AreEqual(5, rating.Value);
+            Assert.AreEqual(1, rating.VotesCount);
+        }
+
+        [Test]
+        public void TestRecordingRelations()
+        {
+            var list = recording.Relations;
+
+            Assert.IsNotNull(list);
         }
     }
 }

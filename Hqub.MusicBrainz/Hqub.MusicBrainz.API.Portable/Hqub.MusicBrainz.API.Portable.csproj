@@ -45,6 +45,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Area.cs">
+      <Link>Entities\Area.cs</Link>
+    </Compile>
     <Compile Include="..\Hqub.MusicBrainz.API\Entities\Artist.cs">
       <Link>Entities\Artist.cs</Link>
     </Compile>
@@ -104,6 +107,9 @@
     </Compile>
     <Compile Include="..\Hqub.MusicBrainz.API\Entities\Track.cs">
       <Link>Entities\Track.cs</Link>
+    </Compile>
+    <Compile Include="..\Hqub.MusicBrainz.API\Entities\Url.cs">
+      <Link>Entities\Url.cs</Link>
     </Compile>
     <Compile Include="..\Hqub.MusicBrainz.API\Entities\Work.cs">
       <Link>Entities\Work.cs</Link>

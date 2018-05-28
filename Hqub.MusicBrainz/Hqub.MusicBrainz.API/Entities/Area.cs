@@ -24,7 +24,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// Gets or sets the Disambiguation.
         /// </summary>
         [DataMember(Name = "disambiguation")]
-        public string disambiguation { get; set; }
+        public string Disambiguation { get; set; }
 
         /// <summary>
         /// Gets or sets the iso-3166-1 codes.

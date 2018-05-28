@@ -3,11 +3,12 @@ namespace Hqub.MusicBrainz.API.Test
 {
     using Hqub.MusicBrainz.API.Entities;
     using NUnit.Framework;
+    using System.Linq;
 
     // Resource: artist-get.json
-    // Artist.Get("12195c41-6136-4dfd-acf1-9923dadc73e2", "release-groups", "tags", "works");
+    // Artist.Get("12195c41-6136-4dfd-acf1-9923dadc73e2", "release-groups", "tags", "works", "ratings", "artist-rels", "url-rels");
     //
-    // http://musicbrainz.org/ws/2/artist/72c536dc-7137-4477-a521-567eeb840fa8/?inc=release-groups+tags+works&fmt=json
+    // https://musicbrainz.org/ws/2/artist/72c536dc-7137-4477-a521-567eeb840fa8/?inc=release-groups+tags+works+ratings+artist-rels+url-rels&fmt=json
 
     public class ArtistTests
     {
@@ -16,14 +17,6 @@ namespace Hqub.MusicBrainz.API.Test
         public ArtistTests()
         {
             this.artist = TestHelper.GetJson<Artist>("artist-get.json");
-        }
-
-        [Test]
-        public void TestArtistAttributes()
-        {
-            Assert.IsNotNull(artist);
-            Assert.AreEqual("72c536dc-7137-4477-a521-567eeb840fa8", artist.Id);
-            Assert.AreEqual("Person", artist.Type);
         }
 
         [Test]
@@ -36,10 +29,6 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.AreEqual("Dylan, Bob", artist.SortName);
             Assert.AreEqual("Male", artist.Gender);
             Assert.AreEqual("US", artist.Country);
-
-            Assert.IsNotNull(artist.Area);
-            Assert.IsNotNull(artist.LifeSpan);
-            Assert.IsNotNull(artist.Tags);
         }
 
         [Test]
@@ -76,6 +65,29 @@ namespace Hqub.MusicBrainz.API.Test
         }
 
         [Test]
+        public void TestArtistLifeSpan()
+        {
+            var lifespan = artist.LifeSpan;
+
+            Assert.IsNotNull(lifespan);
+
+            Assert.AreEqual("1941-05-24", lifespan.Begin);
+            Assert.IsNull(lifespan.End);
+            Assert.False(lifespan.Ended);
+        }
+
+        [Test]
+        public void TestArtistRating()
+        {
+            var rating = artist.Rating;
+            
+            Assert.IsNotNull(rating);
+
+            Assert.AreEqual(4.5, rating.Value);
+            Assert.AreEqual(27, rating.VotesCount);
+        }
+
+        [Test]
         public void TestArtistTags()
         {
             var list = artist.Tags;
@@ -98,7 +110,6 @@ namespace Hqub.MusicBrainz.API.Test
 
             Assert.IsNotNull(list);
             Assert.AreEqual(25, list.Count);
-            //Assert.AreEqual(1465, list.QueryCount);
 
             var work = list[0];
 
@@ -106,6 +117,18 @@ namespace Hqub.MusicBrainz.API.Test
 
             Assert.AreEqual("0135740e-69dc-41a0-86d9-6a57664809a5", work.Id);
             Assert.AreEqual("(We're Living on) Borrowed Time", work.Title);
+        }
+
+        [Test]
+        public void TestArtistRelations()
+        {
+            var list = artist.Relations;
+
+            Assert.IsNotNull(list);
+            Assert.AreEqual(51, list.Count);
+            
+            Assert.AreEqual(33, list.Where(r => r.TargetType == "url").Count());
+            Assert.AreEqual(18, list.Where(r => r.TargetType == "artist").Count());
         }
     }
 }

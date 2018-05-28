@@ -5,10 +5,10 @@ namespace Hqub.MusicBrainz.API.Test
     using NUnit.Framework;
 
     // Resource: release-get.json
-    // Release.Get("12195c41-6136-4dfd-acf1-9923dadc73e2", "artists", "labels", "recordings", "release-groups");
+    // Release.Get("12195c41-6136-4dfd-acf1-9923dadc73e2", "artists", "labels", "recordings", "release-groups", "url-rels");
     //
-    // http://musicbrainz.org/ws/2/release/12195c41-6136-4dfd-acf1-9923dadc73e2/?inc=artists+labels+recordings+release-groups&fmt=json
-    
+    // https://musicbrainz.org/ws/2/release/12195c41-6136-4dfd-acf1-9923dadc73e2/?inc=artists+labels+recordings+release-groups+url-rels&fmt=json
+
     public class ReleaseTests
     {
         Release release;
@@ -17,17 +17,13 @@ namespace Hqub.MusicBrainz.API.Test
         {
             this.release = TestHelper.GetJson<Release>("release-get.json");
         }
-
-        [Test]
-        public void TestReleaseAttributes()
-        {
-            Assert.IsNotNull(release);
-            Assert.AreEqual("12195c41-6136-4dfd-acf1-9923dadc73e2", release.Id);
-        }
-
+        
         [Test]
         public void TestReleaseElements()
         {
+            Assert.IsNotNull(release);
+
+            Assert.AreEqual("12195c41-6136-4dfd-acf1-9923dadc73e2", release.Id);
             Assert.AreEqual("Tucson: A Country Rock Opera", release.Title);
             Assert.AreEqual("Official", release.Status);
             Assert.AreEqual("normal", release.Quality);
@@ -130,6 +126,15 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.IsNotNull(recording);
             Assert.AreEqual("848f9f37-1a47-446b-b7f0-e09547738446", recording.Id);
             Assert.AreEqual(201000, recording.Length);
+        }
+
+        [Test]
+        public void TestReleaseRelations()
+        {
+            var list = release.Relations;
+
+            Assert.IsNotNull(list);
+            Assert.AreEqual(1, list.Count);
         }
     }
 }
