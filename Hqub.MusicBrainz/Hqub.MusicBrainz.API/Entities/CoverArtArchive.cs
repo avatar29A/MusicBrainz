@@ -30,6 +30,11 @@ namespace Hqub.MusicBrainz.API.Entities
         [DataMember(Name = "back")]
         public bool Back { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value to the CoverArtUri
+        /// </summary>
+        public string CoverArtUri { get; set; }
+
         public static Uri GetCoverArtUri(string releaseId)
         {
             string url = "http://coverartarchive.org/release/" + releaseId + "/front-250.jpg";
