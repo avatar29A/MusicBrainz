@@ -7,6 +7,11 @@ namespace Hqub.MusicBrainz.API.Entities
     using System.Runtime.Serialization;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// A MusicBrainz release represents the unique release (i.e. issuing) of a product on a specific
+    /// date with specific release information such as the country, label, barcode and packaging.
+    /// </summary>
+    /// <see href="https://musicbrainz.org/doc/Release"/>
     [DataContract(Name = "release")]
     public class Release
     {
@@ -84,15 +89,39 @@ namespace Hqub.MusicBrainz.API.Entities
 
         #region Subqueries
 
+        /// <summary>
+        /// Gets or sets a list of artists associated to this release.
+        /// </summary>
+        /// <example>
+        /// var e = await Release.GetAsync(mbid, "artists");
+        /// </example>
         [DataMember(Name = "artist-credit")]
         public List<NameCredit> Credits { get; set; }
 
+        /// <summary>
+        /// Gets or sets a list of labels associated to this release.
+        /// </summary>
+        /// <example>
+        /// var e = await Release.GetAsync(mbid, "labels");
+        /// </example>
         [DataMember(Name = "label-info")]
         public List<LabelInfo> Labels { get; set; }
 
+        /// <summary>
+        /// Gets or sets a list of media/tracks associated to this release.
+        /// </summary>
+        /// <example>
+        /// var e = await Release.GetAsync(mbid, "recordings");
+        /// </example>
         [DataMember(Name = "media")]
         public List<Medium> Media { get; set; }
 
+        /// <summary>
+        /// Gets or sets a list of relations associated to this release.
+        /// </summary>
+        /// <example>
+        /// var e = await Release.GetAsync(mbid, "url-rels");
+        /// </example>
         [DataMember(Name = "relations")]
         public List<Relation> Relations { get; set; }
 

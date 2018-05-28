@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Hqub.MusicBrainz.API
 {
+    using System.Net;
+
+    /// <summary>
+    /// Hqub.MusicBrainz configuration.
+    /// </summary>
     public static class Configuration
     {
         static Configuration()

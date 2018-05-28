@@ -3,6 +3,11 @@ namespace Hqub.MusicBrainz.API.Entities
 {
     using System.Runtime.Serialization;
 
+    /// <summary>
+    /// In MusicBrainz, a track is the way a recording is represented on a particular
+    /// release (or, more exactly, on a particular medium).
+    /// </summary>
+    /// <see href="https://musicbrainz.org/doc/Track"/>
     [DataContract(Name = "track")]
     public class Track
     {

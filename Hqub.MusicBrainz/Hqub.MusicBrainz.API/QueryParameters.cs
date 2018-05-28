@@ -18,6 +18,9 @@ namespace Hqub.MusicBrainz.API
     {
         List<QueryNode> values;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="QueryParameters{T}"/> class.
+        /// </summary>
         public QueryParameters()
         {
             values = new List<QueryNode>();

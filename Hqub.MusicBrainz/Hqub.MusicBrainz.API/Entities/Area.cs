@@ -5,6 +5,10 @@ namespace Hqub.MusicBrainz.API.Entities
 {
     using System.Runtime.Serialization;
 
+    /// <summary>
+    /// Areas are geographic regions or settlements.
+    /// </summary>
+    /// <see href="https://musicbrainz.org/doc/Area"/>
     [DataContract(Name = "area")]
     public class Area
     {

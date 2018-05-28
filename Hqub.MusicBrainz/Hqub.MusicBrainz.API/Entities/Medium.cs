@@ -4,6 +4,10 @@ namespace Hqub.MusicBrainz.API.Entities
     using System.Collections.Generic;
     using System.Runtime.Serialization;
 
+    /// <summary>
+    /// Physical representation of a release.
+    /// </summary>
+    /// <see href="https://musicbrainz.org/doc/Medium"/>
     [DataContract(Name = "medium")]
     public class Medium
     {
@@ -19,6 +23,7 @@ namespace Hqub.MusicBrainz.API.Entities
         [DataMember(Name = "position")]
         public int Position { get; set; }
 
+        /// <summary>
         /// Gets or sets the format.
         /// </summary>
         [DataMember(Name = "format")]

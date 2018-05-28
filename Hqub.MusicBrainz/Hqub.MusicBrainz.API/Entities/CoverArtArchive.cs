@@ -3,6 +3,10 @@ using System.Runtime.Serialization;
 
 namespace Hqub.MusicBrainz.API.Entities
 {
+    /// <summary>
+    /// Cover Art Archive information.
+    /// </summary>
+    /// <see href="https://musicbrainz.org/doc/Cover_Art_Archive"/>
     [DataContract(Name = "cover-art-archive")]
     public class CoverArtArchive
     {
@@ -32,7 +36,7 @@ namespace Hqub.MusicBrainz.API.Entities
 
         public static Uri GetCoverArtUri(string releaseId)
         {
-            string url = "http://coverartarchive.org/release/" + releaseId + "/front-250.jpg";
+            string url = "https://coverartarchive.org/release/" + releaseId + "/front-250.jpg";
             return new Uri(url, UriKind.RelativeOrAbsolute);
         }
     }

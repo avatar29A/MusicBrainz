@@ -3,11 +3,14 @@ namespace Hqub.MusicBrainz.API.Entities
 {
     using System.Runtime.Serialization;
 
+    /// <summary>
+    /// Relationships are a way to represent all the different ways in which entities are connected
+    /// to each other and to URLs outside MusicBrainz.
+    /// </summary>
+    /// <see href="https://musicbrainz.org/doc/Relationships"/>
     [DataContract(Name = "relation")]
     public class Relation
     {
-        public const string EntityName = "relation";
-
         #region Properties
 
         /// <summary>

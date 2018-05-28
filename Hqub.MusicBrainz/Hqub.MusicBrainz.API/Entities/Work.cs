@@ -3,6 +3,11 @@ namespace Hqub.MusicBrainz.API.Entities
 {
     using System.Runtime.Serialization;
 
+    /// <summary>
+    /// In MusicBrainz terminology, a work is a distinct intellectual or artistic creation,
+    /// which can be expressed in the form of one or more audio recordings.
+    /// </summary>
+    /// <see href="https://musicbrainz.org/doc/Work"/>
     [DataContract(Name = "work")]
     public class Work
     {
