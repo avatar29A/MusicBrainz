@@ -9,9 +9,9 @@ Implementation MuzicBrainze API 2.0 (C#). Current version: 1.0.1
 [![NuGet](https://img.shields.io/nuget/dt/MusicBrainzAPI.svg)](https://www.nuget.org/packages/MusicBrainzAPI/1.0.0)
 [![Issues](https://img.shields.io/github/issues/avatar29A/MusicBrainz.svg)](https://github.com/avatar29A/MusicBrainz/issues)
 
-##Examples:
+## Examples:
 
-######Get Artist by Id.
+##### Get Artist by Id.
 
 ```c#
  static void Main(string[] args)
@@ -22,7 +22,7 @@ Implementation MuzicBrainze API 2.0 (C#). Current version: 1.0.1
  }
 ```
 
-######Search artist by query.
+##### Search artist by query.
 
 ```c#
 
@@ -40,7 +40,7 @@ Implementation MuzicBrainze API 2.0 (C#). Current version: 1.0.1
 
 ```
 
-###### Get Artist with Tags.
+##### Get Artist with Tags.
 
 ```c#
 using Hqub.MusicBrainze.API.Entities;
@@ -60,7 +60,7 @@ static void Main(string[] args)
 }
 ```
 
-###### Show Artist -> Album -> Tracks.
+##### Show Artist -> Album -> Tracks.
 
 ```c#
 private static void Main(string[] args)

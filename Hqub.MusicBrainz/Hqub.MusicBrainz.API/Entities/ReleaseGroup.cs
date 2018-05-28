@@ -51,7 +51,7 @@ namespace Hqub.MusicBrainz.API.Entities
         public List<string> SecondaryTypes { get; set; }
 
         /// <summary>
-        /// Gets or sets the rating".
+        /// Gets or sets the rating.
         /// </summary>
         [DataMember(Name = "rating")]
         public Rating Rating { get; set; }
@@ -71,6 +71,9 @@ namespace Hqub.MusicBrainz.API.Entities
 
         [DataMember(Name = "releases")]
         public List<Release> Releases { get; set; }
+
+        [DataMember(Name = "relations")]
+        public List<Relation> Relations { get; set; }
 
         #endregion
 

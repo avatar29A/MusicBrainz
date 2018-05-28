@@ -93,6 +93,9 @@ namespace Hqub.MusicBrainz.API.Entities
         [DataMember(Name = "media")]
         public List<Medium> Media { get; set; }
 
+        [DataMember(Name = "relations")]
+        public List<Relation> Relations { get; set; }
+
         #endregion
 
         #region Static Methods
