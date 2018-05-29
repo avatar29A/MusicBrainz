@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿
 namespace Hqub.MusicBrainz.API.Entities
 {
+    using System.Collections.Generic;
     using System.Runtime.Serialization;
 
     /// <summary>

@@ -128,7 +128,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <param name="id">The release-group MusicBrainz id.</param>
         /// <param name="inc">A list of entities to include (subqueries).</param>
         /// <returns></returns>
-        public async static Task<ReleaseGroup> GetAsync(string id, params string[] inc)
+        public static async Task<ReleaseGroup> GetAsync(string id, params string[] inc)
         {
             if (string.IsNullOrEmpty(id))
             {
@@ -147,7 +147,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <param name="limit">The maximum number of release-groups to return (default = 25).</param>
         /// <param name="offset">The offset to the release-groups list (enables paging, default = 0).</param>
         /// <returns></returns>
-        public async static Task<ReleaseGroupList> SearchAsync(string query, int limit = 25, int offset = 0)
+        public static async Task<ReleaseGroupList> SearchAsync(string query, int limit = 25, int offset = 0)
         {
             if (string.IsNullOrEmpty(query))
             {
@@ -166,7 +166,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <param name="limit">The maximum number of release-groups to return (default = 25).</param>
         /// <param name="offset">The offset to the release-groups list (enables paging, default = 0).</param>
         /// <returns></returns>
-        public async static Task<ReleaseGroupList> SearchAsync(QueryParameters<ReleaseGroup> query, int limit = 25, int offset = 0)
+        public static async Task<ReleaseGroupList> SearchAsync(QueryParameters<ReleaseGroup> query, int limit = 25, int offset = 0)
         {
             return await SearchAsync(query.ToString(), limit, offset);
         }
@@ -181,7 +181,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <param name="offset">The offset to the release-groups list (enables paging, default = 0).</param>
         /// <param name="inc">A list of entities to include (subqueries).</param>
         /// <returns></returns>
-        public async static Task<ReleaseGroupList> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc)
+        public static async Task<ReleaseGroupList> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc)
         {
             string url = WebRequestHelper.CreateBrowseTemplate(EntityName, entity, id, limit, offset, inc);
 

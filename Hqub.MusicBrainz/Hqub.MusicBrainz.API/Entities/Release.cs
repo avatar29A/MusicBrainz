@@ -147,7 +147,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <param name="id">The release MusicBrainz id.</param>
         /// <param name="inc">A list of entities to include (subqueries).</param>
         /// <returns></returns>
-        public async static Task<Release> GetAsync(string id, params string[] inc)
+        public static async Task<Release> GetAsync(string id, params string[] inc)
         {
             if (string.IsNullOrEmpty(id))
             {
@@ -166,7 +166,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <param name="limit">The maximum number of releases to return (default = 25).</param>
         /// <param name="offset">The offset to the releases list (enables paging, default = 0).</param>
         /// <returns></returns>
-        public async static Task<ReleaseList> SearchAsync(string query, int limit = 25, int offset = 0)
+        public static async Task<ReleaseList> SearchAsync(string query, int limit = 25, int offset = 0)
         {
             if (string.IsNullOrEmpty(query))
             {
@@ -185,7 +185,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <param name="limit">The maximum number of releases to return (default = 25).</param>
         /// <param name="offset">The offset to the releases list (enables paging, default = 0).</param>
         /// <returns></returns>
-        public async static Task<ReleaseList> SearchAsync(QueryParameters<Release> query, int limit = 25, int offset = 0)
+        public static async Task<ReleaseList> SearchAsync(QueryParameters<Release> query, int limit = 25, int offset = 0)
         {
             return await SearchAsync(query.ToString(), limit, offset);
         }

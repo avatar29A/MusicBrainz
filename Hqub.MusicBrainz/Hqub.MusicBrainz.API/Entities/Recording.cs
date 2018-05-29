@@ -123,7 +123,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <param name="id">The recording MusicBrainz id.</param>
         /// <param name="inc">A list of entities to include (subqueries).</param>
         /// <returns></returns>
-        public async static Task<Recording> GetAsync(string id, params string[] inc)
+        public static async Task<Recording> GetAsync(string id, params string[] inc)
         {
             if (string.IsNullOrEmpty(id))
             {
@@ -142,7 +142,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <param name="limit">The maximum number of recordings to return (default = 25).</param>
         /// <param name="offset">The offset to the recordings list (enables paging, default = 0).</param>
         /// <returns></returns>
-        public async static Task<RecordingList> SearchAsync(string query, int limit = 25, int offset = 0)
+        public static async Task<RecordingList> SearchAsync(string query, int limit = 25, int offset = 0)
         {
             if (string.IsNullOrEmpty(query))
             {
@@ -161,7 +161,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <param name="limit">The maximum number of recordings to return (default = 25).</param>
         /// <param name="offset">The offset to the recordings list (enables paging, default = 0).</param>
         /// <returns></returns>
-        public async static Task<RecordingList> SearchAsync(QueryParameters<Recording> query, int limit = 25, int offset = 0)
+        public static async Task<RecordingList> SearchAsync(QueryParameters<Recording> query, int limit = 25, int offset = 0)
         {
             return await SearchAsync(query.ToString(), limit, offset);
         }
@@ -176,7 +176,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <param name="offset">The offset to the recordings list (enables paging, default = 0).</param>
         /// <param name="inc">A list of entities to include (subqueries).</param>
         /// <returns></returns>
-        public async static Task<RecordingList> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc)
+        public static async Task<RecordingList> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc)
         {
             string url = WebRequestHelper.CreateBrowseTemplate(EntityName, entity, id, limit, offset, inc);
 
