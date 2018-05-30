@@ -4,12 +4,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MusicBrainze.API")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Hqub.MusicBrainz.API")]
+[assembly: AssemblyDescription("Implementation of MuzicBrainz API v2")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Hqub.MusicBrainze.API")]
-[assembly: AssemblyCopyright("Copyright h-qub ©  2014-2018")]
+[assembly: AssemblyProduct("Hqub.MusicBrainz.API")]
+[assembly: AssemblyCopyright("Copyright h-qub © 2014-2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
