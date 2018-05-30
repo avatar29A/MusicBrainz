@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Hqub.MusicBrainz.API")]
-[assembly: AssemblyDescription("Implementation of MuzicBrainz API v2")]
+[assembly: AssemblyDescription("Implementation of MusicBrainz API v2")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Hqub.MusicBrainz.API")]

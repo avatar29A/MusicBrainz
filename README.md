@@ -1,117 +1,22 @@
-MuzicBrainz
+MusicBrainz
 ============
 
-[![Join the chat at https://gitter.im/avatar29A/MusicBrainz](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/avatar29A/MusicBrainz?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://img.shields.io/travis-ci/avatar29A/MusicBrainz.svg?style=flat-square)](https://travis-ci.org/avatar29A/MusicBrainz)
+[![NuGet](https://img.shields.io/nuget/v/MusicBrainzAPI.svg?style=flat-square)](https://www.nuget.org/packages/MusicBrainzAPI)
+[![Issues](https://img.shields.io/github/issues/avatar29A/MusicBrainz.svg?style=flat-square)](https://github.com/avatar29A/MusicBrainz/issues)
+[![Join the chat at https://gitter.im/avatar29A/MusicBrainz](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/avatar29A/MusicBrainz)
 
-Implementation MuzicBrainze API 2.0 (C#). Current version: 1.0.1
+Implementation of the [MusicBrainz](https://musicbrainz.org/) API version 2.0 (requires .NET framework 4.5 or above).
 
-[![Build Status](https://travis-ci.org/avatar29A/MusicBrainz.svg)](https://travis-ci.org/avatar29A/MusicBrainz)
-[![NuGet](https://img.shields.io/nuget/dt/MusicBrainzAPI.svg)](https://www.nuget.org/packages/MusicBrainzAPI/1.0.0)
-[![Issues](https://img.shields.io/github/issues/avatar29A/MusicBrainz.svg)](https://github.com/avatar29A/MusicBrainz/issues)
+## Features
 
-## Examples:
+- First class MusicBrainz entities `Artist`, `ReleaseGroup`, `Release` and `Recording` supporting asynchronous `Get` (lookup by MBID), `Search` and `Browse`.
+- Advanced `Search` using Lucene query syntax (see [search documentation](https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2/Search) for supported fields).
+- Support for sub-queries in lookup requests (see [MusicBrainz wiki](https://wiki.musicbrainz.org/User:Nikki/ws/2) for a list of supported `inc` paramaters).
+- Limited support for entity relationships.
 
-##### Get Artist by Id.
+More information about the MusicBrainz webservice can be found [here](https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2).
 
-```c#
- static void Main(string[] args)
- {
-   var artist = Hqub.MusicBrainze.API.Entities.Artist.Get("c3cceeed-3332-4cf0-8c4c-bbde425147b6");
+## Examples
 
-   Console.WriteLine(artist.Name);
- }
-```
-
-##### Search artist by query.
-
-```c#
-
- static void Main(string[] args)
- {
-   var artists = Hqub.MusicBrainze.API.Entities.Artist.Search("scorpions");
-   
-   foreach(var artist in artists)
-   {
-      Console.WriteLine(artist.Name);
-   }
-   
-   Console.ReadKey();
- }
-
-```
-
-##### Get Artist with Tags.
-
-```c#
-using Hqub.MusicBrainze.API.Entities;
-
-static void Main(string[] args)
-{
-  var artist = Artist.Get("c3cceeed-3332-4cf0-8c4c-bbde425147b6", API.Entities.Include.ArtistIncludeEntityHelper.Tags);
-
-  Console.WriteLine(artist.Name);
-	
-  foreach (var tag in artist.Tags)
-  {
-    Console.WriteLine("\t{0}", tag.Name);
-  }
-
-  Console.ReadKey();
-}
-```
-
-##### Show Artist -> Album -> Tracks.
-
-```c#
-private static void Main(string[] args)
-{
-	try
-	{
-		var task = ShowAlbumTracks("The Rolling Stones", "Beggars Banquet");
-
-		// The synchronous Wait() will wrap any exception in an AggregateException,
-		// so be sure to catch it properly.
-		task.Wait();
-	}
-	catch (AggregateException e)
-	{
-		Console.WriteLine(e.InnerException.Message);
-	}
-
-	Console.ReadKey();
-}
-
-private static async Task ShowAlbumTracks(string artistName, string albumName)
-{
-	var artist = (await Artist.SearchAsync(artistName)).First();
-
-	Console.WriteLine(artist.Name);
-
-	var query = string.Format("aid=({0}) release=({1})", artist.Id, albumName);
-	var album = (await Release.SearchAsync(Uri.EscapeUriString(query), 10)).First();
-
-	Console.WriteLine("\t{0}", album.Title);
-
-	var release = await Release.GetAsync(album.Id, "recordings");
-
-	int i = 1;
-
-	foreach (var medium in release.MediumList)
-	{
-		foreach (var track in medium.Tracks)
-		{
-			var recording = track.Recordring;
-			var length = TimeSpan.FromMilliseconds(recording.Length).ToString("m\\:ss");
-
-			Console.WriteLine("\t\t{0,3:##} {1,6}  {2}", i++, length, recording.Title);
-		}
-	}
-}
-```
- 
-Also support next entities:
-
-- Release (Get, Search, Subqueries)
-- Recording (Get, Search, Subqueries)
-
-More information about MuzicBrainz Service [I here](http://musicbrainz.org/doc/XML_Web_Service/Version_2).
+Take a look at the [wiki](https://github.com/avatar29A/MusicBrainz/wiki) or the [Hqub.MusicBrainz.Client](https://github.com/avatar29A/MusicBrainz/tree/master/Hqub.MusicBrainz/Hqub.MusicBrainz.Client) example project.
