@@ -9,7 +9,7 @@ namespace Hqub.MusicBrainz.API
     using System.Runtime.Serialization.Json;
     using System.Threading.Tasks;
 
-    internal static class WebRequestHelper
+    internal static class WebServiceHelper
     {
         [DataContract]
         class ResponseError

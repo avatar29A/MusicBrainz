@@ -59,10 +59,10 @@ namespace Hqub.MusicBrainz.API.Entities
         #region Subqueries
 
         /// <summary>
-        /// Gets or sets a list of relations associated to this recording.
+        /// Gets or sets a list of relations associated to this work.
         /// </summary>
         /// <example>
-        /// var e = await Recording.GetAsync(mbid, "url-rels");
+        /// var e = await Work.GetAsync(mbid, "url-rels");
         /// </example>
         [DataMember(Name = "relations")]
         public List<Relation> Relations { get; set; }
@@ -84,9 +84,9 @@ namespace Hqub.MusicBrainz.API.Entities
                 throw new ArgumentException(string.Format(Resources.Messages.MissingParameter, "id"));
             }
 
-            string url = WebRequestHelper.CreateLookupUrl(EntityName, id, inc);
+            string url = WebServiceHelper.CreateLookupUrl(EntityName, id, inc);
 
-            return await WebRequestHelper.GetAsync<Work>(url);
+            return await WebServiceHelper.GetAsync<Work>(url);
         }
 
         #endregion
