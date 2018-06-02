@@ -80,13 +80,13 @@ namespace Hqub.MusicBrainz.API.Entities
         [DataMember(Name = "artist")]
         public Artist Artist { get; set; }
 
+        /// <summary>
+        /// Gets or sets the work relationship (include work-rels).
+        /// </summary>
+        [DataMember(Name = "work")]
+        public Work Work { get; set; }
+
         // Other relationships:
-        //
-        //   /// <summary>
-        //   /// Gets or sets the work relationship (include work-rels).
-        //   /// </summary>
-        //   [DataMember(Name = "work")]
-        //   public Work Work { get; set; }
         //
         //   /// <summary>
         //   /// Gets or sets the release relationship (include release-rels).
