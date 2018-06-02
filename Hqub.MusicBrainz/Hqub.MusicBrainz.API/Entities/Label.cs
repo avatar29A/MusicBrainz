@@ -3,6 +3,10 @@ namespace Hqub.MusicBrainz.API.Entities
 {
     using System.Runtime.Serialization;
 
+    /// <summary>
+    /// Label information.
+    /// </summary>
+    /// <see href="https://musicbrainz.org/doc/Label"/>
     [DataContract(Name = "label")]
     public class Label
     {

@@ -7,6 +7,11 @@ namespace Hqub.MusicBrainz.API.Entities
     using System.Runtime.Serialization;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// An artist is generally a musician (or musician persona), group of musicians
+    /// or other music professional (like a producer or engineer).
+    /// </summary>
+    /// <see href="https://musicbrainz.org/doc/Artist"/>
     [DataContract(Name = "artist")]
     public class Artist
     {
@@ -84,21 +89,57 @@ namespace Hqub.MusicBrainz.API.Entities
 
         #region Subqueries
 
+        /// <summary>
+        /// Gets or sets a list of recordings associated to this artist.
+        /// </summary>
+        /// <example>
+        /// var e = await Artist.GetAsync(mbid, "recordings");
+        /// </example>
         [DataMember(Name = "recordings")]
         public List<Recording> Recordings { get; set; }
 
+        /// <summary>
+        /// Gets or sets a list of release-groups associated to this artist.
+        /// </summary>
+        /// <example>
+        /// var e = await Artist.GetAsync(mbid, "release-groups");
+        /// </example>
         [DataMember(Name = "release-groups")]
         public List<ReleaseGroup> ReleaseGroups { get; set; }
 
+        /// <summary>
+        /// Gets or sets a list of releases associated to this artist.
+        /// </summary>
+        /// <example>
+        /// var e = await Artist.GetAsync(mbid, "releases");
+        /// </example>
         [DataMember(Name = "releases")]
         public List<Release> Releases { get; set; }
 
+        /// <summary>
+        /// Gets or sets a list of works associated to this artist.
+        /// </summary>
+        /// <example>
+        /// var e = await Artist.GetAsync(mbid, "works");
+        /// </example>
         [DataMember(Name = "works")]
         public List<Work> Works { get; set; }
 
+        /// <summary>
+        /// Gets or sets a list of tags associated to this artist.
+        /// </summary>
+        /// <example>
+        /// var e = await Artist.GetAsync(mbid, "tags");
+        /// </example>
         [DataMember(Name = "tags")]
         public List<Tag> Tags { get; set; }
 
+        /// <summary>
+        /// Gets or sets a list of relations associated to this artist.
+        /// </summary>
+        /// <example>
+        /// var e = await Artist.GetAsync(mbid, "url-rels", "artist-rels");
+        /// </example>
         [DataMember(Name = "relations")]
         public List<Relation> Relations { get; set; }
 
@@ -119,7 +160,7 @@ namespace Hqub.MusicBrainz.API.Entities
         }
 
         [Obsolete("Use BrowseAsync() method.")]
-        public static ArtistList Browse(string relatedEntity, string value, int limit = 25, int offset = 0, params  string[] inc)
+        public static ArtistList Browse(string relatedEntity, string value, int limit = 25, int offset = 0, params string[] inc)
         {
             return BrowseAsync(relatedEntity, value, limit, offset, inc).Result;
         }
@@ -130,7 +171,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <param name="id">The artist MusicBrainz id.</param>
         /// <param name="inc">A list of entities to include (subqueries).</param>
         /// <returns></returns>
-        public async static Task<Artist> GetAsync(string id, params string[] inc)
+        public static async Task<Artist> GetAsync(string id, params string[] inc)
         {
             if (string.IsNullOrEmpty(id))
             {
@@ -149,7 +190,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <param name="limit">The maximum number of artists to return (default = 25).</param>
         /// <param name="offset">The offset to the artists list (enables paging, default = 0).</param>
         /// <returns></returns>
-        public async static Task<ArtistList> SearchAsync(string query, int limit = 25, int offset = 0)
+        public static async Task<ArtistList> SearchAsync(string query, int limit = 25, int offset = 0)
         {
             if (string.IsNullOrEmpty(query))
             {
@@ -168,7 +209,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <param name="limit">The maximum number of artists to return (default = 25).</param>
         /// <param name="offset">The offset to the artists list (enables paging, default = 0).</param>
         /// <returns></returns>
-        public async static Task<ArtistList> SearchAsync(QueryParameters<Artist> query, int limit = 25, int offset = 0)
+        public static async Task<ArtistList> SearchAsync(QueryParameters<Artist> query, int limit = 25, int offset = 0)
         {
             return await SearchAsync(query.ToString(), limit, offset);
         }
@@ -183,7 +224,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <param name="offset">The offset to the artists list (enables paging, default = 0).</param>
         /// <param name="inc">A list of entities to include (subqueries).</param>
         /// <returns></returns>
-        public async static Task<ArtistList> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params  string[] inc)
+        public static async Task<ArtistList> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc)
         {
             string url = WebRequestHelper.CreateBrowseTemplate(EntityName, entity, id, limit, offset, inc);
 

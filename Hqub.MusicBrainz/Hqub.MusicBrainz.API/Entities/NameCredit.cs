@@ -3,6 +3,10 @@ namespace Hqub.MusicBrainz.API.Entities
 {
     using System.Runtime.Serialization;
 
+    /// <summary>
+    /// Artist credits indicate who is the main credited artist (or artists) for releases, release groups, tracks and recordings.
+    /// </summary>
+    /// <see href="https://musicbrainz.org/doc/Artist_Credits"/>
     [DataContract(Name = "name-credit")]
     public class NameCredit
     {

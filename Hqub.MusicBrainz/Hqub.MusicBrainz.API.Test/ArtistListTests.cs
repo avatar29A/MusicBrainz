@@ -7,7 +7,7 @@ namespace Hqub.MusicBrainz.API.Test
     // Resource: artist-search.json
     // Artist.Search("artist:(bob dylan)", 10);
     //
-    // http://musicbrainz.org/ws/2/artist?query=artist:(bob%20dylan)&limit=10&fmt=json
+    // https://musicbrainz.org/ws/2/artist?query=artist:(bob%20dylan)&limit=10&fmt=json
 
     public class ArtistListTests
     {
@@ -22,7 +22,7 @@ namespace Hqub.MusicBrainz.API.Test
         public void TestArtistListQueryCount()
         {
             Assert.AreEqual(0, data.Offset);
-            Assert.AreEqual(2481, data.Count);
+            Assert.AreEqual(2672, data.Count);
         }
 
         [Test]

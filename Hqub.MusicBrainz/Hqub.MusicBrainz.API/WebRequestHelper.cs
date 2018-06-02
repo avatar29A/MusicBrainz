@@ -2,7 +2,6 @@
 namespace Hqub.MusicBrainz.API
 {
     using System;
-    using System.Collections.Generic;
     using System.Net;
     using System.Net.Http;
     using System.Runtime.Serialization.Json;
@@ -17,7 +16,7 @@ namespace Hqub.MusicBrainz.API
 
         private const string JsonFormat = "&fmt=json";
 
-        internal async static Task<T> GetAsync<T>(string url)
+        internal static async Task<T> GetAsync<T>(string url)
         {
             try
             {
@@ -34,11 +33,11 @@ namespace Hqub.MusicBrainz.API
 
                 return (T)serializer.ReadObject(stream);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 if (Configuration.GenerateCommunicationThrow)
                 {
-                    throw e;
+                    throw;
                 }
             }
 

@@ -7,6 +7,10 @@ namespace Hqub.MusicBrainz.API.Entities
     using System.Runtime.Serialization;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// A release group is used to group several different releases into a single logical entity.
+    /// </summary>
+    /// <see href="https://musicbrainz.org/doc/Release_Group"/>
     [DataContract(Name = "release-group")]
     public class ReleaseGroup
     {
@@ -56,22 +60,43 @@ namespace Hqub.MusicBrainz.API.Entities
         [DataMember(Name = "rating")]
         public Rating Rating { get; set; }
 
-        /// <summary>
-        /// Gets or sets the tag-list.
-        /// </summary>
-        [DataMember(Name = "tags")]
-        public List<Tag> Tags { get; set; }
-
         #endregion
 
         #region Subqueries
 
+        /// <summary>
+        /// Gets or sets a list of artists associated to this release-group.
+        /// </summary>
+        /// <example>
+        /// var e = await ReleaseGroup.GetAsync(mbid, "artists");
+        /// </example>
         [DataMember(Name = "artist-credit")]
         public List<NameCredit> Credits { get; set; }
 
+        /// <summary>
+        /// Gets or sets a list of releases associated to this release-group.
+        /// </summary>
+        /// <example>
+        /// var e = await ReleaseGroup.GetAsync(mbid, "releases");
+        /// </example>
         [DataMember(Name = "releases")]
         public List<Release> Releases { get; set; }
 
+        /// <summary>
+        /// Gets or sets a list of tags associated to this release-group.
+        /// </summary>
+        /// <example>
+        /// var e = await ReleaseGroup.GetAsync(mbid, "tags");
+        /// </example>
+        [DataMember(Name = "tags")]
+        public List<Tag> Tags { get; set; }
+
+        /// <summary>
+        /// Gets or sets a list of relations associated to this release-group.
+        /// </summary>
+        /// <example>
+        /// var e = await ReleaseGroup.GetAsync(mbid, "url-rels");
+        /// </example>
         [DataMember(Name = "relations")]
         public List<Relation> Relations { get; set; }
 
@@ -92,7 +117,7 @@ namespace Hqub.MusicBrainz.API.Entities
         }
 
         [Obsolete("Use BrowseAsync() method.")]
-        public static ReleaseGroupList Browse(string relatedEntity, string value, int limit = 25, int offset = 0, params  string[] inc)
+        public static ReleaseGroupList Browse(string relatedEntity, string value, int limit = 25, int offset = 0, params string[] inc)
         {
             return BrowseAsync(relatedEntity, value, limit, offset, inc).Result;
         }
@@ -103,7 +128,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <param name="id">The release-group MusicBrainz id.</param>
         /// <param name="inc">A list of entities to include (subqueries).</param>
         /// <returns></returns>
-        public async static Task<ReleaseGroup> GetAsync(string id, params string[] inc)
+        public static async Task<ReleaseGroup> GetAsync(string id, params string[] inc)
         {
             if (string.IsNullOrEmpty(id))
             {
@@ -122,7 +147,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <param name="limit">The maximum number of release-groups to return (default = 25).</param>
         /// <param name="offset">The offset to the release-groups list (enables paging, default = 0).</param>
         /// <returns></returns>
-        public async static Task<ReleaseGroupList> SearchAsync(string query, int limit = 25, int offset = 0)
+        public static async Task<ReleaseGroupList> SearchAsync(string query, int limit = 25, int offset = 0)
         {
             if (string.IsNullOrEmpty(query))
             {
@@ -141,7 +166,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <param name="limit">The maximum number of release-groups to return (default = 25).</param>
         /// <param name="offset">The offset to the release-groups list (enables paging, default = 0).</param>
         /// <returns></returns>
-        public async static Task<ReleaseGroupList> SearchAsync(QueryParameters<ReleaseGroup> query, int limit = 25, int offset = 0)
+        public static async Task<ReleaseGroupList> SearchAsync(QueryParameters<ReleaseGroup> query, int limit = 25, int offset = 0)
         {
             return await SearchAsync(query.ToString(), limit, offset);
         }
@@ -156,7 +181,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <param name="offset">The offset to the release-groups list (enables paging, default = 0).</param>
         /// <param name="inc">A list of entities to include (subqueries).</param>
         /// <returns></returns>
-        public async static Task<ReleaseGroupList> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params  string[] inc)
+        public static async Task<ReleaseGroupList> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc)
         {
             string url = WebRequestHelper.CreateBrowseTemplate(EntityName, entity, id, limit, offset, inc);
 

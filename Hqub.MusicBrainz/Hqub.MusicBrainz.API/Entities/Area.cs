@@ -1,10 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿
 namespace Hqub.MusicBrainz.API.Entities
 {
+    using System.Collections.Generic;
     using System.Runtime.Serialization;
 
+    /// <summary>
+    /// Areas are geographic regions or settlements.
+    /// </summary>
+    /// <see href="https://musicbrainz.org/doc/Area"/>
     [DataContract(Name = "area")]
     public class Area
     {
@@ -21,10 +24,10 @@ namespace Hqub.MusicBrainz.API.Entities
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the Disambiguation.
+        /// Gets or sets the disambiguation.
         /// </summary>
         [DataMember(Name = "disambiguation")]
-        public string disambiguation { get; set; }
+        public string Disambiguation { get; set; }
 
         /// <summary>
         /// Gets or sets the iso-3166-1 codes.

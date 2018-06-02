@@ -7,6 +7,11 @@ namespace Hqub.MusicBrainz.API.Entities
     using System.Runtime.Serialization;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// A recording is an entity in MusicBrainz which can be linked to tracks on releases. Each track must always
+    /// be associated with a single recording, but a recording can be linked to any number of tracks. 
+    /// </summary>
+    /// <see href="https://musicbrainz.org/doc/Recording"/>
     [DataContract(Name = "recording")]
     public class Recording
     {
@@ -52,17 +57,41 @@ namespace Hqub.MusicBrainz.API.Entities
 
         #endregion
 
-        #region Include
+        #region Subqueries
 
-        [DataMember(Name = "tags")]
-        public List<Tag> Tags { get; set; }
-
+        /// <summary>
+        /// Gets or sets a list of artists associated to this recording.
+        /// </summary>
+        /// <example>
+        /// var e = await Recording.GetAsync(mbid, "artists");
+        /// </example>
         [DataMember(Name = "artist-credit")]
         public List<NameCredit> Credits { get; set; }
 
+        /// <summary>
+        /// Gets or sets a list of releases associated to this recording.
+        /// </summary>
+        /// <example>
+        /// var e = await Recording.GetAsync(mbid, "releases");
+        /// </example>
         [DataMember(Name = "releases")]
         public List<Release> Releases { get; set; }
 
+        /// <summary>
+        /// Gets or sets a list of tags associated to this recording.
+        /// </summary>
+        /// <example>
+        /// var e = await Recording.GetAsync(mbid, "tags");
+        /// </example>
+        [DataMember(Name = "tags")]
+        public List<Tag> Tags { get; set; }
+
+        /// <summary>
+        /// Gets or sets a list of relations associated to this recording.
+        /// </summary>
+        /// <example>
+        /// var e = await Recording.GetAsync(mbid, "url-rels");
+        /// </example>
         [DataMember(Name = "relations")]
         public List<Relation> Relations { get; set; }
 
@@ -83,7 +112,7 @@ namespace Hqub.MusicBrainz.API.Entities
         }
 
         [Obsolete("Use BrowseAsync() method.")]
-        public static RecordingList Browse(string relatedEntity, string value, int limit = 25, int offset = 0, params  string[] inc)
+        public static RecordingList Browse(string relatedEntity, string value, int limit = 25, int offset = 0, params string[] inc)
         {
             return BrowseAsync(relatedEntity, value, limit, offset, inc).Result;
         }
@@ -94,7 +123,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <param name="id">The recording MusicBrainz id.</param>
         /// <param name="inc">A list of entities to include (subqueries).</param>
         /// <returns></returns>
-        public async static Task<Recording> GetAsync(string id, params string[] inc)
+        public static async Task<Recording> GetAsync(string id, params string[] inc)
         {
             if (string.IsNullOrEmpty(id))
             {
@@ -113,7 +142,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <param name="limit">The maximum number of recordings to return (default = 25).</param>
         /// <param name="offset">The offset to the recordings list (enables paging, default = 0).</param>
         /// <returns></returns>
-        public async static Task<RecordingList> SearchAsync(string query, int limit = 25, int offset = 0)
+        public static async Task<RecordingList> SearchAsync(string query, int limit = 25, int offset = 0)
         {
             if (string.IsNullOrEmpty(query))
             {
@@ -132,7 +161,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <param name="limit">The maximum number of recordings to return (default = 25).</param>
         /// <param name="offset">The offset to the recordings list (enables paging, default = 0).</param>
         /// <returns></returns>
-        public async static Task<RecordingList> SearchAsync(QueryParameters<Recording> query, int limit = 25, int offset = 0)
+        public static async Task<RecordingList> SearchAsync(QueryParameters<Recording> query, int limit = 25, int offset = 0)
         {
             return await SearchAsync(query.ToString(), limit, offset);
         }
@@ -147,7 +176,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <param name="offset">The offset to the recordings list (enables paging, default = 0).</param>
         /// <param name="inc">A list of entities to include (subqueries).</param>
         /// <returns></returns>
-        public async static Task<RecordingList> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params  string[] inc)
+        public static async Task<RecordingList> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc)
         {
             string url = WebRequestHelper.CreateBrowseTemplate(EntityName, entity, id, limit, offset, inc);
 

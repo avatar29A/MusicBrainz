@@ -1,12 +1,11 @@
-﻿using Hqub.MusicBrainz.API.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Hqub.MusicBrainz.API
 {
+    using Hqub.MusicBrainz.API.Entities;
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
     /// <summary>
     /// Helper for building MusicBrainz query strings.
     /// </summary>
@@ -16,8 +15,11 @@ namespace Hqub.MusicBrainz.API
     /// </remarks>
     public class QueryParameters<T>
     {
-        List<QueryNode> values;
+        private readonly List<QueryNode> values;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="QueryParameters{T}"/> class.
+        /// </summary>
         public QueryParameters()
         {
             values = new List<QueryNode>();
@@ -52,9 +54,7 @@ namespace Hqub.MusicBrainz.API
         private string BuildQueryString()
         {
             var sb = new StringBuilder();
-
-            string value;
-
+            
             foreach (var item in values)
             {
                 // Append operator.
@@ -74,7 +74,7 @@ namespace Hqub.MusicBrainz.API
                 sb.Append(':');
 
                 // Append value.
-                value = item.Value;
+                string value = item.Value;
 
                 if (value.Contains("AND") || value.Contains("OR"))
                 {

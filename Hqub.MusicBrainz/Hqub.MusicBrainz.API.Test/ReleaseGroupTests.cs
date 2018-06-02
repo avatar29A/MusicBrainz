@@ -4,11 +4,11 @@ namespace Hqub.MusicBrainz.API.Test
     using Hqub.MusicBrainz.API.Entities;
     using NUnit.Framework;
 
-    // Resource: release-group-get.json
-    // ReleaseGroup.Get("fc325dd3-73ed-36aa-9c77-6b65a958e3cf", "artists", "releases");
+    // Resource: releasegroup-get.json
+    // ReleaseGroup.Get("fc325dd3-73ed-36aa-9c77-6b65a958e3cf", "artists", "releases", "ratings", "url-rels");
     //
-    // http://musicbrainz.org/ws/2/release-group/fc325dd3-73ed-36aa-9c77-6b65a958e3cf?inc=artists+releases&fmt=json
-    
+    // https://musicbrainz.org/ws/2/release-group/fc325dd3-73ed-36aa-9c77-6b65a958e3cf?inc=artists+releases+ratings+url-rels&fmt=json
+
     public class ReleaseGroupTests
     {
         ReleaseGroup group;
@@ -22,8 +22,8 @@ namespace Hqub.MusicBrainz.API.Test
         public void TestReleaseGroupElements()
         {
             Assert.IsNotNull(group);
+
             Assert.AreEqual("fc325dd3-73ed-36aa-9c77-6b65a958e3cf", group.Id);
-            
             Assert.AreEqual("Desire", group.Title);
             Assert.AreEqual("Album", group.PrimaryType);
             Assert.AreEqual("1976-01-05", group.FirstReleaseDate);
@@ -49,7 +49,27 @@ namespace Hqub.MusicBrainz.API.Test
             var releases = group.Releases;
 
             Assert.IsNotNull(releases);
-            Assert.AreEqual(13, releases.Count);
+            Assert.AreEqual(14, releases.Count);
+        }
+
+        [Test]
+        public void TestReleaseGroupRating()
+        {
+            var rating = group.Rating;
+
+            Assert.IsNotNull(rating);
+
+            Assert.AreEqual(4.5, rating.Value);
+            Assert.AreEqual(4, rating.VotesCount);
+        }
+
+        [Test]
+        public void TestReleaseGroupRelations()
+        {
+            var list = group.Relations;
+
+            Assert.IsNotNull(list);
+            Assert.AreEqual(6, list.Count);
         }
     }
 }

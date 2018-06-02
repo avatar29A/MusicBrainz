@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Hqub.MusicBrainz.API
 {
+    using System.Net;
+
+    /// <summary>
+    /// Hqub.MusicBrainz configuration.
+    /// </summary>
     public static class Configuration
     {
         static Configuration()
@@ -29,7 +28,7 @@ namespace Hqub.MusicBrainz.API
         public static IWebProxy Proxy { get; set; }
 
         /// <summary>
-        /// Allow set cutstom user agent string.
+        /// Allow set custom user agent string.
         /// </summary>
         public static string UserAgent { get; set; }
     }

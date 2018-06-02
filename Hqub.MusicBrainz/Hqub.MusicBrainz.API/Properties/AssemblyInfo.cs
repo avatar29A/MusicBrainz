@@ -1,16 +1,15 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MusicBrainze.API")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Hqub.MusicBrainz.API")]
+[assembly: AssemblyDescription("Implementation of MusicBrainz API v2")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Hqub.MusicBrainze.API")]
-[assembly: AssemblyCopyright("Copyright h-qub ©  2014-2015")]
+[assembly: AssemblyProduct("Hqub.MusicBrainz.API")]
+[assembly: AssemblyCopyright("Copyright h-qub © 2014-2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,7 +31,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.1")]
-[assembly: AssemblyFileVersion("1.0.1")]
-
-[assembly: InternalsVisibleTo("Hqub.MusicBrainz.API.Test")]
+[assembly: AssemblyVersion("2.0.0")]
+[assembly: AssemblyFileVersion("2.0.0")]
