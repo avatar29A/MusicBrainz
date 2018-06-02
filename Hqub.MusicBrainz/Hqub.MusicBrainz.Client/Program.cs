@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Serialization;
-using Hqub.MusicBrainz.API;
-using Hqub.MusicBrainz.API.Entities;
 
 namespace Hqub.MusicBrainz.Client
 {
@@ -14,90 +7,56 @@ namespace Hqub.MusicBrainz.Client
     {
         private static void Main(string[] args)
         {
-            ShowTracksByAlbum("Король и Шут", "Акустический альбом");
-//            ShowAlbumsTracksByArtist("Король и Шут");
+            try
+            {
+                var task = RunExamples();
 
+                task.Wait();
+            }
+            catch (AggregateException e)
+            {
+                foreach (var item in e.Flatten().InnerExceptions)
+                {
+                    Console.WriteLine(item.Message);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            
             Console.ReadKey();
         }
 
-        private static async Task<Artist> GetArtist(string name)
+        private static async Task RunExamples()
         {
-            var artists = await Artist.SearchAsync(name);
+            Header("Example 1");
+            await Example1.Run();
 
-            var artist = artists.Items.First();
-            Console.WriteLine(artist.Name);
+            Header("Example 2");
+            await Example2.Run();
 
-            return artist;
+            Header("Example 3");
+            await Example3.Run();
+
+            Header("Example 4");
+            await Example4.Run();
+
+            Header("Example 5");
+            await Example5.Run();
         }
 
-        private static async void ShowTracksByAlbum(string artistName, string albumName)
+        private static void Header(string title)
         {
-            Configuration.UserAgent = "Chrome/41.0.2228.0";
+            var color = Console.ForegroundColor;
 
-            var artist = await GetArtist(artistName);
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
 
-            var albums = await Release.BrowseAsync("artist", artist.Id);
+            Console.WriteLine();
+            Console.WriteLine(title);
+            Console.WriteLine();
 
-
-            var album = albums.Items.FirstOrDefault(r => r.Title.ToLower() == albumName.ToLower());
-
-            if (album == null)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Album not found.\n");
-                Console.ResetColor();
-
-                Console.WriteLine("Results:\n");
-                foreach (var al in albums.Items)
-                {
-                    Console.WriteLine("\t{0}", al.Title);
-                }
-
-                return;
-            }
-
-            Console.WriteLine("\t{0}", albumName);
-
-            var tracks = await Recording.BrowseAsync("release", album.Id, 100);
-            foreach (var track in tracks.Items)
-            {
-                Console.WriteLine("\t\t{0}", track.Title);
-            }
-        }
-
-        private static async void ShowAlbumsTracksByArtist(string name)
-        {
-            var artist = await GetArtist(name);
-
-            var releases = await Release.BrowseAsync("artist", artist.Id, 100, 0, "media");
-
-            foreach (var release in releases.Items)
-            {
-                Console.WriteLine("\t{0}", release.Title);
-                var tracks = await Recording.BrowseAsync("release", release.Id, 100);
-
-                foreach (var track in tracks.Items)
-                {
-                    Console.WriteLine("\t\t{0}", track.Title);
-                }
-            }
-        }
-
-
-        private static async void Test()
-        {
-            var artists = await Artist.SearchAsync("The Scorpions");
-
-            var artist = artists.Items.First();
-
-            Console.WriteLine(artist.Name);
-
-            var recordings = await Recording.BrowseAsync("artist", artist.Id, 40);
-
-            foreach (var recording in recordings.Items)
-            {
-                Console.WriteLine("{0}", recording.Title);
-            }
+            Console.ForegroundColor = color;
         }
     }
 }
