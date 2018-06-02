@@ -91,6 +91,7 @@
       <DependentUpon>Messages.resx</DependentUpon>
     </Compile>
     <Compile Include="WebRequestHelper.cs" />
+    <Compile Include="WebServiceException.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Constants.resx">
