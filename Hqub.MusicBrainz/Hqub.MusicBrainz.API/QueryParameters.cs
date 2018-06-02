@@ -3,6 +3,7 @@ namespace Hqub.MusicBrainz.API
 {
     using Hqub.MusicBrainz.API.Entities;
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Text;
 
@@ -13,16 +14,16 @@ namespace Hqub.MusicBrainz.API
     /// <remarks>
     /// See https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2/Search
     /// </remarks>
-    public class QueryParameters<T>
+    public class QueryParameters<T> : IEnumerable<QueryParameters<T>.Node>
     {
-        private readonly List<QueryNode> values;
+        private readonly List<Node> nodes;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="QueryParameters{T}"/> class.
         /// </summary>
         public QueryParameters()
         {
-            values = new List<QueryNode>();
+            nodes = new List<Node>();
         }
 
         /// <summary>
@@ -43,7 +44,12 @@ namespace Hqub.MusicBrainz.API
                 throw new Exception(string.Format(Resources.Messages.InvalidQueryParameter, key));
             }
 
-            values.Add(new QueryNode(key, value, negate));
+            nodes.Add(new Node(key, value, negate));
+        }
+
+        public IEnumerator<Node> GetEnumerator()
+        {
+            return nodes.GetEnumerator();
         }
 
         public override string ToString()
@@ -55,7 +61,7 @@ namespace Hqub.MusicBrainz.API
         {
             var sb = new StringBuilder();
             
-            foreach (var item in values)
+            foreach (var item in nodes)
             {
                 // Append operator.
                 if (sb.Length > 0)
@@ -103,6 +109,11 @@ namespace Hqub.MusicBrainz.API
             return sb.ToString();
         }
 
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return nodes.GetEnumerator();
+        }
+
         private bool Validate(string key)
         {
             key = "-" + key + "-";
@@ -130,13 +141,27 @@ namespace Hqub.MusicBrainz.API
             return false;
         }
 
-        class QueryNode
+        public class Node
         {
+            /// <summary>
+            /// Gets the key of the node.
+            /// </summary>
             public string Key { get; private set; }
+
+            /// <summary>
+            /// Gets the value of the node.
+            /// </summary>
             public string Value { get; private set; }
+
+            /// <summary>
+            /// Gets a value indicating whether the node should be negated.
+            /// </summary>
             public bool Negate { get; private set; }
 
-            public QueryNode(string key, string value, bool negate)
+            /// <summary>
+            /// Initializes a new instance of the <see cref="Node"/> class.
+            /// </summary>
+            public Node(string key, string value, bool negate)
             {
                 this.Key = key;
                 this.Value = value;
