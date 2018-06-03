@@ -14,14 +14,7 @@ namespace Hqub.MusicBrainz.Client
     {
         public static async Task Run()
         {
-            try
-            {
-                await Search("The Rolling Stones");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            await Search("The Rolling Stones");
         }
 
         public static async Task Search(string name)

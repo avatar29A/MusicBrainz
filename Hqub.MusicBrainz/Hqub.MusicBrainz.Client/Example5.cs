@@ -13,14 +13,7 @@ namespace Hqub.MusicBrainz.Client
     {
         public static async Task Run()
         {
-            try
-            {
-                await Browse("Britney Spears");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            await Browse("Britney Spears");
         }
         
         private static async Task Browse(string name)
