@@ -41,7 +41,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// Gets or sets the length.
         /// </summary>
         [DataMember(Name = "length")]
-        public int Length { get; set; }
+        public int? Length { get; set; }
 
         /// <summary>
         /// Gets or sets the disambiguation.
