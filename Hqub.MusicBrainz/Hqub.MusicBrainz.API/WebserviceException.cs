@@ -26,7 +26,7 @@ namespace Hqub.MusicBrainz.API
         /// <param name="statusCode">The response HTTP status code.</param>
         /// <param name="uri">The requested uri.</param>
         /// <param name="message">The error message.</param>
-        public WebServiceException(HttpStatusCode statusCode, string uri, string message)
+        public WebServiceException(string message, HttpStatusCode statusCode, string uri)
             : base(message)
         {
             StatusCode = statusCode;

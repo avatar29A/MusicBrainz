@@ -68,7 +68,7 @@ namespace Hqub.MusicBrainz.API
 
             var error = (ResponseError)serializer.ReadObject(stream);
 
-            return new WebServiceException(status, url, error.Message);
+            return new WebServiceException(error.Message, status, url);
         }
 
         internal static string CreateIncludeQuery(string[] inc)
