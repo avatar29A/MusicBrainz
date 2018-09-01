@@ -40,7 +40,7 @@ namespace Hqub.MusicBrainz.Client
             Console.WriteLine("Total matches for '{0}': {1}", album, releases.Count);
 
             // Get the oldest release (remember to sort out items with no date set).
-            var release = releases.Items.Where(r => r.Date != null).OrderBy(r => r.Date).First();
+            var release = releases.Items.Where(r => r.Date != null && IsCompactDisk(r)).OrderBy(r => r.Date).First();
 
             // Get detailed information of the release, including recordings.
             release = await Release.GetAsync(release.Id, "recordings", "url-rels");
@@ -59,6 +59,16 @@ namespace Hqub.MusicBrainz.Client
 
                 Console.WriteLine("{0,3}  {1}  ({2:m\\:ss})", track.Number, track.Recording.Title, length);
             }
+        }
+
+        private static bool IsCompactDisk(Release r)
+        {
+            if (r.Media == null || r.Media.Count == 0)
+            {
+                return false;
+            }
+
+            return r.Media[0].Format == "CD";
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Hqub.MusicBrainz.Client
             // Search for an artist by name (limit to 20 matches).
             var artists = await Artist.SearchAsync(name.Quote(), 20);
 
-            Console.WriteLine("Total matches for '{0}': {1}", name, artists.Count);
+            Console.WriteLine("Browsing release-groups of '{0}'", name);
 
             var artist = artists.Items.OrderByDescending(a => Levenshtein.Similarity(a.Name, name)).First();
             

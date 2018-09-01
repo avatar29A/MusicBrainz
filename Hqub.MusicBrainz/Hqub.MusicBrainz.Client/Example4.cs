@@ -34,8 +34,8 @@ namespace Hqub.MusicBrainz.Client
 
             Console.WriteLine("Total matches for '{0} ({1}) {2}': {3}", artist, album, song, recordings.Count);
 
-            // Get the best match for given song.
-            var recording = recordings.Items.First();
+            // Get exact match for given song.
+            var recording = recordings.Items.Where(r => r.Title == song).First();
 
             var release = recording.Releases.Where(r => r.Title == album).First();
 
