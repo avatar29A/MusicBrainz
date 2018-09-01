@@ -215,8 +215,7 @@ namespace Hqub.MusicBrainz.API.Entities
         }
 
         /// <summary>
-        /// Browse all the artists in the MusicBrainz database, which are directly linked to the
-        /// entity with given id.
+        /// Browse all the artists in the MusicBrainz database, which are directly linked to the entity with given id.
         /// </summary>
         /// <param name="entity">The name of the related entity.</param>
         /// <param name="id">The id of the related entity.</param>

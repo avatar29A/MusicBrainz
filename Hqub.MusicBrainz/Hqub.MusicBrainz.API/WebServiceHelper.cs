@@ -104,6 +104,37 @@ namespace Hqub.MusicBrainz.API
         /// <summary>
         /// Creates a webservice browse template.
         /// </summary>
+        internal static string CreateBrowseTemplate(string entity, string relatedEntity, string mbid, string type, string status,
+            int limit, int offset, params string[] inc)
+        {
+            var url = CreateBrowseTemplate(entity, relatedEntity, mbid, limit, offset, CreateIncludeQuery(inc));
+            
+            if (!ValidateBrowseParam(Resources.Constants.BrowseStatus, status))
+            {
+                throw new ArgumentException(string.Format(Resources.Messages.InvalidQueryValue, status, "status"));
+            }
+
+            if (!ValidateBrowseParam(Resources.Constants.BrowseType, type))
+            {
+                throw new ArgumentException(string.Format(Resources.Messages.InvalidQueryValue, type, "type"));
+            }
+
+            if (!string.IsNullOrEmpty(type))
+            {
+                url += "&type=" + type;
+            }
+
+            if (!string.IsNullOrEmpty(status))
+            {
+                url += "&status=" + status;
+            }
+
+            return url;
+        }
+
+        /// <summary>
+        /// Creates a webservice browse template.
+        /// </summary>
         internal static string CreateBrowseTemplate(string entity, string relatedEntity, string mbid, int limit, int offset, string inc)
         {
             return string.Format("{0}{1}{2}", WebServiceUrl,
@@ -119,6 +150,16 @@ namespace Hqub.MusicBrainz.API
 
             return string.Format("{0}{1}{2}", WebServiceUrl,
                 string.Format(SearchTemplate, entity, query, limit, offset), JsonFormat);
+        }
+
+        private static bool ValidateBrowseParam(string availableParams, string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return true; // Irgnore, if no value specified.
+            }
+
+            return availableParams.IndexOf("+" + value + "+") >= 0;
         }
 
         private static HttpClient CreateHttpClient(bool automaticDecompression = true, IWebProxy proxy = null)

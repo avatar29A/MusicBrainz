@@ -123,6 +123,9 @@
   <data name="InvalidQueryParameter" xml:space="preserve">
     <value>Key not supported ({0}).</value>
   </data>
+  <data name="InvalidQueryValue" xml:space="preserve">
+    <value>Invalid value '{0}' for {1} parameter.</value>
+  </data>
   <data name="MissingParameter" xml:space="preserve">
     <value>Attribute '{0}' must be specified.</value>
   </data>

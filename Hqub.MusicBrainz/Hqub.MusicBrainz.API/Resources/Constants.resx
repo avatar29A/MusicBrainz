@@ -120,6 +120,12 @@
   <data name="ArtistQueryParams" xml:space="preserve">
     <value>-area-beginarea-endarea-arid-artist-artistaccent-alias-begin-comment-country-end-ended-gender-ipi-sortname-tag-type-</value>
   </data>
+  <data name="BrowseStatus" xml:space="preserve">
+    <value>+official+promotion+bootleg+pseudo-release+</value>
+  </data>
+  <data name="BrowseType" xml:space="preserve">
+    <value>+nat+album+single+ep+compilation+soundtrack+spokenword+interview+audiobook+live+remix+other+</value>
+  </data>
   <data name="RecordingQueryParams" xml:space="preserve">
     <value>-arid-artist-artistname-creditname-comment-country-date-dur-format-isrc-number-position-primarytype-puid-qdur-recording-recordingaccent-reid-release-rgid--rid-secondarytype-status-tid-tnum-tracks-tracksrelease-tag-type-video-</value>
   </data>

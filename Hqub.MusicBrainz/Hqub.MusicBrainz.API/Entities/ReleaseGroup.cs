@@ -172,8 +172,7 @@ namespace Hqub.MusicBrainz.API.Entities
         }
 
         /// <summary>
-        /// Browse all the release-groups in the MusicBrainz database, which are directly linked to the
-        /// entity with given id.
+        /// Browse all the release-groups in the MusicBrainz database, which are directly linked to the entity with given id.
         /// </summary>
         /// <param name="entity">The name of the related entity.</param>
         /// <param name="id">The id of the related entity.</param>
@@ -188,8 +187,25 @@ namespace Hqub.MusicBrainz.API.Entities
             return await WebServiceHelper.GetAsync<ReleaseGroupList>(url);
         }
 
-        // TODO: add string parameter 'type' and 'status' to browse methods
-        // see http://musicbrainz.org/doc/Development/XML_Web_Service/Version_2#Release_Type_and_Status
+        /// <summary>
+        /// Browse all the release-groups in the MusicBrainz database, which are directly linked to the entity with given id.
+        /// </summary>
+        /// <param name="entity">The name of the related entity.</param>
+        /// <param name="id">The id of the related entity.</param>
+        /// <param name="type">If releases or release-groups are included in the result, filter by type (for example 'album').</param>
+        /// <param name="limit">The maximum number of release-groups to return (default = 25).</param>
+        /// <param name="offset">The offset to the release-groups list (enables paging, default = 0).</param>
+        /// <param name="inc">A list of entities to include (subqueries).</param>
+        /// <returns></returns>
+        /// <remarks>
+        /// See http://musicbrainz.org/doc/Development/XML_Web_Service/Version_2#Release_Type_and_Status for supported values of type and status.
+        /// </remarks>
+        public static async Task<ReleaseGroupList> BrowseAsync(string entity, string id, string type, int limit = 25, int offset = 0, params string[] inc)
+        {
+            string url = WebServiceHelper.CreateBrowseTemplate(EntityName, entity, id, type, null, limit, offset, inc);
+
+            return await WebServiceHelper.GetAsync<ReleaseGroupList>(url);
+        }
 
         #endregion
     }
