@@ -95,6 +95,7 @@ namespace Hqub.MusicBrainz.API.Test
 
             Assert.AreEqual("659008fb-d1e7-4eca-865c-0d0344a721ed", label.Id);
             Assert.AreEqual("Fire Records", label.Name);
+            Assert.AreEqual("UK independent label", label.Disambiguation);
         }
 
         [Test]
