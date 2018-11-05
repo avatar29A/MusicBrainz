@@ -3,7 +3,7 @@
 namespace Hqub.MusicBrainz.API
 {
     /// <summary>
-    /// Abstract base class for MusicBrainz queries return lists (and support paging).
+    /// Abstract base class for MusicBrainz queries returning lists (with paging support).
     /// </summary>
     [DataContract]
     public abstract class QueryResult

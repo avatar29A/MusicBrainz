@@ -41,7 +41,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// Gets or sets the length.
         /// </summary>
         [DataMember(Name = "length")]
-        public int Length { get; set; }
+        public int? Length { get; set; }
 
         /// <summary>
         /// Gets or sets the disambiguation.
@@ -130,9 +130,9 @@ namespace Hqub.MusicBrainz.API.Entities
                 throw new ArgumentException(string.Format(Resources.Messages.MissingParameter, "id"));
             }
 
-            string url = WebRequestHelper.CreateLookupUrl(EntityName, id, inc);
+            string url = WebServiceHelper.CreateLookupUrl(EntityName, id, inc);
 
-            return await WebRequestHelper.GetAsync<Recording>(url);
+            return await WebServiceHelper.GetAsync<Recording>(url);
         }
 
         /// <summary>
@@ -149,9 +149,9 @@ namespace Hqub.MusicBrainz.API.Entities
                 throw new ArgumentException(string.Format(Resources.Messages.MissingParameter, "query"));
             }
 
-            string url = WebRequestHelper.CreateSearchTemplate(EntityName, query, limit, offset);
+            string url = WebServiceHelper.CreateSearchTemplate(EntityName, query, limit, offset);
 
-            return await WebRequestHelper.GetAsync<RecordingList>(url);
+            return await WebServiceHelper.GetAsync<RecordingList>(url);
         }
 
         /// <summary>
@@ -167,8 +167,7 @@ namespace Hqub.MusicBrainz.API.Entities
         }
 
         /// <summary>
-        /// Browse all the recordings in the MusicBrainz database, which are directly linked to the
-        /// entity with given id.
+        /// Browse all the recordings in the MusicBrainz database, which are directly linked to the entity with given id.
         /// </summary>
         /// <param name="entity">The name of the related entity.</param>
         /// <param name="id">The id of the related entity.</param>
@@ -178,9 +177,9 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <returns></returns>
         public static async Task<RecordingList> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc)
         {
-            string url = WebRequestHelper.CreateBrowseTemplate(EntityName, entity, id, limit, offset, inc);
+            string url = WebServiceHelper.CreateBrowseTemplate(EntityName, entity, id, limit, offset, inc);
 
-            return await WebRequestHelper.GetAsync<RecordingList>(url);
+            return await WebServiceHelper.GetAsync<RecordingList>(url);
         }
 
         #endregion

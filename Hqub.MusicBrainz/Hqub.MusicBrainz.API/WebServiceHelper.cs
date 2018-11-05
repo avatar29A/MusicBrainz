@@ -2,13 +2,22 @@
 namespace Hqub.MusicBrainz.API
 {
     using System;
+    using System.IO;
     using System.Net;
     using System.Net.Http;
+    using System.Runtime.Serialization;
     using System.Runtime.Serialization.Json;
     using System.Threading.Tasks;
 
-    internal static class WebRequestHelper
+    internal static class WebServiceHelper
     {
+        [DataContract]
+        class ResponseError
+        {
+            [DataMember(Name = "error")]
+            public string Message;
+        }
+
         private const string WebServiceUrl = "http://musicbrainz.org/ws/2/";
         private const string LookupTemplate = "{0}/{1}/?inc={2}";
         private const string BrowseTemplate = "{0}?{1}={2}&limit={3}&offset={4}&inc={5}";
@@ -18,16 +27,25 @@ namespace Hqub.MusicBrainz.API
 
         internal static async Task<T> GetAsync<T>(string url)
         {
+            Stream stream;
+
             try
             {
                 var client = CreateHttpClient(true, Configuration.Proxy);
 
-                var stream = await client.GetStreamAsync(url);
+                var response = await client.GetAsync(new Uri(url));
 
-                if (stream == null)
+                stream = await response.Content.ReadAsStreamAsync();
+                
+                if (!response.IsSuccessStatusCode)
                 {
-                    throw new NullReferenceException(Resources.Messages.EmptyStream);
+                    throw CreateWebserviceException(response.StatusCode, url, stream);
                 }
+                
+                //if (stream == null)
+                //{
+                //    throw new NullReferenceException(Resources.Messages.EmptyStream);
+                //}
 
                 var serializer = new DataContractJsonSerializer(typeof(T));
 
@@ -42,6 +60,15 @@ namespace Hqub.MusicBrainz.API
             }
 
             return default(T);
+        }
+
+        private static Exception CreateWebserviceException(HttpStatusCode status, string url, Stream stream)
+        {
+            var serializer = new DataContractJsonSerializer(typeof(ResponseError));
+
+            var error = (ResponseError)serializer.ReadObject(stream);
+
+            return new WebServiceException(error.Message, status, url);
         }
 
         internal static string CreateIncludeQuery(string[] inc)
@@ -77,6 +104,37 @@ namespace Hqub.MusicBrainz.API
         /// <summary>
         /// Creates a webservice browse template.
         /// </summary>
+        internal static string CreateBrowseTemplate(string entity, string relatedEntity, string mbid, string type, string status,
+            int limit, int offset, params string[] inc)
+        {
+            var url = CreateBrowseTemplate(entity, relatedEntity, mbid, limit, offset, CreateIncludeQuery(inc));
+            
+            if (!ValidateBrowseParam(Resources.Constants.BrowseStatus, status))
+            {
+                throw new ArgumentException(string.Format(Resources.Messages.InvalidQueryValue, status, "status"));
+            }
+
+            if (!ValidateBrowseParam(Resources.Constants.BrowseType, type))
+            {
+                throw new ArgumentException(string.Format(Resources.Messages.InvalidQueryValue, type, "type"));
+            }
+
+            if (!string.IsNullOrEmpty(type))
+            {
+                url += "&type=" + type;
+            }
+
+            if (!string.IsNullOrEmpty(status))
+            {
+                url += "&status=" + status;
+            }
+
+            return url;
+        }
+
+        /// <summary>
+        /// Creates a webservice browse template.
+        /// </summary>
         internal static string CreateBrowseTemplate(string entity, string relatedEntity, string mbid, int limit, int offset, string inc)
         {
             return string.Format("{0}{1}{2}", WebServiceUrl,
@@ -92,6 +150,16 @@ namespace Hqub.MusicBrainz.API
 
             return string.Format("{0}{1}{2}", WebServiceUrl,
                 string.Format(SearchTemplate, entity, query, limit, offset), JsonFormat);
+        }
+
+        private static bool ValidateBrowseParam(string availableParams, string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return true; // Irgnore, if no value specified.
+            }
+
+            return availableParams.IndexOf("+" + value + "+") >= 0;
         }
 
         private static HttpClient CreateHttpClient(bool automaticDecompression = true, IWebProxy proxy = null)

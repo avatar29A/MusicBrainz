@@ -21,5 +21,11 @@ namespace Hqub.MusicBrainz.API.Entities
         /// </summary>
         [DataMember(Name = "name")]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the disambiguation.
+        /// </summary>
+        [DataMember(Name = "disambiguation")]
+        public string Disambiguation { get; set; }
     }
 }

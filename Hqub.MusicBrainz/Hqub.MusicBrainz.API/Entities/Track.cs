@@ -28,12 +28,12 @@ namespace Hqub.MusicBrainz.API.Entities
         /// </summary>
         [DataMember(Name = "position")]
         public int Position { get; set; }
-
+        
         /// <summary>
         /// Gets or sets the length.
         /// </summary>
         [DataMember(Name = "length")]
-        public int Length { get; set; }
+        public int? Length { get; set; }
 
         /// <summary>
         /// Gets or sets the recording.

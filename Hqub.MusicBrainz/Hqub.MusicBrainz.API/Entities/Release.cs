@@ -154,9 +154,9 @@ namespace Hqub.MusicBrainz.API.Entities
                 throw new ArgumentException(string.Format(Resources.Messages.MissingParameter, "id"));
             }
 
-            string url = WebRequestHelper.CreateLookupUrl(EntityName, id, inc);
+            string url = WebServiceHelper.CreateLookupUrl(EntityName, id, inc);
 
-            return await WebRequestHelper.GetAsync<Release>(url);
+            return await WebServiceHelper.GetAsync<Release>(url);
         }
 
         /// <summary>
@@ -173,9 +173,9 @@ namespace Hqub.MusicBrainz.API.Entities
                 throw new ArgumentException(string.Format(Resources.Messages.MissingParameter, "query"));
             }
 
-            string url = WebRequestHelper.CreateSearchTemplate(EntityName, query, limit, offset);
+            string url = WebServiceHelper.CreateSearchTemplate(EntityName, query, limit, offset);
 
-            return await WebRequestHelper.GetAsync<ReleaseList>(url);
+            return await WebServiceHelper.GetAsync<ReleaseList>(url);
         }
 
         /// <summary>
@@ -191,8 +191,7 @@ namespace Hqub.MusicBrainz.API.Entities
         }
 
         /// <summary>
-        /// Browse all the releases in the MusicBrainz database, which are directly linked to the
-        /// entity with given id.
+        /// Browse all the releases in the MusicBrainz database, which are directly linked to the entity with given id.
         /// </summary>
         /// <param name="entity">The name of the related entity.</param>
         /// <param name="id">The id of the related entity.</param>
@@ -203,9 +202,30 @@ namespace Hqub.MusicBrainz.API.Entities
         public static async Task<ReleaseList> BrowseAsync(string entity, string id, int limit = 25,
             int offset = 0, params string[] inc)
         {
-            string url = WebRequestHelper.CreateBrowseTemplate(EntityName, entity, id, limit, offset, inc);
+            string url = WebServiceHelper.CreateBrowseTemplate(EntityName, entity, id, limit, offset, inc);
 
-            return await WebRequestHelper.GetAsync<ReleaseList>(url);
+            return await WebServiceHelper.GetAsync<ReleaseList>(url);
+        }
+
+        /// <summary>
+        /// Browse all the releases in the MusicBrainz database, which are directly linked to the entity with given id.
+        /// </summary>
+        /// <param name="entity">The name of the related entity.</param>
+        /// <param name="id">The id of the related entity.</param>
+        /// <param name="type">If releases or release-groups are included in the result, filter by type (for example 'album').</param>
+        /// <param name="status">If releases are included in the result, filter by status (for example 'official', default = null).</param>
+        /// <param name="limit">The maximum number of releases to return (default = 25).</param>
+        /// <param name="offset">The offset to the releases list (enables paging, default = 0).</param>
+        /// <param name="inc">A list of entities to include (subqueries).</param>
+        /// <returns></returns>
+        /// <remarks>
+        /// See http://musicbrainz.org/doc/Development/XML_Web_Service/Version_2#Release_Type_and_Status for supported values of type and status.
+        /// </remarks>
+        public static async Task<ReleaseList> BrowseAsync(string entity, string id, string type, string status = null, int limit = 25, int offset = 0, params string[] inc)
+        {
+            string url = WebServiceHelper.CreateBrowseTemplate(EntityName, entity, id, type, status, limit, offset, inc);
+
+            return await WebServiceHelper.GetAsync<ReleaseList>(url);
         }
 
         #endregion
