@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.4;netstandard2.0;net45</TargetFrameworks>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageId>Hqub.MusicBrainz.API</PackageId>
     <Description>Implementation of MuzicBrainz API v2</Description>
@@ -17,6 +16,15 @@
     <Version>2.0.0</Version>
     <AssemblyName>Hqub.MusicBrainz.API</AssemblyName>
     <RootNamespace>Hqub.MusicBrainz.API</RootNamespace>
+    <Configurations>Debug;Release;Travis</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Travis' ">
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' != 'Travis' ">
+    <TargetFrameworks>netstandard1.4;netstandard2.0;net45</TargetFrameworks>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.4' ">
