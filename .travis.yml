@@ -1,9 +1,13 @@
 language: csharp
 mono: none
 sudo: required
+dist: xenial
 dotnet: 2.2
 solution: Hqub.MusicBrainz/Hqub.MusicBrainz.sln
 script:
   - dotnet restore
   - dotnet build
   - dotnet test Hqub.MusicBrainz/Hqub.MusicBrainz.API.Test/Hqub.MusicBrainz.API.Test.csproj
+global:
+    - DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
+    - DOTNET_CLI_TELEMETRY_OPTOUT=1
