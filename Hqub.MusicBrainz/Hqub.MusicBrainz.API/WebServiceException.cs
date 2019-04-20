@@ -57,6 +57,7 @@ namespace Hqub.MusicBrainz.API
             Uri = uri;
         }
 
+#if !NETSTANDARD1_4
         /// <summary>
         /// Initializes a new instance of the <see cref="WebServiceException"/> class.
         /// </summary>
@@ -82,5 +83,6 @@ namespace Hqub.MusicBrainz.API
 
             base.GetObjectData(info, context);
         }
+#endif
     }
 }
