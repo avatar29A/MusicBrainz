@@ -6,7 +6,7 @@ dotnet: 2.2
 script:
   - cd Hqub.MusicBrainz
   - dotnet restore
-  - dotnet build -c Release
+  - dotnet build -c Release -f netstandard2.0
   - dotnet test Hqub.MusicBrainz.API.Test/Hqub.MusicBrainz.API.Test.csproj
 global:
     - DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
