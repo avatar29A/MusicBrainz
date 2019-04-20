@@ -1,7 +1,9 @@
 language: csharp
 mono: none
-dotnet: 2.1.502
+sudo: required
+dotnet: 2.2
 solution: Hqub.MusicBrainz/Hqub.MusicBrainz.sln
 script:
   - dotnet restore
-  - dotnet test
+  - dotnet build
+  - dotnet test Hqub.MusicBrainz/Hqub.MusicBrainz.API.Test/Hqub.MusicBrainz.API.Test.csproj
