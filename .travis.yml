@@ -1,8 +1,7 @@
 language: csharp
+mono: none
+dotnet: 2.1.502
 solution: Hqub.MusicBrainz/Hqub.MusicBrainz.sln
-install:
-  - nuget restore Hqub.MusicBrainz/Hqub.MusicBrainz.sln
-  - nuget install NUnit.ConsoleRunner -Version 3.6.1 -OutputDirectory testrunner
 script:
-  - xbuild /p:Configuration=Travis Hqub.MusicBrainz/Hqub.MusicBrainz.sln
-  - mono ./testrunner/NUnit.ConsoleRunner.3.6.1/tools/nunit3-console.exe ./Hqub.MusicBrainz/Hqub.MusicBrainz.API.Test/bin/Travis/Hqub.MusicBrainz.API.Test.dll
+  - dotnet restore
+  - dotnet test
