@@ -22,7 +22,7 @@ namespace Hqub.MusicBrainz.API.Test
         public void TestArtistListQueryCount()
         {
             Assert.AreEqual(0, data.Offset);
-            Assert.AreEqual(2672, data.Count);
+            Assert.GreaterOrEqual(data.Count, 1000);
         }
 
         [Test]

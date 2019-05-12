@@ -81,8 +81,8 @@ namespace Hqub.MusicBrainz.API.Test
 
             Assert.IsNotNull(rating);
 
-            Assert.AreEqual(5, rating.Value);
-            Assert.AreEqual(1, rating.VotesCount);
+            Assert.GreaterOrEqual(rating.Value, 1);
+            Assert.GreaterOrEqual(rating.VotesCount, 1);
         }
 
         [Test]
