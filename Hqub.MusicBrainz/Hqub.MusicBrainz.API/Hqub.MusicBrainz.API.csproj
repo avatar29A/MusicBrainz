@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageId>Hqub.MusicBrainz.API</PackageId>
     <Description>Implementation of MuzicBrainz API v2</Description>
     <Product>Hqub.MusicBrainz.API</Product>
@@ -24,17 +25,8 @@
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' != 'Travis' ">
-    <TargetFrameworks>netstandard1.4;netstandard2.0;net45</TargetFrameworks>
+    <TargetFrameworks>;netstandard2.0;net45</TargetFrameworks>
   </PropertyGroup>
-
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.4' ">
-    <DefineConstants>NETSTANDARD1_4</DefineConstants>
-  </PropertyGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.4' ">
-    <PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.3.0" />
-    <PackageReference Include="System.Runtime.Serialization.Json" Version="4.3.0" />
-  </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
     <Reference Include="System" />
