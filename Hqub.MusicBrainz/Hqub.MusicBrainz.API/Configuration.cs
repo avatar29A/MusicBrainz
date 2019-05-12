@@ -20,7 +20,7 @@ namespace Hqub.MusicBrainz.API
         /// throw up. Otherwise they will be suppressed.
         /// </summary>
         [Obsolete("Will be removed. Use proper exception handling (catch WebServiceException).")]
-        public static bool GenerateCommunicationThrow { get; set; }
+        public static bool GenerateCommunicationThrow { get; set; } = true;
 
 
         /// <summary>
