@@ -22,7 +22,7 @@ namespace Hqub.MusicBrainz.API.Test
         public void TestReleaseGroupListQueryCount()
         {
             Assert.AreEqual(0, data.Offset);
-            Assert.AreEqual(3509, data.Count);
+            Assert.GreaterOrEqual(data.Count, 1);
         }
 
         [Test]
@@ -36,18 +36,18 @@ namespace Hqub.MusicBrainz.API.Test
         [Test]
         public void TestReleaseGroupListElements()
         {
-            var group = data.Items[2];
+            var group = data.Items[6];
 
-            Assert.AreEqual("ac0d539a-87b5-3fea-b4d9-e7433f794e10", group.Id);
+            Assert.AreEqual("dd48dca0-74b5-33e0-8a3b-7b5af62a2203", group.Id);
             //Assert.AreEqual("Album", group.Type);
             Assert.AreEqual(100, group.Score);
 
-            Assert.AreEqual("A Nightly Ritual", group.Title);
+            Assert.AreEqual("Dylan", group.Title);
             Assert.AreEqual("Album", group.PrimaryType);
 
             Assert.IsNotNull(group.SecondaryTypes);
             Assert.AreEqual(1, group.SecondaryTypes.Count);
-            Assert.AreEqual("Live", group.SecondaryTypes[0]);
+            Assert.AreEqual("Compilation", group.SecondaryTypes[0]);
 
             Assert.IsNotNull(group.Releases);
             Assert.IsNotNull(group.Credits);

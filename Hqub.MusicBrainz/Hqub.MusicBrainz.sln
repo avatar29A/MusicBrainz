@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hqub.MusicBrainz.API", "Hqub.MusicBrainz.API\Hqub.MusicBrainz.API.csproj", "{77832DED-EEFE-4DB9-94AF-B0BE02CEC356}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hqub.MusicBrainz.API.Test", "Hqub.MusicBrainz.API.Test\Hqub.MusicBrainz.API.Test.csproj", "{1E8BEEE2-DF91-4D0B-902E-E661D03E70C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hqub.MusicBrainz.API.Test", "Hqub.MusicBrainz.API.Test\Hqub.MusicBrainz.API.Test.csproj", "{1E8BEEE2-DF91-4D0B-902E-E661D03E70C3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hqub.MusicBrainz.Client", "Hqub.MusicBrainz.Client\Hqub.MusicBrainz.Client.csproj", "{A30BD5FD-E8DF-454F-8280-9B1B7093785A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hqub.MusicBrainz.API.Portable", "Hqub.MusicBrainz.API.Portable\Hqub.MusicBrainz.API.Portable.csproj", "{08D4701E-168C-43D1-9C6E-34B079CFD934}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hqub.MusicBrainz.API", "Hqub.MusicBrainz.API\Hqub.MusicBrainz.API.csproj", "{9FB7E37D-A37B-4262-897F-48291BF836DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,12 +16,6 @@ Global
 		Travis|Any CPU = Travis|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{77832DED-EEFE-4DB9-94AF-B0BE02CEC356}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{77832DED-EEFE-4DB9-94AF-B0BE02CEC356}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{77832DED-EEFE-4DB9-94AF-B0BE02CEC356}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{77832DED-EEFE-4DB9-94AF-B0BE02CEC356}.Release|Any CPU.Build.0 = Release|Any CPU
-		{77832DED-EEFE-4DB9-94AF-B0BE02CEC356}.Travis|Any CPU.ActiveCfg = Travis|Any CPU
-		{77832DED-EEFE-4DB9-94AF-B0BE02CEC356}.Travis|Any CPU.Build.0 = Travis|Any CPU
 		{1E8BEEE2-DF91-4D0B-902E-E661D03E70C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1E8BEEE2-DF91-4D0B-902E-E661D03E70C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E8BEEE2-DF91-4D0B-902E-E661D03E70C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -36,13 +28,17 @@ Global
 		{A30BD5FD-E8DF-454F-8280-9B1B7093785A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A30BD5FD-E8DF-454F-8280-9B1B7093785A}.Travis|Any CPU.ActiveCfg = Travis|Any CPU
 		{A30BD5FD-E8DF-454F-8280-9B1B7093785A}.Travis|Any CPU.Build.0 = Travis|Any CPU
-		{08D4701E-168C-43D1-9C6E-34B079CFD934}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{08D4701E-168C-43D1-9C6E-34B079CFD934}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{08D4701E-168C-43D1-9C6E-34B079CFD934}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{08D4701E-168C-43D1-9C6E-34B079CFD934}.Release|Any CPU.Build.0 = Release|Any CPU
-		{08D4701E-168C-43D1-9C6E-34B079CFD934}.Travis|Any CPU.ActiveCfg = Travis|Any CPU
+		{9FB7E37D-A37B-4262-897F-48291BF836DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FB7E37D-A37B-4262-897F-48291BF836DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FB7E37D-A37B-4262-897F-48291BF836DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FB7E37D-A37B-4262-897F-48291BF836DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FB7E37D-A37B-4262-897F-48291BF836DC}.Travis|Any CPU.ActiveCfg = Travis|Any CPU
+		{9FB7E37D-A37B-4262-897F-48291BF836DC}.Travis|Any CPU.Build.0 = Travis|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4954D08D-4FCE-4A60-B471-27017956897E}
 	EndGlobalSection
 EndGlobal

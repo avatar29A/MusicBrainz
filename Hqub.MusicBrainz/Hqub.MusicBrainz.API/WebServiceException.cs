@@ -56,7 +56,7 @@ namespace Hqub.MusicBrainz.API
             StatusCode = statusCode;
             Uri = uri;
         }
-
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="WebServiceException"/> class.
         /// </summary>

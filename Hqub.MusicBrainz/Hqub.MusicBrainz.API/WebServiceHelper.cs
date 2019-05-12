@@ -27,32 +27,27 @@ namespace Hqub.MusicBrainz.API
 
         internal static async Task<T> GetAsync<T>(string url)
         {
-            Stream stream;
-
             try
             {
                 var client = CreateHttpClient(true, Configuration.Proxy);
 
                 var response = await client.GetAsync(new Uri(url));
 
-                stream = await response.Content.ReadAsStreamAsync();
+                var stream = await response.Content.ReadAsStreamAsync();
                 
                 if (!response.IsSuccessStatusCode)
                 {
                     throw CreateWebserviceException(response.StatusCode, url, stream);
                 }
                 
-                //if (stream == null)
-                //{
-                //    throw new NullReferenceException(Resources.Messages.EmptyStream);
-                //}
-
                 var serializer = new DataContractJsonSerializer(typeof(T));
 
                 return (T)serializer.ReadObject(stream);
             }
             catch (Exception)
             {
+                // TODO: remove GenerateCommunicationThrow.
+
                 if (Configuration.GenerateCommunicationThrow)
                 {
                     throw;
@@ -62,7 +57,7 @@ namespace Hqub.MusicBrainz.API
             return default(T);
         }
 
-        private static Exception CreateWebserviceException(HttpStatusCode status, string url, Stream stream)
+        private static WebServiceException CreateWebserviceException(HttpStatusCode status, string url, Stream stream)
         {
             var serializer = new DataContractJsonSerializer(typeof(ResponseError));
 
@@ -161,6 +156,10 @@ namespace Hqub.MusicBrainz.API
 
             return availableParams.IndexOf("+" + value + "+") >= 0;
         }
+
+        // TODO: should HttpClient be re-used?
+
+        // https://medium.com/@nuno.caneco/c-httpclient-should-not-be-disposed-or-should-it-45d2a8f568bc
 
         private static HttpClient CreateHttpClient(bool automaticDecompression = true, IWebProxy proxy = null)
         {

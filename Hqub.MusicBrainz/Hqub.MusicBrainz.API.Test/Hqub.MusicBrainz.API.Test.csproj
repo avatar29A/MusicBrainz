@@ -1,66 +1,24 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1E8BEEE2-DF91-4D0B-902E-E661D03E70C3}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Hqub.MusicBrainz.API.Test</RootNamespace>
-    <AssemblyName>Hqub.MusicBrainz.API.Test</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+
+    <Configurations>Debug;Release;Travis</Configurations>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Travis|AnyCPU'">
-    <OutputPath>bin\Travis\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=3.6.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.XML" />
+    <None Remove="Data\artist-get.json" />
+    <None Remove="Data\artist-search.json" />
+    <None Remove="Data\recording-get.json" />
+    <None Remove="Data\recording-search.json" />
+    <None Remove="Data\release-get.json" />
+    <None Remove="Data\release-search.json" />
+    <None Remove="Data\releasegroup-get.json" />
+    <None Remove="Data\releasegroup-search.json" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="ArtistListTests.cs" />
-    <Compile Include="ArtistTests.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QueryParametersTests.cs" />
-    <Compile Include="RecordingListTests.cs" />
-    <Compile Include="RecordingTests.cs" />
-    <Compile Include="ReleaseGroupListTests.cs" />
-    <Compile Include="ReleaseGroupTests.cs" />
-    <Compile Include="ReleaseListTests.cs" />
-    <Compile Include="ReleaseTests.cs" />
-    <Compile Include="TestHelper.cs" />
-    <Compile Include="WebserviceTests.cs" />
-  </ItemGroup>
+
   <ItemGroup>
     <EmbeddedResource Include="Data\artist-get.json" />
     <EmbeddedResource Include="Data\artist-search.json" />
@@ -71,14 +29,15 @@
     <EmbeddedResource Include="Data\releasegroup-get.json" />
     <EmbeddedResource Include="Data\releasegroup-search.json" />
   </ItemGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\Hqub.MusicBrainz.API\Hqub.MusicBrainz.API.csproj">
-      <Project>{77832ded-eefe-4db9-94af-b0be02cec356}</Project>
-      <Name>Hqub.MusicBrainz.API</Name>
-    </ProjectReference>
+    <PackageReference Include="nunit" Version="3.10.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.10.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
   </ItemGroup>
+
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\Hqub.MusicBrainz.API\Hqub.MusicBrainz.API.csproj" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>
