@@ -3,21 +3,23 @@
   <PropertyGroup>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <PackageId>Hqub.MusicBrainz.API</PackageId>
-    <Description>Implementation of MuzicBrainz API v2</Description>
+    <PackageId>MusicBrainzAPI</PackageId>
+    <Description>Implementation of the MuzicBrainz API v2.</Description>
     <Product>Hqub.MusicBrainz.API</Product>
-    <Company />
-    <Copyright>Copyright h-qub © 2014-2019</Copyright>
-    <Authors>h-qub</Authors>
+    <Company>h-qub.ru</Company>
+    <Copyright>Copyright h-qub.ru © 2014-2019</Copyright>
+    <Authors>Boris Glebov, Christian Woltering</Authors>
     <PackageProjectUrl>https://github.com/avatar29A/MusicBrainz</PackageProjectUrl>
     <RepositoryUrl>https://github.com/avatar29A/MusicBrainz</RepositoryUrl>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <FileVersion>2.0.0.0</FileVersion>
-    <PackageTags>musicbrainz</PackageTags>
-    <Version>2.0.0</Version>
+    <AssemblyVersion>2.0.1.0</AssemblyVersion>
+    <FileVersion>2.0.1.0</FileVersion>
+    <PackageTags>music musicbrainz brainz</PackageTags>
+    <Version>2.0.1</Version>
     <AssemblyName>Hqub.MusicBrainz.API</AssemblyName>
     <RootNamespace>Hqub.MusicBrainz.API</RootNamespace>
     <Configurations>Debug;Release;Travis</Configurations>
+    <PackageIconUrl>http://rhythmsforliving.com/wp-content/uploads/2014/11/brain-256.png</PackageIconUrl>
+    <PackageLicenseUrl>https://github.com/avatar29A/MusicBrainz/blob/master/LICENSE.txt</PackageLicenseUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Travis' ">
@@ -25,7 +27,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' != 'Travis' ">
-    <TargetFrameworks>;netstandard2.0;net45</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
