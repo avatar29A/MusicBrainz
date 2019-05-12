@@ -1,6 +1,7 @@
 ﻿
 namespace Hqub.MusicBrainz.API
 {
+    using System;
     using System.Net;
 
     /// <summary>
@@ -10,7 +11,6 @@ namespace Hqub.MusicBrainz.API
     {
         static Configuration()
         {
-            GenerateCommunicationThrow = true;
             Proxy = null;
             UserAgent = "Hqub.MusicBrainz/2.0";
         }
@@ -19,6 +19,7 @@ namespace Hqub.MusicBrainz.API
         /// If true, then all exceptions for http-requests to MusicBrainz (from class WebRequestHelper) will
         /// throw up. Otherwise they will be suppressed.
         /// </summary>
+        [Obsolete("Will be removed. Use proper exception handling (catch WebServiceException).")]
         public static bool GenerateCommunicationThrow { get; set; }
 
 
