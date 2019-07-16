@@ -5,6 +5,7 @@ namespace Hqub.MusicBrainz.API.Entities
     using System;
     using System.Collections.Generic;
     using System.Runtime.Serialization;
+    using System.Threading;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -125,6 +126,18 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <returns></returns>
         public static async Task<Recording> GetAsync(string id, params string[] inc)
         {
+            return await GetAsync(id, default(CancellationToken), inc).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Lookup an recording in the MusicBrainz database.
+        /// </summary>
+        /// <param name="id">The recording MusicBrainz id.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <param name="inc">A list of entities to include (subqueries).</param>
+        /// <returns></returns>
+        public static async Task<Recording> GetAsync(string id, CancellationToken cancellationToken, params string[] inc)
+        {
             if (string.IsNullOrEmpty(id))
             {
                 throw new ArgumentException(string.Format(Resources.Messages.MissingParameter, "id"));
@@ -132,17 +145,18 @@ namespace Hqub.MusicBrainz.API.Entities
 
             string url = WebServiceHelper.CreateLookupUrl(EntityName, id, inc);
 
-            return await WebServiceHelper.GetAsync<Recording>(url).ConfigureAwait(false);
+            return await WebServiceHelper.GetAsync<Recording>(url, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Search for an recording in the MusicBrainz database, matching the given query.
         /// </summary>
         /// <param name="query">The query string.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="limit">The maximum number of recordings to return (default = 25).</param>
         /// <param name="offset">The offset to the recordings list (enables paging, default = 0).</param>
         /// <returns></returns>
-        public static async Task<RecordingList> SearchAsync(string query, int limit = 25, int offset = 0)
+        public static async Task<RecordingList> SearchAsync(string query, int limit = 25, int offset = 0, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(query))
             {
@@ -151,19 +165,20 @@ namespace Hqub.MusicBrainz.API.Entities
 
             string url = WebServiceHelper.CreateSearchTemplate(EntityName, query, limit, offset);
 
-            return await WebServiceHelper.GetAsync<RecordingList>(url).ConfigureAwait(false);
+            return await WebServiceHelper.GetAsync<RecordingList>(url, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Search for an recording in the MusicBrainz database, matching the given query.
         /// </summary>
         /// <param name="query">The query parameters.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="limit">The maximum number of recordings to return (default = 25).</param>
         /// <param name="offset">The offset to the recordings list (enables paging, default = 0).</param>
         /// <returns></returns>
-        public static async Task<RecordingList> SearchAsync(QueryParameters<Recording> query, int limit = 25, int offset = 0)
+        public static async Task<RecordingList> SearchAsync(QueryParameters<Recording> query, int limit = 25, int offset = 0, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await SearchAsync(query.ToString(), limit, offset);
+            return await SearchAsync(query.ToString(), limit, offset, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -177,11 +192,25 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <returns></returns>
         public static async Task<RecordingList> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc)
         {
-            string url = WebServiceHelper.CreateBrowseTemplate(EntityName, entity, id, limit, offset, inc);
-
-            return await WebServiceHelper.GetAsync<RecordingList>(url).ConfigureAwait(false);
+            return await BrowseAsync(entity, id, default(CancellationToken), limit, offset, inc).ConfigureAwait(false);
         }
 
+        /// <summary>
+        /// Browse all the recordings in the MusicBrainz database, which are directly linked to the entity with given id.
+        /// </summary>
+        /// <param name="entity">The name of the related entity.</param>
+        /// <param name="id">The id of the related entity.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <param name="limit">The maximum number of recordings to return (default = 25).</param>
+        /// <param name="offset">The offset to the recordings list (enables paging, default = 0).</param>
+        /// <param name="inc">A list of entities to include (subqueries).</param>
+        /// <returns></returns>
+        public static async Task<RecordingList> BrowseAsync(string entity, string id, CancellationToken cancellationToken, int limit = 25, int offset = 0, params string[] inc)
+        {
+            string url = WebServiceHelper.CreateBrowseTemplate(EntityName, entity, id, limit, offset, inc);
+
+            return await WebServiceHelper.GetAsync<RecordingList>(url, cancellationToken).ConfigureAwait(false);
+        }
         #endregion
     }
 }

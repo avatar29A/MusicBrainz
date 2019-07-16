@@ -1,4 +1,6 @@
 ﻿
+using System.Threading;
+
 namespace Hqub.MusicBrainz.API.Entities
 {
     using Hqub.MusicBrainz.API.Entities.Collections;
@@ -149,6 +151,18 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <returns></returns>
         public static async Task<Release> GetAsync(string id, params string[] inc)
         {
+            return await GetAsync(id, default(CancellationToken), inc).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Lookup a release in the MusicBrainz database.
+        /// </summary>
+        /// <param name="id">The release MusicBrainz id.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <param name="inc">A list of entities to include (subqueries).</param>
+        /// <returns></returns>
+        public static async Task<Release> GetAsync(string id, CancellationToken cancellationToken, params string[] inc)
+        {
             if (string.IsNullOrEmpty(id))
             {
                 throw new ArgumentException(string.Format(Resources.Messages.MissingParameter, "id"));
@@ -156,17 +170,18 @@ namespace Hqub.MusicBrainz.API.Entities
 
             string url = WebServiceHelper.CreateLookupUrl(EntityName, id, inc);
 
-            return await WebServiceHelper.GetAsync<Release>(url).ConfigureAwait(false);
+            return await WebServiceHelper.GetAsync<Release>(url, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Search for a release in the MusicBrainz database, matching the given query.
         /// </summary>
         /// <param name="query">The query string.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="limit">The maximum number of releases to return (default = 25).</param>
         /// <param name="offset">The offset to the releases list (enables paging, default = 0).</param>
         /// <returns></returns>
-        public static async Task<ReleaseList> SearchAsync(string query, int limit = 25, int offset = 0)
+        public static async Task<ReleaseList> SearchAsync(string query, int limit = 25, int offset = 0, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(query))
             {
@@ -175,19 +190,20 @@ namespace Hqub.MusicBrainz.API.Entities
 
             string url = WebServiceHelper.CreateSearchTemplate(EntityName, query, limit, offset);
 
-            return await WebServiceHelper.GetAsync<ReleaseList>(url).ConfigureAwait(false);
+            return await WebServiceHelper.GetAsync<ReleaseList>(url, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Search for a release in the MusicBrainz database, matching the given query.
         /// </summary>
         /// <param name="query">The query parameters.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="limit">The maximum number of releases to return (default = 25).</param>
         /// <param name="offset">The offset to the releases list (enables paging, default = 0).</param>
         /// <returns></returns>
-        public static async Task<ReleaseList> SearchAsync(QueryParameters<Release> query, int limit = 25, int offset = 0)
+        public static async Task<ReleaseList> SearchAsync(QueryParameters<Release> query, int limit = 25, int offset = 0, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await SearchAsync(query.ToString(), limit, offset);
+            return await SearchAsync(query.ToString(), limit, offset, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -199,12 +215,26 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <param name="offset">The offset to the releases list (enables paging, default = 0).</param>
         /// <param name="inc">A list of entities to include (subqueries).</param>
         /// <returns></returns>
-        public static async Task<ReleaseList> BrowseAsync(string entity, string id, int limit = 25,
-            int offset = 0, params string[] inc)
+        public static async Task<ReleaseList> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc)
+        {
+            return await BrowseAsync(entity, id, default(CancellationToken), limit, offset, inc).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Browse all the releases in the MusicBrainz database, which are directly linked to the entity with given id.
+        /// </summary>
+        /// <param name="entity">The name of the related entity.</param>
+        /// <param name="id">The id of the related entity.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <param name="limit">The maximum number of releases to return (default = 25).</param>
+        /// <param name="offset">The offset to the releases list (enables paging, default = 0).</param>
+        /// <param name="inc">A list of entities to include (subqueries).</param>
+        /// <returns></returns>
+        public static async Task<ReleaseList> BrowseAsync(string entity, string id, CancellationToken cancellationToken, int limit = 25, int offset = 0, params string[] inc)
         {
             string url = WebServiceHelper.CreateBrowseTemplate(EntityName, entity, id, limit, offset, inc);
 
-            return await WebServiceHelper.GetAsync<ReleaseList>(url).ConfigureAwait(false);
+            return await WebServiceHelper.GetAsync<ReleaseList>(url, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -223,9 +253,29 @@ namespace Hqub.MusicBrainz.API.Entities
         /// </remarks>
         public static async Task<ReleaseList> BrowseAsync(string entity, string id, string type, string status = null, int limit = 25, int offset = 0, params string[] inc)
         {
+            return await BrowseAsync(entity, id, type, status, limit, offset, default(CancellationToken), inc).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Browse all the releases in the MusicBrainz database, which are directly linked to the entity with given id.
+        /// </summary>
+        /// <param name="entity">The name of the related entity.</param>
+        /// <param name="id">The id of the related entity.</param>
+        /// <param name="type">If releases or release-groups are included in the result, filter by type (for example 'album').</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <param name="status">If releases are included in the result, filter by status (for example 'official', default = null).</param>
+        /// <param name="limit">The maximum number of releases to return (default = 25).</param>
+        /// <param name="offset">The offset to the releases list (enables paging, default = 0).</param>
+        /// <param name="inc">A list of entities to include (subqueries).</param>
+        /// <returns></returns>
+        /// <remarks>
+        /// See http://musicbrainz.org/doc/Development/XML_Web_Service/Version_2#Release_Type_and_Status for supported values of type and status.
+        /// </remarks>
+        public static async Task<ReleaseList> BrowseAsync(string entity, string id, string type, string status = null, int limit = 25, int offset = 0, CancellationToken cancellationToken = default(CancellationToken), params string[] inc)
+        {
             string url = WebServiceHelper.CreateBrowseTemplate(EntityName, entity, id, type, status, limit, offset, inc);
 
-            return await WebServiceHelper.GetAsync<ReleaseList>(url).ConfigureAwait(false);
+            return await WebServiceHelper.GetAsync<ReleaseList>(url, cancellationToken).ConfigureAwait(false);
         }
 
         #endregion

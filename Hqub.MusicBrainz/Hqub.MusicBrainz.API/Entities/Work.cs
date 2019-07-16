@@ -1,4 +1,6 @@
 ﻿
+using System.Threading;
+
 namespace Hqub.MusicBrainz.API.Entities
 {
     using System;
@@ -75,9 +77,10 @@ namespace Hqub.MusicBrainz.API.Entities
         /// Lookup a work in the MusicBrainz database.
         /// </summary>
         /// <param name="id">The work MusicBrainz id.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="inc">A list of entities to include (subqueries).</param>
         /// <returns></returns>
-        public static async Task<Work> GetAsync(string id, params string[] inc)
+        public static async Task<Work> GetAsync(string id, CancellationToken cancellationToken, params string[] inc)
         {
             if (string.IsNullOrEmpty(id))
             {
@@ -86,7 +89,18 @@ namespace Hqub.MusicBrainz.API.Entities
 
             string url = WebServiceHelper.CreateLookupUrl(EntityName, id, inc);
 
-            return await WebServiceHelper.GetAsync<Work>(url).ConfigureAwait(false);
+            return await WebServiceHelper.GetAsync<Work>(url, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Lookup a work in the MusicBrainz database.
+        /// </summary>
+        /// <param name="id">The work MusicBrainz id.</param>
+        /// <param name="inc">A list of entities to include (subqueries).</param>
+        /// <returns></returns>
+        public static async Task<Work> GetAsync(string id, params string[] inc)
+        {
+            return await GetAsync(id, default(CancellationToken), inc).ConfigureAwait(false);
         }
 
         #endregion

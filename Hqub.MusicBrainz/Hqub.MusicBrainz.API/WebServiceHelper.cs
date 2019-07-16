@@ -1,4 +1,6 @@
 ﻿
+using System.Threading;
+
 namespace Hqub.MusicBrainz.API
 {
     using System;
@@ -25,13 +27,13 @@ namespace Hqub.MusicBrainz.API
 
         private const string JsonFormat = "&fmt=json";
 
-        internal static async Task<T> GetAsync<T>(string url)
+        internal static async Task<T> GetAsync<T>(string url, CancellationToken token)
         {
             try
             {
                 var client = CreateHttpClient(true, Configuration.Proxy);
 
-                var response = await client.GetAsync(new Uri(url)).ConfigureAwait(false);
+                var response = await client.GetAsync(new Uri(url), token).ConfigureAwait(false);
 
                 var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
                 

@@ -1,4 +1,6 @@
 ﻿
+using Hqub.MusicBrainz.API.Extensions;
+
 namespace Hqub.MusicBrainz.Client
 {
     using Hqub.MusicBrainz.API.Entities;
