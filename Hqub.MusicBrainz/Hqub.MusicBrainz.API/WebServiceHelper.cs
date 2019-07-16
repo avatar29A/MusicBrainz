@@ -31,9 +31,9 @@ namespace Hqub.MusicBrainz.API
             {
                 var client = CreateHttpClient(true, Configuration.Proxy);
 
-                var response = await client.GetAsync(new Uri(url));
+                var response = await client.GetAsync(new Uri(url)).ConfigureAwait(false);
 
-                var stream = await response.Content.ReadAsStreamAsync();
+                var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
                 
                 if (!response.IsSuccessStatusCode)
                 {

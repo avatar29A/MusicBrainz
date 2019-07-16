@@ -180,7 +180,7 @@ namespace Hqub.MusicBrainz.API.Entities
 
             string url = WebServiceHelper.CreateLookupUrl(EntityName, id, inc);
 
-            return await WebServiceHelper.GetAsync<Artist>(url);
+            return await WebServiceHelper.GetAsync<Artist>(url).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -199,7 +199,7 @@ namespace Hqub.MusicBrainz.API.Entities
 
             string url = WebServiceHelper.CreateSearchTemplate(EntityName, query, limit, offset);
 
-            return await WebServiceHelper.GetAsync<ArtistList>(url);
+            return await WebServiceHelper.GetAsync<ArtistList>(url).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -227,7 +227,7 @@ namespace Hqub.MusicBrainz.API.Entities
         {
             string url = WebServiceHelper.CreateBrowseTemplate(EntityName, entity, id, limit, offset, inc);
 
-            return await WebServiceHelper.GetAsync<ArtistList>(url);
+            return await WebServiceHelper.GetAsync<ArtistList>(url).ConfigureAwait(false);
         }
 
         #endregion

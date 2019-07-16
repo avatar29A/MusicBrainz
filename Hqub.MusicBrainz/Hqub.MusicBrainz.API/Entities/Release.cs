@@ -156,7 +156,7 @@ namespace Hqub.MusicBrainz.API.Entities
 
             string url = WebServiceHelper.CreateLookupUrl(EntityName, id, inc);
 
-            return await WebServiceHelper.GetAsync<Release>(url);
+            return await WebServiceHelper.GetAsync<Release>(url).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -175,7 +175,7 @@ namespace Hqub.MusicBrainz.API.Entities
 
             string url = WebServiceHelper.CreateSearchTemplate(EntityName, query, limit, offset);
 
-            return await WebServiceHelper.GetAsync<ReleaseList>(url);
+            return await WebServiceHelper.GetAsync<ReleaseList>(url).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -204,7 +204,7 @@ namespace Hqub.MusicBrainz.API.Entities
         {
             string url = WebServiceHelper.CreateBrowseTemplate(EntityName, entity, id, limit, offset, inc);
 
-            return await WebServiceHelper.GetAsync<ReleaseList>(url);
+            return await WebServiceHelper.GetAsync<ReleaseList>(url).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -225,7 +225,7 @@ namespace Hqub.MusicBrainz.API.Entities
         {
             string url = WebServiceHelper.CreateBrowseTemplate(EntityName, entity, id, type, status, limit, offset, inc);
 
-            return await WebServiceHelper.GetAsync<ReleaseList>(url);
+            return await WebServiceHelper.GetAsync<ReleaseList>(url).ConfigureAwait(false);
         }
 
         #endregion

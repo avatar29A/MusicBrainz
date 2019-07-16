@@ -86,7 +86,7 @@ namespace Hqub.MusicBrainz.API.Entities
 
             string url = WebServiceHelper.CreateLookupUrl(EntityName, id, inc);
 
-            return await WebServiceHelper.GetAsync<Work>(url);
+            return await WebServiceHelper.GetAsync<Work>(url).ConfigureAwait(false);
         }
 
         #endregion
