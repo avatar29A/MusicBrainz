@@ -18,7 +18,7 @@ namespace Hqub.MusicBrainz.API
             public string Message;
         }
 
-        private const string WebServiceUrl = "http://musicbrainz.org/ws/2/";
+        private const string WebServiceUrl = "https://musicbrainz.org/ws/2/";
         private const string LookupTemplate = "{0}/{1}/?inc={2}";
         private const string BrowseTemplate = "{0}?{1}={2}&limit={3}&offset={4}&inc={5}";
         private const string SearchTemplate = "{0}?query={1}&limit={2}&offset={3}";
