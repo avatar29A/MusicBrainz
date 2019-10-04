@@ -29,15 +29,24 @@ namespace Hqub.MusicBrainz.API
         {
             try
             {
-                var client = CreateHttpClient(true, Configuration.Proxy);
+                Stream stream;
 
-                var response = await client.GetAsync(new Uri(url));
+                var cache = Configuration.Cache ?? Cache.NullCache.Default;
 
-                var stream = await response.Content.ReadAsStreamAsync();
-                
-                if (!response.IsSuccessStatusCode)
+                if (!cache.TryGetCachedItem(url, out stream))
                 {
-                    throw CreateWebserviceException(response.StatusCode, url, stream);
+                    var client = CreateHttpClient(true, Configuration.Proxy);
+
+                    var response = await client.GetAsync(new Uri(url));
+
+                    stream = await response.Content.ReadAsStreamAsync();
+
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        throw CreateWebserviceException(response.StatusCode, url, stream);
+                    }
+
+                    cache.Add(url, stream);
                 }
                 
                 var serializer = new DataContractJsonSerializer(typeof(T));
@@ -65,6 +74,8 @@ namespace Hqub.MusicBrainz.API
 
             return new WebServiceException(error.Message, status, url);
         }
+
+        #region Generate urls
 
         internal static string CreateIncludeQuery(string[] inc)
         {
@@ -156,6 +167,8 @@ namespace Hqub.MusicBrainz.API
 
             return availableParams.IndexOf("+" + value + "+") >= 0;
         }
+
+        #endregion
 
         // TODO: should HttpClient be re-used?
 
