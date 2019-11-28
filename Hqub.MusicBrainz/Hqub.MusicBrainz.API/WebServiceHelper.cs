@@ -3,6 +3,7 @@ namespace Hqub.MusicBrainz.API
 {
     using System;
     using System.IO;
+    using System.Linq;
     using System.Net;
     using System.Net.Http;
     using System.Runtime.Serialization;
@@ -168,6 +169,11 @@ namespace Hqub.MusicBrainz.API
             if (string.IsNullOrEmpty(value))
             {
                 return true; // Irgnore, if no value specified.
+            }
+
+            if (value.IndexOf('|') > 0)
+            {
+                return value.Split('|').All(s => availableParams.IndexOf("+" + s + "+") >= 0);
             }
 
             return availableParams.IndexOf("+" + value + "+") >= 0;
