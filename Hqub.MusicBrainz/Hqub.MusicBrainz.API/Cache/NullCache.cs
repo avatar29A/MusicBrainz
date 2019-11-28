@@ -7,7 +7,7 @@ namespace Hqub.MusicBrainz.API.Cache
     /// <summary>
     /// A cache that does not cache anything.
     /// </summary>
-    class NullCache : IRequestCache
+    public class NullCache : IRequestCache
     {
         /// <summary>
         /// Gets the default <see cref="NullCache"/> instance.
