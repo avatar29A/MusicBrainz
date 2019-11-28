@@ -18,7 +18,7 @@ namespace Hqub.MusicBrainz.API
             public string Message;
         }
 
-        private const string WebServiceUrl = "http://musicbrainz.org/ws/2/";
+        private const string WebServiceUrl = "https://musicbrainz.org/ws/2/";
         private const string LookupTemplate = "{0}/{1}/?inc={2}";
         private const string BrowseTemplate = "{0}?{1}={2}&limit={3}&offset={4}&inc={5}";
         private const string SearchTemplate = "{0}?query={1}&limit={2}&offset={3}";
@@ -29,20 +29,34 @@ namespace Hqub.MusicBrainz.API
         {
             try
             {
-                var client = CreateHttpClient(true, Configuration.Proxy);
+                var cache = Configuration.Cache ?? Cache.NullCache.Default;
 
-                var response = await client.GetAsync(new Uri(url));
-
-                var stream = await response.Content.ReadAsStreamAsync();
-                
-                if (!response.IsSuccessStatusCode)
-                {
-                    throw CreateWebserviceException(response.StatusCode, url, stream);
-                }
-                
                 var serializer = new DataContractJsonSerializer(typeof(T));
 
-                return (T)serializer.ReadObject(stream);
+                if (await cache.TryGetCachedItem(url, out Stream stream))
+                {
+                    var result = (T)serializer.ReadObject(stream);
+
+                    stream.Close();
+
+                    return result;
+                }
+
+                using (var client = CreateHttpClient(true, Configuration.Proxy))
+                using (var response = await client.GetAsync(new Uri(url)))
+                {
+                    stream = await response.Content.ReadAsStreamAsync();
+
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        throw CreateWebserviceException(response.StatusCode, url, stream);
+                    }
+
+                    await cache.Add(url, stream);
+
+                    return (T)serializer.ReadObject(stream);
+                }
+                
             }
             catch (Exception)
             {
@@ -65,6 +79,8 @@ namespace Hqub.MusicBrainz.API
 
             return new WebServiceException(error.Message, status, url);
         }
+
+        #region Generate urls
 
         internal static string CreateIncludeQuery(string[] inc)
         {
@@ -156,6 +172,8 @@ namespace Hqub.MusicBrainz.API
 
             return availableParams.IndexOf("+" + value + "+") >= 0;
         }
+
+        #endregion
 
         // TODO: should HttpClient be re-used?
 

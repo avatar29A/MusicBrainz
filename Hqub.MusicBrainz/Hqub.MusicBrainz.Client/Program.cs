@@ -1,8 +1,11 @@
-﻿using System;
-using System.Threading.Tasks;
-
-namespace Hqub.MusicBrainz.Client
+﻿namespace Hqub.MusicBrainz.Client
 {
+    using Hqub.MusicBrainz.API;
+    using System;
+    using System.IO;
+    using System.Reflection;
+    using System.Threading.Tasks;
+
     internal class Program
     {
         private static void Main(string[] args)
@@ -30,6 +33,11 @@ namespace Hqub.MusicBrainz.Client
 
         private static async Task RunExamples()
         {
+            var location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+            // Use local file cache (subdirectory of executing program).
+            Configuration.Cache = new FileRequestCache(Path.Combine(location, "cache"));
+
             Header("Example 1");
             await Example1.Run();
 

@@ -52,6 +52,7 @@
     <Compile Include="Example4.cs" />
     <Compile Include="Example5.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="FileRequestCache.cs" />
     <Compile Include="Levenshtein.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
