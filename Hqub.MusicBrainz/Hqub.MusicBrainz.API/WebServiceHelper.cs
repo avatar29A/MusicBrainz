@@ -29,16 +29,22 @@ namespace Hqub.MusicBrainz.API
         {
             try
             {
-                Stream stream;
-
                 var cache = Configuration.Cache ?? Cache.NullCache.Default;
 
-                if (!await cache.TryGetCachedItem(url, out stream))
+                var serializer = new DataContractJsonSerializer(typeof(T));
+
+                if (await cache.TryGetCachedItem(url, out Stream stream))
                 {
-                    var client = CreateHttpClient(true, Configuration.Proxy);
+                    var result = (T)serializer.ReadObject(stream);
 
-                    var response = await client.GetAsync(new Uri(url));
+                    stream.Close();
 
+                    return result;
+                }
+
+                using (var client = CreateHttpClient(true, Configuration.Proxy))
+                using (var response = await client.GetAsync(new Uri(url)))
+                {
                     stream = await response.Content.ReadAsStreamAsync();
 
                     if (!response.IsSuccessStatusCode)
@@ -47,11 +53,10 @@ namespace Hqub.MusicBrainz.API
                     }
 
                     await cache.Add(url, stream);
+
+                    return (T)serializer.ReadObject(stream);
                 }
                 
-                var serializer = new DataContractJsonSerializer(typeof(T));
-
-                return (T)serializer.ReadObject(stream);
             }
             catch (Exception)
             {
