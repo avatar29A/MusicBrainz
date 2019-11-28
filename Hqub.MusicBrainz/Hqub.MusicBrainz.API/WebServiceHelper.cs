@@ -33,7 +33,7 @@ namespace Hqub.MusicBrainz.API
 
                 var cache = Configuration.Cache ?? Cache.NullCache.Default;
 
-                if (!cache.TryGetCachedItem(url, out stream))
+                if (!await cache.TryGetCachedItem(url, out stream))
                 {
                     var client = CreateHttpClient(true, Configuration.Proxy);
 
@@ -46,7 +46,7 @@ namespace Hqub.MusicBrainz.API
                         throw CreateWebserviceException(response.StatusCode, url, stream);
                     }
 
-                    cache.Add(url, stream);
+                    await cache.Add(url, stream);
                 }
                 
                 var serializer = new DataContractJsonSerializer(typeof(T));

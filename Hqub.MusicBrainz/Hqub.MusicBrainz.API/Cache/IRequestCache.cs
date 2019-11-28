@@ -2,6 +2,7 @@
 namespace Hqub.MusicBrainz.API.Cache
 {
     using System.IO;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// A simple cache interface.
@@ -11,12 +12,12 @@ namespace Hqub.MusicBrainz.API.Cache
         /// <summary>
         /// Add a request and its response to the cache.
         /// </summary>
-        void Add(string request, Stream response);
+        Task Add(string request, Stream response);
 
         /// <summary>
         /// Add a request and its response to the cache.
         /// </summary>
         /// <returns>True, if a cache entry matching the request was found.</returns>
-        bool TryGetCachedItem(string request, out Stream stream);
+        Task<bool> TryGetCachedItem(string request, out Stream stream);
     }
 }

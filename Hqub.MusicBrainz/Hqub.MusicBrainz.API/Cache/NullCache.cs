@@ -2,6 +2,7 @@
 namespace Hqub.MusicBrainz.API.Cache
 {
     using System.IO;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// A cache that does not cache anything.
@@ -18,15 +19,21 @@ namespace Hqub.MusicBrainz.API.Cache
         }
 
         /// <inheritdoc />
-        public void Add(string request, Stream response)
+        public Task Add(string request, Stream response)
         {
+#if NET45
+            return Task.FromResult(0);
+#else
+            return Task.CompletedTask;
+#endif
         }
 
         /// <inheritdoc />
-        public bool TryGetCachedItem(string request, out Stream stream)
+        public Task<bool> TryGetCachedItem(string request, out Stream stream)
         {
             stream = null;
-            return false;
+
+            return Task.FromResult(false);
         }
     }
 }
