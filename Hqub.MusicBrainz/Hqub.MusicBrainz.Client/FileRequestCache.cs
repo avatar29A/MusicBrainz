@@ -77,7 +77,7 @@ namespace Hqub.MusicBrainz.Client
 
             var now = DateTime.Now;
 
-            foreach (var file in Directory.EnumerateFiles(path))
+            foreach (var file in Directory.EnumerateFiles(path, "*.mb-cache"))
             {
                 if ((now - CacheEntry.GetTimestamp(file)) > Timeout)
                 {
@@ -90,9 +90,15 @@ namespace Hqub.MusicBrainz.Client
 
         public void Clear()
         {
-            if (Directory.Exists(path))
+            // If the path is used for cache only, we could just as well delete the directory.
+            //if (Directory.Exists(path))
+            //{
+            //    Directory.Delete(path);
+            //}
+
+            foreach (var file in Directory.EnumerateFiles(path, "*.mb-cache"))
             {
-                Directory.Delete(path);
+                File.Delete(file);
             }
         }
 
