@@ -13,12 +13,12 @@ namespace Hqub.MusicBrainz.Client
     /// </summary>
     public class Example3
     {
-        public static async Task Run()
+        public static async Task Run(MusicBrainzClient client)
         {
-            await Search("Massive Attack", "Mezzanine");
+            await Search(client, "Massive Attack", "Mezzanine");
         }
 
-        public static async Task Search(string band, string album)
+        public static async Task Search(MusicBrainzClient client, string band, string album)
         {
             // Build an advanced query to search for the release.
             var query = new QueryParameters<ReleaseGroup>()
@@ -30,7 +30,7 @@ namespace Hqub.MusicBrainz.Client
             };
 
             // Search for an release-group by title.
-            var groups = await ReleaseGroup.SearchAsync(query);
+            var groups = await client.ReleaseGroups.SearchAsync(query);
 
             Console.WriteLine("Total matches for '{0} - {1}': {2}", band, album, groups.Count);
 
@@ -38,7 +38,7 @@ namespace Hqub.MusicBrainz.Client
             var group = groups.Items.First();
 
             // Get detailed information of the release-group, including artists, releases and related urls.
-            group = await ReleaseGroup.GetAsync(group.Id, "artists", "releases", "url-rels");
+            group = await client.ReleaseGroups.GetAsync(group.Id, "artists", "releases", "url-rels");
 
             var artist = group.Credits.First().Artist;
 

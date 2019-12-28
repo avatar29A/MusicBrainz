@@ -1,6 +1,7 @@
 ﻿
 namespace Hqub.MusicBrainz.Client
 {
+    using Hqub.MusicBrainz.API;
     using Hqub.MusicBrainz.API.Entities;
     using System;
     using System.Linq;
@@ -12,15 +13,15 @@ namespace Hqub.MusicBrainz.Client
     /// </summary>
     public class Example1
     {
-        public static async Task Run()
+        public static async Task Run(MusicBrainzClient client)
         {
-            await Search("The Rolling Stones");
+            await Search(client, "The Rolling Stones");
         }
 
-        public static async Task Search(string name)
+        public static async Task Search(MusicBrainzClient client, string name)
         {
             // Search for an artist by name (limit to 20 matches).
-            var artists = await Artist.SearchAsync(name.Quote(), 20);
+            var artists = await client.Artists.SearchAsync(name.Quote(), 20);
 
             Console.WriteLine("Total matches for '{0}': {1}", name, artists.Count);
 
@@ -39,7 +40,7 @@ namespace Hqub.MusicBrainz.Client
             var artist = artists.Items.OrderByDescending(a => Levenshtein.Similarity(a.Name, name)).First();
 
             // Get detailed information of the artist, including band-members and related urls.
-            artist = await Artist.GetAsync(artist.Id, "artist-rels", "url-rels");
+            artist = await client.Artists.GetAsync(artist.Id, "artist-rels", "url-rels");
 
             Console.WriteLine();
             Console.WriteLine("Current band members of '{0}':", artist.Name);

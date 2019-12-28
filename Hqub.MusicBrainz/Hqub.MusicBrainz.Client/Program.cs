@@ -33,25 +33,28 @@
 
         private static async Task RunExamples()
         {
+            // Get path for local file cache.
             var location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-            // Use local file cache (subdirectory of executing program).
-            Configuration.Cache = new FileRequestCache(Path.Combine(location, "cache"));
+            var client = new MusicBrainzClient()
+            {
+                Cache = new FileRequestCache(Path.Combine(location, "cache"))
+            };
 
             Header("Example 1");
-            await Example1.Run();
+            await Example1.Run(client);
 
             Header("Example 2");
-            await Example2.Run();
+            await Example2.Run(client);
 
             Header("Example 3");
-            await Example3.Run();
+            await Example3.Run(client);
 
             Header("Example 4");
-            await Example4.Run();
+            await Example4.Run(client);
 
             Header("Example 5");
-            await Example5.Run();
+            await Example5.Run(client);
         }
 
         private static void Header(string title)

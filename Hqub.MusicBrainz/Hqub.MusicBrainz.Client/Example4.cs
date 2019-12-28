@@ -14,12 +14,12 @@ namespace Hqub.MusicBrainz.Client
     /// </summary>
     class Example4
     {
-        public static async Task Run()
+        public static async Task Run(MusicBrainzClient client)
         {
-            await Search("Massive Attack", "Mezzanine", "Teardrop");
+            await Search(client, "Massive Attack", "Mezzanine", "Teardrop");
         }
 
-        public static async Task Search(string artist, string album, string song)
+        public static async Task Search(MusicBrainzClient client, string artist, string album, string song)
         {
             // Build an advanced query to search for the recording.
             var query = new QueryParameters<Recording>()
@@ -30,7 +30,7 @@ namespace Hqub.MusicBrainz.Client
             };
 
             // Search for a recording by title.
-            var recordings = await Recording.SearchAsync(query);
+            var recordings = await client.Recordings.SearchAsync(query);
 
             Console.WriteLine("Total matches for '{0} ({1}) {2}': {3}", artist, album, song, recordings.Count);
 
@@ -40,13 +40,13 @@ namespace Hqub.MusicBrainz.Client
             var release = recording.Releases.Where(r => r.Title == album).First();
 
             // Get detailed information of the recording, including related works.
-            recording = await Recording.GetAsync(recording.Id, "work-rels");
+            recording = await client.Recordings.GetAsync(recording.Id, "work-rels");
             
             // Expect only a single work related to recording.
             var work = recording.Relations.Single().Work;
 
             // Get detailed information of the work, including related urls.
-            work = await Work.GetAsync(work.Id, "url-rels");
+            work = await client.Work.GetAsync(work.Id, "url-rels");
 
             // Check if there are lyrcis available for the recording.
             var lyrics = work.Relations.Where(r => r.Type == "lyrics");
