@@ -10,8 +10,9 @@
         private const string EntityName = "recording";
 
         private readonly MusicBrainzClient client;
+        private readonly UrlBuilder builder;
 
-        public RecordingService(MusicBrainzClient client)
+        public RecordingService(MusicBrainzClient client, UrlBuilder builder)
         {
             this.client = client;
         }
@@ -29,7 +30,7 @@
                 throw new ArgumentException(string.Format(Resources.Messages.MissingParameter, "id"));
             }
 
-            string url = client.CreateLookupUrl(EntityName, id, inc);
+            string url = builder.CreateLookupUrl(EntityName, id, inc);
 
             return await client.GetAsync<Recording>(url);
         }
@@ -48,7 +49,7 @@
                 throw new ArgumentException(string.Format(Resources.Messages.MissingParameter, "query"));
             }
 
-            string url = client.CreateSearchTemplate(EntityName, query, limit, offset);
+            string url = builder.CreateSearchTemplate(EntityName, query, limit, offset);
 
             return await client.GetAsync<RecordingList>(url);
         }
@@ -76,7 +77,7 @@
         /// <returns></returns>
         public async Task<RecordingList> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc)
         {
-            string url = client.CreateBrowseTemplate(EntityName, entity, id, limit, offset, inc);
+            string url = builder.CreateBrowseTemplate(EntityName, entity, id, limit, offset, inc);
 
             return await client.GetAsync<RecordingList>(url);
         }

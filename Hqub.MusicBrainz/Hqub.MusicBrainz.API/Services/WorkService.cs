@@ -10,8 +10,9 @@
         private const string EntityName = "work";
 
         private readonly MusicBrainzClient client;
+        private readonly UrlBuilder builder;
 
-        public WorkService(MusicBrainzClient client)
+        public WorkService(MusicBrainzClient client, UrlBuilder builder)
         {
             this.client = client;
         }
@@ -29,7 +30,7 @@
                 throw new ArgumentException(string.Format(Resources.Messages.MissingParameter, "id"));
             }
 
-            string url = client.CreateLookupUrl(EntityName, id, inc);
+            string url = builder.CreateLookupUrl(EntityName, id, inc);
 
             return await client.GetAsync<Work>(url);
         }
