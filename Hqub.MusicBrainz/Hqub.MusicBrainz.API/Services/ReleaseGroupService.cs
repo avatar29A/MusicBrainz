@@ -7,7 +7,9 @@
 
     public class ReleaseGroupService
     {
-        MusicBrainzClient client;
+        private const string EntityName = "release-group";
+
+        private readonly MusicBrainzClient client;
 
         public ReleaseGroupService(MusicBrainzClient client)
         {
@@ -27,7 +29,7 @@
                 throw new ArgumentException(string.Format(Resources.Messages.MissingParameter, "id"));
             }
 
-            string url = client.CreateLookupUrl(ReleaseGroup.EntityName, id, inc);
+            string url = client.CreateLookupUrl(EntityName, id, inc);
 
             return await client.GetAsync<ReleaseGroup>(url);
         }
@@ -46,7 +48,7 @@
                 throw new ArgumentException(string.Format(Resources.Messages.MissingParameter, "query"));
             }
 
-            string url = client.CreateSearchTemplate(ReleaseGroup.EntityName, query, limit, offset);
+            string url = client.CreateSearchTemplate(EntityName, query, limit, offset);
 
             return await client.GetAsync<ReleaseGroupList>(url);
         }
@@ -74,7 +76,7 @@
         /// <returns></returns>
         public async Task<ReleaseGroupList> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc)
         {
-            string url = client.CreateBrowseTemplate(ReleaseGroup.EntityName, entity, id, limit, offset, inc);
+            string url = client.CreateBrowseTemplate(EntityName, entity, id, limit, offset, inc);
 
             return await client.GetAsync<ReleaseGroupList>(url);
         }
@@ -94,7 +96,7 @@
         /// </remarks>
         public async Task<ReleaseGroupList> BrowseAsync(string entity, string id, string type, int limit = 25, int offset = 0, params string[] inc)
         {
-            string url = client.CreateBrowseTemplate(ReleaseGroup.EntityName, entity, id, type, null, limit, offset, inc);
+            string url = client.CreateBrowseTemplate(EntityName, entity, id, type, null, limit, offset, inc);
 
             return await client.GetAsync<ReleaseGroupList>(url);
         }

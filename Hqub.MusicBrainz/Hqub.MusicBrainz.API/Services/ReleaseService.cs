@@ -7,7 +7,9 @@
 
     public class ReleaseService
     {
-        MusicBrainzClient client;
+        private const string EntityName = "release";
+
+        private readonly MusicBrainzClient client;
 
         public ReleaseService(MusicBrainzClient client)
         {
@@ -27,7 +29,7 @@
                 throw new ArgumentException(string.Format(Resources.Messages.MissingParameter, "id"));
             }
 
-            string url = client.CreateLookupUrl(Release.EntityName, id, inc);
+            string url = client.CreateLookupUrl(EntityName, id, inc);
 
             return await client.GetAsync<Release>(url);
         }
@@ -46,7 +48,7 @@
                 throw new ArgumentException(string.Format(Resources.Messages.MissingParameter, "query"));
             }
 
-            string url = client.CreateSearchTemplate(Release.EntityName, query, limit, offset);
+            string url = client.CreateSearchTemplate(EntityName, query, limit, offset);
 
             return await client.GetAsync<ReleaseList>(url);
         }
@@ -75,7 +77,7 @@
         public async Task<ReleaseList> BrowseAsync(string entity, string id, int limit = 25,
             int offset = 0, params string[] inc)
         {
-            string url = client.CreateBrowseTemplate(Release.EntityName, entity, id, limit, offset, inc);
+            string url = client.CreateBrowseTemplate(EntityName, entity, id, limit, offset, inc);
 
             return await client.GetAsync<ReleaseList>(url);
         }
@@ -96,7 +98,7 @@
         /// </remarks>
         public async Task<ReleaseList> BrowseAsync(string entity, string id, string type, string status = null, int limit = 25, int offset = 0, params string[] inc)
         {
-            string url = client.CreateBrowseTemplate(Release.EntityName, entity, id, type, status, limit, offset, inc);
+            string url = client.CreateBrowseTemplate(EntityName, entity, id, type, status, limit, offset, inc);
 
             return await client.GetAsync<ReleaseList>(url);
         }

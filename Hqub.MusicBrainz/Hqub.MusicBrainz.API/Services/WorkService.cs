@@ -7,7 +7,9 @@
 
     public class WorkService
     {
-        MusicBrainzClient client;
+        private const string EntityName = "work";
+
+        private readonly MusicBrainzClient client;
 
         public WorkService(MusicBrainzClient client)
         {
@@ -27,7 +29,7 @@
                 throw new ArgumentException(string.Format(Resources.Messages.MissingParameter, "id"));
             }
 
-            string url = client.CreateLookupUrl(Work.EntityName, id, inc);
+            string url = client.CreateLookupUrl(EntityName, id, inc);
 
             return await client.GetAsync<Work>(url);
         }

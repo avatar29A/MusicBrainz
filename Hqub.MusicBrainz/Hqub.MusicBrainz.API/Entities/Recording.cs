@@ -15,8 +15,6 @@ namespace Hqub.MusicBrainz.API.Entities
     [DataContract(Name = "recording")]
     public class Recording
     {
-        public const string EntityName = "recording";
-
         #region Properties
 
         /// <summary>

@@ -76,6 +76,15 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="MusicBrainzClient"/> class.
         /// </summary>
+        /// <param name="proxy">The <see cref="IWebProxy"/> used to connect to the webservice.</param>
+        public MusicBrainzClient(IWebProxy proxy)
+            : this(ServiceBaseAddress, proxy)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MusicBrainzClient"/> class.
+        /// </summary>
         /// <param name="baseAddress">The base address of the webservice (default = <see cref="ServiceBaseAddress"/>).</param>
         public MusicBrainzClient(string baseAddress)
             : this(baseAddress, null)
@@ -95,7 +104,7 @@
             ReleaseGroups = new ReleaseGroupService(this);
             Work = new WorkService(this);
 
-            client = CreateHttpClient(baseAddress, true, proxy);
+            client = CreateHttpClient(new Uri(baseAddress), true, proxy);
         }
 
         [DataContract]
@@ -248,7 +257,7 @@
 
         // https://medium.com/@nuno.caneco/c-httpclient-should-not-be-disposed-or-should-it-45d2a8f568bc
 
-        private HttpClient CreateHttpClient(string baseAddress, bool automaticDecompression, IWebProxy proxy)
+        private HttpClient CreateHttpClient(Uri baseAddress, bool automaticDecompression, IWebProxy proxy)
         {
             var handler = new HttpClientHandler();
 
@@ -266,7 +275,7 @@
             var client = new HttpClient(handler);
 
             client.DefaultRequestHeaders.Add("User-Agent", UserAgent);
-            client.BaseAddress = new Uri(baseAddress);
+            client.BaseAddress = baseAddress;
 
             return client;
         }
