@@ -5,7 +5,7 @@
     using System;
     using System.Threading.Tasks;
 
-    public class WorkService
+    class WorkService : IWorkService
     {
         private const string EntityName = "work";
 
@@ -15,6 +15,7 @@
         public WorkService(MusicBrainzClient client, UrlBuilder builder)
         {
             this.client = client;
+            this.builder = builder;
         }
 
         /// <summary>

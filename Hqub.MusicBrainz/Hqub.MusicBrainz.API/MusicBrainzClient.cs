@@ -30,27 +30,27 @@
         /// <summary>
         /// Gets the artists entity service.
         /// </summary>
-        public ArtistService Artists { get; }
+        public IArtistService Artists { get; }
 
         /// <summary>
         /// Gets the recordings entity service.
         /// </summary>
-        public RecordingService Recordings { get; }
+        public IRecordingService Recordings { get; }
 
         /// <summary>
         /// Gets the releases entity service.
         /// </summary>
-        public ReleaseService Releases { get; }
+        public IReleaseService Releases { get; }
 
         /// <summary>
         /// Gets the release-groups entity service.
         /// </summary>
-        public ReleaseGroupService ReleaseGroups { get; }
+        public IReleaseGroupService ReleaseGroups { get; }
 
         /// <summary>
         /// Gets the work entity service.
         /// </summary>
-        public WorkService Work { get; }
+        public IWorkService Work { get; }
 
         #endregion
 

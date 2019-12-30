@@ -7,7 +7,7 @@ namespace Hqub.MusicBrainz.API
     /// <summary>
     /// Helper class to build MusicBrainz webservice urls.
     /// </summary>
-    public class UrlBuilder
+    class UrlBuilder
     {
         private const string LookupTemplate = "{0}/{1}/?inc={2}&fmt=json";
         private const string BrowseTemplate = "{0}?{1}={2}&limit={3}&offset={4}&inc={5}&fmt=json";
@@ -23,7 +23,7 @@ namespace Hqub.MusicBrainz.API
         /// <summary>
         /// Creates a webservice lookup template.
         /// </summary>
-        internal string CreateLookupUrl(string entity, string mbid, params string[] inc)
+        public string CreateLookupUrl(string entity, string mbid, params string[] inc)
         {
             return CreateLookupUrl(entity, mbid, string.Join("+", inc));
         }
@@ -31,7 +31,7 @@ namespace Hqub.MusicBrainz.API
         /// <summary>
         /// Creates a webservice lookup template.
         /// </summary>
-        internal string CreateLookupUrl(string entity, string mbid, string inc)
+        private string CreateLookupUrl(string entity, string mbid, string inc)
         {
             return string.Format(LookupTemplate, entity, mbid, inc);
         }
@@ -39,18 +39,18 @@ namespace Hqub.MusicBrainz.API
         /// <summary>
         /// Creates a webservice browse template.
         /// </summary>
-        internal string CreateBrowseTemplate(string entity, string relatedEntity, string mbid, int limit, int offset, params string[] inc)
+        public string CreateBrowseUrl(string entity, string relatedEntity, string mbid, int limit, int offset, params string[] inc)
         {
-            return CreateBrowseTemplate(entity, relatedEntity, mbid, limit, offset, string.Join("+", inc));
+            return CreateBrowseUrl(entity, relatedEntity, mbid, limit, offset, string.Join("+", inc));
         }
 
         /// <summary>
         /// Creates a webservice browse template.
         /// </summary>
-        internal string CreateBrowseTemplate(string entity, string relatedEntity, string mbid, string type, string status,
+        public string CreateBrowseUrl(string entity, string relatedEntity, string mbid, string type, string status,
             int limit, int offset, params string[] inc)
         {
-            var url = CreateBrowseTemplate(entity, relatedEntity, mbid, limit, offset, string.Join("+", inc));
+            var url = CreateBrowseUrl(entity, relatedEntity, mbid, limit, offset, string.Join("+", inc));
 
             if (validate && !ValidateBrowseParam(Resources.Constants.BrowseStatus, status))
             {
@@ -78,7 +78,7 @@ namespace Hqub.MusicBrainz.API
         /// <summary>
         /// Creates a webservice browse template.
         /// </summary>
-        internal string CreateBrowseTemplate(string entity, string relatedEntity, string mbid, int limit, int offset, string inc)
+        private string CreateBrowseUrl(string entity, string relatedEntity, string mbid, int limit, int offset, string inc)
         {
             return string.Format(BrowseTemplate, entity, relatedEntity, mbid, limit, offset, inc);
         }
@@ -86,7 +86,7 @@ namespace Hqub.MusicBrainz.API
         /// <summary>
         /// Creates a webservice search template.
         /// </summary>
-        internal string CreateSearchTemplate(string entity, string query, int limit, int offset)
+        public string CreateSearchUrl(string entity, string query, int limit, int offset)
         {
             query = Uri.EscapeUriString(query);
 
