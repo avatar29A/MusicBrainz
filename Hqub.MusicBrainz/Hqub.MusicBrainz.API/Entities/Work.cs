@@ -12,7 +12,7 @@ namespace Hqub.MusicBrainz.API.Entities
     /// </summary>
     /// <see href="https://musicbrainz.org/doc/Work"/>
     [DataContract(Name = "work")]
-    public class Work
+    public partial class Work
     {
         #region Properties
 
