@@ -55,7 +55,7 @@
         /// <param name="inc">A list of entities to include (subqueries).</param>
         /// <returns></returns>
         /// <remarks>
-        /// See http://musicbrainz.org/doc/Development/XML_Web_Service/Version_2#Release_Type_and_Status for supported values of type and status.
+        /// See http://musicbrainz.org/doc/Development/XML_Web_Service/Version_2#Release_Type_and_Status for supported values of type.
         /// </remarks>
         Task<ReleaseGroupList> BrowseAsync(string entity, string id, string type, int limit = 25, int offset = 0, params string[] inc);
     }

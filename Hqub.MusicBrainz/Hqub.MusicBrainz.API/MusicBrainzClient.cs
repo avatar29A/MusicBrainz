@@ -125,7 +125,7 @@
 
                 var serializer = new DataContractJsonSerializer(typeof(T));
 
-                if (await cache.TryGetCachedItem(url, out Stream stream))
+                if (await cache.TryGetCachedItem(url, out Stream stream).ConfigureAwait(false))
                 {
                     var result = (T)serializer.ReadObject(stream);
 
@@ -134,16 +134,16 @@
                     return result;
                 }
 
-                using (var response = await client.GetAsync(url))
+                using (var response = await client.GetAsync(url).ConfigureAwait(false))
                 {
-                    stream = await response.Content.ReadAsStreamAsync();
+                    stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 
                     if (!response.IsSuccessStatusCode)
                     {
                         throw CreateWebserviceException(response.StatusCode, url, stream);
                     }
 
-                    await cache.Add(url, stream);
+                    await cache.Add(url, stream).ConfigureAwait(false);
 
                     return (T)serializer.ReadObject(stream);
                 }
