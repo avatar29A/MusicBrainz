@@ -41,9 +41,18 @@ namespace Hqub.MusicBrainz.Client
 
             // Get detailed information of the recording, including related works.
             recording = await client.Recordings.GetAsync(recording.Id, "work-rels");
+
+            if (recording.Relations.Count == 0)
+            {
+                Console.WriteLine();
+                Console.WriteLine("No lyrics available :-(");
+                Console.WriteLine();
+
+                return;
+            }
             
             // Expect only a single work related to recording.
-            var work = recording.Relations.Single().Work;
+            var work = recording.Relations.First().Work;
 
             // Get detailed information of the work, including related urls.
             work = await client.Work.GetAsync(work.Id, "url-rels");

@@ -3,6 +3,7 @@
     using Hqub.MusicBrainz.API;
     using System;
     using System.IO;
+    using System.Net;
     using System.Reflection;
     using System.Threading.Tasks;
 
@@ -20,7 +21,15 @@
             {
                 foreach (var item in e.Flatten().InnerExceptions)
                 {
-                    Console.WriteLine(item.Message);
+                    if (item.InnerException == null)
+                    {
+                        Console.WriteLine(item.Message);
+                    }
+                    else
+                    {
+                        // Display inner exception.
+                        Console.WriteLine(item.InnerException.Message);
+                    }
                 }
             }
             catch (Exception e)
@@ -33,6 +42,12 @@
 
         private static async Task RunExamples()
         {
+            // Make sure that TLS 1.2 is available.
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3
+                | SecurityProtocolType.Tls
+                | SecurityProtocolType.Tls11
+                | SecurityProtocolType.Tls12;
+
             // Get path for local file cache.
             var location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
