@@ -3,6 +3,7 @@ namespace Hqub.MusicBrainz.API
 {
     using System;
     using System.Linq;
+    using System.Net;
 
     /// <summary>
     /// Helper class to build MusicBrainz webservice urls.
@@ -88,7 +89,7 @@ namespace Hqub.MusicBrainz.API
         /// </summary>
         public string CreateSearchUrl(string entity, string query, int limit, int offset)
         {
-            query = Uri.EscapeUriString(query);
+            query = WebUtility.UrlEncode(query);
 
             return string.Format(SearchTemplate, entity, query, limit, offset);
         }
