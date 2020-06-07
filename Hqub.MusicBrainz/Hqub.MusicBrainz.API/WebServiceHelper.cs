@@ -158,7 +158,7 @@ namespace Hqub.MusicBrainz.API
         /// </summary>
         internal static string CreateSearchTemplate(string entity, string query, int limit, int offset)
         {
-            query = Uri.EscapeUriString(query);
+            query = WebUtility.UrlEncode(query);
 
             return string.Format("{0}{1}{2}", WebServiceUrl,
                 string.Format(SearchTemplate, entity, query, limit, offset), JsonFormat);
