@@ -43,10 +43,7 @@
         private static async Task RunExamples()
         {
             // Make sure that TLS 1.2 is available.
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3
-                | SecurityProtocolType.Tls
-                | SecurityProtocolType.Tls11
-                | SecurityProtocolType.Tls12;
+            ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
 
             // Get path for local file cache.
             var location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
