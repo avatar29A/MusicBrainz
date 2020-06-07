@@ -2,7 +2,6 @@
 namespace Hqub.MusicBrainz.Client
 {
     using Hqub.MusicBrainz.API;
-    using Hqub.MusicBrainz.API.Entities;
     using System;
     using System.Linq;
     using System.Threading.Tasks;
