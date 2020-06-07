@@ -4,19 +4,16 @@
     using Hqub.MusicBrainz.API.Services;
     using System;
     using System.IO;
-    using System.Linq;
     using System.Net;
     using System.Net.Http;
     using System.Runtime.Serialization;
     using System.Runtime.Serialization.Json;
     using System.Threading.Tasks;
 
-    // TODO: implement IDisposable to dispose http client.
-
     /// <summary>
     /// MusicBrainz client.
     /// </summary>
-    public class MusicBrainzClient
+    public sealed class MusicBrainzClient : IDisposable
     {
         /// <summary>
         /// The default address of the MusicBrainz webservice.
@@ -103,6 +100,14 @@
             Work = new WorkService(this, urlBuilder);
 
             client = CreateHttpClient(new Uri(baseAddress), true, proxy);
+        }
+
+        /// <summary>
+        /// Disposes the HTTP client.
+        /// </summary>
+        public void Dispose()
+        {
+            client.Dispose();
         }
 
         [DataContract]
