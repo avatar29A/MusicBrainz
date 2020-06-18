@@ -15,5 +15,19 @@ namespace Hqub.MusicBrainz.API.Entities.Collections
         /// </summary>
         [DataMember(Name = "release-groups")]
         public List<ReleaseGroup> Items { get; set; }
+
+        // NOTE: hide members of the base class to make serialization work
+
+        /// <summary>
+        /// Gets or sets the total list items count.
+        /// </summary>
+        [DataMember(Name = "release-group-count")]
+        public new int Count { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list offset.
+        /// </summary>
+        [DataMember(Name = "release-group-offset")]
+        public new int Offset { get; set; }
     }
 }

@@ -57,7 +57,7 @@ namespace Hqub.MusicBrainz.Client
             
             if (groups.Items.Count == limit)
             {
-                Console.WriteLine("There are probably more items to browse ...");
+                Console.WriteLine("There are probably more items to browse ({0} release-groups total) ...", groups.Count);
             }
 
             Console.WriteLine();
