@@ -35,8 +35,8 @@ namespace Hqub.MusicBrainz.Client
             Console.WriteLine("Album");
             Console.WriteLine();
 
-            // Show offical albums.
-            foreach (var item in groups.Items.Where(g => IsOffical(g)).OrderBy(g => g.FirstReleaseDate))
+            // Show official albums.
+            foreach (var item in groups.Items.Where(g => IsOfficial(g)).OrderBy(g => g.FirstReleaseDate))
             {
                 Console.WriteLine("     {0} - {1}  {2}  {3}", item.FirstReleaseDate.ToShortDate(),
                     item.Id, GetRating(item.Rating, 10), item.Title);
@@ -63,7 +63,7 @@ namespace Hqub.MusicBrainz.Client
             Console.WriteLine();
         }
 
-        static bool IsOffical(ReleaseGroup g)
+        static bool IsOfficial(ReleaseGroup g)
         {
             return g.PrimaryType.Equals("album", StringComparison.OrdinalIgnoreCase)
                 && g.SecondaryTypes.Count == 0
