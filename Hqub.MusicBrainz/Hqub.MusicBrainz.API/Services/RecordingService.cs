@@ -76,11 +76,11 @@
         /// <param name="offset">The offset to the recordings list (enables paging, default = 0).</param>
         /// <param name="inc">A list of entities to include (subqueries).</param>
         /// <returns></returns>
-        public async Task<RecordingList> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc)
+        public async Task<RecordingListBrowse> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc)
         {
             string url = builder.CreateBrowseUrl(EntityName, entity, id, limit, offset, inc);
 
-            return await client.GetAsync<RecordingList>(url);
+            return await client.GetAsync<RecordingListBrowse>(url);
         }
     }
 }

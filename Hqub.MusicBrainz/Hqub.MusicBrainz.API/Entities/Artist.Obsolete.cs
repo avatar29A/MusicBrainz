@@ -22,7 +22,7 @@ namespace Hqub.MusicBrainz.API.Entities
         }
 
         [Obsolete("Use async method instead.")]
-        public static ArtistList Browse(string relatedEntity, string value, int limit = 25, int offset = 0, params string[] inc)
+        public static ArtistListBrowse Browse(string relatedEntity, string value, int limit = 25, int offset = 0, params string[] inc)
         {
             return BrowseAsync(relatedEntity, value, limit, offset, inc).Result;
         }
@@ -95,7 +95,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <param name="inc">A list of entities to include (subqueries).</param>
         /// <returns></returns>
         [Obsolete("Use MusicBrainzClient instead of static API.")]
-        public static async Task<ArtistList> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc)
+        public static async Task<ArtistListBrowse> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc)
         {
             var client = new MusicBrainzClient(Configuration.Proxy)
             {

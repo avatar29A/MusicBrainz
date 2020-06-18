@@ -22,7 +22,7 @@ namespace Hqub.MusicBrainz.API.Entities
         }
 
         [Obsolete("Use async method instead.")]
-        public static ReleaseGroupList Browse(string relatedEntity, string value, int limit = 25, int offset = 0, params string[] inc)
+        public static ReleaseGroupListBrowse Browse(string relatedEntity, string value, int limit = 25, int offset = 0, params string[] inc)
         {
             return BrowseAsync(relatedEntity, value, limit, offset, inc).Result;
         }
@@ -95,7 +95,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <param name="inc">A list of entities to include (subqueries).</param>
         /// <returns></returns>
         [Obsolete("Use MusicBrainzClient instead of static API.")]
-        public static async Task<ReleaseGroupList> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc)
+        public static async Task<ReleaseGroupListBrowse> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc)
         {
             var client = new MusicBrainzClient(Configuration.Proxy)
             {
@@ -119,7 +119,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// See http://musicbrainz.org/doc/Development/XML_Web_Service/Version_2#Release_Type_and_Status for supported values of type and status.
         /// </remarks>
         [Obsolete("Use MusicBrainzClient instead of static API.")]
-        public static async Task<ReleaseGroupList> BrowseAsync(string entity, string id, string type, int limit = 25, int offset = 0, params string[] inc)
+        public static async Task<ReleaseGroupListBrowse> BrowseAsync(string entity, string id, string type, int limit = 25, int offset = 0, params string[] inc)
         {
             var client = new MusicBrainzClient(Configuration.Proxy)
             {

@@ -15,6 +15,22 @@ namespace Hqub.MusicBrainz.API.Entities.Collections
         /// </summary>
         [DataMember(Name = "artists")]
         public List<Artist> Items { get; set; }
+    }
+
+    // NOTE: for MusicBrainz ws/3 this additional class might no longer be necessary.
+    //       See https://tickets.metabrainz.org/browse/MBS-9731
+
+    /// <summary>
+    /// List of artists returned by MusicBrainz browse requests.
+    /// </summary>
+    [DataContract]
+    public class ArtistListBrowse
+    {
+        /// <summary>
+        /// Gets or sets the list of artists.
+        /// </summary>
+        [DataMember(Name = "artists")]
+        public List<Artist> Items { get; set; }
 
         // NOTE: hide members of the base class to make serialization work
 
@@ -22,12 +38,12 @@ namespace Hqub.MusicBrainz.API.Entities.Collections
         /// Gets or sets the total list items count.
         /// </summary>
         [DataMember(Name = "artist-count")]
-        public new int Count { get; set; }
+        public int Count { get; set; }
 
         /// <summary>
         /// Gets or sets the list offset.
         /// </summary>
         [DataMember(Name = "artist-offset")]
-        public new int Offset { get; set; }
+        public int Offset { get; set; }
     }
 }

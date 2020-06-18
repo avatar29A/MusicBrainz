@@ -42,7 +42,7 @@
         /// <param name="offset">The offset to the release-groups list (enables paging, default = 0).</param>
         /// <param name="inc">A list of entities to include (subqueries).</param>
         /// <returns></returns>
-        Task<ReleaseGroupList> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc);
+        Task<ReleaseGroupListBrowse> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc);
 
         /// <summary>
         /// Browse all the release-groups in the MusicBrainz database, which are directly linked to the entity with given id.
@@ -57,6 +57,6 @@
         /// <remarks>
         /// See http://musicbrainz.org/doc/Development/XML_Web_Service/Version_2#Release_Type_and_Status for supported values of type.
         /// </remarks>
-        Task<ReleaseGroupList> BrowseAsync(string entity, string id, string type, int limit = 25, int offset = 0, params string[] inc);
+        Task<ReleaseGroupListBrowse> BrowseAsync(string entity, string id, string type, int limit = 25, int offset = 0, params string[] inc);
     }
 }

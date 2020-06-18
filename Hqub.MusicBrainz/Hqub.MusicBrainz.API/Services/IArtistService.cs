@@ -42,6 +42,6 @@
         /// <param name="offset">The offset to the artists list (enables paging, default = 0).</param>
         /// <param name="inc">A list of entities to include (subqueries).</param>
         /// <returns></returns>
-        Task<ArtistList> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc);
+        Task<ArtistListBrowse> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc);
     }
 }
