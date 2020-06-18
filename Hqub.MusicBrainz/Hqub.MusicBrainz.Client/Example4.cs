@@ -40,7 +40,8 @@ namespace Hqub.MusicBrainz.Client
             // Get the best match (in this case, we use the recording that has the most releases associated).
             var recording = matches.OrderByDescending(r => r.Releases.Count).First();
 
-            var release = recording.Releases.Where(r => r.Title == album).First();
+            // Get the first offical release.
+            var release = recording.Releases.Where(r => r.Title == album && IsOffical(r)).OrderBy(r => r.Date).First();
 
             // Get detailed information of the recording, including related works.
             recording = await client.Recordings.GetAsync(recording.Id, "work-rels");
@@ -71,6 +72,12 @@ namespace Hqub.MusicBrainz.Client
                 Console.WriteLine("     {0}", lyrics.First().Url.Resource);
                 Console.WriteLine();
             }
+        }
+
+        static bool IsOffical(Release r)
+        {
+            return !string.IsNullOrEmpty(r.Date) && !string.IsNullOrEmpty(r.Status)
+                 && r.Status.Equals("Official", StringComparison.OrdinalIgnoreCase);
         }
     }
 }
