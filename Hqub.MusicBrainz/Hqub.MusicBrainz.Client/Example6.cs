@@ -18,13 +18,13 @@ namespace Hqub.MusicBrainz.Client
             await Search(client, "alternative rock", 10);
         }
 
-        public static async Task Search(MusicBrainzClient client, string gernre, int limit)
+        public static async Task Search(MusicBrainzClient client, string genre, int limit)
         {
-            Console.WriteLine("Getting bands from the UK matching tag '{0}'", gernre);
+            Console.WriteLine("Getting bands from the UK matching tag '{0}'", genre);
 
             var query = new QueryParameters<Artist>()
             {
-                { "tag", gernre },
+                { "tag", genre },
                 { "type", "group" },
                 { "country", "GB" }
             };
