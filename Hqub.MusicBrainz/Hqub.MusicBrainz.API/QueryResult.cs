@@ -1,4 +1,6 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Hqub.MusicBrainz.API
 {
@@ -6,7 +8,7 @@ namespace Hqub.MusicBrainz.API
     /// Abstract base class for MusicBrainz queries returning lists (with paging support).
     /// </summary>
     [DataContract]
-    public abstract class QueryResult
+    public abstract class QueryResult<T> : IEnumerable<T>
     {
         /// <summary>
         /// Gets or sets the total list items count.
@@ -25,5 +27,16 @@ namespace Hqub.MusicBrainz.API
         /// </summary>
         [DataMember(Name = "offset")]
         public int Offset { get; set; }
+
+        /// <summary>
+        /// Returns an enumerator that iterates through the collection.
+        /// </summary>
+        /// <returns>An enumerator that can be used to iterate through the collection.</returns>
+        public abstract IEnumerator<T> GetEnumerator();
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
 }

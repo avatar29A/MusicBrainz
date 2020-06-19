@@ -8,13 +8,19 @@ namespace Hqub.MusicBrainz.API.Entities.Collections
     /// List of recordings returned by MusicBrainz search requests.
     /// </summary>
     [DataContract]
-    public class RecordingList : QueryResult
+    public class RecordingList : QueryResult<Recording>
     {
         /// <summary>
         /// Gets or sets the list of artists.
         /// </summary>
         [DataMember(Name = "recordings")]
         public List<Recording> Items { get; set; }
+
+        /// <inheritdoc />
+        public override IEnumerator<Recording> GetEnumerator()
+        {
+            return Items.GetEnumerator();
+        }
     }
 
     // NOTE: for MusicBrainz ws/3 this additional class might no longer be necessary.
