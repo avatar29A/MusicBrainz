@@ -24,7 +24,7 @@ namespace Hqub.MusicBrainz.API.Entities.Collections
     /// List of recordings returned by MusicBrainz browse requests.
     /// </summary>
     [DataContract]
-    public class RecordingListBrowse
+    internal class RecordingListBrowse
     {
         /// <summary>
         /// Gets or sets the list of artists.

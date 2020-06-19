@@ -7,19 +7,26 @@
     <Description>Implementation of the MuzicBrainz API v2.</Description>
     <Product>Hqub.MusicBrainz.API</Product>
     <Company>h-qub.ru</Company>
-    <Copyright>Copyright h-qub.ru © 2014-2019</Copyright>
+    <Copyright>Copyright h-qub.ru © 2014-2020</Copyright>
     <Authors>Boris Glebov, Christian Woltering</Authors>
     <PackageProjectUrl>https://github.com/avatar29A/MusicBrainz</PackageProjectUrl>
     <RepositoryUrl>https://github.com/avatar29A/MusicBrainz</RepositoryUrl>
-    <AssemblyVersion>2.1.0.0</AssemblyVersion>
-    <FileVersion>2.1.0.0</FileVersion>
+    <AssemblyVersion>2.2.0.0</AssemblyVersion>
+    <FileVersion>2.2.0.0</FileVersion>
     <PackageTags>music musicbrainz brainz</PackageTags>
-    <Version>2.1.0</Version>
+    <Version>2.2.0-dev-1</Version>
     <AssemblyName>Hqub.MusicBrainz.API</AssemblyName>
     <RootNamespace>Hqub.MusicBrainz.API</RootNamespace>
     <Configurations>Debug;Release;Travis</Configurations>
     <PackageIconUrl>http://rhythmsforliving.com/wp-content/uploads/2014/11/brain-256.png</PackageIconUrl>
-    <PackageLicenseUrl>https://github.com/avatar29A/MusicBrainz/blob/master/LICENSE.txt</PackageLicenseUrl>
+    <PackageLicenseUrl></PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryType>git</RepositoryType>
+    <PackageReleaseNotes>This release introduces the MusicBrainzClient class. The static API is still available, but marked as obsolete.
+
+Additional changes:
+* Search queries will be escaped correclty. This means that search results may be different compared to previous versions, but hopefully for the better.
+* Improved deserialization of browse requests.</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Travis' ">

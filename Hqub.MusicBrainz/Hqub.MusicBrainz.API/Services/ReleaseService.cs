@@ -76,12 +76,14 @@
         /// <param name="offset">The offset to the releases list (enables paging, default = 0).</param>
         /// <param name="inc">A list of entities to include (subqueries).</param>
         /// <returns></returns>
-        public async Task<ReleaseListBrowse> BrowseAsync(string entity, string id, int limit = 25,
+        public async Task<ReleaseList> BrowseAsync(string entity, string id, int limit = 25,
             int offset = 0, params string[] inc)
         {
             string url = builder.CreateBrowseUrl(EntityName, entity, id, limit, offset, inc);
 
-            return await client.GetAsync<ReleaseListBrowse>(url);
+            var list = await client.GetAsync<ReleaseListBrowse>(url);
+
+            return new ReleaseList() { Items = list.Items, Count = list.Count, Offset = list.Offset };
         }
 
         /// <summary>
@@ -98,11 +100,13 @@
         /// <remarks>
         /// See http://musicbrainz.org/doc/Development/XML_Web_Service/Version_2#Release_Type_and_Status for supported values of type and status.
         /// </remarks>
-        public async Task<ReleaseListBrowse> BrowseAsync(string entity, string id, string type, string status = null, int limit = 25, int offset = 0, params string[] inc)
+        public async Task<ReleaseList> BrowseAsync(string entity, string id, string type, string status = null, int limit = 25, int offset = 0, params string[] inc)
         {
             string url = builder.CreateBrowseUrl(EntityName, entity, id, type, status, limit, offset, inc);
 
-            return await client.GetAsync<ReleaseListBrowse>(url);
+            var list = await client.GetAsync<ReleaseListBrowse>(url);
+
+            return new ReleaseList() { Items = list.Items, Count = list.Count, Offset = list.Offset };
         }
     }
 }

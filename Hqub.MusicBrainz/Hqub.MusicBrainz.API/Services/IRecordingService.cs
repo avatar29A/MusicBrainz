@@ -2,9 +2,11 @@
 {
     using Hqub.MusicBrainz.API.Entities;
     using Hqub.MusicBrainz.API.Entities.Collections;
-    using System;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// Interface defining the recording service.
+    /// </summary>
     public interface IRecordingService
     {
         /// <summary>
@@ -42,6 +44,6 @@
         /// <param name="offset">The offset to the recordings list (enables paging, default = 0).</param>
         /// <param name="inc">A list of entities to include (subqueries).</param>
         /// <returns></returns>
-        Task<RecordingListBrowse> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc);
+        Task<RecordingList> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc);
     }
 }

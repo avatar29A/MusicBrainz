@@ -2,9 +2,11 @@
 {
     using Hqub.MusicBrainz.API.Entities;
     using Hqub.MusicBrainz.API.Entities.Collections;
-    using System;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// Interface defining the release service.
+    /// </summary>
     public interface IReleaseService
     {
         /// <summary>
@@ -42,7 +44,7 @@
         /// <param name="offset">The offset to the releases list (enables paging, default = 0).</param>
         /// <param name="inc">A list of entities to include (subqueries).</param>
         /// <returns></returns>
-        Task<ReleaseListBrowse> BrowseAsync(string entity, string id, int limit = 25,
+        Task<ReleaseList> BrowseAsync(string entity, string id, int limit = 25,
             int offset = 0, params string[] inc);
 
         /// <summary>
@@ -59,7 +61,7 @@
         /// <remarks>
         /// See http://musicbrainz.org/doc/Development/XML_Web_Service/Version_2#Release_Type_and_Status for supported values of type and status.
         /// </remarks>
-        Task<ReleaseListBrowse> BrowseAsync(string entity, string id, string type, string status = null, int limit = 25,
+        Task<ReleaseList> BrowseAsync(string entity, string id, string type, string status = null, int limit = 25,
             int offset = 0, params string[] inc);
     }
 }

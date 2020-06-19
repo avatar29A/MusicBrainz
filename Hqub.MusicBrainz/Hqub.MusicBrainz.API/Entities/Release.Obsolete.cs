@@ -89,7 +89,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// <param name="inc">A list of entities to include (subqueries).</param>
         /// <returns></returns>
         [Obsolete("Use MusicBrainzClient instead of static API.")]
-        public static async Task<ReleaseListBrowse> BrowseAsync(string entity, string id, int limit = 25,
+        public static async Task<ReleaseList> BrowseAsync(string entity, string id, int limit = 25,
             int offset = 0, params string[] inc)
         {
             var client = new MusicBrainzClient(Configuration.Proxy)
@@ -115,7 +115,7 @@ namespace Hqub.MusicBrainz.API.Entities
         /// See http://musicbrainz.org/doc/Development/XML_Web_Service/Version_2#Release_Type_and_Status for supported values of type and status.
         /// </remarks>
         [Obsolete("Use MusicBrainzClient instead of static API.")]
-        public static async Task<ReleaseListBrowse> BrowseAsync(string entity, string id, string type, string status = null, int limit = 25, int offset = 0, params string[] inc)
+        public static async Task<ReleaseList> BrowseAsync(string entity, string id, string type, string status = null, int limit = 25, int offset = 0, params string[] inc)
         {
             var client = new MusicBrainzClient(Configuration.Proxy)
             {
