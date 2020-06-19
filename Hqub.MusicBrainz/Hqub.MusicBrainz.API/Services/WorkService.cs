@@ -18,6 +18,18 @@
             this.builder = builder;
         }
 
+        #region Fluent API
+
+        /// <inheritdoc />
+        public GetRequest<Work> Get(string id, params string[] inc)
+        {
+            return new GetRequest<Work>(client, builder, id, EntityName).Include(inc);
+        }
+
+        #endregion
+
+        #region Direct API
+
         /// <summary>
         /// Lookup a work in the MusicBrainz database.
         /// </summary>
@@ -35,5 +47,7 @@
 
             return await client.GetAsync<Work>(url);
         }
+
+        #endregion
     }
 }
