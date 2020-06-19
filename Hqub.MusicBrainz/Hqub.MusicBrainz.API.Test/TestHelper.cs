@@ -30,15 +30,10 @@ namespace Hqub.MusicBrainz.API.Test
 
                 return (T)serializer.ReadObject(stream);
             }
-            catch (Exception e)
+            catch
             {
-                if (Configuration.GenerateCommunicationThrow)
-                {
-                    throw e;
-                }
+                throw;
             }
-
-            return default(T);
         }
     }
 }

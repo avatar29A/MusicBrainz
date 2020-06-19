@@ -8,6 +8,7 @@ namespace Hqub.MusicBrainz.API
     /// <summary>
     /// Hqub.MusicBrainz configuration.
     /// </summary>
+    [Obsolete("Use MusicBrainzClient instead of static API.")]
     public static class Configuration
     {
         static Configuration()
@@ -15,13 +16,6 @@ namespace Hqub.MusicBrainz.API
             Proxy = null;
             UserAgent = "Hqub.MusicBrainz/2.0";
         }
-
-        /// <summary>
-        /// If true, then all exceptions for http-requests to MusicBrainz (from class WebRequestHelper) will
-        /// throw up. Otherwise they will be suppressed.
-        /// </summary>
-        [Obsolete("Will be removed. Use proper exception handling (catch WebServiceException).")]
-        public static bool GenerateCommunicationThrow { get; set; } = true;
 
         /// <summary>
         /// Gets or sets a <see cref="System.Net.IWebProxy"/> used to query the webservice.

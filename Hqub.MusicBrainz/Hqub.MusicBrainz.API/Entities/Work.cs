@@ -12,10 +12,8 @@ namespace Hqub.MusicBrainz.API.Entities
     /// </summary>
     /// <see href="https://musicbrainz.org/doc/Work"/>
     [DataContract(Name = "work")]
-    public class Work
+    public partial class Work
     {
-        public const string EntityName = "work";
-
         #region Properties
 
         /// <summary>
@@ -66,28 +64,6 @@ namespace Hqub.MusicBrainz.API.Entities
         /// </example>
         [DataMember(Name = "relations")]
         public List<Relation> Relations { get; set; }
-
-        #endregion
-
-        #region Static Methods
-
-        /// <summary>
-        /// Lookup a work in the MusicBrainz database.
-        /// </summary>
-        /// <param name="id">The work MusicBrainz id.</param>
-        /// <param name="inc">A list of entities to include (subqueries).</param>
-        /// <returns></returns>
-        public static async Task<Work> GetAsync(string id, params string[] inc)
-        {
-            if (string.IsNullOrEmpty(id))
-            {
-                throw new ArgumentException(string.Format(Resources.Messages.MissingParameter, "id"));
-            }
-
-            string url = WebServiceHelper.CreateLookupUrl(EntityName, id, inc);
-
-            return await WebServiceHelper.GetAsync<Work>(url);
-        }
 
         #endregion
     }

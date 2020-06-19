@@ -13,15 +13,15 @@ namespace Hqub.MusicBrainz.Client
     /// </summary>
     public class Example2
     {
-        public static async Task Run()
+        public static async Task Run(MusicBrainzClient client)
         {
-            await Search("Massive Attack", "Mezzanine");
+            await Search(client, "Massive Attack", "Mezzanine");
         }
 
-        public static async Task Search(string band, string album)
+        public static async Task Search(MusicBrainzClient client, string band, string album)
         {
             // Search for an artist by name.
-            var artists = await Artist.SearchAsync(band.Quote());
+            var artists = await client.Artists.SearchAsync(band.Quote());
 
             var artist = artists.Items.First();
 
@@ -35,7 +35,7 @@ namespace Hqub.MusicBrainz.Client
             };
 
             // Search for a release by title.
-            var releases = await Release.SearchAsync(query);
+            var releases = await client.Releases.SearchAsync(query);
 
             Console.WriteLine("Total matches for '{0}': {1}", album, releases.Count);
 
@@ -43,7 +43,7 @@ namespace Hqub.MusicBrainz.Client
             var release = releases.Items.Where(r => r.Date != null && IsCompactDisc(r)).OrderBy(r => r.Date).First();
 
             // Get detailed information of the release, including recordings.
-            release = await Release.GetAsync(release.Id, "recordings", "url-rels");
+            release = await client.Releases.GetAsync(release.Id, "recordings", "url-rels");
 
             Console.WriteLine();
             Console.WriteLine("Details for {0} - {1} ({2})", artist.Name, release.Title, release.Date);
