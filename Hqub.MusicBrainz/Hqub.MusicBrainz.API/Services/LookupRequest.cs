@@ -5,10 +5,10 @@
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Prepare a get request to the MusicBrainz webservice.
+    /// Prepare a lookup request to the MusicBrainz webservice.
     /// </summary>
     /// <typeparam name="T">Any supported MusicBrainz entity.</typeparam>
-    public class GetRequest<T>
+    public class LookupRequest<T>
     {
         private readonly string EntityName;
 
@@ -18,7 +18,7 @@
         private string id;
         private string[] include;
 
-        internal GetRequest(MusicBrainzClient client, UrlBuilder builder, string id, string entity)
+        internal LookupRequest(MusicBrainzClient client, UrlBuilder builder, string id, string entity)
         {
             this.client = client;
             this.builder = builder;
@@ -32,14 +32,14 @@
         /// </summary>
         /// <param name="include">The entity names to include.</param>
         /// <returns></returns>
-        public GetRequest<T> Include(params string[] include)
+        public LookupRequest<T> Include(params string[] include)
         {
             this.include = include;
             return this;
         }
 
         /// <summary>
-        /// Execute the get request.
+        /// Execute the lookup request.
         /// </summary>
         /// <param name="ct">The cancellation token.</param>
         /// <returns></returns>

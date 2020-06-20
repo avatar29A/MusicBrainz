@@ -15,7 +15,7 @@
         /// <param name="id">The artist MusicBrainz id.</param>
         /// <param name="inc">A list of entities to include (subqueries).</param>
         /// <returns></returns>
-        GetRequest<Artist> Get(string id, params string[] inc);
+        LookupRequest<Artist> Get(string id, params string[] inc);
 
         /// <summary>
         /// Create a request to search for an artist in the MusicBrainz database, matching the given query.

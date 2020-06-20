@@ -15,7 +15,7 @@
         /// <param name="id">The work MusicBrainz id.</param>
         /// <param name="inc">A list of entities to include (subqueries).</param>
         /// <returns></returns>
-        GetRequest<Work> Get(string id, params string[] inc);
+        LookupRequest<Work> Get(string id, params string[] inc);
 
         /// <summary>
         /// Lookup a work in the MusicBrainz database.

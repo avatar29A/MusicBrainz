@@ -21,9 +21,9 @@
         #region Fluent API
 
         /// <inheritdoc />
-        public GetRequest<Artist> Get(string id, params string[] inc)
+        public LookupRequest<Artist> Get(string id, params string[] inc)
         {
-            return new GetRequest<Artist>(client, builder, id, EntityName).Include(inc);
+            return new LookupRequest<Artist>(client, builder, id, EntityName).Include(inc);
         }
 
         /// <inheritdoc />

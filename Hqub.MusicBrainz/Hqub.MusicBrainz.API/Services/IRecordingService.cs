@@ -15,7 +15,7 @@
         /// <param name="id">The recording MusicBrainz id.</param>
         /// <param name="inc">A list of entities to include (subqueries).</param>
         /// <returns></returns>
-        GetRequest<Recording> Get(string id, params string[] inc);
+        LookupRequest<Recording> Get(string id, params string[] inc);
 
         /// <summary>
         /// Create a request to search for a recording in the MusicBrainz database, matching the given query.
