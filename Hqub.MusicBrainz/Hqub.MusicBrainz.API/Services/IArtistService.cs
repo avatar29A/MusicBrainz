@@ -10,7 +10,7 @@
     public interface IArtistService
     {
         /// <summary>
-        /// Lookup an artist in the MusicBrainz database.
+        /// Create a request to lookup an artist in the MusicBrainz database.
         /// </summary>
         /// <param name="id">The artist MusicBrainz id.</param>
         /// <param name="inc">A list of entities to include (subqueries).</param>
@@ -18,7 +18,7 @@
         GetRequest<Artist> Get(string id, params string[] inc);
 
         /// <summary>
-        /// Search for an artist in the MusicBrainz database, matching the given query.
+        /// Create a request to search for an artist in the MusicBrainz database, matching the given query.
         /// </summary>
         /// <param name="query">The query string.</param>
         /// <param name="limit">The maximum number of artists to return (default = 25).</param>
@@ -27,7 +27,7 @@
         SearchRequest<ArtistList> Search(string query, int limit = 25, int offset = 0);
 
         /// <summary>
-        /// Search for an artist in the MusicBrainz database, matching the given query.
+        /// Create a request to search for an artist in the MusicBrainz database, matching the given query.
         /// </summary>
         /// <param name="query">The query parameters.</param>
         /// <param name="limit">The maximum number of artists to return (default = 25).</param>
@@ -36,7 +36,7 @@
         SearchRequest<ArtistList> Search(QueryParameters<Artist> query, int limit = 25, int offset = 0);
 
         /// <summary>
-        /// Browse all the artists in the MusicBrainz database, which are directly linked to the entity with given id.
+        /// Create a request to browse all the artists in the MusicBrainz database, which are directly linked to the entity with given id.
         /// </summary>
         /// <param name="entity">The name of the related entity.</param>
         /// <param name="id">The id of the related entity.</param>

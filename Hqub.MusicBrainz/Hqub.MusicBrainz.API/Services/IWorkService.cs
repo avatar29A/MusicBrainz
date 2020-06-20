@@ -10,7 +10,7 @@
     public interface IWorkService
     {
         /// <summary>
-        /// Lookup a work in the MusicBrainz database.
+        /// Create a request to lookup a work in the MusicBrainz database.
         /// </summary>
         /// <param name="id">The work MusicBrainz id.</param>
         /// <param name="inc">A list of entities to include (subqueries).</param>

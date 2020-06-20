@@ -10,7 +10,7 @@
     public interface IReleaseService
     {
         /// <summary>
-        /// Lookup a release in the MusicBrainz database.
+        /// Create a request to lookup a release in the MusicBrainz database.
         /// </summary>
         /// <param name="id">The release MusicBrainz id.</param>
         /// <param name="inc">A list of entities to include (subqueries).</param>
@@ -18,7 +18,7 @@
         GetRequest<Release> Get(string id, params string[] inc);
 
         /// <summary>
-        /// Search for a release in the MusicBrainz database, matching the given query.
+        /// Create a request to search for a release in the MusicBrainz database, matching the given query.
         /// </summary>
         /// <param name="query">The query string.</param>
         /// <param name="limit">The maximum number of releases to return (default = 25).</param>
@@ -27,7 +27,7 @@
         SearchRequest<ReleaseList> Search(string query, int limit = 25, int offset = 0);
 
         /// <summary>
-        /// Search for a release in the MusicBrainz database, matching the given query.
+        /// Create a request to search for a release in the MusicBrainz database, matching the given query.
         /// </summary>
         /// <param name="query">The query parameters.</param>
         /// <param name="limit">The maximum number of releases to return (default = 25).</param>
@@ -36,7 +36,7 @@
         SearchRequest<ReleaseList> Search(QueryParameters<Artist> query, int limit = 25, int offset = 0);
 
         /// <summary>
-        /// Browse all the releases in the MusicBrainz database, which are directly linked to the entity with given id.
+        /// Create a request to browse all the releases in the MusicBrainz database, which are directly linked to the entity with given id.
         /// </summary>
         /// <param name="entity">The name of the related entity.</param>
         /// <param name="id">The id of the related entity.</param>
