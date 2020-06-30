@@ -14,7 +14,7 @@
     <AssemblyVersion>2.2.0.0</AssemblyVersion>
     <FileVersion>2.2.0.0</FileVersion>
     <PackageTags>music musicbrainz brainz</PackageTags>
-    <Version>2.2.0-dev-1</Version>
+    <Version>2.2.0-dev-2</Version>
     <AssemblyName>Hqub.MusicBrainz.API</AssemblyName>
     <RootNamespace>Hqub.MusicBrainz.API</RootNamespace>
     <Configurations>Debug;Release;Travis</Configurations>
@@ -22,9 +22,12 @@
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>This release introduces the MusicBrainzClient class. The static API is still available, but marked as obsolete.
+    <PackageReleaseNotes>Changes:
+* Introduces the MusicBrainzClient class as the preferred way to call the web service.
+* The static API is marked as obsolete (and will be removed in v3.0).
+* A new fluent request API was added (with requests supporting cancellation).
 
-Additional changes:
+Additional improvements:
 * Search queries will be escaped correclty. This means that search results may be different compared to previous versions, but hopefully for the better.
 * Improved deserialization of browse requests.</PackageReleaseNotes>
   </PropertyGroup>
