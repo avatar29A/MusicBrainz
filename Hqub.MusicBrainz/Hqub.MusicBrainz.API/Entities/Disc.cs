@@ -4,6 +4,9 @@ namespace Hqub.MusicBrainz.API.Entities
     using System.Collections.Generic;
     using System.Runtime.Serialization;
 
+    /// <summary>
+    /// The Disc entity.
+    /// </summary>
     [DataContract(Name = "disc")]
     public class Disc
     {

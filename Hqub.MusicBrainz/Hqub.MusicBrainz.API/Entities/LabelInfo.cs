@@ -3,6 +3,9 @@ namespace Hqub.MusicBrainz.API.Entities
 {
     using System.Runtime.Serialization;
 
+    /// <summary>
+    /// The LabelInfo entity.
+    /// </summary>
     [DataContract(Name = "label-info")]
     public class LabelInfo
     {

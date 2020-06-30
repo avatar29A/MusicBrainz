@@ -3,6 +3,9 @@ namespace Hqub.MusicBrainz.API.Entities
 {
     using System.Runtime.Serialization;
 
+    /// <summary>
+    /// The Tag entity.
+    /// </summary>
     [DataContract(Name = "tag")]
     public class Tag
     {

@@ -47,11 +47,17 @@ namespace Hqub.MusicBrainz.API
             nodes.Add(new Node(key, value, negate));
         }
 
+        /// <summary>
+        /// Returns an enumerator that iterates through a collection.
+        /// </summary>
         public IEnumerator<Node> GetEnumerator()
         {
             return nodes.GetEnumerator();
         }
 
+        /// <summary>
+        /// Returns the query string that represents the current object.
+        /// </summary>
         public override string ToString()
         {
             return BuildQueryString();
@@ -141,6 +147,9 @@ namespace Hqub.MusicBrainz.API
             return false;
         }
 
+        /// <summary>
+        /// Represents a node of the search query.
+        /// </summary>
         public class Node
         {
             /// <summary>

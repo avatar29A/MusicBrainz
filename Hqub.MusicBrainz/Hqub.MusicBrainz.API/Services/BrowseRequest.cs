@@ -15,14 +15,28 @@
 
         internal readonly UrlBuilder builder;
 
+        /// <summary>Entity name.</summary>
         protected readonly string EntityName;
 
+        /// <summary>Related entity name.</summary>
         protected string relatedEntity;
+
+        /// <summary>MusicBrainz id.</summary>
         protected string id;
+
+        /// <summary>Include entities.</summary>
         protected string[] include;
+
+        /// <summary>Limit of fetched items.</summary>
         protected int limit;
+
+        /// <summary>Offset to start browsing.</summary>
         protected int offset;
+
+        /// <summary>Album type (only release or release-group).</summary>
         protected string type;
+
+        /// <summary>Album type (only release).</summary>
         protected string status;
 
         internal BrowseRequest(MusicBrainzClient client, UrlBuilder builder, string id, string relatedEntity, string entity)
