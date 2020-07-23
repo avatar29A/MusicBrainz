@@ -181,7 +181,7 @@ namespace Hqub.MusicBrainz.Client
 
                 var name = GetCacheFileName(path, buffer, size);
 
-                using (var stream = File.OpenWrite(name))
+                using (var stream = File.Create(name))
                 using (var writer = new BinaryWriter(stream))
                 {
                     writer.Write(GetUnixTimestamp());
