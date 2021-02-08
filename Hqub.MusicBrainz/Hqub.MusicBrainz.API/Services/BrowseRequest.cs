@@ -142,7 +142,7 @@
         {
             string url = builder.CreateBrowseUrl(EntityName, relatedEntity, id, limit, offset, include);
 
-            var list = await client.GetAsync<ArtistListBrowse>(url);
+            var list = await client.GetAsync<ArtistListBrowse>(url, ct);
 
             return new ArtistList() { Items = list.Items, Count = list.Count, Offset = list.Offset };
         }
@@ -159,7 +159,7 @@
         {
             string url = builder.CreateBrowseUrl(EntityName, relatedEntity, id, limit, offset, include);
 
-            var list = await client.GetAsync<RecordingListBrowse>(url);
+            var list = await client.GetAsync<RecordingListBrowse>(url, ct);
 
             return new RecordingList() { Items = list.Items, Count = list.Count, Offset = list.Offset };
         }
@@ -176,7 +176,7 @@
         {
             string url = builder.CreateBrowseUrl(EntityName, relatedEntity, id, type, null, limit, offset, include);
 
-            var list = await client.GetAsync<ReleaseGroupListBrowse>(url);
+            var list = await client.GetAsync<ReleaseGroupListBrowse>(url, ct);
 
             return new ReleaseGroupList() { Items = list.Items, Count = list.Count, Offset = list.Offset };
         }
@@ -193,7 +193,7 @@
         {
             string url = builder.CreateBrowseUrl(EntityName, relatedEntity, id, type, status, limit, offset, include);
 
-            var list = await client.GetAsync<ReleaseListBrowse>(url);
+            var list = await client.GetAsync<ReleaseListBrowse>(url, ct);
 
             return new ReleaseList() { Items = list.Items, Count = list.Count, Offset = list.Offset };
         }
