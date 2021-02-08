@@ -51,9 +51,9 @@ namespace Hqub.MusicBrainz.API.Test
         {
             var releases = recording.Releases;
 
-            Assert.AreEqual(7, releases.Count);
+            Assert.AreEqual(9, releases.Count);
 
-            var release = releases[6];
+            var release = releases[3];
 
             Assert.IsNotNull(release);
             Assert.AreEqual("8edf887c-f8ee-4663-af02-0a5117acc808", release.Id);

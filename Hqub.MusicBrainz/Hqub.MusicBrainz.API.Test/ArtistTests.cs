@@ -39,7 +39,7 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.IsNotNull(list);
             Assert.AreEqual(25, list.Count);
 
-            var group = list[3];
+            var group = list[6];
 
             Assert.IsNotNull(group);
 
@@ -115,8 +115,8 @@ namespace Hqub.MusicBrainz.API.Test
 
             Assert.IsNotNull(work);
 
-            Assert.AreEqual("0135740e-69dc-41a0-86d9-6a57664809a5", work.Id);
-            Assert.AreEqual("(We're Living on) Borrowed Time", work.Title);
+            Assert.AreEqual("32bb68a2-90bd-4a1d-aeb9-295dfa7596b0", work.Id);
+            Assert.AreEqual("’Cross the Green Mountain", work.Title);
         }
 
         [Test]
