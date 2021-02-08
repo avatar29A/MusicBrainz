@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.572
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hqub.MusicBrainz.API.Test", "Hqub.MusicBrainz.API.Test\Hqub.MusicBrainz.API.Test.csproj", "{1E8BEEE2-DF91-4D0B-902E-E661D03E70C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hqub.MusicBrainz.Client", "Hqub.MusicBrainz.Client\Hqub.MusicBrainz.Client.csproj", "{A30BD5FD-E8DF-454F-8280-9B1B7093785A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hqub.MusicBrainz.Client", "Hqub.MusicBrainz.Client\Hqub.MusicBrainz.Client.csproj", "{A30BD5FD-E8DF-454F-8280-9B1B7093785A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hqub.MusicBrainz.API", "Hqub.MusicBrainz.API\Hqub.MusicBrainz.API.csproj", "{9FB7E37D-A37B-4262-897F-48291BF836DC}"
 EndProject

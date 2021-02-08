@@ -8,6 +8,7 @@
     using System.Net.Http;
     using System.Runtime.Serialization;
     using System.Runtime.Serialization.Json;
+    using System.Threading;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -117,7 +118,7 @@
             public string Message;
         }
 
-        internal async Task<T> GetAsync<T>(string url)
+        internal async Task<T> GetAsync<T>(string url, CancellationToken ct = default)
         {
             try
             {
@@ -137,7 +138,7 @@
                     return result;
                 }
 
-                using (var response = await client.GetAsync(url).ConfigureAwait(false))
+                using (var response = await client.GetAsync(url, ct).ConfigureAwait(false))
                 {
                     stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 

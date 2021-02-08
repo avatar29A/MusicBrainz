@@ -3,6 +3,9 @@ namespace Hqub.MusicBrainz.API.Entities
 {
     using System.Runtime.Serialization;
 
+    /// <summary>
+    /// The LifeSpan entity.
+    /// </summary>
     [DataContract(Name = "life-span")]
     public class LifeSpan
     {

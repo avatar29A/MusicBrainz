@@ -36,22 +36,20 @@ namespace Hqub.MusicBrainz.API.Test
         [Test]
         public void TestReleaseGroupListElements()
         {
-            var group = data.Items[6];
+            var group = data.Items[0];
 
-            Assert.AreEqual("dd48dca0-74b5-33e0-8a3b-7b5af62a2203", group.Id);
-            //Assert.AreEqual("Album", group.Type);
+            Assert.AreEqual("42b7d588-7d90-3cd9-a78e-062fa398b110", group.Id);
             Assert.AreEqual(100, group.Score);
 
-            Assert.AreEqual("Dylan", group.Title);
+            Assert.AreEqual("Sounds inside my mind", group.Title);
             Assert.AreEqual("Album", group.PrimaryType);
 
             Assert.IsNotNull(group.SecondaryTypes);
             Assert.AreEqual(1, group.SecondaryTypes.Count);
-            Assert.AreEqual("Compilation", group.SecondaryTypes[0]);
+            Assert.AreEqual("Live", group.SecondaryTypes[0]);
 
             Assert.IsNotNull(group.Releases);
             Assert.IsNotNull(group.Credits);
-            Assert.IsNotNull(group.Tags);
         }
     }
 }

@@ -38,7 +38,7 @@ namespace Hqub.MusicBrainz.API.Test
         {
             var recording = data.Items[0];
 
-            Assert.AreEqual("9408b8ce-9b95-4fb0-ac70-595d054a15c6", recording.Id);
+            Assert.AreEqual("89d8f933-7c31-47c6-8f80-4927e93e7896", recording.Id);
             Assert.AreEqual(100, recording.Score);
 
             Assert.AreEqual("Alone Again Or", recording.Title);

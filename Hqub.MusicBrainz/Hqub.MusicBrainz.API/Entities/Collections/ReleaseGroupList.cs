@@ -8,13 +8,19 @@ namespace Hqub.MusicBrainz.API.Entities.Collections
     /// List of release-groups returned by MusicBrainz search requests.
     /// </summary>
     [DataContract]
-    public class ReleaseGroupList : QueryResult
+    public class ReleaseGroupList : QueryResult<ReleaseGroup>
     {
         /// <summary>
         /// Gets or sets the list of artists.
         /// </summary>
         [DataMember(Name = "release-groups")]
         public List<ReleaseGroup> Items { get; set; }
+
+        /// <inheritdoc />
+        public override IEnumerator<ReleaseGroup> GetEnumerator()
+        {
+            return Items.GetEnumerator();
+        }
     }
 
     // NOTE: for MusicBrainz ws/3 this additional class might no longer be necessary.

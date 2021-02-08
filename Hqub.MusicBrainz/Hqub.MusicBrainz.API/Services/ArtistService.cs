@@ -18,12 +18,37 @@
             this.builder = builder;
         }
 
-        /// <summary>
-        /// Lookup an artist in the MusicBrainz database.
-        /// </summary>
-        /// <param name="id">The artist MusicBrainz id.</param>
-        /// <param name="inc">A list of entities to include (subqueries).</param>
-        /// <returns></returns>
+        #region Fluent API
+
+        /// <inheritdoc />
+        public LookupRequest<Artist> Get(string id, params string[] inc)
+        {
+            return new LookupRequest<Artist>(client, builder, id, EntityName).Include(inc);
+        }
+
+        /// <inheritdoc />
+        public SearchRequest<ArtistList> Search(string query, int limit = 25, int offset = 0)
+        {
+            return new SearchRequest<ArtistList>(client, builder, query, EntityName).Limit(limit).Offset(offset);
+        }
+
+        /// <inheritdoc />
+        public SearchRequest<ArtistList> Search(QueryParameters<Artist> query, int limit = 25, int offset = 0)
+        {
+            return new SearchRequest<ArtistList>(client, builder, query.ToString(), EntityName).Limit(limit).Offset(offset);
+        }
+
+        /// <inheritdoc />
+        public BrowseRequest<ArtistList> Browse(string entity, string id, int limit = 25, int offset = 0, params string[] inc)
+        {
+            return new ArtistBrowseRequest(client, builder, id, entity, EntityName).Limit(limit).Offset(offset).Include(inc);
+        }
+
+        #endregion
+
+        #region Direct API
+
+        /// <inheritdoc />
         public async Task<Artist> GetAsync(string id, params string[] inc)
         {
             if (string.IsNullOrEmpty(id))
@@ -36,13 +61,7 @@
             return await client.GetAsync<Artist>(url);
         }
 
-        /// <summary>
-        /// Search for an artist in the MusicBrainz database, matching the given query.
-        /// </summary>
-        /// <param name="query">The query string.</param>
-        /// <param name="limit">The maximum number of artists to return (default = 25).</param>
-        /// <param name="offset">The offset to the artists list (enables paging, default = 0).</param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public async Task<ArtistList> SearchAsync(string query, int limit = 25, int offset = 0)
         {
             if (string.IsNullOrEmpty(query))
@@ -55,27 +74,13 @@
             return await client.GetAsync<ArtistList>(url);
         }
 
-        /// <summary>
-        /// Search for an artist in the MusicBrainz database, matching the given query.
-        /// </summary>
-        /// <param name="query">The query parameters.</param>
-        /// <param name="limit">The maximum number of artists to return (default = 25).</param>
-        /// <param name="offset">The offset to the artists list (enables paging, default = 0).</param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public async Task<ArtistList> SearchAsync(QueryParameters<Artist> query, int limit = 25, int offset = 0)
         {
             return await SearchAsync(query.ToString(), limit, offset);
         }
 
-        /// <summary>
-        /// Browse all the artists in the MusicBrainz database, which are directly linked to the entity with given id.
-        /// </summary>
-        /// <param name="entity">The name of the related entity.</param>
-        /// <param name="id">The id of the related entity.</param>
-        /// <param name="limit">The maximum number of artists to return (default = 25).</param>
-        /// <param name="offset">The offset to the artists list (enables paging, default = 0).</param>
-        /// <param name="inc">A list of entities to include (subqueries).</param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public async Task<ArtistList> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc)
         {
             string url = builder.CreateBrowseUrl(EntityName, entity, id, limit, offset, inc);
@@ -84,5 +89,7 @@
 
             return new ArtistList() { Items = list.Items, Count = list.Count, Offset = list.Offset };
         }
+
+        #endregion
     }
 }

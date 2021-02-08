@@ -8,7 +8,7 @@ namespace Hqub.MusicBrainz.API
     /// <summary>
     /// Helper class to build MusicBrainz webservice urls.
     /// </summary>
-    class UrlBuilder
+    internal class UrlBuilder
     {
         private const string LookupTemplate = "{0}/{1}/?inc={2}&fmt=json";
         private const string BrowseTemplate = "{0}?{1}={2}&limit={3}&offset={4}&inc={5}&fmt=json";

@@ -3,6 +3,9 @@ namespace Hqub.MusicBrainz.API.Entities
 {
     using System.Runtime.Serialization;
 
+    /// <summary>
+    /// The TextRepresentation entity.
+    /// </summary>
     [DataContract(Name = "text-representation")]
     public class TextRepresentation
     {
