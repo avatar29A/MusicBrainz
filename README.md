@@ -1,7 +1,7 @@
 MusicBrainz
 ============
 
-[![Build Status](https://img.shields.io/travis/avatar29A/MusicBrainz.svg?style=flat-square)](https://travis-ci.org/avatar29A/MusicBrainz)
+[![Build Status](https://img.shields.io/travis/avatar29A/MusicBrainz.svg?style=flat-square)](https://travis-ci.com/avatar29A/MusicBrainz)
 [![NuGet](https://img.shields.io/nuget/v/MusicBrainzAPI.svg?style=flat-square)](https://www.nuget.org/packages/MusicBrainzAPI)
 [![Issues](https://img.shields.io/github/issues/avatar29A/MusicBrainz.svg?style=flat-square)](https://github.com/avatar29A/MusicBrainz/issues)
 [![Gitter](https://img.shields.io/gitter/room/avatar29A/MusicBrainz?color=%2346BC99&style=flat-square)](https://gitter.im/avatar29A/MusicBrainz)
