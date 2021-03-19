@@ -1,11 +1,8 @@
 ﻿
 namespace Hqub.MusicBrainz.API.Entities
 {
-    using Hqub.MusicBrainz.API.Entities.Collections;
-    using System;
     using System.Collections.Generic;
     using System.Runtime.Serialization;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// An artist is generally a musician (or musician persona), group of musicians
@@ -131,6 +128,15 @@ namespace Hqub.MusicBrainz.API.Entities
         /// </example>
         [DataMember(Name = "tags")]
         public List<Tag> Tags { get; set; }
+
+        /// <summary>
+        /// Gets or sets a list of genres associated to this artist.
+        /// </summary>
+        /// <example>
+        /// var e = await Artist.GetAsync(mbid, "genres");
+        /// </example>
+        [DataMember(Name = "genres")]
+        public List<Genre> Genres { get; set; }
 
         /// <summary>
         /// Gets or sets a list of relations associated to this artist.
