@@ -104,6 +104,21 @@ namespace Hqub.MusicBrainz.API.Test
         }
 
         [Test]
+        public void TestArtistGenres()
+        {
+            var genres = artist.Genres;
+
+            Assert.IsNotNull(genres);
+            Assert.AreEqual(11, genres.Count);
+
+            var genre = genres[0];
+
+            Assert.IsNotNull(genre);
+            Assert.AreEqual(2, genre.Count);
+            Assert.AreEqual("blues", genre.Name);
+        }
+
+        [Test]
         public void TestArtistWorks()
         {
             var list = artist.Works;

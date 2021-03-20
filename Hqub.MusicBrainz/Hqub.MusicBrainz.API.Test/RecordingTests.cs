@@ -75,6 +75,21 @@ namespace Hqub.MusicBrainz.API.Test
         }
 
         [Test]
+        public void TestRecordingGenres()
+        {
+            var genres = recording.Genres;
+
+            Assert.IsNotNull(genres);
+            Assert.AreEqual(2, genres.Count);
+
+            var genre = genres[0];
+
+            Assert.IsNotNull(genre);
+            Assert.AreEqual(1, genre.Count);
+            Assert.AreEqual("indie", genre.Name);
+        }
+
+        [Test]
         public void TestRecordingRating()
         {
             var rating = recording.Rating;

@@ -71,5 +71,20 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.IsNotNull(list);
             Assert.AreEqual(6, list.Count);
         }
+
+        [Test]
+        public void TestReleaseGroupGenres()
+        {
+            var genres = group.Genres;
+
+            Assert.IsNotNull(genres);
+            Assert.AreEqual(9, genres.Count);
+
+            var genre = genres[0];
+
+            Assert.IsNotNull(genre);
+            Assert.AreEqual(10, genre.Count);
+            Assert.AreEqual("blues rock", genre.Name);
+        }
     }
 }
