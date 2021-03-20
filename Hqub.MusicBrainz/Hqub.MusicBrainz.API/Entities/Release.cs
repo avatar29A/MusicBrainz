@@ -1,11 +1,8 @@
 ﻿
 namespace Hqub.MusicBrainz.API.Entities
 {
-    using Hqub.MusicBrainz.API.Entities.Collections;
-    using System;
     using System.Collections.Generic;
     using System.Runtime.Serialization;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// A MusicBrainz release represents the unique release (i.e. issuing) of a product on a specific
@@ -113,6 +110,24 @@ namespace Hqub.MusicBrainz.API.Entities
         /// </example>
         [DataMember(Name = "media")]
         public List<Medium> Media { get; set; }
+
+        /// <summary>
+        /// Gets or sets a list of tags associated to this release.
+        /// </summary>
+        /// <example>
+        /// var e = await Release.GetAsync(mbid, "tags");
+        /// </example>
+        [DataMember(Name = "tags")]
+        public List<Tag> Tags { get; set; }
+
+        /// <summary>
+        /// Gets or sets a list of genres associated to this release.
+        /// </summary>
+        /// <example>
+        /// var e = await Release.GetAsync(mbid, "genres");
+        /// </example>
+        [DataMember(Name = "genres")]
+        public List<Genre> Genres { get; set; }
 
         /// <summary>
         /// Gets or sets a list of relations associated to this release.

@@ -37,8 +37,8 @@ namespace Hqub.MusicBrainz.Client
             // Get best match.
             var group = groups.Items.First();
 
-            // Get detailed information of the release-group, including artists, releases and related urls.
-            group = await client.ReleaseGroups.GetAsync(group.Id, "artists", "releases", "url-rels");
+            // Get detailed information of the release-group, including artists, releases, genres and related urls.
+            group = await client.ReleaseGroups.GetAsync(group.Id, "artists", "releases", "genres", "url-rels");
 
             var artist = group.Credits.First().Artist;
 
@@ -49,6 +49,15 @@ namespace Hqub.MusicBrainz.Client
             foreach (var item in group.Releases.OrderBy(r => r.Date))
             {
                 Console.WriteLine("     {0} - {1}  {2}", item.Date.ToShortDate(), item.Id, item.Country);
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Top 3 (of {0}) genres for the release group:", group.Genres.Count);
+            Console.WriteLine();
+
+            foreach (var item in group.Genres.OrderByDescending(r => r.Count).Take(3))
+            {
+                Console.WriteLine("     {0} ({1})", item.Name, item.Count);
             }
 
             // Check if there are lyrcis available for the album.

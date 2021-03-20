@@ -38,15 +38,15 @@ namespace Hqub.MusicBrainz.API.Test
         {
             var group = data.Items[0];
 
-            Assert.AreEqual("42b7d588-7d90-3cd9-a78e-062fa398b110", group.Id);
+            Assert.AreEqual("c2930468-8954-39e9-be89-39ca1477846f", group.Id);
             Assert.AreEqual(100, group.Score);
 
-            Assert.AreEqual("Sounds inside my mind", group.Title);
+            Assert.AreEqual("The Genuine Bootleg Series, Take 2", group.Title);
             Assert.AreEqual("Album", group.PrimaryType);
 
             Assert.IsNotNull(group.SecondaryTypes);
             Assert.AreEqual(1, group.SecondaryTypes.Count);
-            Assert.AreEqual("Live", group.SecondaryTypes[0]);
+            Assert.AreEqual("Compilation", group.SecondaryTypes[0]);
 
             Assert.IsNotNull(group.Releases);
             Assert.IsNotNull(group.Credits);

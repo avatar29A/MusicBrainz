@@ -1,8 +1,9 @@
-﻿using System;
-using System.Runtime.Serialization;
-
+﻿
 namespace Hqub.MusicBrainz.API.Entities
 {
+    using System;
+    using System.Runtime.Serialization;
+
     /// <summary>
     /// Cover Art Archive information.
     /// </summary>

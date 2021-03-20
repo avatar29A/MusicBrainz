@@ -130,6 +130,15 @@ namespace Hqub.MusicBrainz.API.Test
         }
 
         [Test]
+        public void TestReleaseGenres()
+        {
+            var genres = release.Genres;
+
+            Assert.IsNotNull(genres);
+            Assert.AreEqual(0, genres.Count);
+        }
+
+        [Test]
         public void TestReleaseRelations()
         {
             var list = release.Relations;
