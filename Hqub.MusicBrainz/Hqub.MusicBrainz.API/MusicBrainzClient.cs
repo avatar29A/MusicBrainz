@@ -91,6 +91,15 @@
         /// <param name="baseAddress">The base address of the webservice (default = <see cref="ServiceBaseAddress"/>).</param>
         /// <param name="proxy">The <see cref="IWebProxy"/> used to connect to the webservice.</param>
         public MusicBrainzClient(string baseAddress, IWebProxy proxy)
+            : this(CreateHttpClient(new Uri(baseAddress), true, proxy))
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MusicBrainzClient"/> class.
+        /// </summary>
+        /// <param name="httpClient">The <see cref="HttpClient"/> used for request to the webservice.</param>
+        public MusicBrainzClient(HttpClient httpClient)
         {
             var urlBuilder = new UrlBuilder(true);
 
@@ -100,7 +109,7 @@
             ReleaseGroups = new ReleaseGroupService(this, urlBuilder);
             Work = new WorkService(this, urlBuilder);
 
-            client = CreateHttpClient(new Uri(baseAddress), true, proxy);
+            client = httpClient;
         }
 
         /// <summary>
@@ -167,7 +176,7 @@
             return new WebServiceException(error.Message, status, url);
         }
 
-        private HttpClient CreateHttpClient(Uri baseAddress, bool automaticDecompression, IWebProxy proxy)
+        private static HttpClient CreateHttpClient(Uri baseAddress, bool automaticDecompression, IWebProxy proxy)
         {
             var handler = new HttpClientHandler();
 
