@@ -178,7 +178,11 @@
 
         private static HttpClient CreateHttpClient(Uri baseAddress, bool automaticDecompression, IWebProxy proxy)
         {
+#if NET5_0_OR_GREATER
+            var handler = new SocketsHttpHandler();
+#else
             var handler = new HttpClientHandler();
+#endif
 
             if (proxy != null)
             {

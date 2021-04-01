@@ -11,10 +11,10 @@
     <Authors>Boris Glebov, Christian Woltering</Authors>
     <PackageProjectUrl>https://github.com/avatar29A/MusicBrainz</PackageProjectUrl>
     <RepositoryUrl>https://github.com/avatar29A/MusicBrainz</RepositoryUrl>
-    <AssemblyVersion>2.3.0.0</AssemblyVersion>
-    <FileVersion>2.3.0.0</FileVersion>
+    <AssemblyVersion>2.4.0.0</AssemblyVersion>
+    <FileVersion>2.4.0.0</FileVersion>
     <PackageTags>music musicbrainz brainz</PackageTags>
-    <Version>2.3.0</Version>
+    <Version>2.4.0</Version>
     <AssemblyName>Hqub.MusicBrainz.API</AssemblyName>
     <RootNamespace>Hqub.MusicBrainz.API</RootNamespace>
     <Configurations>Debug;Release;Travis</Configurations>
@@ -23,7 +23,10 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
     <PackageReleaseNotes>Changes:
-* Add genre subquery support to artist, release-group, release and recording entities.</PackageReleaseNotes>
+ * Add target framework .NET 5.0
+ * Blazor (WASM) support
+ * Use SocketsHttpHandler instead of HttpClientHandler on .NET 5.0
+    </PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Travis' ">
@@ -31,7 +34,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' != 'Travis' ">
-    <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
+    <TargetFrameworks>net45;net5.0;netstandard2.0</TargetFrameworks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)' == 'net45'">
