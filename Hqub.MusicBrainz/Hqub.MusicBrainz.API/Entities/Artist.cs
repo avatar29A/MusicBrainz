@@ -147,6 +147,15 @@ namespace Hqub.MusicBrainz.API.Entities
         [DataMember(Name = "relations")]
         public List<Relation> Relations { get; set; }
 
+        /// <summary>
+        /// Gets or sets a list of aliases associated to this artist.
+        /// </summary>
+        /// <example>
+        /// var e = await Artist.GetAsync(mbid, "aliases");
+        /// </example>
+        [DataMember(Name = "aliases")]
+        public List<Alias> Aliases { get; set; }
+
         #endregion
     }
 }

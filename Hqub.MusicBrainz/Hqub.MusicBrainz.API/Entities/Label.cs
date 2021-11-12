@@ -1,6 +1,7 @@
 ﻿
 namespace Hqub.MusicBrainz.API.Entities
 {
+    using System.Collections.Generic;
     using System.Runtime.Serialization;
 
     /// <summary>
@@ -10,6 +11,8 @@ namespace Hqub.MusicBrainz.API.Entities
     [DataContract(Name = "label")]
     public class Label
     {
+        #region Properties
+
         /// <summary>
         /// Gets or sets the MusicBrainz id.
         /// </summary>
@@ -27,5 +30,20 @@ namespace Hqub.MusicBrainz.API.Entities
         /// </summary>
         [DataMember(Name = "disambiguation")]
         public string Disambiguation { get; set; }
+
+        #endregion
+
+        #region Subqueries
+
+        /// <summary>
+        /// Gets or sets a list of aliases associated to this label.
+        /// </summary>
+        /// <example>
+        /// var e = await Label.GetAsync(mbid, "aliases");
+        /// </example>
+        [DataMember(Name = "aliases")]
+        public List<Alias> Aliases { get; set; }
+
+        #endregion
     }
 }
