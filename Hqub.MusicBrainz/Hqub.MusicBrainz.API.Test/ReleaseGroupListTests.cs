@@ -3,6 +3,7 @@ namespace Hqub.MusicBrainz.API.Test
 {
     using Hqub.MusicBrainz.API.Entities.Collections;
     using NUnit.Framework;
+    using System.Linq;
 
     // Resource: releasegroup-search.json
     // ReleaseGroup.Search("artist:(bob dylan)", 10);
@@ -36,17 +37,17 @@ namespace Hqub.MusicBrainz.API.Test
         [Test]
         public void TestReleaseGroupListElements()
         {
-            var group = data.Items[0];
+            var group = data.Items.Where(g => g.Id == "951bb3c9-fa91-3cd9-8f4f-6341983cb922").FirstOrDefault();
 
-            Assert.AreEqual("c2930468-8954-39e9-be89-39ca1477846f", group.Id);
+            Assert.IsNotNull(group);
             Assert.AreEqual(100, group.Score);
 
-            Assert.AreEqual("The Genuine Bootleg Series, Take 2", group.Title);
+            Assert.AreEqual("Positively 4th Street", group.Title);
             Assert.AreEqual("Album", group.PrimaryType);
 
             Assert.IsNotNull(group.SecondaryTypes);
             Assert.AreEqual(1, group.SecondaryTypes.Count);
-            Assert.AreEqual("Compilation", group.SecondaryTypes[0]);
+            Assert.AreEqual("Live", group.SecondaryTypes[0]);
 
             Assert.IsNotNull(group.Releases);
             Assert.IsNotNull(group.Credits);

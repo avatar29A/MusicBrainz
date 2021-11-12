@@ -49,7 +49,7 @@ namespace Hqub.MusicBrainz.API.Test
             var releases = group.Releases;
 
             Assert.IsNotNull(releases);
-            Assert.AreEqual(14, releases.Count);
+            Assert.IsTrue(releases.Count > 1);
         }
 
         [Test]
@@ -69,7 +69,7 @@ namespace Hqub.MusicBrainz.API.Test
             var list = group.Relations;
 
             Assert.IsNotNull(list);
-            Assert.AreEqual(6, list.Count);
+            Assert.IsTrue(list.Count > 1);
         }
 
         [Test]
@@ -78,12 +78,11 @@ namespace Hqub.MusicBrainz.API.Test
             var genres = group.Genres;
 
             Assert.IsNotNull(genres);
-            Assert.AreEqual(9, genres.Count);
+            Assert.IsTrue(genres.Count > 1);
 
             var genre = genres[0];
 
-            Assert.IsNotNull(genre);
-            Assert.AreEqual(10, genre.Count);
+            Assert.IsTrue(genre.Count > 1);
             Assert.AreEqual("blues rock", genre.Name);
         }
     }

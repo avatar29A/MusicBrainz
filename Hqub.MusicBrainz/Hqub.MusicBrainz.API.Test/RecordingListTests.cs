@@ -3,6 +3,7 @@ namespace Hqub.MusicBrainz.API.Test
 {
     using Hqub.MusicBrainz.API.Entities.Collections;
     using NUnit.Framework;
+    using System.Linq;
 
     // Resource: recording-search.json
     // Recording.Search("artist:(calexico) AND recording:(alone again or) AND NOT secondarytype:(live)", 10);
@@ -36,9 +37,10 @@ namespace Hqub.MusicBrainz.API.Test
         [Test]
         public void TestRecordingListElements()
         {
-            var recording = data.Items[0];
+            var recording = data.Items.Where(g => g.Id == "89d8f933-7c31-47c6-8f80-4927e93e7896").FirstOrDefault();
 
-            Assert.AreEqual("89d8f933-7c31-47c6-8f80-4927e93e7896", recording.Id);
+            Assert.IsNotNull(recording);
+
             Assert.AreEqual(100, recording.Score);
 
             Assert.AreEqual("Alone Again Or", recording.Title);

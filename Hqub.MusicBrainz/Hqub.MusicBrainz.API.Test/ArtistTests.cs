@@ -39,11 +39,10 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.IsNotNull(list);
             Assert.AreEqual(25, list.Count);
 
-            var group = list[6];
+            var group = list.Where(g => g.Id == "329fb554-2a81-3d8a-8e22-ec2c66810019").FirstOrDefault();
 
             Assert.IsNotNull(group);
 
-            Assert.AreEqual("329fb554-2a81-3d8a-8e22-ec2c66810019", group.Id);
             Assert.AreEqual("Album", group.PrimaryType);
 
             Assert.AreEqual("Blonde on Blonde", group.Title);
@@ -62,6 +61,15 @@ namespace Hqub.MusicBrainz.API.Test
 
             Assert.IsNotNull(area.IsoCodes);
             Assert.AreEqual(1, area.IsoCodes.Count);
+        }
+
+        [Test]
+        public void TestArtistAliases()
+        {
+            var aliases = artist.Aliases;
+
+            Assert.IsNotNull(aliases);
+            Assert.IsTrue(aliases.Any(a => a.Name.Equals("Boy Dylan")));
         }
 
         [Test]
