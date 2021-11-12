@@ -11,10 +11,10 @@
     <Authors>Boris Glebov, Christian Woltering</Authors>
     <PackageProjectUrl>https://github.com/avatar29A/MusicBrainz</PackageProjectUrl>
     <RepositoryUrl>https://github.com/avatar29A/MusicBrainz</RepositoryUrl>
-    <AssemblyVersion>2.4.0.0</AssemblyVersion>
-    <FileVersion>2.4.0.0</FileVersion>
+    <AssemblyVersion>2.5.0.0</AssemblyVersion>
+    <FileVersion>2.5.0.0</FileVersion>
     <PackageTags>music musicbrainz brainz</PackageTags>
-    <Version>2.4.0</Version>
+    <Version>2.5.0</Version>
     <AssemblyName>Hqub.MusicBrainz.API</AssemblyName>
     <RootNamespace>Hqub.MusicBrainz.API</RootNamespace>
     <Configurations>Debug;Release;Travis</Configurations>
@@ -22,11 +22,8 @@
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>Changes:
- * Add target framework .NET 5.0
- * Blazor (WASM) support
- * Use SocketsHttpHandler instead of HttpClientHandler on .NET 5.0
-    </PackageReleaseNotes>
+    <PackageReleaseNotes>Add support for aliases.
+</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Travis' ">

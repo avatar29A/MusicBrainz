@@ -49,7 +49,7 @@ namespace Hqub.MusicBrainz.Client
             if (recording.Relations.Count == 0)
             {
                 Console.WriteLine();
-                Console.WriteLine("No lyrics available :-(");
+                Console.WriteLine("No related work available for the selected recording.");
                 Console.WriteLine();
 
                 return;
@@ -71,6 +71,14 @@ namespace Hqub.MusicBrainz.Client
                 Console.WriteLine();
                 Console.WriteLine("     {0}", lyrics.First().Url.Resource);
                 Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine();
+                Console.WriteLine("No lyrics available :-(");
+                Console.WriteLine();
+
+                return;
             }
         }
 
