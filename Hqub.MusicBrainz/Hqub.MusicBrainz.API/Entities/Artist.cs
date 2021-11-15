@@ -63,6 +63,18 @@ namespace Hqub.MusicBrainz.API.Entities
         public Area Area { get; set; }
 
         /// <summary>
+        /// Gets or sets the begin area.
+        /// </summary>
+        [DataMember(Name = "begin-area")]
+        public Area BeginArea { get; set; }
+
+        /// <summary>
+        /// Gets or sets the end area.
+        /// </summary>
+        [DataMember(Name = "end-area")]
+        public Area EndArea { get; set; }
+
+        /// <summary>
         /// Gets or sets the country.
         /// </summary>
         [DataMember(Name = "country")]

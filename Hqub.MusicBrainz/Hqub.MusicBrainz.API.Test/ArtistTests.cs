@@ -61,6 +61,12 @@ namespace Hqub.MusicBrainz.API.Test
 
             Assert.IsNotNull(area.IsoCodes);
             Assert.AreEqual(1, area.IsoCodes.Count);
+
+            area = artist.BeginArea;
+
+            Assert.IsNotNull(area);
+            Assert.AreEqual("04e60741-b1ae-4078-80bb-ffe8ae643ea7", area.Id);
+            Assert.AreEqual("Duluth", area.Name);
         }
 
         [Test]
