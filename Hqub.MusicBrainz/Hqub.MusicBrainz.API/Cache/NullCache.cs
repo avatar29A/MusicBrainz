@@ -21,10 +21,10 @@ namespace Hqub.MusicBrainz.API.Cache
         /// <inheritdoc />
         public Task Add(string request, Stream response)
         {
-#if NET45
-            return Task.FromResult(0);
-#else
+#if NET5_0_OR_GREATER
             return Task.CompletedTask;
+#else
+            return Task.FromResult(0);
 #endif
         }
 

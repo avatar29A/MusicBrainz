@@ -7,7 +7,7 @@
     <Description>Implementation of the MuzicBrainz API v2.</Description>
     <Product>Hqub.MusicBrainz.API</Product>
     <Company>h-qub.ru</Company>
-    <Copyright>Copyright h-qub.ru © 2014-2021</Copyright>
+    <Copyright>Copyright h-qub.ru © 2014-2022</Copyright>
     <Authors>Boris Glebov, Christian Woltering</Authors>
     <PackageProjectUrl>https://github.com/avatar29A/MusicBrainz</PackageProjectUrl>
     <RepositoryUrl>https://github.com/avatar29A/MusicBrainz</RepositoryUrl>
@@ -22,7 +22,8 @@
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>Add support for aliases.
+    <PackageReleaseNotes>* Add support for aliases.
+* Add artist begin- and end-area properties.
 </PackageReleaseNotes>
   </PropertyGroup>
 
@@ -31,11 +32,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' != 'Travis' ">
-    <TargetFrameworks>net45;net5.0;netstandard2.0</TargetFrameworks>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net45'">
-    <DefineConstants>NET45</DefineConstants>
+    <TargetFrameworks>netstandard2.0;net45;net6.0</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
