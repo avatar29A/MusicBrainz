@@ -37,17 +37,17 @@ namespace Hqub.MusicBrainz.API.Test
         [Test]
         public void TestReleaseGroupListElements()
         {
-            var group = data.Items.Where(g => g.Id == "951bb3c9-fa91-3cd9-8f4f-6341983cb922").FirstOrDefault();
+            var group = data.Items.Where(g => g.Id == "b5cbeb61-6e9c-38a8-9cb7-caf456782361").FirstOrDefault();
 
             Assert.IsNotNull(group);
             Assert.AreEqual(100, group.Score);
 
-            Assert.AreEqual("Positively 4th Street", group.Title);
+            Assert.AreEqual("Biograph", group.Title);
             Assert.AreEqual("Album", group.PrimaryType);
 
             Assert.IsNotNull(group.SecondaryTypes);
             Assert.AreEqual(1, group.SecondaryTypes.Count);
-            Assert.AreEqual("Live", group.SecondaryTypes[0]);
+            Assert.AreEqual("Compilation", group.SecondaryTypes[0]);
 
             Assert.IsNotNull(group.Releases);
             Assert.IsNotNull(group.Credits);

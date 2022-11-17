@@ -109,12 +109,10 @@ namespace Hqub.MusicBrainz.API.Test
             Assert.IsNotNull(list);
             Assert.GreaterOrEqual(list.Count, 1);
 
-            var tag = list[7];
+            var tag = list.OrderByDescending(i => i.Count).First();
 
-            Assert.IsNotNull(tag);
-
-            Assert.GreaterOrEqual(tag.Count, 1);
-            Assert.AreEqual("blues", tag.Name);
+            Assert.GreaterOrEqual(tag.Count, 5);
+            Assert.AreEqual("folk rock", tag.Name);
         }
 
         [Test]
