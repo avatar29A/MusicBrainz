@@ -3,6 +3,7 @@ namespace Hqub.MusicBrainz.API.Test
 {
     using Hqub.MusicBrainz.API.Entities;
     using NUnit.Framework;
+    using System.Linq;
 
     // Resource: recording-get.json
     // Recording.Get("12195c41-6136-4dfd-acf1-9923dadc73e2"", "artists", "releases", "tags", "ratings", "url-rels");
@@ -53,7 +54,7 @@ namespace Hqub.MusicBrainz.API.Test
 
             Assert.AreEqual(9, releases.Count);
 
-            var release = releases[3];
+            var release = releases[4];
 
             Assert.IsNotNull(release);
             Assert.AreEqual("8edf887c-f8ee-4663-af02-0a5117acc808", release.Id);
@@ -65,12 +66,12 @@ namespace Hqub.MusicBrainz.API.Test
         {
             var tags = recording.Tags;
 
-            Assert.AreEqual(3, tags.Count);
+            Assert.GreaterOrEqual(tags.Count, 5);
 
-            var tag = tags[0];
+            var tag = tags.OrderByDescending(i => i.Count).First();
 
             Assert.IsNotNull(tag);
-            Assert.AreEqual(1, tag.Count);
+            Assert.GreaterOrEqual(tag.Count, 1);
             Assert.AreEqual("alternative", tag.Name);
         }
 
@@ -80,13 +81,12 @@ namespace Hqub.MusicBrainz.API.Test
             var genres = recording.Genres;
 
             Assert.IsNotNull(genres);
-            Assert.AreEqual(2, genres.Count);
+            Assert.GreaterOrEqual(genres.Count, 5);
 
-            var genre = genres[0];
+            var genre = genres.First();
 
-            Assert.IsNotNull(genre);
-            Assert.AreEqual(1, genre.Count);
-            Assert.AreEqual("indie", genre.Name);
+            Assert.GreaterOrEqual(genre.Count, 1);
+            Assert.AreEqual("alternative country", genre.Name);
         }
 
         [Test]
