@@ -8,6 +8,7 @@ namespace Hqub.MusicBrainz.Client
     using System.Threading.Tasks;
 
     /// <summary>
+    ///
     /// Setup an advanced search query to find a release using 'Release.SearchAsync'
     /// and get details including recordings using 'Release.GetAsync'.
     /// </summary>
