@@ -7,7 +7,7 @@ namespace Hqub.MusicBrainz.API.Test
 
     // Resource: recording-get.json
     // Recording.Get("12195c41-6136-4dfd-acf1-9923dadc73e2"", "artists", "releases", "tags", "ratings", "url-rels");
-    //
+    // test tags 
     // https://musicbrainz.org/ws/2/recording/9408b8ce-9b95-4fb0-ac70-595d054a15c6/?inc=artists+releases+tags+ratings+url-rels&fmt=json
 
     public class RecordingTests
