@@ -6,6 +6,7 @@ namespace Hqub.MusicBrainz.API
     using System.Runtime.Serialization;
 
     /// <summary>
+    ///
     /// Exception containing error information returned by the MusicBrainz webservice.
     /// </summary>
     [Serializable]
