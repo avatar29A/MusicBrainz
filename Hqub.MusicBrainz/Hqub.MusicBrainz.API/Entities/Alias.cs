@@ -5,6 +5,7 @@ namespace Hqub.MusicBrainz.API.Entities
     using System.Runtime.Serialization;
 
     /// <summary>
+    ///
     /// Aliases are alternative names for all types of MusicBrainz entities.
     /// </summary>
     /// <see href="https://musicbrainz.org/doc/Aliases"/>
