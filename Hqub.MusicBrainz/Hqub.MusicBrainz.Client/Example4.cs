@@ -8,6 +8,7 @@ namespace Hqub.MusicBrainz.Client
     using System.Threading.Tasks;
 
     /// <summary>
+    ///
     /// Setup an advanced search query to find a recording using 'Recording.SearchAsync'
     /// and get details including related work using 'Recording.GetAsync'. Then get info
     /// for the related work (like lyrics) using 'Work.GetAsync'.
