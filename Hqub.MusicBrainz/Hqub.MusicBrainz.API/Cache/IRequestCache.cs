@@ -5,6 +5,7 @@ namespace Hqub.MusicBrainz.API.Cache
     using System.Threading.Tasks;
 
     /// <summary>
+    ///
     /// A simple cache interface.
     /// </summary>
     public interface IRequestCache
