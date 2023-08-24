@@ -6,7 +6,7 @@ namespace Hqub.MusicBrainz.API.Test
 
     // Resource: releasegroup-get.json
     // ReleaseGroup.Get("fc325dd3-73ed-36aa-9c77-6b65a958e3cf", "artists", "releases", "ratings", "url-rels");
-    //
+    // release group
     // https://musicbrainz.org/ws/2/release-group/fc325dd3-73ed-36aa-9c77-6b65a958e3cf?inc=artists+releases+ratings+url-rels&fmt=json
 
     public class ReleaseGroupTests
