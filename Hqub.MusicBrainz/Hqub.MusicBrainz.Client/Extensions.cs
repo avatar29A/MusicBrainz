@@ -1,4 +1,5 @@
-﻿namespace Hqub.MusicBrainz.Client
+//
+namespace Hqub.MusicBrainz.Client
 {
     public static class Extensions
     {
