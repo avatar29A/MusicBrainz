@@ -10,6 +10,7 @@ namespace Hqub.MusicBrainz.API.Cache
     public class NullCache : IRequestCache
     {
         /// <summary>
+        ///
         /// Gets the default <see cref="NullCache"/> instance.
         /// </summary>
         public static NullCache Default { get; } = new NullCache();
