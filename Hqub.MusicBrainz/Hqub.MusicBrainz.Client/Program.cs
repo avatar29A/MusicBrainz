@@ -72,6 +72,8 @@
             await Example6.Run(client);
         }
 
+        // header string
+
         private static void Header(string title)
         {
             var color = Console.ForegroundColor;
