@@ -7,6 +7,7 @@ namespace Hqub.MusicBrainz.Client
     using System.Threading.Tasks;
 
     /// <summary>
+    ///
     /// Search for an artist using 'Artist.SearchAsync' and lookup artist details
     /// like band-members and related urls using 'Artist.GetAsync'.
     /// </summary>
