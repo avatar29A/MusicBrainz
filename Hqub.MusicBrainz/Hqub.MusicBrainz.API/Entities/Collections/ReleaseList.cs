@@ -6,6 +6,7 @@ namespace Hqub.MusicBrainz.API.Entities.Collections
 
     /// <summary>
     /// List of releases returned by MusicBrainz search requests.
+    ///
     /// </summary>
     [DataContract]
     public class ReleaseList : QueryResult<Release>
