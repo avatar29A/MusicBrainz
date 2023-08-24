@@ -5,6 +5,7 @@ namespace Hqub.MusicBrainz.API.Entities.Collections
     using System.Runtime.Serialization;
 
     /// <summary>
+    ///
     /// List of recordings returned by MusicBrainz search requests.
     /// </summary>
     [DataContract]
