@@ -6,6 +6,7 @@ namespace Hqub.MusicBrainz.API
     using System.Net;
 
     /// <summary>
+  ///
     /// Helper class to build MusicBrainz webservice urls.
     /// </summary>
     internal class UrlBuilder
