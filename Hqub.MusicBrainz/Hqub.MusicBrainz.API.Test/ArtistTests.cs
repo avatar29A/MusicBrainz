@@ -1,4 +1,4 @@
-﻿
+//﻿
 namespace Hqub.MusicBrainz.API.Test
 {
     using Hqub.MusicBrainz.API.Entities;
