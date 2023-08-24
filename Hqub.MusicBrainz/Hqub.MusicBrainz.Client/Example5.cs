@@ -8,6 +8,7 @@ namespace Hqub.MusicBrainz.Client
     using System.Threading.Tasks;
 
     /// <summary>
+    ///
     /// Browse release-groups of a given artist using 'ReleaseGroup.BrowseAsync'.
     /// </summary>
     public class Example5
