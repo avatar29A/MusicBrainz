@@ -9,6 +9,7 @@ namespace Hqub.MusicBrainz.Client
     using System.Threading.Tasks;
 
     /// <summary>
+    ///
     /// Example using the fluent API.
     /// </summary>
     public class Example6
