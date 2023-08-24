@@ -10,7 +10,7 @@ namespace Hqub.MusicBrainz.API.Test
     {
         MusicBrainzClient client = new MusicBrainzClient();
 
-        [Test]
+        [Test]- //test 
         public async Task TestArtistGetAsync()
         {
             var artist = await client.Artists.GetAsync("c3cceeed-3332-4cf0-8c4c-bbde425147b6");
