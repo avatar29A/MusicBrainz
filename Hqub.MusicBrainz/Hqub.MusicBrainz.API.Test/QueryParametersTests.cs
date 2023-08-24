@@ -6,7 +6,7 @@ namespace Hqub.MusicBrainz.API.Test
 
     public class QueryParametersTests
     {
-        [Test]
+        [Test] //test query
         public void TestSimpleQuery()
         {
             var query = new QueryParameters<Artist>();
