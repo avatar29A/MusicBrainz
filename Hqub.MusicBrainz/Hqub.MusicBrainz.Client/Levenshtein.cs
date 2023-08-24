@@ -11,6 +11,7 @@ namespace Hqub.MusicBrainz.Client
         public static bool IrgnoreCase = true;
         
         /// <summary>
+        ///
         /// Compute the similarity of two strings using the Levenshtein distance.
         /// </summary>
         /// <param name="s">The first string.</param>
