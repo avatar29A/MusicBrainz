@@ -8,7 +8,7 @@ namespace Hqub.MusicBrainz.Client
     using System.Text;
     using System.Threading.Tasks;
 
-    /// <summary>
+    /// <summary> -- fix
     /// Caches requests to MusicBrainz API on disk.
     /// </summary>
     public class FileRequestCache : IRequestCache
