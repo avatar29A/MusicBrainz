@@ -6,6 +6,7 @@
     using System.Threading.Tasks;
 
     /// <summary>
+     ///
     /// Prepare a browse request to the MusicBrainz webservice.
     /// </summary>
     /// <typeparam name="T">Any supported MusicBrainz entity.</typeparam>
