@@ -1,4 +1,5 @@
-﻿
+
+
 namespace Hqub.MusicBrainz.API.Entities
 {
     using System.Collections.Generic;
@@ -7,6 +8,7 @@ namespace Hqub.MusicBrainz.API.Entities
     /// <summary>
     /// The Disc entity.
     /// </summary>
+    ///
     [DataContract(Name = "disc")]
     public class Disc
     {
