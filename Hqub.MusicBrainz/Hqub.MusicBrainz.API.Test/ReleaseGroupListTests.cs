@@ -7,7 +7,7 @@ namespace Hqub.MusicBrainz.API.Test
 
     // Resource: releasegroup-search.json
     // ReleaseGroup.Search("artist:(bob dylan)", 10);
-    //
+    // test group
     // https://musicbrainz.org/ws/2/release-group?query=artist:%28bob%20dylan%29&limit=10&fmt=json
 
     public class ReleaseGroupListTests
