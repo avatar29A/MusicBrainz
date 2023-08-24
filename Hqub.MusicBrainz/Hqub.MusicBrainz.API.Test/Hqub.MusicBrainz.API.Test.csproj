@@ -39,5 +39,5 @@
   <ItemGroup>
     <ProjectReference Include="..\Hqub.MusicBrainz.API\Hqub.MusicBrainz.API.csproj" />
   </ItemGroup>
-
+//
 </Project>
