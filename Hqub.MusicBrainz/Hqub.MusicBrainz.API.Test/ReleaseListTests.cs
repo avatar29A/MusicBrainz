@@ -6,7 +6,7 @@ namespace Hqub.MusicBrainz.API.Test
 
     // Resource: release-search.json
     // Release.Search("artist:(giant sand) release:(tucson)", 10);
-    //
+    // relase group
     // https://musicbrainz.org/ws/2/release?query=artist:(giant%20sand)%20release:(tucson)&limit=10&fmt=json
 
     public class ReleaseListTests
