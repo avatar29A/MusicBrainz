@@ -25,6 +25,7 @@
     <RepositoryType>git</RepositoryType>
     <PackageReleaseNotes>* Add support for aliases.
 * Add artist begin- and end-area properties.
+*
 </PackageReleaseNotes>
   </PropertyGroup>
 
