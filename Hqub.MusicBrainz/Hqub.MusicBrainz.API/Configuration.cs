@@ -6,6 +6,7 @@ namespace Hqub.MusicBrainz.API
     using System.Net;
 
     /// <summary>
+    ///
     /// Hqub.MusicBrainz configuration.
     /// </summary>
     [Obsolete("Use MusicBrainzClient instead of static API.")]
