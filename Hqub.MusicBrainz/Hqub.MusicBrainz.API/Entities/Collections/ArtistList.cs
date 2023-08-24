@@ -6,6 +6,7 @@ namespace Hqub.MusicBrainz.API.Entities.Collections
 
     /// <summary>
     /// List of artists returned by MusicBrainz search requests.
+    ///
     /// </summary>
     [DataContract]
     public class ArtistList : QueryResult<Artist>
