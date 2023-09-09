@@ -1,5 +1,5 @@
 ﻿
-namespace Hqub.MusicBrainz.Test
+namespace Hqub.MusicBrainz.Tests
 {
     using Hqub.MusicBrainz.Entities.Collections;
     using NUnit.Framework;

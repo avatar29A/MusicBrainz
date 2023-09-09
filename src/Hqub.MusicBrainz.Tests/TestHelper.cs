@@ -1,5 +1,5 @@
 ﻿
-namespace Hqub.MusicBrainz.Test
+namespace Hqub.MusicBrainz.Tests
 {
     using System;
     using System.IO;
@@ -8,7 +8,7 @@ namespace Hqub.MusicBrainz.Test
 
     static class TestHelper
     {
-        private const string prefix = "Hqub.MusicBrainz.Test.Data.";
+        private const string prefix = "Hqub.MusicBrainz.Tests.Data.";
 
         private static Stream LoadResource(string name)
         {
