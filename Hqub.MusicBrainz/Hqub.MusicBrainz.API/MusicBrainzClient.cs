@@ -21,7 +21,7 @@
         /// </summary>
         public const string ServiceBaseAddress = "https://musicbrainz.org/ws/2/";
 
-        private const string UserAgent = "Hqub.MusicBrainz/3.0-beta";
+        private const string UserAgent = "Hqub.MusicBrainz/3.0 (https://github.com/avatar29A/MusicBrainz)";
 
         #region Public services
 

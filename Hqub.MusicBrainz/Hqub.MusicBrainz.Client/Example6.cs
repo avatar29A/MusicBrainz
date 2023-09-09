@@ -66,7 +66,7 @@ namespace Hqub.MusicBrainz.Client
                 DisplayReleases(groups, i + 1, pages);
 
                 // Try to avoid rate limit ...
-                await Task.Delay(500);
+                await Task.Delay(1000);
             }
 
             if (i == MAX_PAGES)

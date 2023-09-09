@@ -8,14 +8,14 @@
     <Description>Implementation of the MuzicBrainz API v2.</Description>
     <Product>Hqub.MusicBrainz.API</Product>
     <Company>h-qub.ru</Company>
-    <Copyright>Copyright h-qub.ru © 2014-2022</Copyright>
+    <Copyright>Copyright h-qub.ru © 2014-2023</Copyright>
     <Authors>Boris Glebov, Christian Woltering</Authors>
     <PackageProjectUrl>https://github.com/avatar29A/MusicBrainz</PackageProjectUrl>
     <RepositoryUrl>https://github.com/avatar29A/MusicBrainz</RepositoryUrl>
-    <AssemblyVersion>2.5.0.0</AssemblyVersion>
-    <FileVersion>2.5.0.0</FileVersion>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
+    <FileVersion>3.0.0.0</FileVersion>
     <PackageTags>music musicbrainz brainz</PackageTags>
-    <Version>2.5.0</Version>
+    <Version>3.0.0</Version>
     <AssemblyName>Hqub.MusicBrainz.API</AssemblyName>
     <RootNamespace>Hqub.MusicBrainz.API</RootNamespace>
     <Configurations>Debug;Release</Configurations>
@@ -23,9 +23,9 @@
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>* Add support for aliases.
-* Add artist begin- and end-area properties.
-</PackageReleaseNotes>
+    <PackageReleaseNotes>
+		Hqub.MusicBrainz version 3 removes the obsolete static API. Use MusicBrainzClient instead.
+	</PackageReleaseNotes>
   </PropertyGroup>
 
 </Project>

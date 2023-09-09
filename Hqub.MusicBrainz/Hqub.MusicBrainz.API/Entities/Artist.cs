@@ -10,7 +10,7 @@ namespace Hqub.MusicBrainz.API.Entities
     /// </summary>
     /// <see href="https://musicbrainz.org/doc/Artist"/>
     [DataContract(Name = "artist")]
-    public partial class Artist
+    public class Artist
     {
         #region Properties
 

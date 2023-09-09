@@ -40,7 +40,7 @@ namespace Hqub.MusicBrainz.Client
             Console.WriteLine("Total matches for '{0}': {1}", album, releases.Count);
 
             // Get the oldest release (remember to sort out items with no date set).
-            var release = releases.Items.Where(r => r.Date != null && IsCompactDisc(r)).OrderBy(r => r.Date).First();
+            var release = releases.Items.Where(r => !string.IsNullOrEmpty(r.Date) && IsCompactDisc(r)).OrderBy(r => r.Date).First();
 
             // Get detailed information of the release, including recordings.
             release = await client.Releases.GetAsync(release.Id, "recordings", "url-rels");

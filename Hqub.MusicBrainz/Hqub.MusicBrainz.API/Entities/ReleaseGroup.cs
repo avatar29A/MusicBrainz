@@ -9,7 +9,7 @@ namespace Hqub.MusicBrainz.API.Entities
     /// </summary>
     /// <see href="https://musicbrainz.org/doc/Release_Group"/>
     [DataContract(Name = "release-group")]
-    public partial class ReleaseGroup
+    public class ReleaseGroup
     {
         #region Properties
 
