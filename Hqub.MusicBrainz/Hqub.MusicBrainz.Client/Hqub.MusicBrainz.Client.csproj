@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Hqub.MusicBrainz.API\Hqub.MusicBrainz.API.csproj" />
+    <ProjectReference Include="..\Hqub.MusicBrainz\Hqub.MusicBrainz.csproj" />
   </ItemGroup>
 
 </Project>

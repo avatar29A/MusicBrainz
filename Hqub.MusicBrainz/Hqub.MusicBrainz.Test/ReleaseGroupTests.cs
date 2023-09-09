@@ -1,7 +1,7 @@
 ﻿
-namespace Hqub.MusicBrainz.API.Test
+namespace Hqub.MusicBrainz.Test
 {
-    using Hqub.MusicBrainz.API.Entities;
+    using Hqub.MusicBrainz.Entities;
     using NUnit.Framework;
 
     // Resource: releasegroup-get.json

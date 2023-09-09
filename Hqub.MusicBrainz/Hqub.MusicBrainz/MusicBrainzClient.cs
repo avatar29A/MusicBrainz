@@ -1,7 +1,7 @@
-﻿namespace Hqub.MusicBrainz.API
+﻿namespace Hqub.MusicBrainz
 {
-    using Hqub.MusicBrainz.API.Cache;
-    using Hqub.MusicBrainz.API.Services;
+    using Hqub.MusicBrainz.Cache;
+    using Hqub.MusicBrainz.Services;
     using System;
     using System.IO;
     using System.Net;

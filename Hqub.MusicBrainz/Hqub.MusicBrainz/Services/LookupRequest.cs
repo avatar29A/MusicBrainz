@@ -1,4 +1,4 @@
-﻿namespace Hqub.MusicBrainz.API.Services
+﻿namespace Hqub.MusicBrainz.Services
 {
     using System;
     using System.Threading;

@@ -1,5 +1,5 @@
 ﻿
-namespace Hqub.MusicBrainz.API.Test
+namespace Hqub.MusicBrainz.Test
 {
     using NUnit.Framework;
     using System.Linq;

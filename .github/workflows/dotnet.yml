@@ -21,8 +21,8 @@ jobs:
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
       - name: Install dependencies
-        run: dotnet restore ./src/Hqub.MusicBrainz.API.sln
+        run: dotnet restore ./src/Hqub.MusicBrainz.sln
       - name: Build
-        run: dotnet build ./src/Hqub.MusicBrainz.API.sln --configuration Release
+        run: dotnet build ./src/Hqub.MusicBrainz.sln --configuration Release
       - name: Test
-        run: dotnet test ./src/Hqub.MusicBrainz.API.Tests/Hqub.MusicBrainz.API.Tests.csproj --verbosity normal
+        run: dotnet test ./src/Hqub.MusicBrainz.Tests/Hqub.MusicBrainz.Tests.csproj --verbosity normal

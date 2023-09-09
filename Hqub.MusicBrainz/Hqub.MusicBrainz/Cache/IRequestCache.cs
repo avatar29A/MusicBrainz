@@ -1,5 +1,5 @@
 ﻿
-namespace Hqub.MusicBrainz.API.Cache
+namespace Hqub.MusicBrainz.Cache
 {
     using System.IO;
     using System.Threading.Tasks;

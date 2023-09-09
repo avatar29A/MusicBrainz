@@ -1,5 +1,5 @@
 ﻿
-namespace Hqub.MusicBrainz.API.Entities
+namespace Hqub.MusicBrainz.Entities
 {
     using System.Collections.Generic;
     using System.Runtime.Serialization;

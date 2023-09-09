@@ -1,7 +1,7 @@
 ﻿
 namespace Hqub.MusicBrainz.Client
 {
-    using Hqub.MusicBrainz.API.Cache;
+    using Hqub.MusicBrainz.Cache;
     using System;
     using System.IO;
     using System.Security.Cryptography;

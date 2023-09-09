@@ -1,7 +1,7 @@
 ﻿
-namespace Hqub.MusicBrainz.API
+namespace Hqub.MusicBrainz
 {
-    using Hqub.MusicBrainz.API.Entities;
+    using Hqub.MusicBrainz.Entities;
     using System;
     using System.Collections;
     using System.Collections.Generic;

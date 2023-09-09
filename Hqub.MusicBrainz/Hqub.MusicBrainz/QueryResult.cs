@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace Hqub.MusicBrainz.API
+namespace Hqub.MusicBrainz
 {
     /// <summary>
     /// Abstract base class for MusicBrainz queries returning lists (with paging support).

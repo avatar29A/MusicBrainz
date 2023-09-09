@@ -6,7 +6,7 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageId>MusicBrainzAPI</PackageId>
     <Description>Implementation of the MuzicBrainz API v2.</Description>
-    <Product>Hqub.MusicBrainz.API</Product>
+    <Product>Hqub.MusicBrainz</Product>
     <Company>h-qub.ru</Company>
     <Copyright>Copyright h-qub.ru © 2014-2023</Copyright>
     <Authors>Boris Glebov, Christian Woltering</Authors>
@@ -16,15 +16,18 @@
     <FileVersion>3.0.0.0</FileVersion>
     <PackageTags>music musicbrainz brainz</PackageTags>
     <Version>3.0.0</Version>
-    <AssemblyName>Hqub.MusicBrainz.API</AssemblyName>
-    <RootNamespace>Hqub.MusicBrainz.API</RootNamespace>
+    <AssemblyName>Hqub.MusicBrainz</AssemblyName>
+    <RootNamespace>Hqub.MusicBrainz</RootNamespace>
     <Configurations>Debug;Release</Configurations>
     <PackageIconUrl>http://rhythmsforliving.com/wp-content/uploads/2014/11/brain-256.png</PackageIconUrl>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
     <PackageReleaseNotes>
-		Hqub.MusicBrainz version 3 removes the obsolete static API. Use MusicBrainzClient instead.
+		Hqub.MusicBrainz version 3 breaking changes:
+
+		* Removes the obsolete static API: fix by using the MusicBrainzClient class.
+		* Removes the ".API" suffix from assembly and namespaces: fix by removing the ".API" suffix in your using statements.
 	</PackageReleaseNotes>
   </PropertyGroup>
 

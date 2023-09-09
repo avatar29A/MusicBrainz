@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Hqub.MusicBrainz.API.Resources {
+namespace Hqub.MusicBrainz.Resources {
     using System;
     using System.Reflection;
 
@@ -40,7 +40,7 @@ namespace Hqub.MusicBrainz.API.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Hqub.MusicBrainz.API.Resources.Constants", typeof(Constants).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Hqub.MusicBrainz.Resources.Constants", typeof(Constants).GetTypeInfo().Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

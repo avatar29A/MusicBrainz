@@ -1,5 +1,5 @@
 ﻿
-namespace Hqub.MusicBrainz.API
+namespace Hqub.MusicBrainz
 {
     using System;
     using System.Linq;
