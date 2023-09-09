@@ -1,0 +1,28 @@
+name: dotnet package
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dotnet-version: [ '6.0.x' ]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+      - name: Install dependencies
+        run: dotnet restore ./src/Hqub.MusicBrainz.API.sln
+      - name: Build
+        run: dotnet build ./src/Hqub.MusicBrainz.API.sln --configuration Release
+      - name: Test
+        run: dotnet test ./src/Hqub.MusicBrainz.API.Tests/Hqub.MusicBrainz.API.Tests.csproj --verbosity normal
