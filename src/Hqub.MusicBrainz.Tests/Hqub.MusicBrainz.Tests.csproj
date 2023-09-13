@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+
+    <Configurations>Debug;Release</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Data\artist-get.json" />
+    <None Remove="Data\artist-search.json" />
+    <None Remove="Data\recording-get.json" />
+    <None Remove="Data\recording-search.json" />
+    <None Remove="Data\release-get.json" />
+    <None Remove="Data\release-search.json" />
+    <None Remove="Data\releasegroup-get.json" />
+    <None Remove="Data\releasegroup-search.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Data\artist-get.json" />
+    <EmbeddedResource Include="Data\artist-search.json" />
+    <EmbeddedResource Include="Data\recording-get.json" />
+    <EmbeddedResource Include="Data\recording-search.json" />
+    <EmbeddedResource Include="Data\release-get.json" />
+    <EmbeddedResource Include="Data\release-search.json" />
+    <EmbeddedResource Include="Data\releasegroup-get.json" />
+    <EmbeddedResource Include="Data\releasegroup-search.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="nunit" Version="3.13.3" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Hqub.MusicBrainz\Hqub.MusicBrainz.csproj" />
+  </ItemGroup>
+
+</Project>
