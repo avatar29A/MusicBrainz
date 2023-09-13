@@ -23,6 +23,6 @@ Take a look at the [wiki](https://github.com/avatar29A/MusicBrainz/wiki) or the 
 
 ## Breaking changes in v3
 
-Version 3 removes all code that was marked obsolete in previous versions, specifically the static API and configuration. You should now use the [MusicBrainzClient](https://github.com/avatar29A/MusicBrainz/blob/master/Hqub.MusicBrainz/Hqub.MusicBrainz.API/MusicBrainzClient.cs) class instead. Take a look at the wiki or the examples!
+Version 3 removes all code that was marked obsolete in previous versions, specifically the static API and configuration. You should now use the [MusicBrainzClient](https://github.com/avatar29A/MusicBrainz/blob/master/src/Hqub.MusicBrainz/MusicBrainzClient.cs) class instead. Take a look at the wiki or the examples!
 
 Additionally, the `.API` suffix was removed from the assembly and all namespaces. Fix the namespace change by removing the `.API` suffix in your using statements, for example `using Hqub.MusicBrainz.API` now becomes `using Hqub.MusicBrainz`. The name change of the assembly should be automatically picked up if you are using Nuget to manage package dependencies. Otherwise, you will have to manually fix the reference in your project files.
