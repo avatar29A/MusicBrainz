@@ -12,25 +12,25 @@ namespace Hqub.MusicBrainz.Tests
 
     public class RecordingTests
     {
-        Recording recording;
+        private readonly Recording recording;
 
         public RecordingTests()
         {
-            this.recording = TestHelper.GetJson<Recording>("recording-get.json");
+            recording = TestHelper.GetJson<Recording>("recording-get.json");
         }
 
         [Test]
         public void TestRecordingElements()
         {
-            Assert.IsNotNull(recording);
+            Assert.That(recording, Is.Not.Null);
 
-            Assert.AreEqual("9408b8ce-9b95-4fb0-ac70-595d054a15c6", recording.Id);
-            Assert.AreEqual("Alone Again Or", recording.Title);
-            Assert.AreEqual(204333, recording.Length);
+            Assert.That(recording.Id, Is.EqualTo("9408b8ce-9b95-4fb0-ac70-595d054a15c6"));
+            Assert.That(recording.Title, Is.EqualTo("Alone Again Or"));
+            Assert.That(recording.Length, Is.EqualTo(204333));
 
-            Assert.IsNotNull(recording.Credits);
-            Assert.IsNotNull(recording.Releases);
-            Assert.IsNotNull(recording.Tags);
+            Assert.That(recording.Credits, Is.Not.Null);
+            Assert.That(recording.Releases, Is.Not.Null);
+            Assert.That(recording.Tags, Is.Not.Null);
         }
 
         [Test]
@@ -38,13 +38,13 @@ namespace Hqub.MusicBrainz.Tests
         {
             var credits = recording.Credits;
 
-            Assert.AreEqual(1, credits.Count);
+            Assert.That(credits.Count, Is.EqualTo(1));
 
             var artist = credits[0].Artist;
 
-            Assert.IsNotNull(artist);
-            Assert.AreEqual("5e372a49-5672-4fb8-ba14-18c90780c4f9", artist.Id);
-            Assert.AreEqual("Calexico", artist.Name);
+            Assert.That(artist, Is.Not.Null);
+            Assert.That(artist.Id, Is.EqualTo("5e372a49-5672-4fb8-ba14-18c90780c4f9"));
+            Assert.That(artist.Name, Is.EqualTo("Calexico"));
         }
 
         [Test]
@@ -52,13 +52,13 @@ namespace Hqub.MusicBrainz.Tests
         {
             var releases = recording.Releases;
 
-            Assert.AreEqual(9, releases.Count);
+            Assert.That(releases.Count, Is.EqualTo(9));
 
             var release = releases[4];
 
-            Assert.IsNotNull(release);
-            Assert.AreEqual("8edf887c-f8ee-4663-af02-0a5117acc808", release.Id);
-            Assert.AreEqual("Convict Pool", release.Title);
+            Assert.That(release, Is.Not.Null);
+            Assert.That(release.Id, Is.EqualTo("8edf887c-f8ee-4663-af02-0a5117acc808"));
+            Assert.That(release.Title, Is.EqualTo("Convict Pool"));
         }
 
         [Test]
@@ -66,13 +66,13 @@ namespace Hqub.MusicBrainz.Tests
         {
             var tags = recording.Tags;
 
-            Assert.GreaterOrEqual(tags.Count, 5);
+            Assert.That(tags.Count, Is.GreaterThanOrEqualTo(5));
 
             var tag = tags.OrderByDescending(i => i.Count).First();
 
-            Assert.IsNotNull(tag);
-            Assert.GreaterOrEqual(tag.Count, 1);
-            Assert.AreEqual("alternative", tag.Name);
+            Assert.That(tag, Is.Not.Null);
+            Assert.That(tag.Count, Is.GreaterThanOrEqualTo(1));
+            Assert.That(tag.Name, Is.EqualTo("alternative"));
         }
 
         [Test]
@@ -80,13 +80,13 @@ namespace Hqub.MusicBrainz.Tests
         {
             var genres = recording.Genres;
 
-            Assert.IsNotNull(genres);
-            Assert.GreaterOrEqual(genres.Count, 5);
+            Assert.That(genres, Is.Not.Null);
+            Assert.That(genres.Count, Is.GreaterThanOrEqualTo(5));
 
             var genre = genres.First();
 
-            Assert.GreaterOrEqual(genre.Count, 1);
-            Assert.AreEqual("alternative country", genre.Name);
+            Assert.That(genre.Count, Is.GreaterThanOrEqualTo(1));
+            Assert.That(genre.Name, Is.EqualTo("alternative country"));
         }
 
         [Test]
@@ -94,10 +94,10 @@ namespace Hqub.MusicBrainz.Tests
         {
             var rating = recording.Rating;
 
-            Assert.IsNotNull(rating);
+            Assert.That(rating, Is.Not.Null);
 
-            Assert.GreaterOrEqual(rating.Value, 1);
-            Assert.GreaterOrEqual(rating.VotesCount, 1);
+            Assert.That(rating.Value, Is.GreaterThanOrEqualTo(1));
+            Assert.That(rating.VotesCount, Is.GreaterThanOrEqualTo(1));
         }
 
         [Test]
@@ -105,7 +105,7 @@ namespace Hqub.MusicBrainz.Tests
         {
             var list = recording.Relations;
 
-            Assert.IsNotNull(list);
+            Assert.That(list, Is.Not.Null);
         }
     }
 }

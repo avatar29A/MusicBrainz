@@ -11,18 +11,18 @@ namespace Hqub.MusicBrainz.Tests
 
     public class ArtistListTests
     {
-        ArtistList data;
+        private readonly ArtistList data;
 
         public ArtistListTests()
         {
-            this.data = TestHelper.GetJson<ArtistList>("artist-search.json");
+            data = TestHelper.GetJson<ArtistList>("artist-search.json");
         }
 
         [Test]
         public void TestArtistListQueryCount()
         {
-            Assert.AreEqual(0, data.Offset);
-            Assert.GreaterOrEqual(data.Count, 1000);
+            Assert.That(data.Offset, Is.EqualTo(0));
+            Assert.That(data.Count, Is.GreaterThanOrEqualTo(1000));
         }
 
         [Test]
@@ -30,7 +30,7 @@ namespace Hqub.MusicBrainz.Tests
         {
             var artists = data.Items;
 
-            Assert.AreEqual(10, artists.Count);
+            Assert.That(artists.Count, Is.EqualTo(10));
         }
 
         [Test]
@@ -38,18 +38,18 @@ namespace Hqub.MusicBrainz.Tests
         {
             var artist = data.Items[0];
 
-            Assert.AreEqual("72c536dc-7137-4477-a521-567eeb840fa8", artist.Id);
-            Assert.AreEqual("Person", artist.Type);
-            Assert.AreEqual(100, artist.Score);
+            Assert.That(artist.Id, Is.EqualTo("72c536dc-7137-4477-a521-567eeb840fa8"));
+            Assert.That(artist.Type, Is.EqualTo("Person"));
+            Assert.That(artist.Score, Is.EqualTo(100));
 
-            Assert.AreEqual("Bob Dylan", artist.Name);
-            Assert.AreEqual("Dylan, Bob", artist.SortName);
-            Assert.AreEqual("male", artist.Gender);
-            Assert.AreEqual("US", artist.Country);
+            Assert.That(artist.Name, Is.EqualTo("Bob Dylan"));
+            Assert.That(artist.SortName, Is.EqualTo("Dylan, Bob"));
+            Assert.That(artist.Gender, Is.EqualTo("male"));
+            Assert.That(artist.Country, Is.EqualTo("US"));
 
-            Assert.IsNotNull(artist.Area);
-            Assert.IsNotNull(artist.LifeSpan);
-            Assert.IsNotNull(artist.Tags);
+            Assert.That(artist.Area, Is.Not.Null);
+            Assert.That(artist.LifeSpan, Is.Not.Null);
+            Assert.That(artist.Tags, Is.Not.Null);
         }
     }
 }
