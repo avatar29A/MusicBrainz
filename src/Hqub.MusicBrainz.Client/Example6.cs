@@ -60,13 +60,13 @@ namespace Hqub.MusicBrainz.Client
 
             for (; i < pages && i < MAX_PAGES; i++)
             {
+                // Try to avoid rate limit ...
+                await Task.Delay(1000);
+
                 // Advance browse offset and fetch results.
                 groups = await request.Offset(i * limit).GetAsync();
 
                 DisplayReleases(groups, i + 1, pages);
-
-                // Try to avoid rate limit ...
-                await Task.Delay(1000);
             }
 
             if (i == MAX_PAGES)

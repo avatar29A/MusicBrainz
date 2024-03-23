@@ -1,14 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net6.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageId>MusicBrainzAPI</PackageId>
     <Description>Implementation of the MuzicBrainz API v2.</Description>
     <Product>Hqub.MusicBrainz</Product>
     <Company>h-qub.ru</Company>
-    <Copyright>Copyright h-qub.ru © 2014-2023</Copyright>
+    <Copyright>Copyright h-qub.ru © 2014-2024</Copyright>
     <Authors>Boris Glebov, Christian Woltering</Authors>
     <PackageProjectUrl>https://github.com/avatar29A/MusicBrainz</PackageProjectUrl>
     <RepositoryUrl>https://github.com/avatar29A/MusicBrainz</RepositoryUrl>
