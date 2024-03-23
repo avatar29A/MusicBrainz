@@ -37,12 +37,12 @@ namespace Hqub.MusicBrainz.Tests
         [Test]
         public void TestReleaseGroupListElements()
         {
-            var group = data.Items.Where(g => g.Id == "b5cbeb61-6e9c-38a8-9cb7-caf456782361").FirstOrDefault();
+            var group = data.Items.Where(g => g.Id == "699bebfe-b8f8-3e76-bf4d-0597910cd14d").FirstOrDefault();
 
             Assert.That(group, Is.Not.Null);
             Assert.That(group.Score, Is.EqualTo(100));
 
-            Assert.That(group.Title, Is.EqualTo("Biograph"));
+            Assert.That(group.Title, Is.EqualTo("Bob Dylan’s Greatest Hits, Vol. II"));
             Assert.That(group.PrimaryType, Is.EqualTo("Album"));
 
             Assert.That(group.SecondaryTypes, Is.Not.Null);

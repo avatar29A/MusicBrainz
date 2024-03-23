@@ -121,7 +121,7 @@ namespace Hqub.MusicBrainz.Tests
             var genres = artist.Genres;
 
             Assert.That(genres, Is.Not.Null);
-            Assert.That(genres.Count, Is.EqualTo(11));
+            Assert.That(genres.Count, Is.EqualTo(10));
 
             var genre = genres[0];
 

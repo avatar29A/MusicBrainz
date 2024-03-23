@@ -26,7 +26,7 @@ namespace Hqub.MusicBrainz.Tests
 
             Assert.That(recording.Id, Is.EqualTo("9408b8ce-9b95-4fb0-ac70-595d054a15c6"));
             Assert.That(recording.Title, Is.EqualTo("Alone Again Or"));
-            Assert.That(recording.Length, Is.EqualTo(204333));
+            Assert.That(recording.Length, Is.EqualTo(204480));
 
             Assert.That(recording.Credits, Is.Not.Null);
             Assert.That(recording.Releases, Is.Not.Null);
@@ -52,9 +52,9 @@ namespace Hqub.MusicBrainz.Tests
         {
             var releases = recording.Releases;
 
-            Assert.That(releases.Count, Is.EqualTo(9));
+            Assert.That(releases.Count, Is.EqualTo(11));
 
-            var release = releases[4];
+            var release = releases[3];
 
             Assert.That(release, Is.Not.Null);
             Assert.That(release.Id, Is.EqualTo("8edf887c-f8ee-4663-af02-0a5117acc808"));
