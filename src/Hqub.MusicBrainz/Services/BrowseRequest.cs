@@ -1,15 +1,14 @@
 ﻿namespace Hqub.MusicBrainz.Services
 {
     using Hqub.MusicBrainz.Entities.Collections;
-    using System;
     using System.Threading;
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Prepare a browse request to the MusicBrainz webservice.
+    /// Prepare a browse request to the MusicBrainz web service.
     /// </summary>
     /// <typeparam name="T">Any supported MusicBrainz entity.</typeparam>
-    public class BrowseRequest<T>
+    public abstract class BrowseRequest<T>
     {
         private readonly MusicBrainzClient client;
 
@@ -83,7 +82,7 @@
         }
 
         /// <summary>
-        /// Set the type of release or release-group to browse.
+        /// Set the type of the release or release-group to browse.
         /// </summary>
         /// <param name="type">The release type (for example 'album').</param>
         /// <returns></returns>
@@ -97,7 +96,7 @@
         }
 
         /// <summary>
-        /// Set the status of release to browse.
+        /// Set the status of the release to browse.
         /// </summary>
         /// <param name="status">The release status (for example 'official').</param>
         /// <returns></returns>
@@ -123,10 +122,12 @@
         /// <summary>
         /// Initiate the actual request.
         /// </summary>
-        protected virtual Task<T> BrowseAsync(MusicBrainzClient client, CancellationToken ct)
-        {
-            throw new NotImplementedException();
-        }
+        protected abstract Task<T> BrowseAsync(MusicBrainzClient client, CancellationToken ct);
+
+        /// <summary>
+        /// Returns the request path.
+        /// </summary>
+        public abstract override string ToString();
     }
 
     #region Helper classes
@@ -138,6 +139,7 @@
         {
         }
 
+        /// <inheritdoc />
         protected override async Task<ArtistList> BrowseAsync(MusicBrainzClient client, CancellationToken ct)
         {
             string url = builder.CreateBrowseUrl(EntityName, relatedEntity, id, limit, offset, include);
@@ -145,6 +147,12 @@
             var list = await client.GetAsync<ArtistListBrowse>(url, ct);
 
             return new ArtistList() { Items = list.Items, Count = list.Count, Offset = list.Offset };
+        }
+
+        /// <inheritdoc />
+        public override string ToString()
+        {
+            return builder.CreateBrowseUrl(EntityName, relatedEntity, id, limit, offset, include);
         }
     }
 
@@ -155,6 +163,7 @@
         {
         }
 
+        /// <inheritdoc />
         protected override async Task<RecordingList> BrowseAsync(MusicBrainzClient client, CancellationToken ct)
         {
             string url = builder.CreateBrowseUrl(EntityName, relatedEntity, id, limit, offset, include);
@@ -162,6 +171,12 @@
             var list = await client.GetAsync<RecordingListBrowse>(url, ct);
 
             return new RecordingList() { Items = list.Items, Count = list.Count, Offset = list.Offset };
+        }
+
+        /// <inheritdoc />
+        public override string ToString()
+        {
+            return builder.CreateBrowseUrl(EntityName, relatedEntity, id, limit, offset, include);
         }
     }
 
@@ -172,6 +187,7 @@
         {
         }
 
+        /// <inheritdoc />
         protected override async Task<ReleaseGroupList> BrowseAsync(MusicBrainzClient client, CancellationToken ct)
         {
             string url = builder.CreateBrowseUrl(EntityName, relatedEntity, id, type, null, limit, offset, include);
@@ -179,6 +195,12 @@
             var list = await client.GetAsync<ReleaseGroupListBrowse>(url, ct);
 
             return new ReleaseGroupList() { Items = list.Items, Count = list.Count, Offset = list.Offset };
+        }
+
+        /// <inheritdoc />
+        public override string ToString()
+        {
+            return builder.CreateBrowseUrl(EntityName, relatedEntity, id, type, null, limit, offset, include);
         }
     }
 
@@ -189,6 +211,7 @@
         {
         }
 
+        /// <inheritdoc />
         protected override async Task<ReleaseList> BrowseAsync(MusicBrainzClient client, CancellationToken ct)
         {
             string url = builder.CreateBrowseUrl(EntityName, relatedEntity, id, type, status, limit, offset, include);
@@ -196,6 +219,12 @@
             var list = await client.GetAsync<ReleaseListBrowse>(url, ct);
 
             return new ReleaseList() { Items = list.Items, Count = list.Count, Offset = list.Offset };
+        }
+
+        /// <inheritdoc />
+        public override string ToString()
+        {
+            return builder.CreateBrowseUrl(EntityName, relatedEntity, id, type, status, limit, offset, include);
         }
     }
 
