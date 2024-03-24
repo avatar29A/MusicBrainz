@@ -73,7 +73,7 @@ namespace Hqub.MusicBrainz.Client
                 }
 
                 // Fetch results.
-                groups = await request.Offset(i * limit).GetAsync();
+                groups = await request.GetAsync();
 
                 DisplayReleases(groups, i + 1, pages);
             }
