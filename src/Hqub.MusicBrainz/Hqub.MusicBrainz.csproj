@@ -1,21 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net6.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageId>MusicBrainzAPI</PackageId>
     <Description>Implementation of the MuzicBrainz API v2.</Description>
     <Product>Hqub.MusicBrainz</Product>
     <Company>h-qub.ru</Company>
-    <Copyright>Copyright h-qub.ru © 2014-2023</Copyright>
+    <Copyright>Copyright h-qub.ru © 2014-2024</Copyright>
     <Authors>Boris Glebov, Christian Woltering</Authors>
     <PackageProjectUrl>https://github.com/avatar29A/MusicBrainz</PackageProjectUrl>
     <RepositoryUrl>https://github.com/avatar29A/MusicBrainz</RepositoryUrl>
-    <AssemblyVersion>3.0.0.0</AssemblyVersion>
-    <FileVersion>3.0.0.0</FileVersion>
+    <AssemblyVersion>3.1.0.0</AssemblyVersion>
+    <FileVersion>3.1.0.0</FileVersion>
     <PackageTags>music musicbrainz brainz</PackageTags>
-    <Version>3.0.0</Version>
+    <Version>3.1.0</Version>
     <AssemblyName>Hqub.MusicBrainz</AssemblyName>
     <RootNamespace>Hqub.MusicBrainz</RootNamespace>
     <Configurations>Debug;Release</Configurations>
@@ -26,8 +26,15 @@
     <PackageReleaseNotes>
 		Hqub.MusicBrainz version 3 breaking changes:
 
-		* Removes the obsolete static API: fix by using the MusicBrainzClient class.
-		* Removes the ".API" suffix from assembly and namespaces: fix by removing the ".API" suffix in your using statements.
+		* Remove the obsolete static API: fix by using the MusicBrainzClient class.
+		* Remove the ".API" suffix from assembly and namespaces: fix by removing the ".API" suffix in your using statements.
+
+		Version 3.1 changes:
+
+		* Remove net6.0 target and add net8.0
+		* Remove obsolete serialization support from WebServiceException
+		* Improve cache interface (add Contains(request) method)
+		* Improve fluent API requests (add ToString() method returning the URL path of the request)
 	</PackageReleaseNotes>
   </PropertyGroup>
 

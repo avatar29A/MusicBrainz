@@ -12,18 +12,18 @@ namespace Hqub.MusicBrainz.Tests
 
     public class RecordingListTests
     {
-        RecordingList data;
+        private readonly RecordingList data;
 
         public RecordingListTests()
         {
-            this.data = TestHelper.GetJson<RecordingList>("recording-search.json");
+            data = TestHelper.GetJson<RecordingList>("recording-search.json");
         }
 
         [Test]
         public void TestRecordingListQueryCount()
         {
-            Assert.AreEqual(0, data.Offset);
-            Assert.GreaterOrEqual(data.Count, 1);
+            Assert.That(data.Offset, Is.EqualTo(0));
+            Assert.That(data.Count, Is.GreaterThanOrEqualTo(1));
         }
 
         [Test]
@@ -31,7 +31,7 @@ namespace Hqub.MusicBrainz.Tests
         {
             var recordings = data.Items;
 
-            Assert.GreaterOrEqual(recordings.Count, 1);
+            Assert.That(recordings.Count, Is.GreaterThanOrEqualTo(1));
         }
 
         [Test]
@@ -39,15 +39,15 @@ namespace Hqub.MusicBrainz.Tests
         {
             var recording = data.Items.Where(g => g.Id == "89d8f933-7c31-47c6-8f80-4927e93e7896").FirstOrDefault();
 
-            Assert.IsNotNull(recording);
+            Assert.That(recording, Is.Not.Null);
 
-            Assert.AreEqual(100, recording.Score);
+            Assert.That(recording.Score, Is.EqualTo(100));
 
-            Assert.AreEqual("Alone Again Or", recording.Title);
-            Assert.GreaterOrEqual(recording.Length, 1);
+            Assert.That(recording.Title, Is.EqualTo("Alone Again Or"));
+            Assert.That(recording.Length, Is.GreaterThanOrEqualTo(1));
 
-            Assert.IsNotNull(recording.Credits);
-            Assert.IsNotNull(recording.Releases);
+            Assert.That(recording.Credits, Is.Not.Null);
+            Assert.That(recording.Releases, Is.Not.Null);
         }
     }
 }

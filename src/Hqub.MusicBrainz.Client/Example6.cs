@@ -60,19 +60,33 @@ namespace Hqub.MusicBrainz.Client
 
             for (; i < pages && i < MAX_PAGES; i++)
             {
-                // Advance browse offset and fetch results.
-                groups = await request.Offset(i * limit).GetAsync();
+                // Advance browse offset.
+                request.Offset(i * limit);
+
+                // Check if the request is in cache.
+                bool cached = await client.Cache.Contains(request.ToString());
+
+                if (!cached)
+                {
+                    // Try to avoid MusicBrainz rate limit ...
+                    await Task.Delay(1000);
+                }
+
+                // Fetch results.
+                groups = await request.GetAsync();
 
                 DisplayReleases(groups, i + 1, pages);
-
-                // Try to avoid rate limit ...
-                await Task.Delay(1000);
             }
+
+            Console.WriteLine();
 
             if (i == MAX_PAGES)
             {
-                Console.WriteLine();
                 Console.WriteLine("Stopping at page {0} ...", i);
+            }
+            else
+            {
+                Console.WriteLine("Done ...");
             }
         }
 

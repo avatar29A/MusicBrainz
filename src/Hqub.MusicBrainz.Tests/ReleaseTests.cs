@@ -11,25 +11,25 @@ namespace Hqub.MusicBrainz.Tests
 
     public class ReleaseTests
     {
-        Release release;
+        private readonly Release release;
 
         public ReleaseTests()
         {
-            this.release = TestHelper.GetJson<Release>("release-get.json");
+            release = TestHelper.GetJson<Release>("release-get.json");
         }
         
         [Test]
         public void TestReleaseElements()
         {
-            Assert.IsNotNull(release);
+            Assert.That(release, Is.Not.Null);
 
-            Assert.AreEqual("12195c41-6136-4dfd-acf1-9923dadc73e2", release.Id);
-            Assert.AreEqual("Tucson: A Country Rock Opera", release.Title);
-            Assert.AreEqual("Official", release.Status);
-            Assert.AreEqual("normal", release.Quality);
-            Assert.AreEqual("2012-06-11", release.Date);
-            Assert.AreEqual("US", release.Country);
-            Assert.AreEqual("809236126221", release.Barcode);
+            Assert.That(release.Id, Is.EqualTo("12195c41-6136-4dfd-acf1-9923dadc73e2"));
+            Assert.That(release.Title, Is.EqualTo("Tucson: A Country Rock Opera"));
+            Assert.That(release.Status, Is.EqualTo("Official"));
+            Assert.That(release.Quality, Is.EqualTo("normal"));
+            Assert.That(release.Date, Is.EqualTo("2012-06-11"));
+            Assert.That(release.Country, Is.EqualTo("US"));
+            Assert.That(release.Barcode, Is.EqualTo("809236126221"));
         }
 
         [Test]
@@ -37,9 +37,9 @@ namespace Hqub.MusicBrainz.Tests
         {
             var text = release.TextRepresentation;
 
-            Assert.IsNotNull(text);
-            Assert.AreEqual("eng", text.Language);
-            Assert.AreEqual("Latn", text.Script);
+            Assert.That(text, Is.Not.Null);
+            Assert.That(text.Language, Is.EqualTo("eng"));
+            Assert.That(text.Script, Is.EqualTo("Latn"));
         }
 
         [Test]
@@ -47,11 +47,11 @@ namespace Hqub.MusicBrainz.Tests
         {
             var credits = release.Credits;
 
-            Assert.IsNotNull(credits);
-            Assert.AreEqual(1, credits.Count);
+            Assert.That(credits, Is.Not.Null);
+            Assert.That(credits.Count, Is.EqualTo(1));
 
-            Assert.IsNotNull(credits[0].Artist);
-            Assert.AreEqual("249eb550-505e-43ef-ac50-e8c605706ff1", credits[0].Artist.Id);
+            Assert.That(credits[0].Artist, Is.Not.Null);
+            Assert.That(credits[0].Artist.Id, Is.EqualTo("249eb550-505e-43ef-ac50-e8c605706ff1"));
         }
 
         [Test]
@@ -59,14 +59,14 @@ namespace Hqub.MusicBrainz.Tests
         {
             var group = release.ReleaseGroup;
 
-            Assert.IsNotNull(group);
+            Assert.That(group, Is.Not.Null);
 
-            Assert.AreEqual("96daddd3-165b-4fdd-a422-e930ee6b3bc8", group.Id);
+            Assert.That(group.Id, Is.EqualTo("96daddd3-165b-4fdd-a422-e930ee6b3bc8"));
             //Assert.AreEqual("Album", group.Type);
 
-            Assert.AreEqual("Tucson", group.Title);
-            Assert.AreEqual("2012-06-11", group.FirstReleaseDate);
-            Assert.AreEqual("Album", group.PrimaryType);
+            Assert.That(group.Title, Is.EqualTo("Tucson"));
+            Assert.That(group.FirstReleaseDate, Is.EqualTo("2012-06-11"));
+            Assert.That(group.PrimaryType, Is.EqualTo("Album"));
         }
 
         [Test]
@@ -74,12 +74,12 @@ namespace Hqub.MusicBrainz.Tests
         {
             var coverart = release.CoverArtArchive;
 
-            Assert.IsNotNull(coverart);
+            Assert.That(coverart, Is.Not.Null);
 
-            Assert.AreEqual(true, coverart.Artwork);
-            Assert.AreEqual(true, coverart.Front);
-            Assert.AreEqual(false, coverart.Back);
-            Assert.AreEqual(1, coverart.Count);
+            Assert.That(coverart.Artwork, Is.EqualTo(true));
+            Assert.That(coverart.Front, Is.EqualTo(true));
+            Assert.That(coverart.Back, Is.EqualTo(false));
+            Assert.That(coverart.Count, Is.EqualTo(1));
         }
 
         [Test]
@@ -87,15 +87,15 @@ namespace Hqub.MusicBrainz.Tests
         {
             var labels = release.Labels;
 
-            Assert.IsNotNull(labels);
-            Assert.AreEqual(1, labels.Count);
-            Assert.AreEqual("FireCD262", labels[0].CatalogNumber);
+            Assert.That(labels, Is.Not.Null);
+            Assert.That(labels.Count, Is.EqualTo(1));
+            Assert.That(labels[0].CatalogNumber, Is.EqualTo("FireCD262"));
 
             var label = labels[0].Label;
 
-            Assert.AreEqual("659008fb-d1e7-4eca-865c-0d0344a721ed", label.Id);
-            Assert.AreEqual("Fire Records", label.Name);
-            Assert.AreEqual("UK independent label", label.Disambiguation);
+            Assert.That(label.Id, Is.EqualTo("659008fb-d1e7-4eca-865c-0d0344a721ed"));
+            Assert.That(label.Name, Is.EqualTo("Fire Records"));
+            Assert.That(label.Disambiguation, Is.EqualTo("UK independent label"));
         }
 
         [Test]
@@ -103,8 +103,8 @@ namespace Hqub.MusicBrainz.Tests
         {
             var mediums = release.Media;
 
-            Assert.IsNotNull(mediums);
-            Assert.AreEqual(1, mediums.Count);
+            Assert.That(mediums, Is.Not.Null);
+            Assert.That(mediums.Count, Is.EqualTo(1));
         }
 
         [Test]
@@ -112,21 +112,21 @@ namespace Hqub.MusicBrainz.Tests
         {
             var tracks = release.Media[0].Tracks;
 
-            Assert.IsNotNull(tracks);
-            Assert.AreEqual(19, tracks.Count);
+            Assert.That(tracks, Is.Not.Null);
+            Assert.That(tracks.Count, Is.EqualTo(19));
             //Assert.AreEqual(19, tracks.TrackCount);
 
             var track = tracks[0];
 
-            Assert.IsNotNull(track);
-            Assert.AreEqual("7791b499-b680-3653-94df-60f76174137c", track.Id);
-            Assert.AreEqual("1", track.Number);
+            Assert.That(track, Is.Not.Null);
+            Assert.That(track.Id, Is.EqualTo("7791b499-b680-3653-94df-60f76174137c"));
+            Assert.That(track.Number, Is.EqualTo("1"));
 
             var recording = track.Recording;
 
-            Assert.IsNotNull(recording);
-            Assert.AreEqual("848f9f37-1a47-446b-b7f0-e09547738446", recording.Id);
-            Assert.AreEqual(201000, recording.Length);
+            Assert.That(recording, Is.Not.Null);
+            Assert.That(recording.Id, Is.EqualTo("848f9f37-1a47-446b-b7f0-e09547738446"));
+            Assert.That(recording.Length, Is.EqualTo(201000));
         }
 
         [Test]
@@ -134,8 +134,8 @@ namespace Hqub.MusicBrainz.Tests
         {
             var genres = release.Genres;
 
-            Assert.IsNotNull(genres);
-            Assert.AreEqual(0, genres.Count);
+            Assert.That(genres, Is.Not.Null);
+            Assert.That(genres.Count, Is.EqualTo(0));
         }
 
         [Test]
@@ -143,8 +143,8 @@ namespace Hqub.MusicBrainz.Tests
         {
             var list = release.Relations;
 
-            Assert.IsNotNull(list);
-            Assert.AreEqual(1, list.Count);
+            Assert.That(list, Is.Not.Null);
+            Assert.That(list.Count, Is.EqualTo(1));
         }
     }
 }

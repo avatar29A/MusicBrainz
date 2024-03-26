@@ -13,7 +13,7 @@ namespace Hqub.MusicBrainz.Tests
 
             query.Add("arid", "1");
 
-            Assert.AreEqual("arid:1", query.ToString());
+            Assert.That(query.ToString(), Is.EqualTo("arid:1"));
         }
 
         [Test]
@@ -23,7 +23,7 @@ namespace Hqub.MusicBrainz.Tests
 
             query.Add("arid", "1", true);
 
-            Assert.AreEqual("NOT arid:1", query.ToString());
+            Assert.That(query.ToString(), Is.EqualTo("NOT arid:1"));
         }
 
         [Test]
@@ -33,7 +33,7 @@ namespace Hqub.MusicBrainz.Tests
 
             query.Add("artist", "bob dylan");
 
-            Assert.AreEqual("artist:\"bob dylan\"", query.ToString());
+            Assert.That(query.ToString(), Is.EqualTo("artist:\"bob dylan\""));
         }
 
         [Test]
@@ -43,7 +43,7 @@ namespace Hqub.MusicBrainz.Tests
 
             query.Add("artist", "\"rolling stones\"");
 
-            Assert.AreEqual("artist:\"rolling stones\"", query.ToString());
+            Assert.That(query.ToString(), Is.EqualTo("artist:\"rolling stones\""));
         }
 
         [Test]
@@ -53,7 +53,7 @@ namespace Hqub.MusicBrainz.Tests
 
             query.Add("artist", "\"rolling stones\" OR jagger");
 
-            Assert.AreEqual("artist:(\"rolling stones\" OR jagger)", query.ToString());
+            Assert.That(query.ToString(), Is.EqualTo("artist:(\"rolling stones\" OR jagger)"));
         }
 
         [Test]
@@ -63,7 +63,7 @@ namespace Hqub.MusicBrainz.Tests
 
             query.Add("artist", "(\"rolling stones\" OR jagger)");
 
-            Assert.AreEqual("artist:(\"rolling stones\" OR jagger)", query.ToString());
+            Assert.That(query.ToString(), Is.EqualTo("artist:(\"rolling stones\" OR jagger)"));
         }
 
         [Test]
@@ -74,7 +74,7 @@ namespace Hqub.MusicBrainz.Tests
             query.Add("artist", "stones");
             query.Add("tag", "rock");
 
-            Assert.AreEqual("artist:stones AND tag:rock", query.ToString());
+            Assert.That(query.ToString(), Is.EqualTo("artist:stones AND tag:rock"));
         }
 
         [Test]
@@ -85,7 +85,7 @@ namespace Hqub.MusicBrainz.Tests
             query.Add("artist", "stones");
             query.Add("tag", "rock", true);
 
-            Assert.AreEqual("artist:stones AND NOT tag:rock", query.ToString());
+            Assert.That(query.ToString(), Is.EqualTo("artist:stones AND NOT tag:rock"));
         }
 
         [Test]
@@ -96,7 +96,7 @@ namespace Hqub.MusicBrainz.Tests
             query.Add("artist", "rolling stones");
             query.Add("tag", "rock");
 
-            Assert.AreEqual("artist:\"rolling stones\" AND tag:rock", query.ToString());
+            Assert.That(query.ToString(), Is.EqualTo("artist:\"rolling stones\" AND tag:rock"));
         }
 
         [Test]
@@ -107,7 +107,7 @@ namespace Hqub.MusicBrainz.Tests
             query.Add("artist", "\"rolling stones\" OR jagger");
             query.Add("tag", "rock", true);
 
-            Assert.AreEqual("artist:(\"rolling stones\" OR jagger) AND NOT tag:rock", query.ToString());
+            Assert.That(query.ToString(), Is.EqualTo("artist:(\"rolling stones\" OR jagger) AND NOT tag:rock"));
         }
     }
 }

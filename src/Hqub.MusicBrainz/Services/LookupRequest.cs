@@ -5,7 +5,7 @@
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Prepare a lookup request to the MusicBrainz webservice.
+    /// Prepare a lookup request to the MusicBrainz web service.
     /// </summary>
     /// <typeparam name="T">Any supported MusicBrainz entity.</typeparam>
     public class LookupRequest<T>
@@ -53,6 +53,14 @@
             string url = builder.CreateLookupUrl(EntityName, id, include);
 
             return await client.GetAsync<T>(url, ct);
+        }
+
+        /// <summary>
+        /// Returns the request path.
+        /// </summary>
+        public override string ToString()
+        {
+            return builder.CreateLookupUrl(EntityName, id, include);
         }
     }
 }

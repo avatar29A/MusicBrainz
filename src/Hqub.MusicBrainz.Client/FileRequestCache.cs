@@ -38,6 +38,7 @@ namespace Hqub.MusicBrainz.Client
             this.Timeout = TimeSpan.FromHours(24.0);
         }
 
+        /// <inheritdoc />
         public async Task Add(string request, Stream response)
         {
             if (!Directory.Exists(path))
@@ -48,6 +49,23 @@ namespace Hqub.MusicBrainz.Client
             await CacheEntry.Write(path, request, response);
         }
 
+        /// <inheritdoc />
+        public Task<bool> Contains(string request)
+        {
+            return TryGetCachedItem(request, out Stream stream).ContinueWith(task =>
+            {
+                bool exists = task.Result;
+
+                if (task.IsCompleted && exists)
+                {
+                    stream.Dispose();
+                }
+
+                return exists;
+            });
+        }
+
+        /// <inheritdoc />
         public Task<bool> TryGetCachedItem(string request, out Stream stream)
         {
             var item = CacheEntry.Read(path, request);
@@ -61,7 +79,7 @@ namespace Hqub.MusicBrainz.Client
 
             if ((DateTime.Now - item.TimeStamp) > Timeout)
             {
-                item.Stream.Close();
+                item.Stream.Dispose();
 
                 return Task.FromResult(false);
             }

@@ -12,18 +12,18 @@ namespace Hqub.MusicBrainz.Tests
 
     public class ReleaseGroupListTests
     {
-        ReleaseGroupList data;
+        private readonly ReleaseGroupList data;
 
         public ReleaseGroupListTests()
         {
-            this.data = TestHelper.GetJson<ReleaseGroupList>("releasegroup-search.json");
+            data = TestHelper.GetJson<ReleaseGroupList>("releasegroup-search.json");
         }
 
         [Test]
         public void TestReleaseGroupListQueryCount()
         {
-            Assert.AreEqual(0, data.Offset);
-            Assert.GreaterOrEqual(data.Count, 1);
+            Assert.That(data.Offset, Is.EqualTo(0));
+            Assert.That(data.Count, Is.GreaterThanOrEqualTo(1));
         }
 
         [Test]
@@ -31,26 +31,26 @@ namespace Hqub.MusicBrainz.Tests
         {
             var group = data.Items;
 
-            Assert.AreEqual(10, group.Count);
+            Assert.That(group.Count, Is.EqualTo(10));
         }
 
         [Test]
         public void TestReleaseGroupListElements()
         {
-            var group = data.Items.Where(g => g.Id == "b5cbeb61-6e9c-38a8-9cb7-caf456782361").FirstOrDefault();
+            var group = data.Items.Where(g => g.Id == "699bebfe-b8f8-3e76-bf4d-0597910cd14d").FirstOrDefault();
 
-            Assert.IsNotNull(group);
-            Assert.AreEqual(100, group.Score);
+            Assert.That(group, Is.Not.Null);
+            Assert.That(group.Score, Is.EqualTo(100));
 
-            Assert.AreEqual("Biograph", group.Title);
-            Assert.AreEqual("Album", group.PrimaryType);
+            Assert.That(group.Title, Is.EqualTo("Bob Dylan’s Greatest Hits, Vol. II"));
+            Assert.That(group.PrimaryType, Is.EqualTo("Album"));
 
-            Assert.IsNotNull(group.SecondaryTypes);
-            Assert.AreEqual(1, group.SecondaryTypes.Count);
-            Assert.AreEqual("Compilation", group.SecondaryTypes[0]);
+            Assert.That(group.SecondaryTypes, Is.Not.Null);
+            Assert.That(group.SecondaryTypes.Count, Is.EqualTo(1));
+            Assert.That(group.SecondaryTypes[0], Is.EqualTo("Compilation"));
 
-            Assert.IsNotNull(group.Releases);
-            Assert.IsNotNull(group.Credits);
+            Assert.That(group.Releases, Is.Not.Null);
+            Assert.That(group.Credits, Is.Not.Null);
         }
     }
 }

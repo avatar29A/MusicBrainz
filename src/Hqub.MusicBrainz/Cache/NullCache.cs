@@ -29,6 +29,12 @@ namespace Hqub.MusicBrainz.Cache
         }
 
         /// <inheritdoc />
+        public Task<bool> Contains(string request)
+        {
+            return Task.FromResult(false);
+        }
+
+        /// <inheritdoc />
         public Task<bool> TryGetCachedItem(string request, out Stream stream)
         {
             stream = null;
