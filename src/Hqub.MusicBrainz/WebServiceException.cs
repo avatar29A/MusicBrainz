@@ -3,12 +3,10 @@ namespace Hqub.MusicBrainz
 {
     using System;
     using System.Net;
-    using System.Runtime.Serialization;
 
     /// <summary>
-    /// Exception containing error information returned by the MusicBrainz webservice.
+    /// Exception containing error information returned by the MusicBrainz web service.
     /// </summary>
-    [Serializable]
     public sealed class WebServiceException : Exception
     {
         /// <summary>
@@ -55,32 +53,6 @@ namespace Hqub.MusicBrainz
         {
             StatusCode = statusCode;
             Uri = uri;
-        }
-        
-        /// <summary>
-        /// Initializes a new instance of the <see cref="WebServiceException"/> class.
-        /// </summary>
-        private WebServiceException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        {
-            this.StatusCode = (HttpStatusCode)info.GetValue("StatusCode", typeof(HttpStatusCode));
-            this.Uri = info.GetString("Uri");
-        }
-
-        /// <summary>
-        /// Sets the SerializationInfo with information about the exception.
-        /// </summary>
-        public override void GetObjectData(SerializationInfo info, StreamingContext context)
-        {
-            if (info == null)
-            {
-                throw new ArgumentNullException("info");
-            }
-
-            info.AddValue("StatusCode", StatusCode);
-            info.AddValue("Uri", Uri);
-
-            base.GetObjectData(info, context);
         }
     }
 }

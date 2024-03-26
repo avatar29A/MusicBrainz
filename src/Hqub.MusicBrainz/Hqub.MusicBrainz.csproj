@@ -32,6 +32,7 @@
 		Version 3.1 changes:
 
 		* Remove net6.0 target and add net8.0
+		* Remove obsolete serialization support from WebServiceException
 		* Improve cache interface (add Contains(request) method)
 		* Improve fluent API requests (add ToString() method returning the URL path of the request)
 	</PackageReleaseNotes>
