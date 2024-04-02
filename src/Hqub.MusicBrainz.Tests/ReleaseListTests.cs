@@ -11,18 +11,18 @@ namespace Hqub.MusicBrainz.Tests
 
     public class ReleaseListTests
     {
-        ReleaseList data;
+        private readonly ReleaseList data;
 
         public ReleaseListTests()
         {
-            this.data = TestHelper.GetJson<ReleaseList>("release-search.json");
+            data = TestHelper.GetJson<ReleaseList>("release-search.json");
         }
 
         [Test]
         public void TestReleaseListQueryCount()
         {
-            Assert.AreEqual(0, data.Offset);
-            Assert.GreaterOrEqual(data.Count, 1);
+            Assert.That(data.Offset, Is.EqualTo(0));
+            Assert.That(data.Count, Is.GreaterThanOrEqualTo(1));
         }
 
         [Test]
@@ -30,7 +30,7 @@ namespace Hqub.MusicBrainz.Tests
         {
             var releases = data.Items;
 
-            Assert.AreEqual(10, releases.Count);
+            Assert.That(releases.Count, Is.EqualTo(10));
         }
 
         [Test]
@@ -38,19 +38,19 @@ namespace Hqub.MusicBrainz.Tests
         {
             var release = data.Items[3];
 
-            Assert.AreEqual("12195c41-6136-4dfd-acf1-9923dadc73e2", release.Id);
-            Assert.GreaterOrEqual(release.Score, 1);
+            Assert.That(release.Id, Is.EqualTo("12195c41-6136-4dfd-acf1-9923dadc73e2"));
+            Assert.That(release.Score, Is.GreaterThanOrEqualTo(1));
 
-            Assert.AreEqual("Tucson: A Country Rock Opera", release.Title);
-            Assert.AreEqual("Official", release.Status);
-            Assert.AreEqual("2012-06-11", release.Date);
-            Assert.AreEqual("US", release.Country);
-            Assert.AreEqual("809236126221", release.Barcode);
+            Assert.That(release.Title, Is.EqualTo("Tucson: A Country Rock Opera"));
+            Assert.That(release.Status, Is.EqualTo("Official"));
+            Assert.That(release.Date, Is.EqualTo("2012-06-11"));
+            Assert.That(release.Country, Is.EqualTo("US"));
+            Assert.That(release.Barcode, Is.EqualTo("809236126221"));
 
-            Assert.IsNotNull(release.Credits);
-            Assert.IsNotNull(release.ReleaseGroup);
-            Assert.IsNotNull(release.Labels);
-            Assert.IsNotNull(release.Media);
+            Assert.That(release.Credits, Is.Not.Null);
+            Assert.That(release.ReleaseGroup, Is.Not.Null);
+            Assert.That(release.Labels, Is.Not.Null);
+            Assert.That(release.Media, Is.Not.Null);
         }
     }
 }

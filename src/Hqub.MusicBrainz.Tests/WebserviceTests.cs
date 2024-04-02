@@ -8,16 +8,22 @@ namespace Hqub.MusicBrainz.Tests
     [Ignore("Ignore for offline testing.")]
     public class WebserviceTests
     {
-        MusicBrainzClient client = new MusicBrainzClient();
+        private readonly MusicBrainzClient client = new MusicBrainzClient();
+
+        [OneTimeTearDown]
+        public void Dispose()
+        {
+            client.Dispose();
+        }
 
         [Test]
         public async Task TestArtistGetAsync()
         {
             var artist = await client.Artists.GetAsync("c3cceeed-3332-4cf0-8c4c-bbde425147b6");
 
-            Assert.IsNotNull(artist, "Artist not found.");
+            Assert.That(artist, Is.Not.Null, "Artist not found.");
 
-            Assert.AreEqual("scorpions", artist.Name.ToLower(),
+            Assert.That(artist.Name.ToLower(), Is.EqualTo("scorpions"),
                 string.Format("Expected 'Scorpions' instead '{0}'.", artist.Name));
         }
 
@@ -26,7 +32,7 @@ namespace Hqub.MusicBrainz.Tests
         {
             var artists = (await client.Artists.SearchAsync("scorpions")).Items;
 
-            Assert.AreNotEqual(0, artists.Count, "Results is Empty.");
+            Assert.That(artists.Count, Is.Not.EqualTo(0), "Results is Empty.");
         }
 
         [Test]
@@ -34,9 +40,9 @@ namespace Hqub.MusicBrainz.Tests
         {
             var release = await client.Releases.GetAsync("ffad013a-4f64-44dd-bfb3-c6360fbd042d");
 
-            Assert.IsNotNull(release, "Release not found.");
+            Assert.That(release, Is.Not.Null, "Release not found.");
 
-            Assert.AreEqual("comeblack", release.Title.ToLower(),
+            Assert.That(release.Title.ToLower(), Is.EqualTo("comeblack"),
                 string.Format("Album title = {0}, expect Comeblack", release.Title));
         }
 
@@ -45,7 +51,7 @@ namespace Hqub.MusicBrainz.Tests
         {
             var releases = (await client.Releases.SearchAsync("Comeblack")).Items;
 
-            Assert.AreNotEqual(0, releases.Count, "Result is empty");
+            Assert.That(releases.Count, Is.Not.EqualTo(0), "Result is empty");
         }
 
         [Test]
@@ -53,12 +59,12 @@ namespace Hqub.MusicBrainz.Tests
         {
             var artists = (await client.Artists.SearchAsync("The Scorpions")).Items;
 
-            Assert.AreNotEqual(artists.Count, 0);
+            Assert.That(artists.Count, Is.Not.EqualTo(0));
 
             var artist = artists.First();
 
             var releases = (await client.Releases.BrowseAsync("artist", artist.Id, 40)).Items;
-            Assert.AreEqual(releases.Count, 40);
+            Assert.That(releases.Count, Is.EqualTo(40));
         }
 
         [Test]
@@ -66,9 +72,9 @@ namespace Hqub.MusicBrainz.Tests
         {
             var recording = await client.Recordings.GetAsync("fc4d4d9c-58b7-4dba-a608-753ea752ccce");
 
-            Assert.IsNotNull(recording, "Record not found");
+            Assert.That(recording, Is.Not.Null, "Record not found");
 
-            Assert.AreEqual("the wind of change", recording.Title.ToLower(),
+            Assert.That(recording.Title.ToLower(), Is.EqualTo("the wind of change"),
                 string.Format("Expect 'The Wind Of Change' instead {0}", recording.Title));
         }
 
@@ -77,7 +83,7 @@ namespace Hqub.MusicBrainz.Tests
         {
             var recordings = (await client.Recordings.SearchAsync("The Wind of Change")).Items;
 
-            Assert.AreNotEqual(0, recordings.Count, "Result is empty");
+            Assert.That(recordings.Count, Is.Not.EqualTo(0), "Result is empty");
         }
 
         [Test]
@@ -85,12 +91,12 @@ namespace Hqub.MusicBrainz.Tests
         {
             var artists = (await client.Artists.SearchAsync("The Scorpions")).Items;
 
-            Assert.AreNotEqual(artists.Count, 0);
+            Assert.That(artists.Count, Is.Not.EqualTo(0));
 
             var artist = artists.First();
 
             var releases = (await client.Recordings.BrowseAsync("artist", artist.Id, 40)).Items;
-            Assert.AreEqual(releases.Count, 40);
+            Assert.That(releases.Count, Is.EqualTo(40));
         }
     }
 }

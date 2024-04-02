@@ -11,22 +11,22 @@ namespace Hqub.MusicBrainz.Tests
 
     public class ReleaseGroupTests
     {
-        ReleaseGroup group;
+        private readonly ReleaseGroup group;
 
         public ReleaseGroupTests()
         {
-            this.group = TestHelper.GetJson<ReleaseGroup>("releasegroup-get.json");
+            group = TestHelper.GetJson<ReleaseGroup>("releasegroup-get.json");
         }
 
         [Test]
         public void TestReleaseGroupElements()
         {
-            Assert.IsNotNull(group);
+            Assert.That(group, Is.Not.Null);
 
-            Assert.AreEqual("fc325dd3-73ed-36aa-9c77-6b65a958e3cf", group.Id);
-            Assert.AreEqual("Desire", group.Title);
-            Assert.AreEqual("Album", group.PrimaryType);
-            Assert.AreEqual("1976-01-05", group.FirstReleaseDate);
+            Assert.That(group.Id, Is.EqualTo("fc325dd3-73ed-36aa-9c77-6b65a958e3cf"));
+            Assert.That(group.Title, Is.EqualTo("Desire"));
+            Assert.That(group.PrimaryType, Is.EqualTo("Album"));
+            Assert.That(group.FirstReleaseDate, Is.EqualTo("1976-01-05"));
         }
 
         [Test]
@@ -34,13 +34,13 @@ namespace Hqub.MusicBrainz.Tests
         {
             var credits = group.Credits;
 
-            Assert.IsNotNull(credits);
+            Assert.That(credits, Is.Not.Null);
 
             var artist = credits[0].Artist;
 
-            Assert.IsNotNull(artist);
-            Assert.AreEqual("72c536dc-7137-4477-a521-567eeb840fa8", artist.Id);
-            Assert.AreEqual("Bob Dylan", artist.Name);
+            Assert.That(artist, Is.Not.Null);
+            Assert.That(artist.Id, Is.EqualTo("72c536dc-7137-4477-a521-567eeb840fa8"));
+            Assert.That(artist.Name, Is.EqualTo("Bob Dylan"));
         }
 
         [Test]
@@ -48,8 +48,8 @@ namespace Hqub.MusicBrainz.Tests
         {
             var releases = group.Releases;
 
-            Assert.IsNotNull(releases);
-            Assert.IsTrue(releases.Count > 1);
+            Assert.That(releases, Is.Not.Null);
+            Assert.That(releases.Count, Is.GreaterThan(1));
         }
 
         [Test]
@@ -57,10 +57,10 @@ namespace Hqub.MusicBrainz.Tests
         {
             var rating = group.Rating;
 
-            Assert.IsNotNull(rating);
+            Assert.That(rating, Is.Not.Null);
 
-            Assert.GreaterOrEqual(rating.Value, 1);
-            Assert.GreaterOrEqual(rating.VotesCount, 1);
+            Assert.That(rating.Value, Is.GreaterThanOrEqualTo(1));
+            Assert.That(rating.VotesCount, Is.GreaterThanOrEqualTo(1));
         }
 
         [Test]
@@ -68,8 +68,8 @@ namespace Hqub.MusicBrainz.Tests
         {
             var list = group.Relations;
 
-            Assert.IsNotNull(list);
-            Assert.IsTrue(list.Count > 1);
+            Assert.That(list, Is.Not.Null);
+            Assert.That(list.Count, Is.GreaterThan(1));
         }
 
         [Test]
@@ -77,13 +77,13 @@ namespace Hqub.MusicBrainz.Tests
         {
             var genres = group.Genres;
 
-            Assert.IsNotNull(genres);
-            Assert.IsTrue(genres.Count > 1);
+            Assert.That(genres, Is.Not.Null);
+            Assert.That(genres.Count, Is.GreaterThan(1));
 
             var genre = genres[0];
 
-            Assert.IsTrue(genre.Count > 1);
-            Assert.AreEqual("blues rock", genre.Name);
+            Assert.That(genre.Count, Is.GreaterThan(1));
+            Assert.That(genre.Name, Is.EqualTo("blues rock"));
         }
     }
 }
