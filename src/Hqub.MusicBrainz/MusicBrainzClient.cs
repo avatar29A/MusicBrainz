@@ -171,9 +171,15 @@
         {
             var serializer = new DataContractJsonSerializer(typeof(ResponseError));
 
-            var error = (ResponseError)serializer.ReadObject(stream);
-
-            return new WebServiceException(error.Message, status, url);
+            try
+            {
+                var error = (ResponseError)serializer.ReadObject(stream);
+                return new WebServiceException(error.Message, status, url);
+            }
+            catch
+            {
+                return new WebServiceException(status.ToString(), status, url);
+            }
         }
 
         private static HttpClient CreateHttpClient(Uri baseAddress, bool automaticDecompression, IWebProxy proxy)
