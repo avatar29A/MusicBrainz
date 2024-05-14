@@ -123,6 +123,7 @@
         [DataContract]
         class ResponseError
         {
+            /// <summary>The error message.</summary>
             [DataMember(Name = "error")]
             public string Message;
         }

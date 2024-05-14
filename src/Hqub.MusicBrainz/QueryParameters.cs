@@ -27,7 +27,7 @@ namespace Hqub.MusicBrainz
         }
 
         /// <summary>
-        /// Add a field to the query paramaters.
+        /// Add a field to the query parameters.
         /// </summary>
         /// <param name="key">The field key.</param>
         /// <param name="value">The field value.</param>
