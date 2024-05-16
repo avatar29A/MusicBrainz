@@ -24,17 +24,22 @@ namespace Hqub.MusicBrainz.Entities
         public int Count { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether a front crover is available or not.
+        /// Gets or sets a value indicating whether a front cover is available or not.
         /// </summary>
         [DataMember(Name = "front")]
         public bool Front { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether a back crover is available or not.
+        /// Gets or sets a value indicating whether a back cover is available or not.
         /// </summary>
         [DataMember(Name = "back")]
         public bool Back { get; set; }
 
+        /// <summary>
+        /// Gets the cover art uri.
+        /// </summary>
+        /// <param name="releaseId">The MBID of the release.</param>
+        /// <returns></returns>
         public static Uri GetCoverArtUri(string releaseId)
         {
             string url = "https://coverartarchive.org/release/" + releaseId + "/front-250.jpg";

@@ -1,9 +1,4 @@
-# MusicBrainz
-
-[![Build Status](https://img.shields.io/github/actions/workflow/status/avatar29A/MusicBrainz/dotnet.yml?style=flat-square)](https://github.com/avatar29A/MusicBrainz/actions/workflows/dotnet.yml)
-[![Issues](https://img.shields.io/github/issues/avatar29A/MusicBrainz.svg?style=flat-square)](https://github.com/avatar29A/MusicBrainz/issues)
-[![NuGet](https://img.shields.io/nuget/v/MusicBrainzAPI.svg?style=flat-square)](https://www.nuget.org/packages/MusicBrainzAPI)
-[![Gitter](https://img.shields.io/gitter/room/avatar29A/MusicBrainz?color=%2346BC99&style=flat-square)](https://gitter.im/avatar29A/MusicBrainz)
+# Hqub.MusicBrainz
 
 Implementation of the [MusicBrainz](https://musicbrainz.org/) API version 2 for .NET
 

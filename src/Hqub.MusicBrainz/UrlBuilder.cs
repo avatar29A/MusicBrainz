@@ -98,7 +98,7 @@ namespace Hqub.MusicBrainz
         {
             if (string.IsNullOrEmpty(value))
             {
-                return true; // Irgnore, if no value specified.
+                return true; // Ignore, if no value specified.
             }
 
             if (value.IndexOf('|') > 0)
