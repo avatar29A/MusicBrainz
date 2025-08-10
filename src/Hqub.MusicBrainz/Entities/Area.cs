@@ -36,6 +36,12 @@ namespace Hqub.MusicBrainz.Entities
         public string Disambiguation { get; set; }
 
         /// <summary>
+        /// Gets or sets the sort name.
+        /// </summary>
+        [DataMember(Name = "sort-name")]
+        public string SortName { get; set; }
+
+        /// <summary>
         /// Gets or sets the iso-3166-1 codes.
         /// </summary>
         [DataMember(Name = "iso-3166-1-codes")]
