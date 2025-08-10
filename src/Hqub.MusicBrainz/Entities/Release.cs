@@ -147,6 +147,12 @@ namespace Hqub.MusicBrainz.Entities
         [DataMember(Name = "aliases")]
         public List<Alias> Aliases { get; set; }
 
+        /// <summary>
+        /// Gets or sets a list of release events associated with this release.
+        /// </summary>
+        [DataMember(Name = "release-events")]
+        public List<ReleaseEvent> ReleaseEvents { get; set; }
+
         #endregion
     }
 }

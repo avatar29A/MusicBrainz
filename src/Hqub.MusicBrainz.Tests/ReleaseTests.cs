@@ -146,5 +146,29 @@ namespace Hqub.MusicBrainz.Tests
             Assert.That(list, Is.Not.Null);
             Assert.That(list.Count, Is.EqualTo(1));
         }
+
+        [Test]
+        public void TestReleaseEvents()
+        {
+            var events = release.ReleaseEvents;
+
+            Assert.That(events, Is.Not.Null);
+            Assert.That(events.Count, Is.EqualTo(1));
+
+            var releaseEvent = events[0];
+
+            Assert.That(releaseEvent, Is.Not.Null);
+            Assert.That(releaseEvent.Date, Is.EqualTo("2012-06-11"));
+
+            var area = releaseEvent.Area;
+
+            Assert.That(area, Is.Not.Null);
+            Assert.That(area.Id, Is.EqualTo("489ce91b-6658-3307-9877-795b68554c98"));
+            Assert.That(area.Name, Is.EqualTo("United States"));
+            Assert.That(area.SortName, Is.EqualTo("United States"));
+            Assert.That(area.IsoCodes, Is.Not.Null);
+            Assert.That(area.IsoCodes.Count, Is.EqualTo(1));
+            Assert.That(area.IsoCodes[0], Is.EqualTo("US"));
+        }
     }
 }

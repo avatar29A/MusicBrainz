@@ -49,6 +49,19 @@ namespace Hqub.MusicBrainz.Client
             Console.WriteLine("Details for {0} - {1} ({2})", artist.Name, release.Title, release.Date);
             Console.WriteLine();
 
+            // Display release events information if available.
+            if (release.ReleaseEvents != null && release.ReleaseEvents.Count > 0)
+            {
+                Console.WriteLine("Release Events:");
+                foreach (var releaseEvent in release.ReleaseEvents)
+                {
+                    var areaName = releaseEvent.Area?.Name ?? "Unknown Area";
+                    var date = string.IsNullOrEmpty(releaseEvent.Date) ? "Unknown Date" : releaseEvent.Date;
+                    Console.WriteLine("  - {0} ({1})", areaName, date);
+                }
+                Console.WriteLine();
+            }
+
             // Get the medium associated with the release.
             var medium = release.Media.First();
 
