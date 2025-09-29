@@ -10,9 +10,8 @@
 
 namespace Hqub.MusicBrainz.Resources {
     using System;
-    using System.Reflection;
-
-
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -20,7 +19,7 @@ namespace Hqub.MusicBrainz.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Constants {
@@ -40,7 +39,7 @@ namespace Hqub.MusicBrainz.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Hqub.MusicBrainz.Resources.Constants", typeof(Constants).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Hqub.MusicBrainz.Resources.Constants", typeof(Constants).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -62,7 +61,7 @@ namespace Hqub.MusicBrainz.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to -area-beginarea-endarea-arid-artist-artistaccent-alias-begin-comment-country-end-ended-gender-ipi-sortname-tag-type-.
+        ///   Looks up a localized string similar to -alias-primary_alias-area-arid-artist-artistaccent-alias-begin-beginarea-comment-country-end-endarea-ended-gender-ipi-isni-sortname-tag-type-.
         /// </summary>
         internal static string ArtistQueryParams {
             get {
@@ -89,7 +88,16 @@ namespace Hqub.MusicBrainz.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to -arid-artist-artistname-creditname-comment-country-date-dur-format-isrc-number-position-primarytype-puid-qdur-recording-recordingaccent-reid-release-rgid--rid-secondarytype-status-tid-tnum-tracks-tracksrelease-tag-type-video-.
+        ///   Looks up a localized string similar to -alias-area-begin-code-comment-country-end-ended-ipi-isni-label-labelaccent-laid-release_count-sortname-tag-type-.
+        /// </summary>
+        internal static string LabelQueryParams {
+            get {
+                return ResourceManager.GetString("LabelQueryParams", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to -alias-arid-artist-artistname-creditname-comment-country-date-dur-firstreleasedate-format-isrc-number-position-primarytype-qdur-recording-recordingaccent-reid-release-rgid-rid-secondarytype-status-tag-tid-tnum-tracks-tracksrelease-type-video-.
         /// </summary>
         internal static string RecordingQueryParams {
             get {
@@ -98,7 +106,7 @@ namespace Hqub.MusicBrainz.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to -arid-artist-artistname-comment-creditname-primarytype-rgid-releasegroup-releasegroupaccent-releases-release-reid-secondarytype-status-tag-type-.
+        ///   Looks up a localized string similar to -alias-arid-artist-artistname-comment-creditname-firstreleasedate-primarytype-rgid-releasegroup-releasegroupaccent-releases-release-reid-secondarytype-status-tag-type-.
         /// </summary>
         internal static string ReleaseGroupQueryParams {
             get {
@@ -107,7 +115,7 @@ namespace Hqub.MusicBrainz.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to -arid-artist-artistname-asin-barcode-catno-comment-country-creditname-date-discids-discidsmedium-format-laid-label-lang-mediums-primarytype-puid-quality-reid-release-releaseaccent-rgid-script-secondarytype-status-tag-tracks-tracksmedium-type-.
+        ///   Looks up a localized string similar to -alias-arid-artist-artistname-asin-barcode-catno-comment-country-creditname-date-discids-discidsmedium-format-laid-label-lang-mediumid-mediums-packaging-primarytype-quality-reid-release-releaseaccent-rgid-script-secondarytype-status-tag-tracks-tracksmedium-type-.
         /// </summary>
         internal static string ReleaseQueryParams {
             get {

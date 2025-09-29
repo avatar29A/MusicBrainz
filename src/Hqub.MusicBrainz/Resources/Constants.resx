@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ArtistQueryParams" xml:space="preserve">
-    <value>-area-beginarea-endarea-arid-artist-artistaccent-alias-begin-comment-country-end-ended-gender-ipi-sortname-tag-type-</value>
+    <value>-alias-primary_alias-area-arid-artist-artistaccent-alias-begin-beginarea-comment-country-end-endarea-ended-gender-ipi-isni-sortname-tag-type-</value>
   </data>
   <data name="BrowseStatus" xml:space="preserve">
     <value>+official+promotion+bootleg+pseudo-release+</value>
@@ -126,13 +126,16 @@
   <data name="BrowseType" xml:space="preserve">
     <value>+nat+album+single+ep+compilation+soundtrack+spokenword+interview+audiobook+live+remix+other+</value>
   </data>
+  <data name="LabelQueryParams" xml:space="preserve">
+    <value>-alias-area-begin-code-comment-country-end-ended-ipi-isni-label-labelaccent-laid-release_count-sortname-tag-type-</value>
+  </data>
   <data name="RecordingQueryParams" xml:space="preserve">
-    <value>-arid-artist-artistname-creditname-comment-country-date-dur-format-isrc-number-position-primarytype-puid-qdur-recording-recordingaccent-reid-release-rgid--rid-secondarytype-status-tid-tnum-tracks-tracksrelease-tag-type-video-</value>
+    <value>-alias-arid-artist-artistname-creditname-comment-country-date-dur-firstreleasedate-format-isrc-number-position-primarytype-qdur-recording-recordingaccent-reid-release-rgid-rid-secondarytype-status-tag-tid-tnum-tracks-tracksrelease-type-video-</value>
   </data>
   <data name="ReleaseGroupQueryParams" xml:space="preserve">
-    <value>-arid-artist-artistname-comment-creditname-primarytype-rgid-releasegroup-releasegroupaccent-releases-release-reid-secondarytype-status-tag-type-</value>
+    <value>-alias-arid-artist-artistname-comment-creditname-firstreleasedate-primarytype-rgid-releasegroup-releasegroupaccent-releases-release-reid-secondarytype-status-tag-type-</value>
   </data>
   <data name="ReleaseQueryParams" xml:space="preserve">
-    <value>-arid-artist-artistname-asin-barcode-catno-comment-country-creditname-date-discids-discidsmedium-format-laid-label-lang-mediums-primarytype-puid-quality-reid-release-releaseaccent-rgid-script-secondarytype-status-tag-tracks-tracksmedium-type-</value>
+    <value>-alias-arid-artist-artistname-asin-barcode-catno-comment-country-creditname-date-discids-discidsmedium-format-laid-label-lang-mediumid-mediums-packaging-primarytype-quality-reid-release-releaseaccent-rgid-script-secondarytype-status-tag-tracks-tracksmedium-type-</value>
   </data>
 </root>

@@ -14,6 +14,12 @@ namespace Hqub.MusicBrainz.Entities
         #region Properties
 
         /// <summary>
+        /// Gets or sets the score (only available in search results).
+        /// </summary>
+        [DataMember(Name = "score")]
+        public int Score { get; set; }
+
+        /// <summary>
         /// Gets or sets the MusicBrainz id.
         /// </summary>
         [DataMember(Name = "id")]

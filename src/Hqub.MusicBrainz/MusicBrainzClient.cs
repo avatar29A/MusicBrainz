@@ -31,6 +31,11 @@
         public IArtistService Artists { get; }
 
         /// <summary>
+        /// Gets the labels entity service.
+        /// </summary>
+        public ILabelService Labels { get; }
+
+        /// <summary>
         /// Gets the recordings entity service.
         /// </summary>
         public IRecordingService Recordings { get; }
@@ -104,6 +109,7 @@
             var urlBuilder = new UrlBuilder(true);
 
             Artists = new ArtistService(this, urlBuilder);
+            Labels = new LabelService(this, urlBuilder);
             Recordings = new RecordingService(this, urlBuilder);
             Releases = new ReleaseService(this, urlBuilder);
             ReleaseGroups = new ReleaseGroupService(this, urlBuilder);

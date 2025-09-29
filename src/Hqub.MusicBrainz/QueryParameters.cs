@@ -144,6 +144,11 @@ namespace Hqub.MusicBrainz
                 return Resources.Constants.ReleaseGroupQueryParams.IndexOf(key) >= 0;
             }
 
+            if (typeof(T) == typeof(Label))
+            {
+                return Resources.Constants.LabelQueryParams.IndexOf(key) >= 0;
+            }
+
             return false;
         }
 
