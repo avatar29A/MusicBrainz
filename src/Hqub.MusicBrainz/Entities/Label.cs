@@ -53,7 +53,7 @@ namespace Hqub.MusicBrainz.Entities
         /// Gets or sets the label code.
         /// </summary>
         [DataMember(Name = "label-code")]
-        public int LabelCode { get; set; }
+        public string LabelCode { get; set; }
 
         /// <summary>
         /// Gets or sets the life-span.

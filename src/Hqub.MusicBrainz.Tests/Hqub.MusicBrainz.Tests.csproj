@@ -11,6 +11,8 @@
   <ItemGroup>
     <None Remove="Data\artist-get.json" />
     <None Remove="Data\artist-search.json" />
+    <None Remove="Data\label-get.json" />
+    <None Remove="Data\label-search.json" />
     <None Remove="Data\recording-get.json" />
     <None Remove="Data\recording-search.json" />
     <None Remove="Data\release-get.json" />
@@ -22,6 +24,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Data\artist-get.json" />
     <EmbeddedResource Include="Data\artist-search.json" />
+    <EmbeddedResource Include="Data\label-get.json" />
+    <EmbeddedResource Include="Data\label-search.json" />
     <EmbeddedResource Include="Data\recording-get.json" />
     <EmbeddedResource Include="Data\recording-search.json" />
     <EmbeddedResource Include="Data\release-get.json" />
