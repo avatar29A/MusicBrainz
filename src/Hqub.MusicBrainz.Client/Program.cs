@@ -66,6 +66,9 @@
 
             Header("Example 6");
             await Example6.Run(client);
+
+            Header("Example 7");
+            await Example7.Run(client);
         }
 
         private static void Header(string title)
