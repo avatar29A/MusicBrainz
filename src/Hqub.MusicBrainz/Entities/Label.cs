@@ -26,6 +26,42 @@ namespace Hqub.MusicBrainz.Entities
         public string Name { get; set; }
 
         /// <summary>
+        /// Gets or sets the sort name.
+        /// </summary>
+        [DataMember(Name = "sort-name")]
+        public string SortName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the area.
+        /// </summary>
+        [DataMember(Name = "area")]
+        public Area Area { get; set; }
+
+        /// <summary>
+        /// Gets or sets the country.
+        /// </summary>
+        [DataMember(Name = "country")]
+        public string Country { get; set; }
+
+        /// <summary>
+        /// Gets or sets the label code.
+        /// </summary>
+        [DataMember(Name = "label-code")]
+        public int LabelCode { get; set; }
+
+        /// <summary>
+        /// Gets or sets the life-span.
+        /// </summary>
+        [DataMember(Name = "life-span")]
+        public LifeSpan LifeSpan { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type.
+        /// </summary>
+        [DataMember(Name = "type")]
+        public string Type { get; set; }
+
+        /// <summary>
         /// Gets or sets the disambiguation.
         /// </summary>
         [DataMember(Name = "disambiguation")]

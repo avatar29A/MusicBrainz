@@ -14,7 +14,7 @@ namespace Hqub.MusicBrainz
         private const string BrowseTemplate = "{0}?{1}={2}&limit={3}&offset={4}&inc={5}&fmt=json";
         private const string SearchTemplate = "{0}?query={1}&limit={2}&offset={3}&fmt=json";
 
-        bool validate;
+        private readonly bool validate;
 
         public UrlBuilder(bool clientSideValidation)
         {
