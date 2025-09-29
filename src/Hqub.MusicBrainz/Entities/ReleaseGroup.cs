@@ -63,7 +63,7 @@ namespace Hqub.MusicBrainz.Entities
         /// Gets or sets a list of artists associated to this release-group.
         /// </summary>
         /// <example>
-        /// var e = await ReleaseGroup.GetAsync(mbid, "artists");
+        /// var e = await client.ReleaseGroups.GetAsync(mbid, "artists");
         /// </example>
         [DataMember(Name = "artist-credit")]
         public List<NameCredit> Credits { get; set; }
@@ -72,7 +72,7 @@ namespace Hqub.MusicBrainz.Entities
         /// Gets or sets a list of releases associated to this release-group.
         /// </summary>
         /// <example>
-        /// var e = await ReleaseGroup.GetAsync(mbid, "releases");
+        /// var e = await client.ReleaseGroups.GetAsync(mbid, "releases");
         /// </example>
         [DataMember(Name = "releases")]
         public List<Release> Releases { get; set; }
@@ -81,7 +81,7 @@ namespace Hqub.MusicBrainz.Entities
         /// Gets or sets a list of tags associated to this release-group.
         /// </summary>
         /// <example>
-        /// var e = await ReleaseGroup.GetAsync(mbid, "tags");
+        /// var e = await client.ReleaseGroups.GetAsync(mbid, "tags");
         /// </example>
         [DataMember(Name = "tags")]
         public List<Tag> Tags { get; set; }
@@ -90,7 +90,7 @@ namespace Hqub.MusicBrainz.Entities
         /// Gets or sets a list of genres associated to this release-group.
         /// </summary>
         /// <example>
-        /// var e = await ReleaseGroup.GetAsync(mbid, "genres");
+        /// var e = await client.ReleaseGroups.GetAsync(mbid, "genres");
         /// </example>
         [DataMember(Name = "genres")]
         public List<Genre> Genres { get; set; }
@@ -99,7 +99,7 @@ namespace Hqub.MusicBrainz.Entities
         /// Gets or sets a list of relations associated to this release-group.
         /// </summary>
         /// <example>
-        /// var e = await ReleaseGroup.GetAsync(mbid, "url-rels");
+        /// var e = await client.ReleaseGroups.GetAsync(mbid, "url-rels");
         /// </example>
         [DataMember(Name = "relations")]
         public List<Relation> Relations { get; set; }
@@ -108,7 +108,7 @@ namespace Hqub.MusicBrainz.Entities
         /// Gets or sets a list of aliases associated to this release-group.
         /// </summary>
         /// <example>
-        /// var e = await ReleaseGroup.GetAsync(mbid, "aliases");
+        /// var e = await client.ReleaseGroups.GetAsync(mbid, "aliases");
         /// </example>
         [DataMember(Name = "aliases")]
         public List<Alias> Aliases { get; set; }

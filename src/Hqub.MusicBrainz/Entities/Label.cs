@@ -75,7 +75,7 @@ namespace Hqub.MusicBrainz.Entities
         /// Gets or sets a list of aliases associated to this label.
         /// </summary>
         /// <example>
-        /// var e = await Label.GetAsync(mbid, "aliases");
+        /// var e = await client.Labels.GetAsync(mbid, "aliases");
         /// </example>
         [DataMember(Name = "aliases")]
         public List<Alias> Aliases { get; set; }
