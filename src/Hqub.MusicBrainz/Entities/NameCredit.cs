@@ -11,7 +11,7 @@ namespace Hqub.MusicBrainz.Entities
     public class NameCredit
     {
         /// <summary>
-        /// Gets or sets the joinphrase.
+        /// Gets or sets the join-phrase.
         /// </summary>
         [DataMember(Name = "joinphrase")]
         public string JoinPhrase { get; set; }

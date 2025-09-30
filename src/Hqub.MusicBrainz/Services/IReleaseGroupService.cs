@@ -13,7 +13,7 @@
         /// Create a request to lookup a release-group in the MusicBrainz database.
         /// </summary>
         /// <param name="id">The release-group MusicBrainz id.</param>
-        /// <param name="inc">A list of entities to include (subqueries).</param>
+        /// <param name="inc">A list of entities to include (sub-queries).</param>
         /// <returns></returns>
         LookupRequest<ReleaseGroup> Get(string id, params string[] inc);
 
@@ -42,7 +42,7 @@
         /// <param name="id">The id of the related entity.</param>
         /// <param name="limit">The maximum number of release-groups to return (default = 25).</param>
         /// <param name="offset">The offset to the release-groups list (enables paging, default = 0).</param>
-        /// <param name="inc">A list of entities to include (subqueries).</param>
+        /// <param name="inc">A list of entities to include (sub-queries).</param>
         /// <returns></returns>
         BrowseRequest<ReleaseGroupList> Browse(string entity, string id, int limit = 25, int offset = 0, params string[] inc);
 
@@ -50,7 +50,7 @@
         /// Lookup a release-group in the MusicBrainz database.
         /// </summary>
         /// <param name="id">The release-group MusicBrainz id.</param>
-        /// <param name="inc">A list of entities to include (subqueries).</param>
+        /// <param name="inc">A list of entities to include (sub-queries).</param>
         /// <returns></returns>
         Task<ReleaseGroup> GetAsync(string id, params string[] inc);
 
@@ -79,7 +79,7 @@
         /// <param name="id">The id of the related entity.</param>
         /// <param name="limit">The maximum number of release-groups to return (default = 25).</param>
         /// <param name="offset">The offset to the release-groups list (enables paging, default = 0).</param>
-        /// <param name="inc">A list of entities to include (subqueries).</param>
+        /// <param name="inc">A list of entities to include (sub-queries).</param>
         /// <returns></returns>
         Task<ReleaseGroupList> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc);
 
@@ -91,7 +91,7 @@
         /// <param name="type">If releases or release-groups are included in the result, filter by type (for example 'album').</param>
         /// <param name="limit">The maximum number of release-groups to return (default = 25).</param>
         /// <param name="offset">The offset to the release-groups list (enables paging, default = 0).</param>
-        /// <param name="inc">A list of entities to include (subqueries).</param>
+        /// <param name="inc">A list of entities to include (sub-queries).</param>
         /// <returns></returns>
         /// <remarks>
         /// See https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2#Release_Type_and_Status for supported values of type.

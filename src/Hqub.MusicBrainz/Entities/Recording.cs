@@ -52,7 +52,7 @@ namespace Hqub.MusicBrainz.Entities
 
         #endregion
 
-        #region Subqueries
+        #region Sub-queries
 
         /// <summary>
         /// Gets or sets a list of artists associated to this recording.

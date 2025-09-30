@@ -75,7 +75,7 @@ namespace Hqub.MusicBrainz.Entities
 
         #endregion
 
-        #region Subqueries
+        #region Sub-queries
 
         /// <summary>
         /// Gets or sets a list of aliases associated to this label.

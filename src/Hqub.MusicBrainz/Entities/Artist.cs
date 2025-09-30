@@ -94,7 +94,7 @@ namespace Hqub.MusicBrainz.Entities
 
         #endregion
 
-        #region Subqueries
+        #region Sub-queries
 
         /// <summary>
         /// Gets or sets a list of recordings associated to this artist.

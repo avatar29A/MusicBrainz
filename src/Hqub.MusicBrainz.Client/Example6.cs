@@ -53,7 +53,7 @@ namespace Hqub.MusicBrainz.Client
             // Print the first page
             DisplayReleases(groups, 1, pages);
 
-            const int MAX_PAGES = 5;
+            const int MAX_PAGES = 3;
 
             int i = 1;
 

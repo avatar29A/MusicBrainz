@@ -17,7 +17,7 @@
     public sealed class MusicBrainzClient : IDisposable
     {
         /// <summary>
-        /// The default address of the MusicBrainz webservice.
+        /// The default address of the MusicBrainz web service.
         /// </summary>
         public const string ServiceBaseAddress = "https://musicbrainz.org/ws/2/";
 
@@ -75,7 +75,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="MusicBrainzClient"/> class.
         /// </summary>
-        /// <param name="proxy">The <see cref="IWebProxy"/> used to connect to the webservice.</param>
+        /// <param name="proxy">The <see cref="IWebProxy"/> used to connect to the web service.</param>
         public MusicBrainzClient(IWebProxy proxy)
             : this(ServiceBaseAddress, proxy)
         {
@@ -84,7 +84,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="MusicBrainzClient"/> class.
         /// </summary>
-        /// <param name="baseAddress">The base address of the webservice (default = <see cref="ServiceBaseAddress"/>).</param>
+        /// <param name="baseAddress">The base address of the web service (default = <see cref="ServiceBaseAddress"/>).</param>
         public MusicBrainzClient(string baseAddress)
             : this(baseAddress, null)
         {
@@ -93,8 +93,8 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="MusicBrainzClient"/> class.
         /// </summary>
-        /// <param name="baseAddress">The base address of the webservice (default = <see cref="ServiceBaseAddress"/>).</param>
-        /// <param name="proxy">The <see cref="IWebProxy"/> used to connect to the webservice.</param>
+        /// <param name="baseAddress">The base address of the web service (default = <see cref="ServiceBaseAddress"/>).</param>
+        /// <param name="proxy">The <see cref="IWebProxy"/> used to connect to the web service.</param>
         public MusicBrainzClient(string baseAddress, IWebProxy proxy)
             : this(CreateHttpClient(new Uri(baseAddress), true, proxy))
         {
@@ -103,7 +103,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="MusicBrainzClient"/> class.
         /// </summary>
-        /// <param name="httpClient">The <see cref="HttpClient"/> used for request to the webservice.</param>
+        /// <param name="httpClient">The <see cref="HttpClient"/> used for request to the web service.</param>
         public MusicBrainzClient(HttpClient httpClient)
         {
             var urlBuilder = new UrlBuilder(true);
@@ -147,26 +147,25 @@
                     var result = (T)serializer.ReadObject(stream);
 
                     // TODO: if de-serialization of the cache file fails, we shouldn't throw 
-                    //       but delete the file and go on with calling the webservice!
+                    //       but delete the file and go on with calling the web service!
 
                     stream.Close();
 
                     return result;
                 }
 
-                using (var response = await client.GetAsync(url, ct).ConfigureAwait(false))
+                using var response = await client.GetAsync(url, ct).ConfigureAwait(false);
+
+                using var content = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+
+                if (!response.IsSuccessStatusCode)
                 {
-                    stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        throw CreateWebserviceException(response.StatusCode, url, stream);
-                    }
-
-                    await cache.Add(url, stream).ConfigureAwait(false);
-
-                    return (T)serializer.ReadObject(stream);
+                    throw CreateWebserviceException(response.StatusCode, url, content);
                 }
+
+                await cache.Add(url, content).ConfigureAwait(false);
+
+                return (T)serializer.ReadObject(content);
             }
             catch
             {

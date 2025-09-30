@@ -5,7 +5,7 @@ namespace Hqub.MusicBrainz.Entities
     /// <summary>
     /// A release event represents a date on which a release was released in a specific country/region.
     /// </summary>
-    /// <see href="https://musicbrainz.org/doc/Release"/>
+    /// <see href="https://wiki.musicbrainz.org/History:Release_Event"/>
     [DataContract(Name = "release-event")]
     public class ReleaseEvent
     {

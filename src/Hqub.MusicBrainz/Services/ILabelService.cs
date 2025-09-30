@@ -13,7 +13,7 @@
         /// Create a request to lookup an label in the MusicBrainz database.
         /// </summary>
         /// <param name="id">The label MusicBrainz id.</param>
-        /// <param name="inc">A list of entities to include (subqueries).</param>
+        /// <param name="inc">A list of entities to include (sub-queries).</param>
         /// <returns></returns>
         LookupRequest<Label> Get(string id, params string[] inc);
 
@@ -42,7 +42,7 @@
         /// <param name="id">The id of the related entity.</param>
         /// <param name="limit">The maximum number of labels to return (default = 25).</param>
         /// <param name="offset">The offset to the labels list (enables paging, default = 0).</param>
-        /// <param name="inc">A list of entities to include (subqueries).</param>
+        /// <param name="inc">A list of entities to include (sub-queries).</param>
         /// <returns></returns>
         BrowseRequest<LabelList> Browse(string entity, string id, int limit = 25, int offset = 0, params string[] inc);
 
@@ -50,7 +50,7 @@
         /// Lookup an label in the MusicBrainz database.
         /// </summary>
         /// <param name="id">The label MusicBrainz id.</param>
-        /// <param name="inc">A list of entities to include (subqueries).</param>
+        /// <param name="inc">A list of entities to include (sub-queries).</param>
         /// <returns></returns>
         Task<Label> GetAsync(string id, params string[] inc);
 
@@ -79,7 +79,7 @@
         /// <param name="id">The id of the related entity.</param>
         /// <param name="limit">The maximum number of labels to return (default = 25).</param>
         /// <param name="offset">The offset to the labels list (enables paging, default = 0).</param>
-        /// <param name="inc">A list of entities to include (subqueries).</param>
+        /// <param name="inc">A list of entities to include (sub-queries).</param>
         /// <returns></returns>
         Task<LabelList> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc);
     }

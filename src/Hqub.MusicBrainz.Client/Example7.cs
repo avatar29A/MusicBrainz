@@ -65,9 +65,10 @@ namespace Hqub.MusicBrainz.Client
 
             var releases = await client.Releases.BrowseAsync("label", label.Id, limit, 0, "artist-credits");
 
-            foreach (var release in releases.OrderBy(r => r.Credits.FirstOrDefault()?.Name))
+            foreach (var release in releases.OrderBy(r => r.Credits.FirstOrDefault()?.Name + r.Title))
             {
-                Console.WriteLine("     {0} - {1} / {2}", release.Date.ToShortDate(), release.Credits.FirstOrDefault()?.Name, release.Title);
+                Console.WriteLine("     {0} {1} - {2} / {3}", release.Date.ToShortDate(), release.Country ?? "  ",
+                    release.Credits.FirstOrDefault()?.Name, release.Title);
             }
 
             Console.WriteLine();
