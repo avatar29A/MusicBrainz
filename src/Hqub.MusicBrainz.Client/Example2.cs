@@ -8,8 +8,8 @@ namespace Hqub.MusicBrainz.Client
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Setup an advanced search query to find a release using 'Release.SearchAsync'
-    /// and get details including recordings using 'Release.GetAsync'.
+    /// Setup an advanced search query to find a release using <c>client.Releases.SearchAsync()</c>
+    /// and get details including recordings using <c>client.Releases.GetAsync()</c>.
     /// </summary>
     public class Example2
     {
@@ -50,15 +50,17 @@ namespace Hqub.MusicBrainz.Client
             Console.WriteLine();
 
             // Display release events information if available.
-            if (release.ReleaseEvents != null && release.ReleaseEvents.Count > 0)
+            if (release.ReleaseEvents?.Count > 0)
             {
                 Console.WriteLine("Release Events:");
+
                 foreach (var releaseEvent in release.ReleaseEvents)
                 {
                     var areaName = releaseEvent.Area?.Name ?? "Unknown Area";
                     var date = string.IsNullOrEmpty(releaseEvent.Date) ? "Unknown Date" : releaseEvent.Date;
                     Console.WriteLine("  - {0} ({1})", areaName, date);
                 }
+
                 Console.WriteLine();
             }
 

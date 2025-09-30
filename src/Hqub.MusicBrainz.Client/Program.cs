@@ -8,28 +8,11 @@
 
     internal class Program
     {
-        private static void Main(string[] args)
+        private static async Task Main(string[] args)
         {
             try
             {
-                var task = RunExamples();
-
-                task.Wait();
-            }
-            catch (AggregateException e)
-            {
-                foreach (var item in e.Flatten().InnerExceptions)
-                {
-                    if (item.InnerException == null)
-                    {
-                        Console.WriteLine(item.Message);
-                    }
-                    else
-                    {
-                        // Display inner exception.
-                        Console.WriteLine(item.InnerException.Message);
-                    }
-                }
+                await RunExamples();
             }
             catch (Exception e)
             {

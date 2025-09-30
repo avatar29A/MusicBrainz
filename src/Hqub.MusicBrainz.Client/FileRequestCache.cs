@@ -241,9 +241,7 @@ namespace Hqub.MusicBrainz.Client
             /// <returns>MD5 hash.</returns>
             private static string GetHash(byte[] bytes, int size)
             {
-                var md5 = MD5.Create();
-
-                bytes = md5.ComputeHash(bytes, 0, size);
+                bytes = MD5.HashData(bytes.AsSpan(0, size));
 
                 var buffer = new StringBuilder();
 

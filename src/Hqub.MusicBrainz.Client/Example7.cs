@@ -7,8 +7,8 @@ namespace Hqub.MusicBrainz.Client
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Search for a label using 'Label.SearchAsync' and lookup label details
-    /// like releases and related urls using 'Label.GetAsync'.
+    /// Search for a label using <c>client.Labels.SearchAsync()</c> and lookup label details
+    /// like releases and related urls using <c>clients.Label.GetAsync()</c>.
     /// </summary>
     public class Example7
     {
@@ -28,13 +28,6 @@ namespace Hqub.MusicBrainz.Client
             int count = labels.Items.Count(a => a.Score == 100);
 
             Console.WriteLine("Exact matches for '{0}': {1}", name, count);
-
-            // By default, search results will be ordered by score, so to get the
-            // best match you could do artists.Items.First(). Sometimes this method
-            // won't work (example: search for 'U2').
-            // 
-            // If the search string is the exact name, it might be better to compare
-            // to that string or to order by similarity, like done here:
 
             var label = labels.First();
 

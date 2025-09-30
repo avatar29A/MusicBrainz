@@ -8,8 +8,8 @@ namespace Hqub.MusicBrainz.Client
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Setup an advanced search query to find a release using 'ReleaseGroup.SearchAsync' and get
-    /// details including artists, releases and related urls using 'ReleaseGroup.GetAsync'.
+    /// Setup an advanced search query to find a release using <c>client.ReleaseGroups.SearchAsync()</c> and get
+    /// details including artists, releases and related urls using <c>client.ReleaseGroups.GetAsync()</c>.
     /// </summary>
     public class Example3
     {
@@ -60,10 +60,10 @@ namespace Hqub.MusicBrainz.Client
                 Console.WriteLine("     {0} ({1})", item.Name, item.Count);
             }
 
-            // Check if there are lyrcis available for the album.
+            // Check if there are lyrics available for the album.
             var lyrics = group.Relations.Where(r => r.Type == "lyrics");
 
-            if (lyrics.Count() > 0)
+            if (lyrics.Any())
             {
                 Console.WriteLine();
                 Console.WriteLine("You can find lyrics for '{0} - {1}' at", artist.Name, group.Title);
@@ -75,7 +75,7 @@ namespace Hqub.MusicBrainz.Client
             // Check if there's a wikipedia page for the album.
             var wiki = group.Relations.Where(r => r.Type == "wikipedia");
 
-            if (wiki.Count() > 0)
+            if (wiki.Any())
             {
                 Console.WriteLine();
                 Console.WriteLine("More info for '{0} - {1}' at", artist.Name, group.Title);
