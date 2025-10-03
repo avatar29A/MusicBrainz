@@ -36,12 +36,12 @@ namespace Hqub.MusicBrainz
         {
             if (string.IsNullOrEmpty(key))
             {
-                throw new ArgumentException(string.Format(Resources.Messages.MissingParameter, "key"));
+                throw new ArgumentException(Resources.Messages.EmptySearchKey, nameof(key));
             }
 
             if (!Validate(key))
             {
-                throw new Exception(string.Format(Resources.Messages.InvalidQueryParameter, key));
+                throw new ArgumentException(string.Format(Resources.Messages.UnsupportedSearchField, key), nameof(key));
             }
 
             nodes.Add(new Node(key, value, negate));
