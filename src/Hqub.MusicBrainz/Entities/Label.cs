@@ -87,7 +87,7 @@ namespace Hqub.MusicBrainz.Entities
         public List<Alias> Aliases { get; set; }
 
         /// <summary>
-        /// Gets or sets a list of releases associated to this release-group.
+        /// Gets or sets a list of releases associated to this label.
         /// </summary>
         /// <example>
         /// var e = await client.Labels.GetAsync(mbid, "releases");
@@ -96,7 +96,7 @@ namespace Hqub.MusicBrainz.Entities
         public List<Release> Releases { get; set; }
 
         /// <summary>
-        /// Gets or sets a list of tags associated to this release-group.
+        /// Gets or sets a list of tags associated to this label.
         /// </summary>
         /// <example>
         /// var e = await client.Labels.GetAsync(mbid, "tags");
@@ -105,7 +105,7 @@ namespace Hqub.MusicBrainz.Entities
         public List<Tag> Tags { get; set; }
 
         /// <summary>
-        /// Gets or sets a list of genres associated to this release-group.
+        /// Gets or sets a list of genres associated to this label.
         /// </summary>
         /// <example>
         /// var e = await client.Labels.GetAsync(mbid, "genres");
@@ -114,7 +114,7 @@ namespace Hqub.MusicBrainz.Entities
         public List<Genre> Genres { get; set; }
 
         /// <summary>
-        /// Gets or sets a list of relations associated to this artist.
+        /// Gets or sets a list of relations associated to this label.
         /// </summary>
         /// <example>
         /// var e = await client.Labels.GetAsync(mbid, "url-rels");
