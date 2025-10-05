@@ -4,9 +4,9 @@ Implementation of the [MusicBrainz](https://musicbrainz.org/) API version 2 for 
 
 ## Features
 
-- First class MusicBrainz entities `Artist`, `ReleaseGroup`, `Release` and `Recording` supporting asynchronous `Get` (lookup by MBID), `Search` and `Browse`.
+- First class MusicBrainz entities `Artist`, `Label`, `ReleaseGroup`, `Release` and `Recording` supporting asynchronous `Get` (lookup by MBID), `Search` and `Browse`.
 - Advanced `Search` using Lucene query syntax (see [search documentation](https://musicbrainz.org/doc/MusicBrainz_API/Search) for supported fields).
-- Support for sub-queries in lookup requests (see [MusicBrainz wiki](https://wiki.musicbrainz.org/User:Nikki/ws/2) for a list of supported `inc` parameters).
+- Support for sub-queries in lookup requests (see MusicBrainz [documentation](https://musicbrainz.org/doc/MusicBrainz_API#inc=_arguments_which_affect_subqueries) and [wiki](https://wiki.musicbrainz.org/User:Nikki/ws/2) for a list of supported `inc` parameters).
 - Limited support for entity relationships.
 
 More information about the MusicBrainz API can be found [here](https://musicbrainz.org/doc/MusicBrainz_API).
