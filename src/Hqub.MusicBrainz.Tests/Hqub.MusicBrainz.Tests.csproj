@@ -11,6 +11,8 @@
   <ItemGroup>
     <None Remove="Data\artist-get.json" />
     <None Remove="Data\artist-search.json" />
+    <None Remove="Data\label-get.json" />
+    <None Remove="Data\label-search.json" />
     <None Remove="Data\recording-get.json" />
     <None Remove="Data\recording-search.json" />
     <None Remove="Data\release-get.json" />
@@ -22,6 +24,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Data\artist-get.json" />
     <EmbeddedResource Include="Data\artist-search.json" />
+    <EmbeddedResource Include="Data\label-get.json" />
+    <EmbeddedResource Include="Data\label-search.json" />
     <EmbeddedResource Include="Data\recording-get.json" />
     <EmbeddedResource Include="Data\recording-search.json" />
     <EmbeddedResource Include="Data\release-get.json" />
@@ -31,9 +35,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NUnit" Version="4.1.0" />
-    <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
+    <PackageReference Include="NUnit" Version="4.4.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="5.1.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
   </ItemGroup>
 
   <ItemGroup>

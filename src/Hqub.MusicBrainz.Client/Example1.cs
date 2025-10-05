@@ -7,8 +7,8 @@ namespace Hqub.MusicBrainz.Client
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Search for an artist using 'Artist.SearchAsync' and lookup artist details
-    /// like band-members and related urls using 'Artist.GetAsync'.
+    /// Search for an artist using <c>client.Artists.SearchAsync()</c> and lookup artist details
+    /// like band-members and related urls using <c>client.Artists.GetAsync()</c>.
     /// </summary>
     public class Example1
     {
@@ -57,7 +57,7 @@ namespace Hqub.MusicBrainz.Client
             // Lyric are represented as artist-url relationships.
             var lyrics = artist.Relations.Where(r => r.TargetType == "url" && r.Type == "lyrics");
 
-            if (lyrics.Count() > 0)
+            if (lyrics.Any())
             {
                 Console.WriteLine();
                 Console.WriteLine("You can find lyrics for '{0}' at", artist.Name);

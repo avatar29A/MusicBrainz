@@ -6,7 +6,7 @@ namespace Hqub.MusicBrainz
     using System.Net;
 
     /// <summary>
-    /// Helper class to build MusicBrainz webservice urls.
+    /// Helper class to build MusicBrainz web service urls.
     /// </summary>
     internal class UrlBuilder
     {
@@ -14,7 +14,7 @@ namespace Hqub.MusicBrainz
         private const string BrowseTemplate = "{0}?{1}={2}&limit={3}&offset={4}&inc={5}&fmt=json";
         private const string SearchTemplate = "{0}?query={1}&limit={2}&offset={3}&fmt=json";
 
-        bool validate;
+        private readonly bool validate;
 
         public UrlBuilder(bool clientSideValidation)
         {
@@ -22,7 +22,7 @@ namespace Hqub.MusicBrainz
         }
 
         /// <summary>
-        /// Creates a webservice lookup template.
+        /// Creates a web service lookup template.
         /// </summary>
         public string CreateLookupUrl(string entity, string mbid, params string[] inc)
         {
@@ -30,7 +30,7 @@ namespace Hqub.MusicBrainz
         }
 
         /// <summary>
-        /// Creates a webservice lookup template.
+        /// Creates a web service lookup template.
         /// </summary>
         private string CreateLookupUrl(string entity, string mbid, string inc)
         {
@@ -38,7 +38,7 @@ namespace Hqub.MusicBrainz
         }
 
         /// <summary>
-        /// Creates a webservice browse template.
+        /// Creates a web service browse template.
         /// </summary>
         public string CreateBrowseUrl(string entity, string relatedEntity, string mbid, int limit, int offset, params string[] inc)
         {
@@ -46,7 +46,7 @@ namespace Hqub.MusicBrainz
         }
 
         /// <summary>
-        /// Creates a webservice browse template.
+        /// Creates a web service browse template.
         /// </summary>
         public string CreateBrowseUrl(string entity, string relatedEntity, string mbid, string type, string status,
             int limit, int offset, params string[] inc)
@@ -77,7 +77,7 @@ namespace Hqub.MusicBrainz
         }
 
         /// <summary>
-        /// Creates a webservice browse template.
+        /// Creates a web service browse template.
         /// </summary>
         private string CreateBrowseUrl(string entity, string relatedEntity, string mbid, int limit, int offset, string inc)
         {
@@ -85,7 +85,7 @@ namespace Hqub.MusicBrainz
         }
 
         /// <summary>
-        /// Creates a webservice search template.
+        /// Creates a web service search template.
         /// </summary>
         public string CreateSearchUrl(string entity, string query, int limit, int offset)
         {

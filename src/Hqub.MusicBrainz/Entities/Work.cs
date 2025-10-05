@@ -52,13 +52,13 @@ namespace Hqub.MusicBrainz.Entities
 
         #endregion
 
-        #region Subqueries
+        #region Sub-queries
 
         /// <summary>
         /// Gets or sets a list of relations associated to this work.
         /// </summary>
         /// <example>
-        /// var e = await Work.GetAsync(mbid, "url-rels");
+        /// var e = await client.Work.GetAsync(mbid, "url-rels");
         /// </example>
         [DataMember(Name = "relations")]
         public List<Relation> Relations { get; set; }
@@ -67,7 +67,7 @@ namespace Hqub.MusicBrainz.Entities
         /// Gets or sets a list of aliases associated to this work.
         /// </summary>
         /// <example>
-        /// var e = await Work.GetAsync(mbid, "aliases");
+        /// var e = await client.Work.GetAsync(mbid, "aliases");
         /// </example>
         [DataMember(Name = "aliases")]
         public List<Alias> Aliases { get; set; }

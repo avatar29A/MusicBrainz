@@ -8,9 +8,9 @@ namespace Hqub.MusicBrainz.Client
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Setup an advanced search query to find a recording using 'Recording.SearchAsync'
-    /// and get details including related work using 'Recording.GetAsync'. Then get info
-    /// for the related work (like lyrics) using 'Work.GetAsync'.
+    /// Setup an advanced search query to find a recording using <c>client.Recordings.SearchAsync()</c>
+    /// and get details including related work using <c>client.Recordings.GetAsync()</c>. Then get info
+    /// for the related work (like lyrics) using <c>client.Work.GetAsync()</c>.
     /// </summary>
     class Example4
     {
@@ -61,10 +61,10 @@ namespace Hqub.MusicBrainz.Client
             // Get detailed information of the work, including related urls.
             work = await client.Work.GetAsync(work.Id, "url-rels");
 
-            // Check if there are lyrcis available for the recording.
+            // Check if there are lyrics available for the recording.
             var lyrics = work.Relations.Where(r => r.Type == "lyrics");
 
-            if (lyrics.Count() > 0)
+            if (lyrics.Any())
             {
                 Console.WriteLine();
                 Console.WriteLine("You can find lyrics for '{0} - {1} ({2})' at", artist, recording.Title, release.Date.ToShortDate());

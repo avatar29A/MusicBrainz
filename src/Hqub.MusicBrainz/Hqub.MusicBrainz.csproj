@@ -2,20 +2,21 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
+    <LangVersion>8.0</LangVersion>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageId>MusicBrainzAPI</PackageId>
     <Description>Implementation of the MusicBrainz API v2.</Description>
     <Product>Hqub.MusicBrainz</Product>
     <Company>h-qub.ru</Company>
-    <Copyright>Copyright h-qub.ru © 2014-2024</Copyright>
+    <Copyright>Copyright h-qub.ru © 2014-2025</Copyright>
     <Authors>Boris Glebov, Christian Woltering</Authors>
     <PackageProjectUrl>https://github.com/avatar29A/MusicBrainz</PackageProjectUrl>
     <RepositoryUrl>https://github.com/avatar29A/MusicBrainz</RepositoryUrl>
-    <AssemblyVersion>3.1.1.0</AssemblyVersion>
-    <FileVersion>3.1.1.0</FileVersion>
+    <AssemblyVersion>3.2.0.0</AssemblyVersion>
+    <FileVersion>3.2.0.0</FileVersion>
     <PackageTags>music musicbrainz brainz</PackageTags>
-    <Version>3.1.1</Version>
+    <Version>3.2.0</Version>
     <AssemblyName>Hqub.MusicBrainz</AssemblyName>
     <RootNamespace>Hqub.MusicBrainz</RootNamespace>
     <Configurations>Debug;Release</Configurations>
@@ -37,11 +38,41 @@
 		* Remove obsolete serialization support from WebServiceException
 		* Improve cache interface (add Contains(request) method)
 		* Improve fluent API requests (add ToString() method returning the URL path of the request)
+
+		Version 3.2 changes:
+		
+		* Add support for label lookup, search and browse
+		* Add release events info to releases
+		* Improve documentation
 	</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="..\..\assets\brain-128.png" Pack="true" PackagePath="\" />
-    <None Include="..\..\assets\readme.md" Pack="true" PackagePath="\"/>
+    <None Include="..\..\assets\readme.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Update="Resources\Constants.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Constants.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Messages.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Constants.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Constants.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Messages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

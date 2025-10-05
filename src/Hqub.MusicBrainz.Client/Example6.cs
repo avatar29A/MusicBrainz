@@ -5,7 +5,6 @@ namespace Hqub.MusicBrainz.Client
     using Hqub.MusicBrainz.Entities;
     using Hqub.MusicBrainz.Entities.Collections;
     using System;
-    using System.Linq;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -54,7 +53,7 @@ namespace Hqub.MusicBrainz.Client
             // Print the first page
             DisplayReleases(groups, 1, pages);
 
-            const int MAX_PAGES = 5;
+            const int MAX_PAGES = 3;
 
             int i = 1;
 
@@ -101,8 +100,6 @@ namespace Hqub.MusicBrainz.Client
 
         private static void DisplayReleases(ReleaseGroupList groups, int i, int pages)
         {
-            var selection = groups.Where(g => IsOfficial(g));
-
             Console.WriteLine();
             Console.WriteLine("Page {0} of {1}", i, pages);
             Console.WriteLine();

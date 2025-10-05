@@ -36,12 +36,12 @@ namespace Hqub.MusicBrainz
         {
             if (string.IsNullOrEmpty(key))
             {
-                throw new ArgumentException(string.Format(Resources.Messages.MissingParameter, "key"));
+                throw new ArgumentException(Resources.Messages.EmptySearchKey, nameof(key));
             }
 
             if (!Validate(key))
             {
-                throw new Exception(string.Format(Resources.Messages.InvalidQueryParameter, key));
+                throw new ArgumentException(string.Format(Resources.Messages.UnsupportedSearchField, key), nameof(key));
             }
 
             nodes.Add(new Node(key, value, negate));
@@ -120,28 +120,33 @@ namespace Hqub.MusicBrainz
             return nodes.GetEnumerator();
         }
 
-        private bool Validate(string key)
+        private static bool Validate(string key)
         {
             key = "-" + key + "-";
 
             if (typeof(T) == typeof(Artist))
             {
-                return Resources.Constants.ArtistQueryParams.IndexOf(key) >= 0;
+                return Resources.Constants.ArtistQueryParams.Contains(key);
             }
 
             if (typeof(T) == typeof(Recording))
             {
-                return Resources.Constants.RecordingQueryParams.IndexOf(key) >= 0;
+                return Resources.Constants.RecordingQueryParams.Contains(key);
             }
 
             if (typeof(T) == typeof(Release))
             {
-                return Resources.Constants.ReleaseQueryParams.IndexOf(key) >= 0;
+                return Resources.Constants.ReleaseQueryParams.Contains(key);
             }
 
             if (typeof(T) == typeof(ReleaseGroup))
             {
-                return Resources.Constants.ReleaseGroupQueryParams.IndexOf(key) >= 0;
+                return Resources.Constants.ReleaseGroupQueryParams.Contains(key);
+            }
+
+            if (typeof(T) == typeof(Label))
+            {
+                return Resources.Constants.LabelQueryParams.Contains(key);
             }
 
             return false;
@@ -172,9 +177,9 @@ namespace Hqub.MusicBrainz
             /// </summary>
             public Node(string key, string value, bool negate)
             {
-                this.Key = key;
-                this.Value = value;
-                this.Negate = negate;
+                Key = key;
+                Value = value;
+                Negate = negate;
             }
         }
     }

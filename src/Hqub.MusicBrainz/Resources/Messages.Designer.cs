@@ -10,7 +10,6 @@
 
 namespace Hqub.MusicBrainz.Resources {
     using System;
-    using System.Reflection;
     
     
     /// <summary>
@@ -20,7 +19,7 @@ namespace Hqub.MusicBrainz.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Messages {
@@ -40,7 +39,7 @@ namespace Hqub.MusicBrainz.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Hqub.MusicBrainz.Resources.Messages", typeof(Messages).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Hqub.MusicBrainz.Resources.Messages", typeof(Messages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -62,20 +61,11 @@ namespace Hqub.MusicBrainz.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Query returned an empty result..
+        ///   Looks up a localized string similar to Search field name cannot be empty..
         /// </summary>
-        internal static string EmptyStream {
+        internal static string EmptySearchKey {
             get {
-                return ResourceManager.GetString("EmptyStream", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Key not supported ({0})..
-        /// </summary>
-        internal static string InvalidQueryParameter {
-            get {
-                return ResourceManager.GetString("InvalidQueryParameter", resourceCulture);
+                return ResourceManager.GetString("EmptySearchKey", resourceCulture);
             }
         }
         
@@ -89,7 +79,7 @@ namespace Hqub.MusicBrainz.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Attribute &apos;{0}&apos; must be specified..
+        ///   Looks up a localized string similar to Query parameter &apos;{0}&apos; must be specified..
         /// </summary>
         internal static string MissingParameter {
             get {
@@ -98,7 +88,16 @@ namespace Hqub.MusicBrainz.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Webservice returned invalid response format..
+        ///   Looks up a localized string similar to Search field not supported ({0})..
+        /// </summary>
+        internal static string UnsupportedSearchField {
+            get {
+                return ResourceManager.GetString("UnsupportedSearchField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Web service returned invalid response format..
         /// </summary>
         internal static string WrongResponseFormat {
             get {

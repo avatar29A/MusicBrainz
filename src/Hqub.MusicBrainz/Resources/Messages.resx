@@ -117,19 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="EmptyStream" xml:space="preserve">
-    <value>Query returned an empty result.</value>
+  <data name="EmptySearchKey" xml:space="preserve">
+    <value>Search field name cannot be empty.</value>
   </data>
-  <data name="InvalidQueryParameter" xml:space="preserve">
-    <value>Key not supported ({0}).</value>
+  <data name="UnsupportedSearchField" xml:space="preserve">
+    <value>Search field not supported ({0}).</value>
   </data>
   <data name="InvalidQueryValue" xml:space="preserve">
     <value>Invalid value '{0}' for {1} parameter.</value>
   </data>
   <data name="MissingParameter" xml:space="preserve">
-    <value>Attribute '{0}' must be specified.</value>
+    <value>Query parameter '{0}' must be specified.</value>
   </data>
   <data name="WrongResponseFormat" xml:space="preserve">
-    <value>Webservice returned invalid response format.</value>
+    <value>Web service returned invalid response format.</value>
   </data>
 </root>

@@ -94,13 +94,13 @@ namespace Hqub.MusicBrainz.Entities
 
         #endregion
 
-        #region Subqueries
+        #region Sub-queries
 
         /// <summary>
         /// Gets or sets a list of recordings associated to this artist.
         /// </summary>
         /// <example>
-        /// var e = await Artist.GetAsync(mbid, "recordings");
+        /// var e = await client.Artists.GetAsync(mbid, "recordings");
         /// </example>
         [DataMember(Name = "recordings")]
         public List<Recording> Recordings { get; set; }
@@ -109,7 +109,7 @@ namespace Hqub.MusicBrainz.Entities
         /// Gets or sets a list of release-groups associated to this artist.
         /// </summary>
         /// <example>
-        /// var e = await Artist.GetAsync(mbid, "release-groups");
+        /// var e = await client.Artists.GetAsync(mbid, "release-groups");
         /// </example>
         [DataMember(Name = "release-groups")]
         public List<ReleaseGroup> ReleaseGroups { get; set; }
@@ -118,7 +118,7 @@ namespace Hqub.MusicBrainz.Entities
         /// Gets or sets a list of releases associated to this artist.
         /// </summary>
         /// <example>
-        /// var e = await Artist.GetAsync(mbid, "releases");
+        /// var e = await client.Artists.GetAsync(mbid, "releases");
         /// </example>
         [DataMember(Name = "releases")]
         public List<Release> Releases { get; set; }
@@ -127,7 +127,7 @@ namespace Hqub.MusicBrainz.Entities
         /// Gets or sets a list of works associated to this artist.
         /// </summary>
         /// <example>
-        /// var e = await Artist.GetAsync(mbid, "works");
+        /// var e = await client.Artists.GetAsync(mbid, "works");
         /// </example>
         [DataMember(Name = "works")]
         public List<Work> Works { get; set; }
@@ -136,7 +136,7 @@ namespace Hqub.MusicBrainz.Entities
         /// Gets or sets a list of tags associated to this artist.
         /// </summary>
         /// <example>
-        /// var e = await Artist.GetAsync(mbid, "tags");
+        /// var e = await client.Artists.GetAsync(mbid, "tags");
         /// </example>
         [DataMember(Name = "tags")]
         public List<Tag> Tags { get; set; }
@@ -145,7 +145,7 @@ namespace Hqub.MusicBrainz.Entities
         /// Gets or sets a list of genres associated to this artist.
         /// </summary>
         /// <example>
-        /// var e = await Artist.GetAsync(mbid, "genres");
+        /// var e = await client.Artists.GetAsync(mbid, "genres");
         /// </example>
         [DataMember(Name = "genres")]
         public List<Genre> Genres { get; set; }
@@ -154,7 +154,7 @@ namespace Hqub.MusicBrainz.Entities
         /// Gets or sets a list of relations associated to this artist.
         /// </summary>
         /// <example>
-        /// var e = await Artist.GetAsync(mbid, "url-rels", "artist-rels");
+        /// var e = await client.Artists.GetAsync(mbid, "url-rels", "artist-rels");
         /// </example>
         [DataMember(Name = "relations")]
         public List<Relation> Relations { get; set; }
@@ -163,7 +163,7 @@ namespace Hqub.MusicBrainz.Entities
         /// Gets or sets a list of aliases associated to this artist.
         /// </summary>
         /// <example>
-        /// var e = await Artist.GetAsync(mbid, "aliases");
+        /// var e = await client.Artists.GetAsync(mbid, "aliases");
         /// </example>
         [DataMember(Name = "aliases")]
         public List<Alias> Aliases { get; set; }

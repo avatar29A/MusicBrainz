@@ -156,6 +156,30 @@
         }
     }
 
+    class LabelBrowseRequest : BrowseRequest<LabelList>
+    {
+        public LabelBrowseRequest(MusicBrainzClient client, UrlBuilder builder, string id, string relatedEntity, string entity)
+            : base(client, builder, id, relatedEntity, entity)
+        {
+        }
+
+        /// <inheritdoc />
+        protected override async Task<LabelList> BrowseAsync(MusicBrainzClient client, CancellationToken ct)
+        {
+            string url = builder.CreateBrowseUrl(EntityName, relatedEntity, id, limit, offset, include);
+
+            var list = await client.GetAsync<LabelListBrowse>(url, ct);
+
+            return new LabelList() { Items = list.Items, Count = list.Count, Offset = list.Offset };
+        }
+
+        /// <inheritdoc />
+        public override string ToString()
+        {
+            return builder.CreateBrowseUrl(EntityName, relatedEntity, id, limit, offset, include);
+        }
+    }
+
     class RecordingBrowseRequest : BrowseRequest<RecordingList>
     {
         public RecordingBrowseRequest(MusicBrainzClient client, UrlBuilder builder, string id, string relatedEntity, string entity)

@@ -15,7 +15,7 @@
         private readonly MusicBrainzClient client;
         private readonly UrlBuilder builder;
 
-        private string id;
+        private readonly string id;
         private string[] include;
 
         internal LookupRequest(MusicBrainzClient client, UrlBuilder builder, string id, string entity)
