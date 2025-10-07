@@ -10,7 +10,7 @@ namespace Hqub.MusicBrainz.Tests
     //
     // https://musicbrainz.org/ws/2/release?query=artist:(giant%20sand)%20release:(tucson)&limit=10&fmt=json
 
-    public class ReleaseListTests
+    public class ReleaseSearchTests
     {
         private ReleaseList data;
 

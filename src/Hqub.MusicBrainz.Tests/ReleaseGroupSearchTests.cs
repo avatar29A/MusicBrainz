@@ -11,7 +11,7 @@ namespace Hqub.MusicBrainz.Tests
     //
     // https://musicbrainz.org/ws/2/release-group?query=artist:%28bob%20dylan%29&limit=10&fmt=json
 
-    public class ReleaseGroupListTests
+    public class ReleaseGroupSearchTests
     {
         private ReleaseGroupList data;
 

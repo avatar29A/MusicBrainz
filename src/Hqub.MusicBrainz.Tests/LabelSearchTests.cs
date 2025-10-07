@@ -10,7 +10,7 @@ namespace Hqub.MusicBrainz.Tests
     //
     // http://musicbrainz.org/ws/2/label/?query=%22City%20Slang%22&fmt=json
 
-    public class LabelListTests
+    public class LabelSearchTests
     {
         private LabelList data;
 

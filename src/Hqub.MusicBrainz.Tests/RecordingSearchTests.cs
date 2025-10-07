@@ -11,7 +11,7 @@ namespace Hqub.MusicBrainz.Tests
     //
     // https://musicbrainz.org/ws/2/recording?query=artist:(calexico)%20AND%20recording:(alone%20again%20or)%20AND%20NOT%20secondarytype:(live)&limit=10&fmt=json
 
-    public class RecordingListTests
+    public class RecordingSearchTests
     {
         private RecordingList data;
 

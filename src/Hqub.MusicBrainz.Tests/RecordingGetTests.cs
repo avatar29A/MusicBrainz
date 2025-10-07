@@ -11,7 +11,7 @@ namespace Hqub.MusicBrainz.Tests
     //
     // https://musicbrainz.org/ws/2/recording/9408b8ce-9b95-4fb0-ac70-595d054a15c6/?inc=artists+releases+tags+ratings+url-rels&fmt=json
 
-    public class RecordingTests
+    public class RecordingGetTests
     {
         private Recording recording;
 

@@ -10,7 +10,7 @@ namespace Hqub.MusicBrainz.Tests
     //
     // https://musicbrainz.org/ws/2/release-group/fc325dd3-73ed-36aa-9c77-6b65a958e3cf?inc=artists+releases+ratings+url-rels&fmt=json
 
-    public class ReleaseGroupTests
+    public class ReleaseGroupGetTests
     {
         private ReleaseGroup group;
 

@@ -11,7 +11,7 @@ namespace Hqub.MusicBrainz.Tests
     //
     // https://musicbrainz.org/ws/2/artist/72c536dc-7137-4477-a521-567eeb840fa8/?inc=release-groups+tags+works+ratings+artist-rels+url-rels&fmt=json
 
-    public class ArtistTests
+    public class ArtistGetTests
     {
         Artist artist;
 

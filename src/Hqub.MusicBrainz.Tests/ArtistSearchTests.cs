@@ -10,7 +10,7 @@ namespace Hqub.MusicBrainz.Tests
     //
     // https://musicbrainz.org/ws/2/artist?query=artist:(bob%20dylan)&limit=10&fmt=json
 
-    public class ArtistListTests
+    public class ArtistSearchTests
     {
         private ArtistList data;
 
