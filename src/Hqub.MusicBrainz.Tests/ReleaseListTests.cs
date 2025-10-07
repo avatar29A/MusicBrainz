@@ -3,6 +3,7 @@ namespace Hqub.MusicBrainz.Tests
 {
     using Hqub.MusicBrainz.Entities.Collections;
     using NUnit.Framework;
+    using System.Threading.Tasks;
 
     // Resource: release-search.json
     // Release.Search("artist:(giant sand) release:(tucson)", 10);
@@ -11,11 +12,17 @@ namespace Hqub.MusicBrainz.Tests
 
     public class ReleaseListTests
     {
-        private readonly ReleaseList data;
+        private ReleaseList data;
 
-        public ReleaseListTests()
+        [OneTimeSetUp]
+        public async Task Init()
         {
-            data = TestHelper.GetJson<ReleaseList>("release-search.json");
+            var client = new MusicBrainzClient()
+            {
+                Cache = EmbeddedResourceCache.Instance
+            };
+
+            data = await client.Releases.SearchAsync("artist:(giant sand) release:(tucson)", 10);
         }
 
         [Test]

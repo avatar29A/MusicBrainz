@@ -4,6 +4,7 @@ namespace Hqub.MusicBrainz.Tests
     using Hqub.MusicBrainz.Entities;
     using NUnit.Framework;
     using System.Linq;
+    using System.Threading.Tasks;
 
     // Resource: artist-get.json
     // Artist.Get("12195c41-6136-4dfd-acf1-9923dadc73e2", "release-groups", "tags", "works", "ratings", "artist-rels", "url-rels");
@@ -14,9 +15,17 @@ namespace Hqub.MusicBrainz.Tests
     {
         Artist artist;
 
-        public ArtistTests()
+        [OneTimeSetUp]
+        public async Task Init()
         {
-            this.artist = TestHelper.GetJson<Artist>("artist-get.json");
+            var client = new MusicBrainzClient()
+            {
+                Cache = EmbeddedResourceCache.Instance
+            };
+
+            string[] inc = ["release-groups", "tags", "works", "ratings", "artist-rels", "url-rels"];
+
+            artist = await client.Artists.GetAsync("12195c41-6136-4dfd-acf1-9923dadc73e2", inc);
         }
 
         [Test]

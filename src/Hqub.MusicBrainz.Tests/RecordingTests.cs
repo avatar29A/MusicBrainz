@@ -4,19 +4,28 @@ namespace Hqub.MusicBrainz.Tests
     using Hqub.MusicBrainz.Entities;
     using NUnit.Framework;
     using System.Linq;
+    using System.Threading.Tasks;
 
     // Resource: recording-get.json
-    // Recording.Get("12195c41-6136-4dfd-acf1-9923dadc73e2"", "artists", "releases", "tags", "ratings", "url-rels");
+    // Recording.Get("12195c41-6136-4dfd-acf1-9923dadc73e2", "artists", "releases", "tags", "ratings", "url-rels");
     //
     // https://musicbrainz.org/ws/2/recording/9408b8ce-9b95-4fb0-ac70-595d054a15c6/?inc=artists+releases+tags+ratings+url-rels&fmt=json
 
     public class RecordingTests
     {
-        private readonly Recording recording;
+        private Recording recording;
 
-        public RecordingTests()
+        [OneTimeSetUp]
+        public async Task Init()
         {
-            recording = TestHelper.GetJson<Recording>("recording-get.json");
+            var client = new MusicBrainzClient()
+            {
+                Cache = EmbeddedResourceCache.Instance
+            };
+
+            string[] inc = ["artists", "releases", "tags", "ratings", "url-rels"];
+
+            recording = await client.Recordings.GetAsync("12195c41-6136-4dfd-acf1-9923dadc73e2", inc);
         }
 
         [Test]

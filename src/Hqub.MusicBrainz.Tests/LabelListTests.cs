@@ -3,6 +3,7 @@ namespace Hqub.MusicBrainz.Tests
 {
     using Hqub.MusicBrainz.Entities.Collections;
     using NUnit.Framework;
+    using System.Threading.Tasks;
 
     // Resource: label-search.json
     // Label.Search("City Slang");
@@ -11,11 +12,17 @@ namespace Hqub.MusicBrainz.Tests
 
     public class LabelListTests
     {
-        private readonly LabelList data;
+        private LabelList data;
 
-        public LabelListTests()
+        [OneTimeSetUp]
+        public async Task Init()
         {
-            data = TestHelper.GetJson<LabelList>("label-search.json");
+            var client = new MusicBrainzClient()
+            {
+                Cache = EmbeddedResourceCache.Instance
+            };
+
+            data = await client.Labels.SearchAsync("City Slang", 10);
         }
 
         [Test]

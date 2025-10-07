@@ -3,6 +3,7 @@ namespace Hqub.MusicBrainz.Tests
 {
     using Hqub.MusicBrainz.Entities.Collections;
     using NUnit.Framework;
+    using System.Threading.Tasks;
 
     // Resource: artist-search.json
     // Artist.Search("artist:(bob dylan)", 10);
@@ -11,11 +12,17 @@ namespace Hqub.MusicBrainz.Tests
 
     public class ArtistListTests
     {
-        private readonly ArtistList data;
+        private ArtistList data;
 
-        public ArtistListTests()
+        [OneTimeSetUp]
+        public async Task Init()
         {
-            data = TestHelper.GetJson<ArtistList>("artist-search.json");
+            var client = new MusicBrainzClient()
+            {
+                Cache = EmbeddedResourceCache.Instance
+            };
+
+            data = await client.Artists.SearchAsync("artist:(bob dylan)", 10);
         }
 
         [Test]

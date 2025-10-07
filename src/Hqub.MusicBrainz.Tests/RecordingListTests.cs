@@ -4,6 +4,7 @@ namespace Hqub.MusicBrainz.Tests
     using Hqub.MusicBrainz.Entities.Collections;
     using NUnit.Framework;
     using System.Linq;
+    using System.Threading.Tasks;
 
     // Resource: recording-search.json
     // Recording.Search("artist:(calexico) AND recording:(alone again or) AND NOT secondarytype:(live)", 10);
@@ -12,11 +13,17 @@ namespace Hqub.MusicBrainz.Tests
 
     public class RecordingListTests
     {
-        private readonly RecordingList data;
+        private RecordingList data;
 
-        public RecordingListTests()
+        [OneTimeSetUp]
+        public async Task Init()
         {
-            data = TestHelper.GetJson<RecordingList>("recording-search.json");
+            var client = new MusicBrainzClient()
+            {
+                Cache = EmbeddedResourceCache.Instance
+            };
+
+            data = await client.Recordings.SearchAsync("artist:(calexico) AND recording:(alone again or) AND NOT secondarytype:(live)", 10);
         }
 
         [Test]

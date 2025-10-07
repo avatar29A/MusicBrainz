@@ -3,6 +3,7 @@ namespace Hqub.MusicBrainz.Tests
 {
     using Hqub.MusicBrainz.Entities;
     using NUnit.Framework;
+    using System.Threading.Tasks;
 
     // Resource: releasegroup-get.json
     // ReleaseGroup.Get("fc325dd3-73ed-36aa-9c77-6b65a958e3cf", "artists", "releases", "ratings", "url-rels");
@@ -11,11 +12,19 @@ namespace Hqub.MusicBrainz.Tests
 
     public class ReleaseGroupTests
     {
-        private readonly ReleaseGroup group;
+        private ReleaseGroup group;
 
-        public ReleaseGroupTests()
+        [OneTimeSetUp]
+        public async Task Init()
         {
-            group = TestHelper.GetJson<ReleaseGroup>("releasegroup-get.json");
+            var client = new MusicBrainzClient()
+            {
+                Cache = EmbeddedResourceCache.Instance
+            };
+
+            string[] inc = ["artists", "releases", "ratings", "url-rels"];
+
+            group = await client.ReleaseGroups.GetAsync("fc325dd3-73ed-36aa-9c77-6b65a958e3cf", inc);
         }
 
         [Test]

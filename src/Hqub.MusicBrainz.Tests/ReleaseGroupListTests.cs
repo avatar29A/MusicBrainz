@@ -4,6 +4,7 @@ namespace Hqub.MusicBrainz.Tests
     using Hqub.MusicBrainz.Entities.Collections;
     using NUnit.Framework;
     using System.Linq;
+    using System.Threading.Tasks;
 
     // Resource: releasegroup-search.json
     // ReleaseGroup.Search("artist:(bob dylan)", 10);
@@ -12,11 +13,17 @@ namespace Hqub.MusicBrainz.Tests
 
     public class ReleaseGroupListTests
     {
-        private readonly ReleaseGroupList data;
+        private ReleaseGroupList data;
 
-        public ReleaseGroupListTests()
+        [OneTimeSetUp]
+        public async Task Init()
         {
-            data = TestHelper.GetJson<ReleaseGroupList>("releasegroup-search.json");
+            var client = new MusicBrainzClient()
+            {
+                Cache = EmbeddedResourceCache.Instance
+            };
+
+            data = await client.ReleaseGroups.SearchAsync("artist:(bob dylan)", 10);
         }
 
         [Test]
