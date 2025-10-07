@@ -34,18 +34,28 @@ namespace Hqub.MusicBrainz.Tests
 
         #endregion
 
+        // The following dictionary maps the request url to the test data (see
+        // FetchTestData.cs in Hqub.MusicBrainz.Client project).
+
         private static readonly Dictionary<string, string> Data = new()
         {
-            { "artist?query", "artist-search" },
             { "artist/", "artist-get" },
-            { "label?query", "label-search" },
+            { "artist?query", "artist-search" },
+            { "artist?area", "artist-browse" },
             { "label/", "label-get" },
-            { "recording?query", "recording-search" },
+            { "label?query", "label-search" },
+            { "label?area", "label-browse" },
             { "recording/", "recording-get" },
-            { "release?query", "release-search" },
+            { "recording?query", "recording-search" },
+            { "recording?release", "recording-browse" },
             { "release/", "release-get" },
-            { "release-group?query", "releasegroup-search" },
+            { "release?query", "release-search" },
+            { "release?label", "release-browse" },
             { "release-group/", "releasegroup-get" },
+            { "release-group?query", "releasegroup-search" },
+            { "release-group?artist", "releasegroup-browse" },
+            { "area/", "area-get" },
+            { "work/", "work-get" }
         };
 
         private const string PATH_TEMPLATE = "Hqub.MusicBrainz.Tests.Data.{0}.json";
