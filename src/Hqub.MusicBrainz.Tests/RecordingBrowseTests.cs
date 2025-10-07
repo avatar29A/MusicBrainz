@@ -1,13 +1,11 @@
-﻿
-namespace Hqub.MusicBrainz.Tests
+﻿namespace Hqub.MusicBrainz.Tests
 {
     using Hqub.MusicBrainz.Entities.Collections;
     using NUnit.Framework;
     using System.Threading.Tasks;
 
     // Resource: recording-browse.json
-    //
-    // https://musicbrainz.org/ws/2/recording?release=12195c41-6136-4dfd-acf1-9923dadc73e2&inc=ratings&fmt=json
+    // URL: https://musicbrainz.org/ws/2/recording?release=12195c41-6136-4dfd-acf1-9923dadc73e2&inc=ratings&fmt=json
 
     public class RecordingBrowseTests
     {
@@ -21,7 +19,7 @@ namespace Hqub.MusicBrainz.Tests
                 Cache = EmbeddedResourceCache.Instance
             };
 
-            data = await client.Recordings.BrowseAsync("release", "12195c41-6136-4dfd-acf1-9923dadc73e2");
+            data = await client.Recordings.BrowseAsync("release", "12195c41-6136-4dfd-acf1-9923dadc73e2", inc: ["ratings"]);
         }
 
         [Test]

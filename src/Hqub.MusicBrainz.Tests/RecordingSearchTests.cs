@@ -1,5 +1,4 @@
-﻿
-namespace Hqub.MusicBrainz.Tests
+﻿namespace Hqub.MusicBrainz.Tests
 {
     using Hqub.MusicBrainz.Entities.Collections;
     using NUnit.Framework;
@@ -7,9 +6,7 @@ namespace Hqub.MusicBrainz.Tests
     using System.Threading.Tasks;
 
     // Resource: recording-search.json
-    // Recording.Search("artist:(calexico) AND recording:(alone again or) AND NOT secondarytype:(live)", 10);
-    //
-    // https://musicbrainz.org/ws/2/recording?query=artist:(calexico)%20AND%20recording:(alone%20again%20or)%20AND%20NOT%20secondarytype:(live)&limit=10&fmt=json
+    // URL: https://musicbrainz.org/ws/2/recording?query=artist:(calexico)%20AND%20recording:(alone%20again%20or)%20AND%20NOT%20secondarytype:(live)&limit=10&fmt=json
 
     public class RecordingSearchTests
     {

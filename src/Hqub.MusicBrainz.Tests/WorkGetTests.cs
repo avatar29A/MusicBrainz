@@ -1,5 +1,4 @@
-﻿
-namespace Hqub.MusicBrainz.Tests
+﻿namespace Hqub.MusicBrainz.Tests
 {
     using Hqub.MusicBrainz.Entities;
     using NUnit.Framework;
@@ -7,7 +6,7 @@ namespace Hqub.MusicBrainz.Tests
     using System.Threading.Tasks;
 
     // Resource: work-get.json
-    // https://musicbrainz.org/ws/2/work/0e23ed77-ad7e-34e7-b57c-c3407b2ae5df?inc=url-rels+artist-rels&fmt=json
+    // URL: https://musicbrainz.org/ws/2/work/0e23ed77-ad7e-34e7-b57c-c3407b2ae5df?inc=url-rels+artist-rels&fmt=json
 
     public class WorkGetTests
     {

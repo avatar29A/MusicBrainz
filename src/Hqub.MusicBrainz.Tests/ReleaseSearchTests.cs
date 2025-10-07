@@ -1,14 +1,11 @@
-﻿
-namespace Hqub.MusicBrainz.Tests
+﻿namespace Hqub.MusicBrainz.Tests
 {
     using Hqub.MusicBrainz.Entities.Collections;
     using NUnit.Framework;
     using System.Threading.Tasks;
 
     // Resource: release-search.json
-    // Release.Search("artist:(giant sand) release:(tucson)", 10);
-    //
-    // https://musicbrainz.org/ws/2/release?query=artist:(giant%20sand)%20release:(tucson)&limit=10&fmt=json
+    // URL: https://musicbrainz.org/ws/2/release?query=artist:(giant%20sand)%20release:(tucson)&limit=10&fmt=json
 
     public class ReleaseSearchTests
     {

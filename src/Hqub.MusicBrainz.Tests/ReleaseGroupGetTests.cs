@@ -1,14 +1,11 @@
-﻿
-namespace Hqub.MusicBrainz.Tests
+﻿namespace Hqub.MusicBrainz.Tests
 {
     using Hqub.MusicBrainz.Entities;
     using NUnit.Framework;
     using System.Threading.Tasks;
 
     // Resource: releasegroup-get.json
-    // ReleaseGroup.Get("fc325dd3-73ed-36aa-9c77-6b65a958e3cf", "artists", "releases", "ratings", "url-rels");
-    //
-    // https://musicbrainz.org/ws/2/release-group/fc325dd3-73ed-36aa-9c77-6b65a958e3cf?inc=artists+releases+ratings+url-rels&fmt=json
+    // URL: https://musicbrainz.org/ws/2/release-group/fc325dd3-73ed-36aa-9c77-6b65a958e3cf?inc=artists+releases+ratings+url-rels&fmt=json
 
     public class ReleaseGroupGetTests
     {

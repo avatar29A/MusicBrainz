@@ -1,5 +1,4 @@
-﻿
-namespace Hqub.MusicBrainz.Tests
+﻿namespace Hqub.MusicBrainz.Tests
 {
     using Hqub.MusicBrainz.Entities;
     using NUnit.Framework;
@@ -7,9 +6,7 @@ namespace Hqub.MusicBrainz.Tests
     using System.Threading.Tasks;
 
     // Resource: artist-get.json
-    // Artist.Get("12195c41-6136-4dfd-acf1-9923dadc73e2", "release-groups", "tags", "works", "ratings", "artist-rels", "url-rels");
-    //
-    // https://musicbrainz.org/ws/2/artist/72c536dc-7137-4477-a521-567eeb840fa8/?inc=release-groups+tags+works+ratings+artist-rels+url-rels&fmt=json
+    // URL: https://musicbrainz.org/ws/2/artist/72c536dc-7137-4477-a521-567eeb840fa8/?inc=release-groups+tags+genres+works+ratings+artist-rels+url-rels+aliases&fmt=json
 
     public class ArtistGetTests
     {
@@ -23,9 +20,9 @@ namespace Hqub.MusicBrainz.Tests
                 Cache = EmbeddedResourceCache.Instance
             };
 
-            string[] inc = ["release-groups", "tags", "works", "ratings", "artist-rels", "url-rels"];
+            string[] inc = ["release-groups", "tags", "genres", "works", "ratings", "artist-rels", "url-rels", "aliases"];
 
-            artist = await client.Artists.GetAsync("12195c41-6136-4dfd-acf1-9923dadc73e2", inc);
+            artist = await client.Artists.GetAsync("72c536dc-7137-4477-a521-567eeb840fa8", inc);
         }
 
         [Test]

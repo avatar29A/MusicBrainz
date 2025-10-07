@@ -1,13 +1,11 @@
-﻿
-namespace Hqub.MusicBrainz.Tests
+﻿namespace Hqub.MusicBrainz.Tests
 {
     using Hqub.MusicBrainz.Entities.Collections;
     using NUnit.Framework;
     using System.Threading.Tasks;
 
     // Resource: releasegroup-browse.json
-    //
-    // https://musicbrainz.org/ws/2/release-group?artist=45a663b5-b1cb-4a91-bff6-2bef7bbfdd76&limit=10&inc=ratings&fmt=json
+    // URL: https://musicbrainz.org/ws/2/release-group?artist=45a663b5-b1cb-4a91-bff6-2bef7bbfdd76&limit=10&inc=ratings&fmt=json
 
     public class ReleaseGroupBrowseTests
     {

@@ -1,5 +1,4 @@
-﻿
-namespace Hqub.MusicBrainz.Tests
+﻿namespace Hqub.MusicBrainz.Tests
 {
     using Hqub.MusicBrainz.Entities.Collections;
     using NUnit.Framework;
@@ -7,9 +6,7 @@ namespace Hqub.MusicBrainz.Tests
     using System.Threading.Tasks;
 
     // Resource: releasegroup-search.json
-    // ReleaseGroup.Search("artist:(bob dylan)", 10);
-    //
-    // https://musicbrainz.org/ws/2/release-group?query=artist:%28bob%20dylan%29&limit=10&fmt=json
+    // URL: https://musicbrainz.org/ws/2/release-group?query=artist:%28bob%20dylan%29&limit=10&fmt=json
 
     public class ReleaseGroupSearchTests
     {

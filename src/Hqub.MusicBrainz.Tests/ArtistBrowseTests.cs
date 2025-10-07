@@ -1,13 +1,11 @@
-﻿
-namespace Hqub.MusicBrainz.Tests
+﻿namespace Hqub.MusicBrainz.Tests
 {
     using Hqub.MusicBrainz.Entities.Collections;
     using NUnit.Framework;
     using System.Threading.Tasks;
 
     // Resource: artist-browse.json
-    //
-    // https://musicbrainz.org/ws/2/artist?area=c9ac1239-e832-41bc-9930-e252a1fd1105&limit=10&fmt=json
+    // URL: https://musicbrainz.org/ws/2/artist?area=c9ac1239-e832-41bc-9930-e252a1fd1105&limit=10&fmt=json
 
     public class ArtistBrowseTests
     {

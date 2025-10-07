@@ -1,14 +1,11 @@
-﻿
-namespace Hqub.MusicBrainz.Tests
+﻿namespace Hqub.MusicBrainz.Tests
 {
     using Hqub.MusicBrainz.Entities.Collections;
     using NUnit.Framework;
     using System.Threading.Tasks;
 
     // Resource: label-search.json
-    // Label.Search("City Slang");
-    //
-    // http://musicbrainz.org/ws/2/label/?query=%22City%20Slang%22&fmt=json
+    // URL: http://musicbrainz.org/ws/2/label/?query=%22City%20Slang%22&fmt=json
 
     public class LabelSearchTests
     {

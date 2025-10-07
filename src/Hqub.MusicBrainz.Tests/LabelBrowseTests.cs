@@ -1,13 +1,11 @@
-﻿
-namespace Hqub.MusicBrainz.Tests
+﻿namespace Hqub.MusicBrainz.Tests
 {
     using Hqub.MusicBrainz.Entities.Collections;
     using NUnit.Framework;
     using System.Threading.Tasks;
 
     // Resource: label-browse.json
-    //
-    // https://musicbrainz.org/ws/2/label?area=85752fda-13c4-31a3-bee5-0e5cb1f51dad&limit=10&fmt=json
+    // URL: https://musicbrainz.org/ws/2/label?area=85752fda-13c4-31a3-bee5-0e5cb1f51dad&limit=10&fmt=json
 
     public class LabelBrowseTests
     {

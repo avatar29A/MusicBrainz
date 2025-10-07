@@ -1,14 +1,11 @@
-﻿
-namespace Hqub.MusicBrainz.Tests
+﻿namespace Hqub.MusicBrainz.Tests
 {
     using Hqub.MusicBrainz.Entities.Collections;
     using NUnit.Framework;
     using System.Threading.Tasks;
 
     // Resource: artist-search.json
-    // Artist.Search("artist:(bob dylan)", 10);
-    //
-    // https://musicbrainz.org/ws/2/artist?query=artist:(bob%20dylan)&limit=10&fmt=json
+    // URL: https://musicbrainz.org/ws/2/artist?query=artist:(bob%20dylan)&limit=10&fmt=json
 
     public class ArtistSearchTests
     {
