@@ -14,7 +14,7 @@
             { "artist-search", "artist?query=artist:(bob dylan)&limit=10" },
             { "artist-browse", "artist?area=c9ac1239-e832-41bc-9930-e252a1fd1105&limit=10" },
 
-            { "label-get", "label/82935ddb-a9d6-45a7-85e3-0b0add51fa1c?inc=" },
+            { "label-get", "label/82935ddb-a9d6-45a7-85e3-0b0add51fa1c?inc=releases+artist-credits+genres+url-rels" },
             { "label-search", "label?query=%22City%20Slang%22" },
             { "label-browse", "label?area=85752fda-13c4-31a3-bee5-0e5cb1f51dad&limit=10" },
 
@@ -23,7 +23,7 @@
             { "recording-browse", "recording?release=12195c41-6136-4dfd-acf1-9923dadc73e2&inc=ratings" },
 
             { "releasegroup-get", "release-group/fc325dd3-73ed-36aa-9c77-6b65a958e3cf?inc=artists+releases+ratings+genres+url-rels" },
-            { "releasegroup-search", "release-group?query=artist:(bob dylan)&limit=10" },
+            { "releasegroup-search", "release-group?query=artist:(bob dylan)" },
             { "releasegroup-browse", "release-group?artist=45a663b5-b1cb-4a91-bff6-2bef7bbfdd76&limit=10&inc=ratings" },
 
             { "release-get", "release/12195c41-6136-4dfd-acf1-9923dadc73e2?inc=artists+labels+recordings+release-groups+genres+url-rels" },
