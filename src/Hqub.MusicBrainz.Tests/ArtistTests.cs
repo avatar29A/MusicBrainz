@@ -59,8 +59,8 @@ namespace Hqub.MusicBrainz.Tests
             Assert.That(area.Id, Is.EqualTo("489ce91b-6658-3307-9877-795b68554c98"));
             Assert.That(area.Name, Is.EqualTo("United States"));
 
-            Assert.That(area.IsoCodes, Is.Not.Null);
-            Assert.That(area.IsoCodes.Count, Is.EqualTo(1));
+            Assert.That(area.Iso1Codes, Is.Not.Null);
+            Assert.That(area.Iso1Codes.Count, Is.EqualTo(1));
 
             area = artist.BeginArea;
 

@@ -1,6 +1,7 @@
 ﻿
 namespace Hqub.MusicBrainz.Entities
 {
+    using System;
     using System.Collections.Generic;
     using System.Runtime.Serialization;
 
@@ -45,6 +46,12 @@ namespace Hqub.MusicBrainz.Entities
         /// Gets or sets the iso-3166-1 codes.
         /// </summary>
         [DataMember(Name = "iso-3166-1-codes")]
-        public List<string> IsoCodes { get; set; }
+        public List<string> Iso1Codes { get; set; }
+
+        /// <summary>
+        /// Gets or sets the iso-3166-2 codes
+        /// </summary>
+        [DataMember(Name = "iso-3166-2-codes")]
+        public List<string> Iso2Codes { get; set; }
     }
 }
