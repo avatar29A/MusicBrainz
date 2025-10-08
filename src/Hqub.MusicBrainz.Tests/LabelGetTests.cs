@@ -64,8 +64,8 @@
             Assert.That(area.Id, Is.EqualTo("85752fda-13c4-31a3-bee5-0e5cb1f51dad"));
             Assert.That(area.Name, Is.EqualTo("Germany"));
 
-            Assert.That(area.IsoCodes, Is.Not.Null);
-            Assert.That(area.IsoCodes.Count, Is.EqualTo(1));
+            Assert.That(area.Iso1Codes, Is.Not.Null);
+            Assert.That(area.Iso1Codes.Count, Is.EqualTo(1));
         }
 
         [Test]
