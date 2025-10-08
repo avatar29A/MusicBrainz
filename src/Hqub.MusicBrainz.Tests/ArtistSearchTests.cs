@@ -1,21 +1,25 @@
-﻿
-namespace Hqub.MusicBrainz.Tests
+﻿namespace Hqub.MusicBrainz.Tests
 {
     using Hqub.MusicBrainz.Entities.Collections;
     using NUnit.Framework;
+    using System.Threading.Tasks;
 
     // Resource: artist-search.json
-    // Artist.Search("artist:(bob dylan)", 10);
-    //
-    // https://musicbrainz.org/ws/2/artist?query=artist:(bob%20dylan)&limit=10&fmt=json
+    // URL: https://musicbrainz.org/ws/2/artist?query=artist:(bob%20dylan)&limit=10&fmt=json
 
-    public class ArtistListTests
+    public class ArtistSearchTests
     {
-        private readonly ArtistList data;
+        private ArtistList data;
 
-        public ArtistListTests()
+        [OneTimeSetUp]
+        public async Task Init()
         {
-            data = TestHelper.GetJson<ArtistList>("artist-search.json");
+            var client = new MusicBrainzClient()
+            {
+                Cache = EmbeddedResourceCache.Instance
+            };
+
+            data = await client.Artists.SearchAsync("artist:(bob dylan)", 10);
         }
 
         [Test]

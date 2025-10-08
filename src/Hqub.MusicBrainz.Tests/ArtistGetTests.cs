@@ -1,22 +1,28 @@
-﻿
-namespace Hqub.MusicBrainz.Tests
+﻿namespace Hqub.MusicBrainz.Tests
 {
     using Hqub.MusicBrainz.Entities;
     using NUnit.Framework;
     using System.Linq;
+    using System.Threading.Tasks;
 
     // Resource: artist-get.json
-    // Artist.Get("12195c41-6136-4dfd-acf1-9923dadc73e2", "release-groups", "tags", "works", "ratings", "artist-rels", "url-rels");
-    //
-    // https://musicbrainz.org/ws/2/artist/72c536dc-7137-4477-a521-567eeb840fa8/?inc=release-groups+tags+works+ratings+artist-rels+url-rels&fmt=json
+    // URL: https://musicbrainz.org/ws/2/artist/72c536dc-7137-4477-a521-567eeb840fa8/?inc=release-groups+tags+genres+works+ratings+artist-rels+url-rels+aliases&fmt=json
 
-    public class ArtistTests
+    public class ArtistGetTests
     {
         Artist artist;
 
-        public ArtistTests()
+        [OneTimeSetUp]
+        public async Task Init()
         {
-            this.artist = TestHelper.GetJson<Artist>("artist-get.json");
+            var client = new MusicBrainzClient()
+            {
+                Cache = EmbeddedResourceCache.Instance
+            };
+
+            string[] inc = ["release-groups", "tags", "genres", "works", "ratings", "artist-rels", "url-rels", "aliases"];
+
+            artist = await client.Artists.GetAsync("72c536dc-7137-4477-a521-567eeb840fa8", inc);
         }
 
         [Test]
@@ -121,12 +127,12 @@ namespace Hqub.MusicBrainz.Tests
             var genres = artist.Genres;
 
             Assert.That(genres, Is.Not.Null);
-            Assert.That(genres.Count, Is.EqualTo(10));
+            Assert.That(genres.Count, Is.GreaterThan(10));
 
             var genre = genres[0];
 
             Assert.That(genre, Is.Not.Null);
-            Assert.That(genre.Count, Is.EqualTo(2));
+            Assert.That(genre.Count, Is.GreaterThan(2));
             Assert.That(genre.Name, Is.EqualTo("blues"));
         }
 

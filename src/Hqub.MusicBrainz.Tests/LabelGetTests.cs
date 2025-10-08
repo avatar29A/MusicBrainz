@@ -1,22 +1,28 @@
-﻿
-namespace Hqub.MusicBrainz.Tests
+﻿namespace Hqub.MusicBrainz.Tests
 {
     using Hqub.MusicBrainz.Entities;
     using NUnit.Framework;
     using System.Linq;
+    using System.Threading.Tasks;
 
     // Resource: label-get.json
-    // Label.Get("82935ddb-a9d6-45a7-85e3-0b0add51fa1c", "releases", "artist-credits", "genres", "url-rels");
-    //
-    // https://musicbrainz.org/ws/2/label/82935ddb-a9d6-45a7-85e3-0b0add51fa1c?fmt=json&inc=releases+artist-credits+genres+url-rels
+    // URL: https://musicbrainz.org/ws/2/label/82935ddb-a9d6-45a7-85e3-0b0add51fa1c?fmt=json&inc=releases+artist-credits+genres+url-rels
 
-    public class LabelTests
+    public class LabelGetTests
     {
-        Label label;
+        private Label label;
 
-        public LabelTests()
+        [OneTimeSetUp]
+        public async Task Init()
         {
-            this.label = TestHelper.GetJson<Label>("label-get.json");
+            var client = new MusicBrainzClient()
+            {
+                Cache = EmbeddedResourceCache.Instance
+            };
+
+            string[] inc = ["releases", "artist-credits", "genres", "url-rels"];
+
+            label = await client.Labels.GetAsync("82935ddb-a9d6-45a7-85e3-0b0add51fa1c", inc);
         }
 
         [Test]

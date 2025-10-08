@@ -9,29 +9,43 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Data\area-get.json" />
+    <None Remove="Data\artist-browse.json" />
     <None Remove="Data\artist-get.json" />
     <None Remove="Data\artist-search.json" />
+    <None Remove="Data\label-browse.json" />
     <None Remove="Data\label-get.json" />
     <None Remove="Data\label-search.json" />
+    <None Remove="Data\recording-browse.json" />
     <None Remove="Data\recording-get.json" />
     <None Remove="Data\recording-search.json" />
+    <None Remove="Data\release-browse.json" />
     <None Remove="Data\release-get.json" />
     <None Remove="Data\release-search.json" />
+    <None Remove="Data\releasegroup-browse.json" />
     <None Remove="Data\releasegroup-get.json" />
     <None Remove="Data\releasegroup-search.json" />
+    <None Remove="Data\work-get.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Data\area-get.json" />
+    <EmbeddedResource Include="Data\artist-browse.json" />
     <EmbeddedResource Include="Data\artist-get.json" />
     <EmbeddedResource Include="Data\artist-search.json" />
+    <EmbeddedResource Include="Data\label-browse.json" />
     <EmbeddedResource Include="Data\label-get.json" />
     <EmbeddedResource Include="Data\label-search.json" />
+    <EmbeddedResource Include="Data\recording-browse.json" />
     <EmbeddedResource Include="Data\recording-get.json" />
     <EmbeddedResource Include="Data\recording-search.json" />
+    <EmbeddedResource Include="Data\release-browse.json" />
     <EmbeddedResource Include="Data\release-get.json" />
     <EmbeddedResource Include="Data\release-search.json" />
+    <EmbeddedResource Include="Data\releasegroup-browse.json" />
     <EmbeddedResource Include="Data\releasegroup-get.json" />
     <EmbeddedResource Include="Data\releasegroup-search.json" />
+    <EmbeddedResource Include="Data\work-get.json" />
   </ItemGroup>
 
   <ItemGroup>

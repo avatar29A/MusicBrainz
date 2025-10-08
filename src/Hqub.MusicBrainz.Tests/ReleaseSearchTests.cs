@@ -1,21 +1,25 @@
-﻿
-namespace Hqub.MusicBrainz.Tests
+﻿namespace Hqub.MusicBrainz.Tests
 {
     using Hqub.MusicBrainz.Entities.Collections;
     using NUnit.Framework;
+    using System.Threading.Tasks;
 
     // Resource: release-search.json
-    // Release.Search("artist:(giant sand) release:(tucson)", 10);
-    //
-    // https://musicbrainz.org/ws/2/release?query=artist:(giant%20sand)%20release:(tucson)&limit=10&fmt=json
+    // URL: https://musicbrainz.org/ws/2/release?query=artist:(giant%20sand)%20release:(tucson)&limit=10&fmt=json
 
-    public class ReleaseListTests
+    public class ReleaseSearchTests
     {
-        private readonly ReleaseList data;
+        private ReleaseList data;
 
-        public ReleaseListTests()
+        [OneTimeSetUp]
+        public async Task Init()
         {
-            data = TestHelper.GetJson<ReleaseList>("release-search.json");
+            var client = new MusicBrainzClient()
+            {
+                Cache = EmbeddedResourceCache.Instance
+            };
+
+            data = await client.Releases.SearchAsync("artist:(giant sand) release:(tucson)", 10);
         }
 
         [Test]

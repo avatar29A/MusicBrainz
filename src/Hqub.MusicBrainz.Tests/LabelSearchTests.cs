@@ -1,21 +1,25 @@
-﻿
-namespace Hqub.MusicBrainz.Tests
+﻿namespace Hqub.MusicBrainz.Tests
 {
     using Hqub.MusicBrainz.Entities.Collections;
     using NUnit.Framework;
+    using System.Threading.Tasks;
 
     // Resource: label-search.json
-    // Label.Search("City Slang");
-    //
-    // http://musicbrainz.org/ws/2/label/?query=%22City%20Slang%22&fmt=json
+    // URL: http://musicbrainz.org/ws/2/label/?query=%22City%20Slang%22&fmt=json
 
-    public class LabelListTests
+    public class LabelSearchTests
     {
-        private readonly LabelList data;
+        private LabelList data;
 
-        public LabelListTests()
+        [OneTimeSetUp]
+        public async Task Init()
         {
-            data = TestHelper.GetJson<LabelList>("label-search.json");
+            var client = new MusicBrainzClient()
+            {
+                Cache = EmbeddedResourceCache.Instance
+            };
+
+            data = await client.Labels.SearchAsync("City Slang", 10);
         }
 
         [Test]

@@ -1,21 +1,27 @@
-﻿
-namespace Hqub.MusicBrainz.Tests
+﻿namespace Hqub.MusicBrainz.Tests
 {
     using Hqub.MusicBrainz.Entities;
     using NUnit.Framework;
+    using System.Threading.Tasks;
 
     // Resource: release-get.json
-    // Release.Get("12195c41-6136-4dfd-acf1-9923dadc73e2", "artists", "labels", "recordings", "release-groups", "url-rels");
-    //
-    // https://musicbrainz.org/ws/2/release/12195c41-6136-4dfd-acf1-9923dadc73e2/?inc=artists+labels+recordings+release-groups+url-rels&fmt=json
+    // URL: https://musicbrainz.org/ws/2/release/12195c41-6136-4dfd-acf1-9923dadc73e2/?inc=artists+labels+recordings+release-groups+url-rels&fmt=json
 
-    public class ReleaseTests
+    public class ReleaseGetTests
     {
-        private readonly Release release;
+        private Release release;
 
-        public ReleaseTests()
+        [OneTimeSetUp]
+        public async Task Init()
         {
-            release = TestHelper.GetJson<Release>("release-get.json");
+            var client = new MusicBrainzClient()
+            {
+                Cache = EmbeddedResourceCache.Instance
+            };
+
+            string[] inc = ["artists", "labels", "recordings", "release-groups", "url-rels"];
+
+            release = await client.Releases.GetAsync("12195c41-6136-4dfd-acf1-9923dadc73e2", inc);
         }
         
         [Test]
