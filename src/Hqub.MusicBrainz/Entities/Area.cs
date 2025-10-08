@@ -45,22 +45,6 @@ namespace Hqub.MusicBrainz.Entities
         /// <summary>
         /// Gets or sets the iso-3166-1 codes.
         /// </summary>
-        [Obsolete("Use `Iso1Codes` instead")]
-        public List<string> IsoCodes
-        {
-            get
-            {
-                return Iso1Codes;
-            }
-            set
-            {
-                Iso1Codes = value;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the iso-3166-1 codes.
-        /// </summary>
         [DataMember(Name = "iso-3166-1-codes")]
         public List<string> Iso1Codes { get; set; }
 
