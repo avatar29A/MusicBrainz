@@ -4,8 +4,9 @@
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Interface defining the entity lookup service.
+    /// Interface defining the lookup service.
     /// </summary>
+    /// <typeparam name="T">Any supported MusicBrainz entity implementing the <see cref="IEntity"/> interface.</typeparam>
     public interface ILookupService<T> where T : IEntity
     {
         /// <summary>

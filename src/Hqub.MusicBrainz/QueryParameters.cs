@@ -10,7 +10,7 @@ namespace Hqub.MusicBrainz
     /// <summary>
     /// Helper for building MusicBrainz query strings.
     /// </summary>
-    /// <typeparam name="T">The entity type to search for.</typeparam>
+    /// <typeparam name="T">Any supported MusicBrainz entity implementing the <see cref="IEntity"/> interface.</typeparam>
     /// <remarks>
     /// See https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2/Search
     /// </remarks>

@@ -4,8 +4,9 @@
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Interface defining the entity service.
+    /// Interface defining the search service.
     /// </summary>
+    /// <typeparam name="T">Any supported MusicBrainz entity implementing the <see cref="IEntity"/> interface.</typeparam>
     public interface ISearchService<T> where T : IEntity
     {
         /// <summary>

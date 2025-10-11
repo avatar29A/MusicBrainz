@@ -4,8 +4,9 @@
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Interface defining the entity service.
+    /// Interface defining the browse service.
     /// </summary>
+    /// <typeparam name="T">Any supported MusicBrainz entity implementing the <see cref="IEntity"/> interface.</typeparam>
     public interface IBrowseService<T> where T : IEntity
     {
         /// <summary>
