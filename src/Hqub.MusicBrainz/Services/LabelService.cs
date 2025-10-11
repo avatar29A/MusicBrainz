@@ -72,7 +72,7 @@
 
             var list = await client.GetAsync<LabelList>(url);
 
-            return new QueryResult<Label>() { Items = list.Items, Count = list.Count, Offset = list.Offset };
+            return new QueryResult<Label>(list.Count, list.Offset, list.Items);
         }
 
         /// <inheritdoc />
@@ -88,7 +88,7 @@
 
             var list = await client.GetAsync<LabelListBrowse>(url);
 
-            return new QueryResult<Label>() { Items = list.Items, Count = list.Count, Offset = list.Offset };
+            return new QueryResult<Label>(list.Count, list.Offset, list.Items);
         }
 
         #endregion

@@ -5,12 +5,12 @@ using System.Collections.Generic;
 namespace Hqub.MusicBrainz
 {
     /// <summary>
-    /// Abstract base class for MusicBrainz queries returning lists (with paging support).
+    /// Base class for MusicBrainz queries returning lists (with paging support).
     /// </summary>
-    public class QueryResult<T> : IEnumerable<T> where T : IEntity
+    public sealed class QueryResult<T> : IEnumerable<T> where T : IEntity
     {
         /// <summary>
-        /// Gets or sets the total list items count.
+        /// Gets the total list items count.
         /// </summary>
         /// <remarks>
         /// This might be different form the actual list items count. If the list was
@@ -18,17 +18,27 @@ namespace Hqub.MusicBrainz
         /// of available items (on the server), while the number of returned items is
         /// limited by the requests 'limit' parameter (default = 25).
         /// </remarks>
-        public int Count { get; set; }
+        public int Count { get; }
 
         /// <summary>
-        /// Gets or sets the list offset (only available in search requests).
+        /// Gets the list offset (only available in search requests).
         /// </summary>
-        public int Offset { get; set; }
+        public int Offset { get; }
 
         /// <summary>
-        /// Gets or sets the list of entities.
+        /// Gets the list of entities.
         /// </summary>
-        public List<T> Items { get; set; }
+        public IReadOnlyList<T> Items { get; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="QueryResult{T}"/> class.
+        /// </summary>
+        public QueryResult(int count, int offset, List<T> list)
+        {
+            Count = count;
+            Offset = offset;
+            Items = list;
+        }
 
         /// <summary>
         /// Returns an enumerator that iterates through the collection.

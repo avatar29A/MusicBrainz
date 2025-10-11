@@ -72,7 +72,7 @@
 
             var list = await client.GetAsync<ArtistList>(url);
 
-            return new QueryResult<Artist>() { Items = list.Items, Count = list.Count, Offset = list.Offset };
+            return new QueryResult<Artist>(list.Count, list.Offset, list.Items);
         }
 
         /// <inheritdoc />
@@ -88,7 +88,7 @@
 
             var list = await client.GetAsync<ArtistListBrowse>(url);
 
-            return new QueryResult<Artist>() { Items = list.Items, Count = list.Count, Offset = list.Offset };
+            return new QueryResult<Artist>(list.Count, list.Offset, list.Items);
         }
 
         #endregion

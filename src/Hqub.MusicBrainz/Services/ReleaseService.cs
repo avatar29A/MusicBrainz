@@ -72,7 +72,7 @@
 
             var list = await client.GetAsync<ReleaseList>(url);
 
-            return new QueryResult<Release>() { Items = list.Items, Count = list.Count, Offset = list.Offset };
+            return new QueryResult<Release>(list.Count, list.Offset, list.Items);
         }
 
         /// <inheritdoc />
@@ -89,7 +89,7 @@
 
             var list = await client.GetAsync<ReleaseListBrowse>(url);
 
-            return new QueryResult<Release>() { Items = list.Items, Count = list.Count, Offset = list.Offset };
+            return new QueryResult<Release>(list.Count, list.Offset, list.Items);
         }
 
         /// <inheritdoc />
@@ -99,7 +99,7 @@
 
             var list = await client.GetAsync<ReleaseListBrowse>(url);
 
-            return new QueryResult<Release>() { Items = list.Items, Count = list.Count, Offset = list.Offset };
+            return new QueryResult<Release>(list.Count, list.Offset, list.Items);
         }
 
         #endregion

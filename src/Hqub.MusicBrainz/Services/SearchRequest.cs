@@ -123,7 +123,7 @@
 
             var list = await client.GetAsync<ArtistList>(url, ct);
 
-            return new QueryResult<Artist>() { Items = list.Items, Count = list.Count, Offset = list.Offset };
+            return new QueryResult<Artist>(list.Count, list.Offset, list.Items);
         }
     }
 
@@ -154,7 +154,7 @@
 
             var list = await client.GetAsync<LabelList>(url, ct);
 
-            return new QueryResult<Label>() { Items = list.Items, Count = list.Count, Offset = list.Offset };
+            return new QueryResult<Label>(list.Count, list.Offset, list.Items);
         }
     }
 
@@ -185,7 +185,7 @@
 
             var list = await client.GetAsync<RecordingList>(url, ct);
 
-            return new QueryResult<Recording>() { Items = list.Items, Count = list.Count, Offset = list.Offset };
+            return new QueryResult<Recording>(list.Count, list.Offset, list.Items);
         }
     }
 
@@ -216,7 +216,7 @@
 
             var list = await client.GetAsync<ReleaseGroupList>(url, ct);
 
-            return new QueryResult<ReleaseGroup>() { Items = list.Items, Count = list.Count, Offset = list.Offset };
+            return new QueryResult<ReleaseGroup>(list.Count, list.Offset, list.Items);
         }
     }
 
@@ -247,7 +247,7 @@
 
             var list = await client.GetAsync<ReleaseList>(url, ct);
 
-            return new QueryResult<Release>() { Items = list.Items, Count = list.Count, Offset = list.Offset };
+            return new QueryResult<Release>(list.Count, list.Offset, list.Items);
         }
     }
 

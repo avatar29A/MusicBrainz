@@ -72,7 +72,7 @@
 
             var list = await client.GetAsync<RecordingList>(url);
 
-            return new QueryResult<Recording>() { Items = list.Items, Count = list.Count, Offset = list.Offset };
+            return new QueryResult<Recording>(list.Count, list.Offset, list.Items);
         }
 
         /// <inheritdoc />
@@ -88,7 +88,7 @@
 
             var list = await client.GetAsync<RecordingListBrowse>(url);
 
-            return new QueryResult<Recording>() { Items = list.Items, Count = list.Count, Offset = list.Offset };
+            return new QueryResult<Recording>(list.Count, list.Offset, list.Items);
         }
 
         #endregion
