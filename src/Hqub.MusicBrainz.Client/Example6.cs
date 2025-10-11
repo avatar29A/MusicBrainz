@@ -3,7 +3,6 @@ namespace Hqub.MusicBrainz.Client
 {
     using Hqub.MusicBrainz;
     using Hqub.MusicBrainz.Entities;
-    using Hqub.MusicBrainz.Entities.Collections;
     using System;
     using System.Threading.Tasks;
 

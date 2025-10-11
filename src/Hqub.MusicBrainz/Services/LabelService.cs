@@ -1,7 +1,6 @@
 ﻿namespace Hqub.MusicBrainz.Services
 {
     using Hqub.MusicBrainz.Entities;
-    using Hqub.MusicBrainz.Entities.Collections;
     using System;
     using System.Threading.Tasks;
 

@@ -1,7 +1,8 @@
 ﻿namespace Hqub.MusicBrainz.Services
 {
     using Hqub.MusicBrainz.Entities;
-    using Hqub.MusicBrainz.Entities.Collections;
+    using System.Collections.Generic;
+    using System.Runtime.Serialization;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -131,7 +132,20 @@
         public abstract override string ToString();
     }
 
-    #region Helper classes
+    #region Private implementation
+
+    [DataContract]
+    class ArtistListBrowse
+    {
+        [DataMember(Name = "artist-count")]
+        public int Count { get; set; }
+
+        [DataMember(Name = "artist-offset")]
+        public int Offset { get; set; }
+
+        [DataMember(Name = "artists")]
+        public List<Artist> Items { get; set; }
+    }
 
     class ArtistBrowseRequest : BrowseRequest<Artist>
     {
@@ -155,6 +169,19 @@
         {
             return builder.CreateBrowseUrl(EntityName, relatedEntity, id, limit, offset, include);
         }
+    }
+
+    [DataContract]
+    class LabelListBrowse
+    {
+        [DataMember(Name = "label-count")]
+        public int Count { get; set; }
+
+        [DataMember(Name = "label-offset")]
+        public int Offset { get; set; }
+
+        [DataMember(Name = "labels")]
+        public List<Label> Items { get; set; }
     }
 
     class LabelBrowseRequest : BrowseRequest<Label>
@@ -181,6 +208,19 @@
         }
     }
 
+    [DataContract]
+    class RecordingListBrowse
+    {
+        [DataMember(Name = "recording-count")]
+        public int Count { get; set; }
+
+        [DataMember(Name = "recording-offset")]
+        public int Offset { get; set; }
+
+        [DataMember(Name = "recordings")]
+        public List<Recording> Items { get; set; }
+    }
+
     class RecordingBrowseRequest : BrowseRequest<Recording>
     {
         public RecordingBrowseRequest(MusicBrainzClient client, UrlBuilder builder, string id, string relatedEntity, string entity)
@@ -205,6 +245,19 @@
         }
     }
 
+    [DataContract]
+    class ReleaseGroupListBrowse
+    {
+        [DataMember(Name = "release-group-count")]
+        public int Count { get; set; }
+
+        [DataMember(Name = "release-group-offset")]
+        public int Offset { get; set; }
+
+        [DataMember(Name = "release-groups")]
+        public List<ReleaseGroup> Items { get; set; }
+    }
+
     class ReleaseGroupBrowseRequest : BrowseRequest<ReleaseGroup>
     {
         public ReleaseGroupBrowseRequest(MusicBrainzClient client, UrlBuilder builder, string id, string relatedEntity, string entity)
@@ -227,6 +280,19 @@
         {
             return builder.CreateBrowseUrl(EntityName, relatedEntity, id, type, null, limit, offset, include);
         }
+    }
+
+    [DataContract]
+    class ReleaseListBrowse
+    {
+        [DataMember(Name = "release-count")]
+        public int Count { get; set; }
+
+        [DataMember(Name = "release-offset")]
+        public int Offset { get; set; }
+
+        [DataMember(Name = "releases")]
+        public List<Release> Items { get; set; }
     }
 
     class ReleaseBrowseRequest : BrowseRequest<Release>

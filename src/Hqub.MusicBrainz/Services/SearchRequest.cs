@@ -1,7 +1,8 @@
 ﻿namespace Hqub.MusicBrainz.Services
 {
     using Hqub.MusicBrainz.Entities;
-    using Hqub.MusicBrainz.Entities.Collections;
+    using System.Collections.Generic;
+    using System.Runtime.Serialization;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -93,7 +94,20 @@
         }
     }
 
-    #region Helper classes
+    #region Private implementation
+
+    [DataContract]
+    class ArtistList
+    {
+        [DataMember(Name = "count")]
+        public int Count { get; set; }
+
+        [DataMember(Name = "offset")]
+        public int Offset { get; set; }
+
+        [DataMember(Name = "artists")]
+        public List<Artist> Items { get; set; }
+    }
 
     class ArtistSearchRequest : SearchRequest<Artist>
     {
@@ -111,6 +125,19 @@
 
             return new QueryResult<Artist>() { Items = list.Items, Count = list.Count, Offset = list.Offset };
         }
+    }
+
+    [DataContract]
+    class LabelList
+    {
+        [DataMember(Name = "count")]
+        public int Count { get; set; }
+
+        [DataMember(Name = "offset")]
+        public int Offset { get; set; }
+
+        [DataMember(Name = "labels")]
+        public List<Label> Items { get; set; }
     }
 
     class LabelSearchRequest : SearchRequest<Label>
@@ -131,6 +158,19 @@
         }
     }
 
+    [DataContract]
+    class RecordingList
+    {
+        [DataMember(Name = "count")]
+        public int Count { get; set; }
+
+        [DataMember(Name = "offset")]
+        public int Offset { get; set; }
+
+        [DataMember(Name = "recordings")]
+        public List<Recording> Items { get; set; }
+    }
+
     class RecordingSearchRequest : SearchRequest<Recording>
     {
         public RecordingSearchRequest(MusicBrainzClient client, UrlBuilder builder, string query, string entity)
@@ -149,6 +189,19 @@
         }
     }
 
+    [DataContract]
+    class ReleaseGroupList
+    {
+        [DataMember(Name = "count")]
+        public int Count { get; set; }
+
+        [DataMember(Name = "offset")]
+        public int Offset { get; set; }
+
+        [DataMember(Name = "release-groups")]
+        public List<ReleaseGroup> Items { get; set; }
+    }
+
     class ReleaseGroupSearchRequest : SearchRequest<ReleaseGroup>
     {
         public ReleaseGroupSearchRequest(MusicBrainzClient client, UrlBuilder builder, string query, string entity)
@@ -165,6 +218,19 @@
 
             return new QueryResult<ReleaseGroup>() { Items = list.Items, Count = list.Count, Offset = list.Offset };
         }
+    }
+
+    [DataContract]
+    class ReleaseList
+    {
+        [DataMember(Name = "count")]
+        public int Count { get; set; }
+
+        [DataMember(Name = "offset")]
+        public int Offset { get; set; }
+
+        [DataMember(Name = "releases")]
+        public List<Release> Items { get; set; }
     }
 
     class ReleaseSearchRequest : SearchRequest<Release>
