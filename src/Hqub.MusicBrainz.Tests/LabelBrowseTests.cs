@@ -1,6 +1,6 @@
 ﻿namespace Hqub.MusicBrainz.Tests
 {
-    using Hqub.MusicBrainz.Entities.Collections;
+    using Hqub.MusicBrainz.Entities;
     using NUnit.Framework;
     using System.Threading.Tasks;
 
@@ -9,7 +9,7 @@
 
     public class LabelBrowseTests
     {
-        private LabelList data;
+        private QueryResult<Label> data;
 
         [OneTimeSetUp]
         public async Task Init()

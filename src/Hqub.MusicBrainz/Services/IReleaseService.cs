@@ -1,7 +1,6 @@
 ﻿namespace Hqub.MusicBrainz.Services
 {
     using Hqub.MusicBrainz.Entities;
-    using Hqub.MusicBrainz.Entities.Collections;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -24,7 +23,7 @@
         /// <param name="limit">The number of entries to return (max. number of entries returned per page is 100, default = 25).</param>
         /// <param name="offset">Return search results starting at a given offset. Used for paging through more than one page of results (default = 0).</param>
         /// <returns></returns>
-        SearchRequest<ReleaseList> Search(string query, int limit = 25, int offset = 0);
+        SearchRequest<Release> Search(string query, int limit = 25, int offset = 0);
 
         /// <summary>
         /// Create a request to search for a release in the MusicBrainz database, matching the given query.
@@ -33,7 +32,7 @@
         /// <param name="limit">The number of entries to return (max. number of entries returned per page is 100, default = 25).</param>
         /// <param name="offset">Return search results starting at a given offset. Used for paging through more than one page of results (default = 0).</param>
         /// <returns></returns>
-        SearchRequest<ReleaseList> Search(QueryParameters<Artist> query, int limit = 25, int offset = 0);
+        SearchRequest<Release> Search(QueryParameters<Release> query, int limit = 25, int offset = 0);
 
         /// <summary>
         /// Create a request to browse all releases in the MusicBrainz database, which are linked to the entity with given id.
@@ -44,7 +43,7 @@
         /// <param name="offset">Return results starting at a given offset. Used for paging through more than one page of results (default = 0).</param>
         /// <param name="inc">A list of entities to include (sub-queries).</param>
         /// <returns></returns>
-        BrowseRequest<ReleaseList> Browse(string entity, string id, int limit = 25, int offset = 0, params string[] inc);
+        BrowseRequest<Release> Browse(string entity, string id, int limit = 25, int offset = 0, params string[] inc);
 
         /// <summary>
         /// Lookup a release in the MusicBrainz database.
@@ -61,7 +60,7 @@
         /// <param name="limit">The number of entries to return (max. number of entries returned per page is 100, default = 25).</param>
         /// <param name="offset">Return search results starting at a given offset. Used for paging through more than one page of results (default = 0).</param>
         /// <returns></returns>
-        Task<ReleaseList> SearchAsync(string query, int limit = 25, int offset = 0);
+        Task<QueryResult<Release>> SearchAsync(string query, int limit = 25, int offset = 0);
 
         /// <summary>
         /// Search for a release in the MusicBrainz database, matching the given query.
@@ -70,7 +69,7 @@
         /// <param name="limit">The number of entries to return (max. number of entries returned per page is 100, default = 25).</param>
         /// <param name="offset">Return search results starting at a given offset. Used for paging through more than one page of results (default = 0).</param>
         /// <returns></returns>
-        Task<ReleaseList> SearchAsync(QueryParameters<Release> query, int limit = 25, int offset = 0);
+        Task<QueryResult<Release>> SearchAsync(QueryParameters<Release> query, int limit = 25, int offset = 0);
 
         /// <summary>
         /// Browse all releases in the MusicBrainz database, which are linked to the entity with given id.
@@ -81,7 +80,7 @@
         /// <param name="offset">Return results starting at a given offset. Used for paging through more than one page of results (default = 0).</param>
         /// <param name="inc">A list of entities to include (sub-queries).</param>
         /// <returns></returns>
-        Task<ReleaseList> BrowseAsync(string entity, string id, int limit = 25,
+        Task<QueryResult<Release>> BrowseAsync(string entity, string id, int limit = 25,
             int offset = 0, params string[] inc);
 
         /// <summary>
@@ -98,7 +97,7 @@
         /// <remarks>
         /// See https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2#Release_Type_and_Status for supported values of type and status.
         /// </remarks>
-        Task<ReleaseList> BrowseAsync(string entity, string id, string type, string status = null, int limit = 25,
+        Task<QueryResult<Release>> BrowseAsync(string entity, string id, string type, string status = null, int limit = 25,
             int offset = 0, params string[] inc);
     }
 }

@@ -27,19 +27,19 @@
         }
 
         /// <inheritdoc />
-        public SearchRequest<LabelList> Search(string query, int limit = 25, int offset = 0)
+        public SearchRequest<Label> Search(string query, int limit = 25, int offset = 0)
         {
-            return new SearchRequest<LabelList>(client, builder, query, EntityName).Limit(limit).Offset(offset);
+            return new LabelSearchRequest(client, builder, query, EntityName).Limit(limit).Offset(offset);
         }
 
         /// <inheritdoc />
-        public SearchRequest<LabelList> Search(QueryParameters<Label> query, int limit = 25, int offset = 0)
+        public SearchRequest<Label> Search(QueryParameters<Label> query, int limit = 25, int offset = 0)
         {
-            return new SearchRequest<LabelList>(client, builder, query.ToString(), EntityName).Limit(limit).Offset(offset);
+            return new LabelSearchRequest(client, builder, query.ToString(), EntityName).Limit(limit).Offset(offset);
         }
 
         /// <inheritdoc />
-        public BrowseRequest<LabelList> Browse(string entity, string id, int limit = 25, int offset = 0, params string[] inc)
+        public BrowseRequest<Label> Browse(string entity, string id, int limit = 25, int offset = 0, params string[] inc)
         {
             return new LabelBrowseRequest(client, builder, id, entity, EntityName).Limit(limit).Offset(offset).Include(inc);
         }
@@ -62,7 +62,7 @@
         }
 
         /// <inheritdoc />
-        public async Task<LabelList> SearchAsync(string query, int limit = 25, int offset = 0)
+        public async Task<QueryResult<Label>> SearchAsync(string query, int limit = 25, int offset = 0)
         {
             if (string.IsNullOrEmpty(query))
             {
@@ -71,23 +71,25 @@
 
             string url = builder.CreateSearchUrl(EntityName, query, limit, offset);
 
-            return await client.GetAsync<LabelList>(url);
+            var list = await client.GetAsync<LabelList>(url);
+
+            return new QueryResult<Label>() { Items = list.Items, Count = list.Count, Offset = list.Offset };
         }
 
         /// <inheritdoc />
-        public async Task<LabelList> SearchAsync(QueryParameters<Label> query, int limit = 25, int offset = 0)
+        public async Task<QueryResult<Label>> SearchAsync(QueryParameters<Label> query, int limit = 25, int offset = 0)
         {
             return await SearchAsync(query.ToString(), limit, offset);
         }
 
         /// <inheritdoc />
-        public async Task<LabelList> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc)
+        public async Task<QueryResult<Label>> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc)
         {
             string url = builder.CreateBrowseUrl(EntityName, entity, id, limit, offset, inc);
 
             var list = await client.GetAsync<LabelListBrowse>(url);
 
-            return new LabelList() { Items = list.Items, Count = list.Count, Offset = list.Offset };
+            return new QueryResult<Label>() { Items = list.Items, Count = list.Count, Offset = list.Offset };
         }
 
         #endregion

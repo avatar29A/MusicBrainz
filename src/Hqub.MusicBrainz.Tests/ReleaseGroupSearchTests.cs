@@ -1,6 +1,6 @@
 ﻿namespace Hqub.MusicBrainz.Tests
 {
-    using Hqub.MusicBrainz.Entities.Collections;
+    using Hqub.MusicBrainz.Entities;
     using NUnit.Framework;
     using System.Linq;
     using System.Threading.Tasks;
@@ -10,7 +10,7 @@
 
     public class ReleaseGroupSearchTests
     {
-        private ReleaseGroupList data;
+        private QueryResult<ReleaseGroup> data;
 
         [OneTimeSetUp]
         public async Task Init()
