@@ -8,7 +8,7 @@ namespace Hqub.MusicBrainz.Entities
     /// </summary>
     /// <see href="https://musicbrainz.org/doc/Genre"/>
     [DataContract(Name = "genre")]
-    public class Genre
+    public class Genre : IEntity
     {
         /// <summary>
         /// Gets or sets the MusicBrainz id.

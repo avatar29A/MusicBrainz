@@ -1,23 +1,32 @@
 ﻿namespace Hqub.MusicBrainz.Services
 {
-    using System;
+    using Hqub.MusicBrainz.Entities;
+    using System.Collections.Generic;
+    using System.Runtime.Serialization;
     using System.Threading;
     using System.Threading.Tasks;
 
     /// <summary>
     /// Prepare a search request to the MusicBrainz web service.
     /// </summary>
-    /// <typeparam name="T">Any supported MusicBrainz entity.</typeparam>
-    public class SearchRequest<T>
+    /// <typeparam name="T">Any supported MusicBrainz entity implementing the <see cref="IEntity"/> interface.</typeparam>
+    public abstract class SearchRequest<T> where T : IEntity
     {
-        private readonly string EntityName;
-
         private readonly MusicBrainzClient client;
-        private readonly UrlBuilder builder;
 
-        private string query;
-        private int limit = 25;
-        private int offset = 0;
+        internal readonly UrlBuilder builder;
+
+        /// <summary>Entity name.</summary>
+        protected readonly string EntityName;
+
+        /// <summary>The search query.</summary>
+        protected string query;
+
+        /// <summary>Limit of fetched items.</summary>
+        protected int limit = 25;
+
+        /// <summary>Offset to start browsing.</summary>
+        protected int offset = 0;
 
         internal SearchRequest(MusicBrainzClient client, UrlBuilder builder, string query, string entity)
         {
@@ -66,17 +75,15 @@
         /// </summary>
         /// <param name="ct">The cancellation token.</param>
         /// <returns></returns>
-        public async Task<T> GetAsync(CancellationToken ct = default)
+        public async Task<QueryResult<T>> GetAsync(CancellationToken ct = default)
         {
-            if (string.IsNullOrEmpty(query))
-            {
-                throw new ArgumentException(string.Format(Resources.Messages.MissingParameter, "query"));
-            }
-
-            string url = builder.CreateSearchUrl(EntityName, query, limit, offset);
-
-            return await client.GetAsync<T>(url, ct);
+            return await SearchAsync(client, ct);
         }
+
+        /// <summary>
+        /// Initiate the actual request.
+        /// </summary>
+        protected abstract Task<QueryResult<T>> SearchAsync(MusicBrainzClient client, CancellationToken ct);
 
         /// <summary>
         /// Returns the request path.
@@ -86,4 +93,163 @@
             return builder.CreateSearchUrl(EntityName, query, limit, offset);
         }
     }
+
+    #region Private implementation
+
+    [DataContract]
+    class ArtistList
+    {
+        [DataMember(Name = "count")]
+        public int Count { get; set; }
+
+        [DataMember(Name = "offset")]
+        public int Offset { get; set; }
+
+        [DataMember(Name = "artists")]
+        public List<Artist> Items { get; set; }
+    }
+
+    class ArtistSearchRequest : SearchRequest<Artist>
+    {
+        public ArtistSearchRequest(MusicBrainzClient client, UrlBuilder builder, string query, string entity)
+            : base(client, builder, query, entity)
+        {
+        }
+
+        /// <inheritdoc />
+        protected override async Task<QueryResult<Artist>> SearchAsync(MusicBrainzClient client, CancellationToken ct)
+        {
+            string url = builder.CreateSearchUrl(EntityName, query, limit, offset);
+
+            var list = await client.GetAsync<ArtistList>(url, ct);
+
+            return new QueryResult<Artist>(list.Count, list.Offset, list.Items);
+        }
+    }
+
+    [DataContract]
+    class LabelList
+    {
+        [DataMember(Name = "count")]
+        public int Count { get; set; }
+
+        [DataMember(Name = "offset")]
+        public int Offset { get; set; }
+
+        [DataMember(Name = "labels")]
+        public List<Label> Items { get; set; }
+    }
+
+    class LabelSearchRequest : SearchRequest<Label>
+    {
+        public LabelSearchRequest(MusicBrainzClient client, UrlBuilder builder, string query, string entity)
+            : base(client, builder, query, entity)
+        {
+        }
+
+        /// <inheritdoc />
+        protected override async Task<QueryResult<Label>> SearchAsync(MusicBrainzClient client, CancellationToken ct)
+        {
+            string url = builder.CreateSearchUrl(EntityName, query, limit, offset);
+
+            var list = await client.GetAsync<LabelList>(url, ct);
+
+            return new QueryResult<Label>(list.Count, list.Offset, list.Items);
+        }
+    }
+
+    [DataContract]
+    class RecordingList
+    {
+        [DataMember(Name = "count")]
+        public int Count { get; set; }
+
+        [DataMember(Name = "offset")]
+        public int Offset { get; set; }
+
+        [DataMember(Name = "recordings")]
+        public List<Recording> Items { get; set; }
+    }
+
+    class RecordingSearchRequest : SearchRequest<Recording>
+    {
+        public RecordingSearchRequest(MusicBrainzClient client, UrlBuilder builder, string query, string entity)
+            : base(client, builder, query, entity)
+        {
+        }
+
+        /// <inheritdoc />
+        protected override async Task<QueryResult<Recording>> SearchAsync(MusicBrainzClient client, CancellationToken ct)
+        {
+            string url = builder.CreateSearchUrl(EntityName, query, limit, offset);
+
+            var list = await client.GetAsync<RecordingList>(url, ct);
+
+            return new QueryResult<Recording>(list.Count, list.Offset, list.Items);
+        }
+    }
+
+    [DataContract]
+    class ReleaseGroupList
+    {
+        [DataMember(Name = "count")]
+        public int Count { get; set; }
+
+        [DataMember(Name = "offset")]
+        public int Offset { get; set; }
+
+        [DataMember(Name = "release-groups")]
+        public List<ReleaseGroup> Items { get; set; }
+    }
+
+    class ReleaseGroupSearchRequest : SearchRequest<ReleaseGroup>
+    {
+        public ReleaseGroupSearchRequest(MusicBrainzClient client, UrlBuilder builder, string query, string entity)
+            : base(client, builder, query, entity)
+        {
+        }
+
+        /// <inheritdoc />
+        protected override async Task<QueryResult<ReleaseGroup>> SearchAsync(MusicBrainzClient client, CancellationToken ct)
+        {
+            string url = builder.CreateSearchUrl(EntityName, query, limit, offset);
+
+            var list = await client.GetAsync<ReleaseGroupList>(url, ct);
+
+            return new QueryResult<ReleaseGroup>(list.Count, list.Offset, list.Items);
+        }
+    }
+
+    [DataContract]
+    class ReleaseList
+    {
+        [DataMember(Name = "count")]
+        public int Count { get; set; }
+
+        [DataMember(Name = "offset")]
+        public int Offset { get; set; }
+
+        [DataMember(Name = "releases")]
+        public List<Release> Items { get; set; }
+    }
+
+    class ReleaseSearchRequest : SearchRequest<Release>
+    {
+        public ReleaseSearchRequest(MusicBrainzClient client, UrlBuilder builder, string query, string entity)
+            : base(client, builder, query, entity)
+        {
+        }
+
+        /// <inheritdoc />
+        protected override async Task<QueryResult<Release>> SearchAsync(MusicBrainzClient client, CancellationToken ct)
+        {
+            string url = builder.CreateSearchUrl(EntityName, query, limit, offset);
+
+            var list = await client.GetAsync<ReleaseList>(url, ct);
+
+            return new QueryResult<Release>(list.Count, list.Offset, list.Items);
+        }
+    }
+
+    #endregion
 }

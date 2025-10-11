@@ -1,5 +1,6 @@
 ﻿namespace Hqub.MusicBrainz.Services
 {
+    using Hqub.MusicBrainz.Entities;
     using System;
     using System.Threading;
     using System.Threading.Tasks;
@@ -7,8 +8,8 @@
     /// <summary>
     /// Prepare a lookup request to the MusicBrainz web service.
     /// </summary>
-    /// <typeparam name="T">Any supported MusicBrainz entity.</typeparam>
-    public class LookupRequest<T>
+    /// <typeparam name="T">Any supported MusicBrainz entity implementing the <see cref="IEntity"/> interface.</typeparam>
+    public class LookupRequest<T> where T : IEntity
     {
         private readonly string EntityName;
 

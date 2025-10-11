@@ -1,6 +1,7 @@
 ﻿namespace Hqub.MusicBrainz
 {
     using Hqub.MusicBrainz.Cache;
+    using Hqub.MusicBrainz.Entities;
     using Hqub.MusicBrainz.Services;
     using System;
     using System.IO;
@@ -51,9 +52,9 @@
         public IReleaseGroupService ReleaseGroups { get; }
 
         /// <summary>
-        /// Gets the work entity service.
+        /// Gets the work entity lookup service.
         /// </summary>
-        public IWorkService Work { get; }
+        public ILookupService<Work> Work { get; }
 
         #endregion
 
@@ -113,7 +114,8 @@
             Recordings = new RecordingService(this, urlBuilder);
             Releases = new ReleaseService(this, urlBuilder);
             ReleaseGroups = new ReleaseGroupService(this, urlBuilder);
-            Work = new WorkService(this, urlBuilder);
+
+            Work = new LookupService<Work>(this, urlBuilder, "work");
 
             client = httpClient;
         }

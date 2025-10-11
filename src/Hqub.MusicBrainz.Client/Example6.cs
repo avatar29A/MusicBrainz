@@ -3,7 +3,6 @@ namespace Hqub.MusicBrainz.Client
 {
     using Hqub.MusicBrainz;
     using Hqub.MusicBrainz.Entities;
-    using Hqub.MusicBrainz.Entities.Collections;
     using System;
     using System.Threading.Tasks;
 
@@ -89,7 +88,7 @@ namespace Hqub.MusicBrainz.Client
             }
         }
 
-        private static void DisplayArtists(ArtistList artists)
+        private static void DisplayArtists(QueryResult<Artist> artists)
         {
             foreach (var a in artists)
             {
@@ -98,7 +97,7 @@ namespace Hqub.MusicBrainz.Client
             }
         }
 
-        private static void DisplayReleases(ReleaseGroupList groups, int i, int pages)
+        private static void DisplayReleases(QueryResult<ReleaseGroup> groups, int i, int pages)
         {
             Console.WriteLine();
             Console.WriteLine("Page {0} of {1}", i, pages);
