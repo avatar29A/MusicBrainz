@@ -52,7 +52,7 @@
         public IReleaseGroupService ReleaseGroups { get; }
 
         /// <summary>
-        /// Gets the work entity service.
+        /// Gets the work entity lookup service.
         /// </summary>
         public ILookupService<Work> Work { get; }
 
