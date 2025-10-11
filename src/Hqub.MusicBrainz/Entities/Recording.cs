@@ -10,7 +10,7 @@ namespace Hqub.MusicBrainz.Entities
     /// </summary>
     /// <see href="https://musicbrainz.org/doc/Recording"/>
     [DataContract(Name = "recording")]
-    public class Recording
+    public class Recording : IEntity
     {
         #region Properties
 

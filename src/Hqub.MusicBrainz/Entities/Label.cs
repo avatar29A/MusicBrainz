@@ -9,7 +9,7 @@ namespace Hqub.MusicBrainz.Entities
     /// </summary>
     /// <see href="https://musicbrainz.org/doc/Label"/>
     [DataContract(Name = "label")]
-    public class Label
+    public class Label : IEntity
     {
         #region Properties
 

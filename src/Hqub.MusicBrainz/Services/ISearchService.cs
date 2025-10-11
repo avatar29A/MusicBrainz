@@ -1,11 +1,12 @@
 ﻿namespace Hqub.MusicBrainz.Services
 {
+    using Hqub.MusicBrainz.Entities;
     using System.Threading.Tasks;
 
     /// <summary>
     /// Interface defining the entity service.
     /// </summary>
-    public interface ISearchService<T>
+    public interface ISearchService<T> where T : IEntity
     {
         /// <summary>
         /// Create a request to search for an entity in the MusicBrainz database, matching the given query.

@@ -9,7 +9,7 @@
     /// Prepare a search request to the MusicBrainz web service.
     /// </summary>
     /// <typeparam name="T">Any supported MusicBrainz entity.</typeparam>
-    public abstract class SearchRequest<T>
+    public abstract class SearchRequest<T> where T : IEntity
     {
         private readonly MusicBrainzClient client;
 

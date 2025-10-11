@@ -1,7 +1,6 @@
 ﻿
 namespace Hqub.MusicBrainz.Entities
 {
-    using System;
     using System.Collections.Generic;
     using System.Runtime.Serialization;
 
@@ -10,7 +9,7 @@ namespace Hqub.MusicBrainz.Entities
     /// </summary>
     /// <see href="https://musicbrainz.org/doc/Area"/>
     [DataContract(Name = "area")]
-    public class Area
+    public class Area : IEntity
     {
         /// <summary>
         /// Gets or sets the MusicBrainz id.

@@ -15,6 +15,7 @@ namespace Hqub.MusicBrainz
     /// See https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2/Search
     /// </remarks>
     public class QueryParameters<T> : IEnumerable<QueryParameters<T>.Node>
+         where T : IEntity
     {
         private readonly List<Node> nodes;
 

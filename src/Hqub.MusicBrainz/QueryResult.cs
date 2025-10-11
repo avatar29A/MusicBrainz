@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Hqub.MusicBrainz.Entities;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Hqub.MusicBrainz
@@ -6,7 +7,7 @@ namespace Hqub.MusicBrainz
     /// <summary>
     /// Abstract base class for MusicBrainz queries returning lists (with paging support).
     /// </summary>
-    public class QueryResult<T> : IEnumerable<T>
+    public class QueryResult<T> : IEnumerable<T> where T : IEntity
     {
         /// <summary>
         /// Gets or sets the total list items count.

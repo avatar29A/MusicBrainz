@@ -1,12 +1,13 @@
 ﻿namespace Hqub.MusicBrainz.Services
 {
+    using Hqub.MusicBrainz.Entities;
     using System;
     using System.Threading.Tasks;
 
     /// <summary>
     /// Interface defining the entity lookup service.
     /// </summary>
-    class LookupService<T> : ILookupService<T>
+    class LookupService<T> : ILookupService<T> where T : IEntity
     {
 
         private readonly MusicBrainzClient client;
