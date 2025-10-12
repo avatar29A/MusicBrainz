@@ -1,7 +1,6 @@
 ﻿namespace Hqub.MusicBrainz.Services
 {
     using Hqub.MusicBrainz.Entities;
-    using Hqub.MusicBrainz.Entities.Collections;
     using System;
     using System.Threading.Tasks;
 
@@ -27,19 +26,19 @@
         }
 
         /// <inheritdoc />
-        public SearchRequest<ReleaseList> Search(string query, int limit = 25, int offset = 0)
+        public SearchRequest<Release> Search(string query, int limit = 25, int offset = 0)
         {
-            return new SearchRequest<ReleaseList>(client, builder, query, EntityName).Limit(limit).Offset(offset);
+            return new ReleaseSearchRequest(client, builder, query, EntityName).Limit(limit).Offset(offset);
         }
 
         /// <inheritdoc />
-        public SearchRequest<ReleaseList> Search(QueryParameters<Artist> query, int limit = 25, int offset = 0)
+        public SearchRequest<Release> Search(QueryParameters<Release> query, int limit = 25, int offset = 0)
         {
-            return new SearchRequest<ReleaseList>(client, builder, query.ToString(), EntityName).Limit(limit).Offset(offset);
+            return new ReleaseSearchRequest(client, builder, query.ToString(), EntityName).Limit(limit).Offset(offset);
         }
 
         /// <inheritdoc />
-        public BrowseRequest<ReleaseList> Browse(string entity, string id, int limit = 25, int offset = 0, params string[] inc)
+        public BrowseRequest<Release> Browse(string entity, string id, int limit = 25, int offset = 0, params string[] inc)
         {
             return new ReleaseBrowseRequest(client, builder, id, entity, EntityName).Limit(limit).Offset(offset).Include(inc);
         }
@@ -62,7 +61,7 @@
         }
 
         /// <inheritdoc />
-        public async Task<ReleaseList> SearchAsync(string query, int limit = 25, int offset = 0)
+        public async Task<QueryResult<Release>> SearchAsync(string query, int limit = 25, int offset = 0)
         {
             if (string.IsNullOrEmpty(query))
             {
@@ -71,34 +70,36 @@
 
             string url = builder.CreateSearchUrl(EntityName, query, limit, offset);
 
-            return await client.GetAsync<ReleaseList>(url);
+            var list = await client.GetAsync<ReleaseList>(url);
+
+            return new QueryResult<Release>(list.Count, list.Offset, list.Items);
         }
 
         /// <inheritdoc />
-        public async Task<ReleaseList> SearchAsync(QueryParameters<Release> query, int limit = 25, int offset = 0)
+        public async Task<QueryResult<Release>> SearchAsync(QueryParameters<Release> query, int limit = 25, int offset = 0)
         {
             return await SearchAsync(query.ToString(), limit, offset);
         }
 
         /// <inheritdoc />
-        public async Task<ReleaseList> BrowseAsync(string entity, string id, int limit = 25,
+        public async Task<QueryResult<Release>> BrowseAsync(string entity, string id, int limit = 25,
             int offset = 0, params string[] inc)
         {
             string url = builder.CreateBrowseUrl(EntityName, entity, id, limit, offset, inc);
 
             var list = await client.GetAsync<ReleaseListBrowse>(url);
 
-            return new ReleaseList() { Items = list.Items, Count = list.Count, Offset = list.Offset };
+            return new QueryResult<Release>(list.Count, list.Offset, list.Items);
         }
 
         /// <inheritdoc />
-        public async Task<ReleaseList> BrowseAsync(string entity, string id, string type, string status = null, int limit = 25, int offset = 0, params string[] inc)
+        public async Task<QueryResult<Release>> BrowseAsync(string entity, string id, string type, string status = null, int limit = 25, int offset = 0, params string[] inc)
         {
             string url = builder.CreateBrowseUrl(EntityName, entity, id, type, status, limit, offset, inc);
 
             var list = await client.GetAsync<ReleaseListBrowse>(url);
 
-            return new ReleaseList() { Items = list.Items, Count = list.Count, Offset = list.Offset };
+            return new QueryResult<Release>(list.Count, list.Offset, list.Items);
         }
 
         #endregion

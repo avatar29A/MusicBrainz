@@ -1,7 +1,6 @@
 ﻿namespace Hqub.MusicBrainz.Services
 {
     using Hqub.MusicBrainz.Entities;
-    using Hqub.MusicBrainz.Entities.Collections;
     using System;
     using System.Threading.Tasks;
 
@@ -27,19 +26,19 @@
         }
 
         /// <inheritdoc />
-        public SearchRequest<RecordingList> Search(string query, int limit = 25, int offset = 0)
+        public SearchRequest<Recording> Search(string query, int limit = 25, int offset = 0)
         {
-            return new SearchRequest<RecordingList>(client, builder, query, EntityName).Limit(limit).Offset(offset);
+            return new RecordingSearchRequest(client, builder, query, EntityName).Limit(limit).Offset(offset);
         }
 
         /// <inheritdoc />
-        public SearchRequest<RecordingList> Search(QueryParameters<Artist> query, int limit = 25, int offset = 0)
+        public SearchRequest<Recording> Search(QueryParameters<Recording> query, int limit = 25, int offset = 0)
         {
-            return new SearchRequest<RecordingList>(client, builder, query.ToString(), EntityName).Limit(limit).Offset(offset);
+            return new RecordingSearchRequest(client, builder, query.ToString(), EntityName).Limit(limit).Offset(offset);
         }
 
         /// <inheritdoc />
-        public BrowseRequest<RecordingList> Browse(string entity, string id, int limit = 25, int offset = 0, params string[] inc)
+        public BrowseRequest<Recording> Browse(string entity, string id, int limit = 25, int offset = 0, params string[] inc)
         {
             return new RecordingBrowseRequest(client, builder, id, entity, EntityName).Limit(limit).Offset(offset).Include(inc);
         }
@@ -62,7 +61,7 @@
         }
 
         /// <inheritdoc />
-        public async Task<RecordingList> SearchAsync(string query, int limit = 25, int offset = 0)
+        public async Task<QueryResult<Recording>> SearchAsync(string query, int limit = 25, int offset = 0)
         {
             if (string.IsNullOrEmpty(query))
             {
@@ -71,23 +70,25 @@
 
             string url = builder.CreateSearchUrl(EntityName, query, limit, offset);
 
-            return await client.GetAsync<RecordingList>(url);
+            var list = await client.GetAsync<RecordingList>(url);
+
+            return new QueryResult<Recording>(list.Count, list.Offset, list.Items);
         }
 
         /// <inheritdoc />
-        public async Task<RecordingList> SearchAsync(QueryParameters<Recording> query, int limit = 25, int offset = 0)
+        public async Task<QueryResult<Recording>> SearchAsync(QueryParameters<Recording> query, int limit = 25, int offset = 0)
         {
             return await SearchAsync(query.ToString(), limit, offset);
         }
 
         /// <inheritdoc />
-        public async Task<RecordingList> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc)
+        public async Task<QueryResult<Recording>> BrowseAsync(string entity, string id, int limit = 25, int offset = 0, params string[] inc)
         {
             string url = builder.CreateBrowseUrl(EntityName, entity, id, limit, offset, inc);
 
             var list = await client.GetAsync<RecordingListBrowse>(url);
 
-            return new RecordingList() { Items = list.Items, Count = list.Count, Offset = list.Offset };
+            return new QueryResult<Recording>(list.Count, list.Offset, list.Items);
         }
 
         #endregion
