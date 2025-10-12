@@ -56,6 +56,11 @@
         /// </summary>
         public ILookupService<Work> Work { get; }
 
+        /// <summary>
+        /// Gets the area entity lookup service.
+        /// </summary>
+        public ILookupService<Area> Area { get; }
+
         #endregion
 
         /// <summary>
@@ -63,7 +68,7 @@
         /// </summary>
         public IRequestCache Cache { get; set; }
 
-        private HttpClient client;
+        private readonly HttpClient client;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MusicBrainzClient"/> class.
@@ -116,6 +121,7 @@
             ReleaseGroups = new ReleaseGroupService(this, urlBuilder);
 
             Work = new LookupService<Work>(this, urlBuilder, "work");
+            Area = new LookupService<Area>(this, urlBuilder, "area");
 
             client = httpClient;
         }
