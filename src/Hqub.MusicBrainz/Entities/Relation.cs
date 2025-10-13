@@ -86,6 +86,12 @@ namespace Hqub.MusicBrainz.Entities
         [DataMember(Name = "work")]
         public Work Work { get; set; }
 
+        /// <summary>
+        /// Gets or sets the area relationship (include area-rels).
+        /// </summary>
+        [DataMember(Name = "area")]
+        public Area Area { get; set; }
+
         // Other relationships:
         //
         //   /// <summary>

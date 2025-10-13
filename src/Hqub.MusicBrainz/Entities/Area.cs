@@ -11,6 +11,8 @@ namespace Hqub.MusicBrainz.Entities
     [DataContract(Name = "area")]
     public class Area : IEntity
     {
+        #region Properties
+
         /// <summary>
         /// Gets or sets the MusicBrainz id.
         /// </summary>
@@ -52,5 +54,20 @@ namespace Hqub.MusicBrainz.Entities
         /// </summary>
         [DataMember(Name = "iso-3166-2-codes")]
         public List<string> Iso2Codes { get; set; }
+
+        #endregion
+
+        #region Sub-queries
+
+        /// <summary>
+        /// Gets or sets a list of relations associated to this area.
+        /// </summary>
+        /// <example>
+        /// var e = await client.Area.GetAsync(mbid, "area-rels");
+        /// </example>
+        [DataMember(Name = "relations")]
+        public List<Relation> Relations { get; set; }
+
+        #endregion
     }
 }
