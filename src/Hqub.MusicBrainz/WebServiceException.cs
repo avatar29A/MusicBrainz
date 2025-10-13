@@ -12,13 +12,13 @@ namespace Hqub.MusicBrainz
         /// <summary>
         /// Gets the response HTTP status code.
         /// </summary>
-        public readonly HttpStatusCode StatusCode;
+        public HttpStatusCode StatusCode { get; }
 
         /// <summary>
         /// Gets the requested uri.
         /// </summary>
-        public readonly string Uri;
-        
+        public string Uri { get; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="WebServiceException"/> class.
         /// </summary>
