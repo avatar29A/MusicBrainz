@@ -139,7 +139,7 @@
         {
             /// <summary>The error message.</summary>
             [DataMember(Name = "error")]
-            public string Message;
+            public string Message { get; set; }
         }
 
         internal async Task<T> GetAsync<T>(string url, CancellationToken ct = default)
