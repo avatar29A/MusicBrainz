@@ -36,7 +36,7 @@ namespace Hqub.MusicBrainz.Client
             Console.WriteLine();
 
             // Show official albums.
-            foreach (var item in groups.Items.Where(g => IsOfficial(g)).OrderBy(g => g.FirstReleaseDate))
+            foreach (var item in groups.Items.Where(IsOfficial).OrderBy(g => g.FirstReleaseDate))
             {
                 Console.WriteLine("     {0} - {1}  {2}  {3}", item.FirstReleaseDate.ToShortDate(),
                     item.Id, GetRating(item.Rating, 10), item.Title);
@@ -47,7 +47,7 @@ namespace Hqub.MusicBrainz.Client
             Console.WriteLine();
 
             // Show compilations.
-            foreach (var item in groups.Items.Where(g => IsCompilation(g)).OrderBy(g => g.FirstReleaseDate))
+            foreach (var item in groups.Items.Where(IsCompilation).OrderBy(g => g.FirstReleaseDate))
             {
                 Console.WriteLine("     {0} - {1}  {2}  {3}", item.FirstReleaseDate.ToShortDate(),
                     item.Id, GetRating(item.Rating, 10), item.Title);

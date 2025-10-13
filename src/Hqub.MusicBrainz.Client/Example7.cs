@@ -8,7 +8,7 @@ namespace Hqub.MusicBrainz.Client
 
     /// <summary>
     /// Search for a label using <c>client.Labels.SearchAsync()</c> and lookup label details
-    /// like releases and related urls using <c>clients.Label.GetAsync()</c>.
+    /// like releases and related urls using <c>client.Labels.GetAsync()</c>.
     /// </summary>
     public class Example7
     {
