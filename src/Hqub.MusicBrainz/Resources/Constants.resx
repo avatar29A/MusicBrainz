@@ -121,10 +121,10 @@
     <value>-alias-primary_alias-area-arid-artist-artistaccent-alias-begin-beginarea-comment-country-end-endarea-ended-gender-ipi-isni-sortname-tag-type-</value>
   </data>
   <data name="BrowseStatus" xml:space="preserve">
-    <value>+official+promotion+bootleg+pseudo-release+</value>
+    <value>+official+promotion+bootleg+pseudo-release+withdrawn+cancelled+</value>
   </data>
   <data name="BrowseType" xml:space="preserve">
-    <value>+nat+album+single+ep+compilation+soundtrack+spokenword+interview+audiobook+live+remix+other+</value>
+    <value>+album+single+ep+broadcast+audiobook+compilation+demo+dj-mix+soundtrack+spokenword+interview+live+remix+other+</value>
   </data>
   <data name="LabelQueryParams" xml:space="preserve">
     <value>-alias-area-begin-code-comment-country-end-ended-ipi-isni-label-labelaccent-laid-release_count-sortname-tag-type-</value>
