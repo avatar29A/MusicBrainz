@@ -13,10 +13,10 @@
     <Authors>Boris Glebov, Christian Woltering</Authors>
     <PackageProjectUrl>https://github.com/avatar29A/MusicBrainz</PackageProjectUrl>
     <RepositoryUrl>https://github.com/avatar29A/MusicBrainz</RepositoryUrl>
-    <AssemblyVersion>3.2.0.0</AssemblyVersion>
-    <FileVersion>3.2.0.0</FileVersion>
+    <AssemblyVersion>4.0.0.0</AssemblyVersion>
+    <FileVersion>4.0.0.0</FileVersion>
     <PackageTags>music musicbrainz brainz</PackageTags>
-    <Version>3.2.0</Version>
+    <Version>4.0.0</Version>
     <AssemblyName>Hqub.MusicBrainz</AssemblyName>
     <RootNamespace>Hqub.MusicBrainz</RootNamespace>
     <Configurations>Debug;Release</Configurations>
@@ -27,23 +27,18 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
     <PackageReleaseNotes>
-		Hqub.MusicBrainz version 3 breaking changes:
+		Hqub.MusicBrainz version 4.0 breaking changes:
 
-		* Remove the obsolete static API: fix by using the MusicBrainzClient class.
-		* Remove the ".API" suffix from assembly and namespaces: fix by removing the ".API" suffix in your using statements.
+		* Consistently return QueryResult instead of specialized collection types from search and browse requests.
+		* Removal of Hqub.MusicBrainz.Entities.Collections namespace.
+		* Removal of Area.IsoCodes property (use Iso1Codes or Iso2Codes instead).
 
-		Version 3.1 changes:
+		Other changes in version 4.0:
 
-		* Remove net6.0 target and add net8.0
-		* Remove obsolete serialization support from WebServiceException
-		* Improve cache interface (add Contains(request) method)
-		* Improve fluent API requests (add ToString() method returning the URL path of the request)
-
-		Version 3.2 changes:
-		
-		* Add support for label lookup, search and browse
-		* Add release events info to releases
-		* Improve documentation
+		* Introduce IEntity as base interface for all entity classes supported by services.
+		* Add support for Area relationships.
+		* Add support for Area lookup to MusicBrainz client.
+		* Add missing Release.Packaging property.
 	</PackageReleaseNotes>
   </PropertyGroup>
 
