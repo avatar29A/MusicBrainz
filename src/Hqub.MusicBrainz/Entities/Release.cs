@@ -69,6 +69,12 @@ namespace Hqub.MusicBrainz.Entities
         public string Barcode { get; set; }
 
         /// <summary>
+        /// Gets or sets the packaging.
+        /// </summary>
+        [DataMember(Name = "packaging")]
+        public string Packaging { get; set; }
+
+        /// <summary>
         /// Gets or sets the release-group.
         /// </summary>
         [DataMember(Name = "release-group")]
