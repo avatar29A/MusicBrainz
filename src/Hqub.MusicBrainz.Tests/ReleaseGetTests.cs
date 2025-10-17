@@ -36,6 +36,7 @@
             Assert.That(release.Date, Is.EqualTo("2012-06-11"));
             Assert.That(release.Country, Is.EqualTo("US"));
             Assert.That(release.Barcode, Is.EqualTo("809236126221"));
+            Assert.That(release.Packaging, Is.EqualTo("Cardboard/Paper Sleeve"));
         }
 
         [Test]

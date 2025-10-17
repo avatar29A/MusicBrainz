@@ -70,7 +70,7 @@ namespace Hqub.MusicBrainz.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to +official+promotion+bootleg+pseudo-release+.
+        ///   Looks up a localized string similar to +official+promotion+bootleg+pseudo-release+withdrawn+cancelled+.
         /// </summary>
         internal static string BrowseStatus {
             get {
@@ -79,7 +79,7 @@ namespace Hqub.MusicBrainz.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to +nat+album+single+ep+compilation+soundtrack+spokenword+interview+audiobook+live+remix+other+.
+        ///   Looks up a localized string similar to +album+single+ep+broadcast+audiobook+compilation+demo+dj-mix+soundtrack+spokenword+interview+live+remix+other+.
         /// </summary>
         internal static string BrowseType {
             get {

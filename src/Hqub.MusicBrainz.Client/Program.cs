@@ -14,6 +14,10 @@
             {
                 await RunExamples();
             }
+            catch (WebServiceException e)
+            {
+                Error(e);
+            }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
@@ -65,6 +69,24 @@
             Console.WriteLine();
 
             Console.ForegroundColor = color;
+        }
+
+        private static void Error(WebServiceException e)
+        {
+            var color = Console.ForegroundColor;
+
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+
+            Console.WriteLine();
+            Console.WriteLine("MusicBrainz web service reported an error");
+
+            Console.ForegroundColor = color;
+
+            Console.WriteLine(" Requested URL: " + e.Uri);
+            Console.WriteLine("   Status Code: " + e.StatusCode);
+            Console.WriteLine("       Message: " + e.Message);
+            Console.WriteLine();
+
         }
     }
 }

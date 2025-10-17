@@ -43,7 +43,6 @@
             foreach (var item in Data)
             {
                 await Get(client, item.Key, item.Value, overwrite);
-
             }
 
             Console.Write("Done. Press any key to quit.");
