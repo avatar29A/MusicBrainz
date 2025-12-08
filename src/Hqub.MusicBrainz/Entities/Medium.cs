@@ -36,9 +36,21 @@ namespace Hqub.MusicBrainz.Entities
         public List<Disc> Discs { get; set; }
 
         /// <summary>
+        /// Gets or sets the pregap.
+        /// </summary>
+        [DataMember(Name = "pregap")]
+        public Track Pregap { get; set; }
+
+        /// <summary>
         /// Gets or sets the track list.
         /// </summary>
         [DataMember(Name = "tracks")]
         public List<Track> Tracks { get; set; }
+
+        /// <summary>
+        /// Gets or sets the data-track list.
+        /// </summary>
+        [DataMember(Name = "data-tracks")]
+        public List<Track> DataTracks { get; set; }
     }
 }
