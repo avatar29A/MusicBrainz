@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net8.0;net10.0</TargetFrameworks>
     <LangVersion>8.0</LangVersion>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -13,10 +13,10 @@
     <Authors>Boris Glebov, Christian Woltering</Authors>
     <PackageProjectUrl>https://github.com/avatar29A/MusicBrainz</PackageProjectUrl>
     <RepositoryUrl>https://github.com/avatar29A/MusicBrainz</RepositoryUrl>
-    <AssemblyVersion>4.0.0.0</AssemblyVersion>
-    <FileVersion>4.0.0.0</FileVersion>
+    <AssemblyVersion>4.1.0.0</AssemblyVersion>
+    <FileVersion>4.1.0.0</FileVersion>
     <PackageTags>music musicbrainz brainz</PackageTags>
-    <Version>4.0.0</Version>
+    <Version>4.1.0</Version>
     <AssemblyName>Hqub.MusicBrainz</AssemblyName>
     <RootNamespace>Hqub.MusicBrainz</RootNamespace>
     <Configurations>Debug;Release</Configurations>
@@ -39,6 +39,11 @@
 		* Add support for Area relationships.
 		* Add support for Area lookup to MusicBrainz client.
 		* Add missing Release.Packaging property.
+
+		Changes in version 4.1:
+
+		* Add net10.0 target framework.
+		* Add pregap and data-tracks properties to Medium class.
 	</PackageReleaseNotes>
   </PropertyGroup>
 
